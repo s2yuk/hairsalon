@@ -18,7 +18,7 @@ if(isset($_POST['register'])){
 }
 
 // login.php
-if(isset($_POST['login'])){
+elseif(isset($_POST['login'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -28,7 +28,7 @@ if(isset($_POST['login'])){
 
 
 // testimonial.php
-if(isset($_POST['review'])){
+elseif(isset($_POST['review'])){
     $nickname=$_POST['nickname'];
     $date=$_POST['date'];
     $rating=$_POST['rating'];
@@ -57,7 +57,7 @@ if(isset($_POST['review'])){
 
 // admin.php
 
-if(isset($_POST['submit'])){
+elseif(isset($_POST['submit'])){
     $news= $_POST['news'];
     $date= $_POST['date'];
 
@@ -65,7 +65,7 @@ if(isset($_POST['submit'])){
 }
 
 // addCatalog.php
-if(isset($_POST['upload'])){
+elseif(isset($_POST['upload'])){
     $c_photo=$_FILES['catalog_photo']['name'];
     $c_comment=$_POST['catalog_comment'];
     $photo_stylist = $_POST['photo_stylist'];
@@ -80,7 +80,7 @@ if(isset($_POST['upload'])){
 
 
 // addStaff.php
-if(isset($_POST['input'])){
+elseif(isset($_POST['input'])){
     $s_name=$_POST['staff_name'];
     $position =$_POST['position'];
     $skill = $_POST['skill'];
@@ -103,15 +103,16 @@ if(isset($_POST['input'])){
 
 }
 
+
 // addService.php
-if(isset($_POST['menuInput'])){
+elseif(isset($_POST['menuInput'])){
     $menuName= $_POST['menuName'];
     $menuPrice=$_POST['menuPrice'];
 
     $Hairsalon->addServiceMenu($menuName,$menuPrice);
 
 }
-if(isset($_POST['couponInput'])){
+elseif(isset($_POST['couponInput'])){
     $couponName = $_POST['couponName'];
     $couponPrice = $_POST['couponPrice'];
 
@@ -121,7 +122,7 @@ if(isset($_POST['couponInput'])){
 
 
 // editStaff.php
-if(isset($_POST['editStaff'])){
+elseif(isset($_POST['editStaff'])){
     $staffID = $_POST['staff_id'];
     $s_name=$_POST['staff_name'];
     $position =$_POST['position'];
@@ -147,7 +148,7 @@ if(isset($_POST['editStaff'])){
 
 }
 
-if(isset($_POST['editCatalog'])){
+elseif(isset($_POST['editCatalog'])){
     $c_photo=$_FILES['catalog_photo']['name'];
     $c_comment=$_POST['catalog_comment'];
     $p_stylist = $_POST['photo_stylist'];
@@ -156,7 +157,7 @@ if(isset($_POST['editCatalog'])){
 $Hairsalon->editCatalog($c_photo,$c_comment,$p_stylist,$catalogID);
 
 }
-if(isset($_POST['send'])){
+elseif(isset($_POST['send'])){
     $comment_content = $_POST['content'];
     $user = $_POST['fname'];
     $loginid =$_SESSION['loginid'];
@@ -173,6 +174,44 @@ if(isset($_POST['send'])){
     $Hairsalon->addComment($comment_content,$user,$id,$loginid);
 
 }
+
+elseif(isset($_POST['addCoupon'])){
+    $_SESSION['coupon']=$_POST['coupon'];
+    $_SESSION['coupon_price'] = $_POST['coupon_price'];
+
+    // echo  $_SESSION['coupon'];
+    // echo "<br>";
+    // echo   $_SESSION['coupon_price'];
+    if(!empty($_SESSION['coupon']) AND !empty($_SESSION['coupon_price'])){
+        header('location:booking2.php');
+    }
+  }
+elseif(isset($_POST['addServiceMenuNow'])){
+    $_SESSION['service_id']=$_POST['menu_id'];
+    $_SESSION['price'] = $_POST['menu_price'];
+
+    // echo  $_SESSION['service_id'];
+    // echo "<br>";
+    // echo   $_SESSION['price'];
+    if(!empty($_SESSION['service_id']) AND !empty($_SESSION['price'])){
+        header('location:booking2.php');
+    }
+  }elseif(isset($_POST['addBooking2'])){
+
+    $_SESSION['booking2_id']=$_POST['booking2_id'];
+    $_SESSION['booking2_price'] = $_POST['booking2_price'];
+
+    // echo  $_SESSION['booking2_id'];
+    // echo "<br>";
+    // echo   $_SESSION['booking2_price'];
+    if(!empty($_SESSION['booking2_id']) AND !empty($_SESSION['booking2_price'])){
+        header('location:booking3.php');
+    }
+
+  }
+
+    
+
 
 
 

@@ -30,7 +30,7 @@ function registerUser($email,$password,$fname,$lname,$gender,$telephone){
 
 // login
 function login($email,$password){
-    $sql="SELECT * FROM login WHERE email = '$email' AND password = '$password'";
+    $sql="SELECT * FROM login WHERE email ='$email' AND password ='$password'";
     $result = $this->conn->query($sql);
 
     if($result->num_rows==1){

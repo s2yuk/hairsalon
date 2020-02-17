@@ -113,7 +113,7 @@ $currentUser = $Hairsalon->getOneUser($loginid);
 
                                 <input type="text" name="content" class='form-control' placeholder='add a comment' id="" required>
                                 
-                                <button type="submit" name='send' class="btn btn-outline-primary mt-1">Post Comment</button>
+                                <button type="submit" name='send' class="btn btn-outline-primary mt-1 ">Post Comment</button>
 
 
                            <?php

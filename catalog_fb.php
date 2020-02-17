@@ -70,7 +70,7 @@ $oneCatalogID = $Hairsalon->getCatalogID($catalogID);
 
                                 <input type="text" name="content" class = 'form-control' placeholder='add a comment' id="">
                                     
-                                <button type="submit" name='send' class="btn btn-outline-dark mr-1 mt-3">Post</button>
+                                <button type="submit" name='send' class="btn btn-outline-dark float-right mt-3">Post Comment</button>
 
 
                            <?php

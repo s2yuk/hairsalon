@@ -242,46 +242,7 @@ $staffList=$Hairsalon->displayStaff();
         </div>
     </div>
 
-    <!-- <div class="container">
-                <div class="row">
-                    <div class="col-lg-2">
-                        <?php 
-                            //foreach($staffList as $row){
-                                
-                            // echo "<img src='upload/admin/$s_photo' alt='".$row['position']."'>";
-                            // if(!empty($row['staff_photo'])){
-                            //     $sphoto = $row['staff_photo'];
-                            //     echo "<img src='upload/admin/$sphoto' alt='reviewPhoto' class=' '>";
-                            // }else{
-                            //     echo "<img src='asset/logo.jpg' alt='image printing' class=''>";
-                            // }
-                       
-                           
-                            // echo " <p class='text-monospace p-3'>";
-                            // echo $row['staff_name'];
-                            // echo "</p>";
-                            // echo "<p>".$row['position']."</p>";
-                            // echo "<p>".$row['staff_gender']."</p>";
-                            // echo "<p>".$row['staff_bio']."</p>";
-
-                        
-
-                            // echo "<div class='text-center'>";
-                            // echo "<form action='' method='post'>"; 
-                            // echo "<button type='submit' name='".$row['staff_id']."' class='btn btn-outline-dark btn-sm'>More info</button>";
-                            // echo "</form>";
-                            // echo " </div>";
-                                                          
-                            //}
-                             ?>
-
-
-
-
-                    </div>
-                </div>
-
-    </div> -->
+   
 
 
 

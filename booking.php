@@ -51,6 +51,7 @@ $addCouponList =$Hairsalon->displayCouponMenu();
 
         <h3>Coupon</h3>
         <?php 
+        // print_r($addCouponList);
         foreach ($addCouponList as $coupon) :?>
           
           <div class="card">
@@ -70,10 +71,15 @@ $addCouponList =$Hairsalon->displayCouponMenu();
                   <?php echo "¥".$coupon['coupon_price'] ?>
                 </div>
                 <div class="col-lg-2">
-                    <?php 
-                    $couponID= $coupon['coupon_id'];
-                    echo "<a href='booking2.php?coupon_id=$couponID' role='button' class='btn btn-outline-dark'>select</a>"
-                      ?>
+                  <form action="hairsalonAction.php" method="post">
+                    <input type="hidden" name="coupon" value="<?php echo $coupon['coupon_id'];?>">
+                    <input type="hidden" name="coupon_price" value="<?php echo $coupon['coupon_price'];?>">
+
+                    
+                    <br>
+                    <button type="submit" name="addCoupon" class="btn btn-outline-dark">select</button>
+                  </form>
+                   
                 </div>
               </div>
             </div>
@@ -108,7 +114,17 @@ $addCouponList =$Hairsalon->displayCouponMenu();
                 <div class="col-lg-2">
                     <?php 
                     $serviceID =$menu['service_id'];
-                    echo "<a href='booking2.php?service_id=$serviceID' role='button' class='btn btn-outline-dark'>select</a>"
+                  ?>
+                   <form action="hairsalonAction.php" method="post">
+                    <input type="hidden" name="menu_id" value="<?php echo $menu['service_id'];?>">
+                    <input type="hidden" name="menu_price" value="<?php echo $menu['price'];?>">
+
+                    
+                    <br>
+                    <button type="submit" name="addServiceMenuNow" class="btn btn-outline-dark">select</button>
+                  </form>
+
+                  <?php
                       ?>
                 </div>
 

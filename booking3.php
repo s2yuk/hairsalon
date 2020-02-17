@@ -1,5 +1,8 @@
 <?php 
 include 'userMenu.php';
+$_SESSION['service_id'];
+
+$staffList=$Hairsalon->displayStaff();
 
 
 ?>
@@ -18,7 +21,8 @@ include 'userMenu.php';
     <style>
       body{
         margin-top:100px;
-        height: 600px;
+        /* height: 600px;
+        overflow: scroll; */
         background-image: url(asset/state.jpeg);
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -33,7 +37,7 @@ include 'userMenu.php';
   <div class="container bg-light text-monospace text-center">        
       <h4 class="display-4 text-monospace p-3">Booking</h4>
     </div>
-    <div class="container bg-light text-monospace text-center mb-5">        
+    <div class="container bg-light text-monospace text-center">        
       <br>
       <div class="alert alert-dark ">
           <h5 class="text-monospace p-3">Step 3</h4>
@@ -41,7 +45,49 @@ include 'userMenu.php';
       </div>
 
      
-        <div class="row mt-5">
+       <div class="container">
+                <div class="row">
+                    <?php 
+                    
+                    foreach($staffList as $row){
+                        echo "<div class='col-lg-2'>";
+                        
+                            echo "<p class='text-uppercase'>".$row['position']."</p>";
+                            
+                            if(!empty($row['staff_photo'])){
+                                $sphoto = $row['staff_photo'];
+                                echo "<img src='upload/admin/$sphoto' alt='".$row['staff_name']."' class=' '>";
+                            }else{
+                                echo "<img src='asset/logo.jpg' alt='image printing' class=''>";
+                            }
+                    
+                            echo " <p class='text-monospace'>";
+                                echo $row['staff_name'];
+                            echo "</p>";
+                           
+                            // echo "<p>".$row['staff_gender']."</p>";
+                            // echo "<p>".$row['staff_bio']."</p>";
+
+                        
+
+                            echo "<div class='text-center'>";
+                                echo "<form action='' method='post'>"; 
+                                    echo "<button type='submit' name='".$row['staff_id']."' class='btn btn-outline-dark btn-sm'>SELECT</button>";
+                                echo "</form>";
+                            echo " </div>";
+
+                            echo " </div>";   
+
+                            }
+                            ?>
+                    </div>
+                </div>
+            <br>
+        </div>
+
+
+
+        <!-- <div class="row mt-5">
             <div class="col-lg-3">   
                 <h4 class="text-monospace">Producer</h4>
             </div>
@@ -51,9 +97,7 @@ include 'userMenu.php';
             <div class="col-lg-6">
                 <h5 class="text-monospace">Stylist</h5>
             </div>
-       
-            
-        </div>
+        </div>        
         <div class="row">
             <div class="col-lg-3">
                 <figure>
@@ -123,7 +167,7 @@ include 'userMenu.php';
             
             </div>
            
-        </div>
+        </div> -->
 
 
 
