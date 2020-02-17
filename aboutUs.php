@@ -26,6 +26,9 @@ include 'userMenu.php';
         background-size :cover ;
 
       }
+      h2{
+        -webkit-text-stroke: 1px black;
+      }
     </style>
 
 
@@ -33,17 +36,17 @@ include 'userMenu.php';
   <body>
 
     <header>
-        <p class="display-4 text-light ml-5"> About us</p>
+        <h2 class="display-4 text-light ml-5 text-monospace"> About us</h2>
     </header>
 
     <div class="container bg-white">
-        <h4>OUR VALUE CUSTOMER</h4>
+        <h4 class="text-monospace">OUR VALUE CUSTOMER</h4>
         <p>An important customer who has a relationship and can meet. Instead of visiting the store only once, I face customers every day with the aim of creating a salon where I want to go after one or three years. It is our mission and our greatest pleasure to be our customers' "lifelong beauty partner" through hairstyle and hair design.</p>
     </div>
 
-        <h2 class="text-light ml-5">Our commitment</h2>
+        <h2 class="text-light ml-5 text-monospace ">Our commitment</h2>
 
-    <div class="container bg-white mt-5 mb-5">
+    <div class="container bg-white mt-3 mb-5">
         <br>
         <div class="media mt-3">
             <img class="d-flex align-self-start mr-3" src="asset/comit1.jpg" alt="Generic placeholder image">

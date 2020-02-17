@@ -18,7 +18,8 @@ include 'userMenu.php';
     <div class="container mt-5 w-75 mx-auto">
         <br>
         <p class="display-4 text-center text-monospace"> OUR SERVICE</p>
-        <div class="bg-light ">
+        
+        <div class="bg-light p-5">
 
             <div class="row">
                 <div class="col-lg-6 ">

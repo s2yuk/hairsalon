@@ -41,20 +41,13 @@ if(isset($_POST['review'])){
 }
 
 
-// booking2.php
+
+
+// booking3.php
 
 
 
 
-// if(isset($_POST['order1'])){
-//     $order1=$_POST['order1'];
-//     $order2=$_POST['order2'];
-
-
-//     $Hairsalon->getOrder($order1,$order2);
-
-    
-// }
 
 
 
@@ -71,13 +64,13 @@ if(isset($_POST['submit'])){
     $Hairsalon->addNews($news,$date);
 }
 
-// add catalog
+// addCatalog.php
 if(isset($_POST['upload'])){
-    $c_photo=$_POST['catalog_photo'];
+    $c_photo=$_FILES['catalog_photo']['name'];
     $c_comment=$_POST['catalog_comment'];
     $photo_stylist = $_POST['photo_stylist'];
 
-    uploadCatalog($c_photo, $c_comment,$photo_stylist);
+    $Hairsalon->uploadCatalog($c_photo, $c_comment,$photo_stylist);
 
 }
 
@@ -112,25 +105,34 @@ if(isset($_POST['input'])){
 
 // addService.php
 if(isset($_POST['menuInput'])){
-$menuName= $_POST['menuName'];
-$menuPrice=$_POST['menuPrice'];
+    $menuName= $_POST['menuName'];
+    $menuPrice=$_POST['menuPrice'];
 
-$Hairsalon->addServiceMenu($menuName,$menuPrice);
+    $Hairsalon->addServiceMenu($menuName,$menuPrice);
+
+}
+if(isset($_POST['couponInput'])){
+    $couponName = $_POST['couponName'];
+    $couponPrice = $_POST['couponPrice'];
+
+    $Hairsalon->addCouponMenu($couponName,$couponPrice);
 
 }
 
 
 // editStaff.php
-
 if(isset($_POST['editStaff'])){
+    $staffID = $_POST['staff_id'];
     $s_name=$_POST['staff_name'];
     $position =$_POST['position'];
-    $skill = $_POST['skill'];
+    // $skill = $_POST['skill'];
     $s_gender = $_POST['staff_gender'];
     $staffPhoto = $_FILES['s_photo']['name'];
     $s_bio = $_POST['bio'];
 
-    $Hairsalon->editStaff($staffID,$s_name,$position,$s_gender,$staffPhoto,$s_bio);
+    $Hairsalon->editStaff($s_name,$position,$s_gender,$staffPhoto,$s_bio,$staffID);
+
+
 
     // $skillCount = count($skill);
 
@@ -144,6 +146,40 @@ if(isset($_POST['editStaff'])){
     // header('location:addStaff.php');
 
 }
+
+if(isset($_POST['editCatalog'])){
+    $c_photo=$_FILES['catalog_photo']['name'];
+    $c_comment=$_POST['catalog_comment'];
+    $p_stylist = $_POST['photo_stylist'];
+    $catalogID = $_POST['catalog_id'];
+
+$Hairsalon->editCatalog($c_photo,$c_comment,$p_stylist,$catalogID);
+
+}
+if(isset($_POST['send'])){
+    $comment_content = $_POST['content'];
+    $user = $_POST['fname'];
+    $loginid =$_SESSION['loginid'];
+    $id  = $_POST['catalog_id'];
+
+    // echo $comment_content;
+    // echo "<br>";
+    // echo $user;
+    // echo "<br>";
+    // echo $loginid ;
+    // echo "<br>";
+    // echo $id;
+    
+    $Hairsalon->addComment($comment_content,$user,$id,$loginid);
+
+}
+
+
+
+
+
+
+
 
 
 

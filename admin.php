@@ -19,7 +19,7 @@ $staffList =$Hairsalon->displayStaff();
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<!--   
+    <!--   
     <style>
       header{
         margin-top:50px;
@@ -123,8 +123,8 @@ $staffList =$Hairsalon->displayStaff();
 
 <!-- add catalog -->
         <div class="col-lg-6">
-          <div class="bg-light border border-dark">
-            <form action="" method="post" enctype="multipart/form-data">
+          <!-- <div class="bg-light border border-dark">
+            <form action="hairsalonAction.php" method="post" enctype="multipart/form-data">
 
               <div class="card">
                 <div class="card-header">
@@ -154,10 +154,10 @@ $staffList =$Hairsalon->displayStaff();
                       <div class="col-lg-9">
                         <select name="photo_stylist" id="">
                           <?php 
-                            foreach($staffList as $row){
-                              $staffList =$row['staffname'];
-                              echo "<option value='".$row['staff_name']."'> ".$row['staff_name']."</option>";
-                            }
+                            //foreach($staffList as $row){
+                            //  $staffList =$row['staffname'];
+                            //  echo "<option value='".$row['staff_name']."'> ".$row['staff_name']."</option>";
+                           // }
                           ?>
                           </select>
                       </div>
@@ -168,7 +168,7 @@ $staffList =$Hairsalon->displayStaff();
               </div>
                     
             </form>
-          </div> 
+          </div>  -->
         </div>
       </div>
 

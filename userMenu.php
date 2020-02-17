@@ -16,14 +16,26 @@ $currentUser = $Hairsalon->getOneUser($loginid);
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
+    <style>
+        body{
+            height:150px;
+        
+        }
+        #logo{
+            height:61px;
+        }
+ 
+    </style>
+
+
+</head>
   <body>
 
 
   <div class="container">  
     <nav class="navbar navbar-expand fixed-top bg-light ">
 
-        <a href="dashboard.php" class="text-dark mr-5"><img src="asset/logo.jpg" alt="logo"></a>
+        <a href="dashboard.php" class="text-dark mr-5"><img src="asset/logo.jpg" alt="logo" id="logo"></a>
                 
         <div class="text-left">
            <ul class="nav nav-bar">

@@ -16,7 +16,7 @@ include 'userMenu.php';
     <style>
         
         body{
-          margin-top:100px;
+          margin-top:150px;
           height: 700px;
           background-image: url(asset/logo1.jpeg);
           background-repeat: no-repeat;
@@ -29,8 +29,9 @@ include 'userMenu.php';
 
 </head>
   <body>
-    <div class="container w-50 bg-light mt-4 text-monospace">
-        <h1>Contact us :)</h1>
+    <div class="container w-50 bg-light mt-3 text-monospace">
+        <h1 class="text-center p-3">Contact us</h1>
+
         <form action="hairsalonAction.php" method="post">
             
                 <!-- <legend>Contact us</legend> -->
@@ -90,7 +91,10 @@ include 'userMenu.php';
       <h3>Access</h3>
       <br>
       <h5>Address:
-          <a href="https://goo.gl/maps/MXTUbCnBdhHb4JZ58" target="_blank">4-15-4 Jingu-mae, Omotesando, Shibuya-city, Tokyo</a>
+
+          <a href="https://goo.gl/maps/MXTUbCnBdhHb4JZ58" target="_blank">4-15-4 Jingu-mae, Omotesando, Shibuya-city, Tokyo
+          <img src="asset/map_states.png" alt="map" class="w-50">
+          </a>
       </h5>
       <br>
       <p>

@@ -23,10 +23,17 @@ $currentUser = $Hairsalon->getOneUser($loginid);
         <nav class="nav navbar-expand fix-top bg-dark text-light p-2">
         <a href="dashboard.php" class="text-dark mr-5"><img src="asset/logo.jpg" alt="logo"></a>
 
-           <ul class="nav nav-bar">
+            <div class="text-left">
+            <ul class="nav nav-bar">
                 <li class="nav-item">
                     <a href="admin.php" role="button" class="btn btn-outline-light mr-1">admin top</a>
                 </li>
+                <li class="nav-item">
+                    <a href="addCatalog.php" role="button" class="btn btn-outline-light mr-1">add Catalog</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a href="catalog_fb.php" role="button" class="btn btn-outline-light mr-1">Catalog feedback</a>
+                </li> -->
                 <li class="nav-item">
                     <a href="addService.php" role="button" class="btn btn-outline-light mr-1">add Service</a>
                 </li>
@@ -44,22 +51,32 @@ $currentUser = $Hairsalon->getOneUser($loginid);
                 </li>
                 <li class="nav-item">
                     <a href="testimonial.php" role="button" class="btn btn-outline-light mr-1">testimonial</a>
-                </li>
-              
-                <li class="nav-item">
-                    <a href="addCatalog.php" role="button" class="btn btn-outline-light mr-1">Catalog</a>
-                </li>
-              
-                <li class="nav-item ml-5">
-                    <a href="login.php" role="button" class="btn btn-outline-light mr-1">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a href="logout.php" role="button" class="btn btn-outline-light mr-1">Logout</a>
-                </li>
-                <li class="nav-item">
-                    <a href="register.php" role="button" class="btn btn-outline-light mr-1">Register</a>
-                </li>
+                </li>  
+
+            
             </ul>
+            </div>
+
+            <div class="ml-auto">
+                    <ul class="nav nav-bar">
+            
+                        <li class="nav-item mr-2">
+                            Hello 
+                            <?php
+                            if(!empty($_SESSION['loginid'])){
+                                echo $currentUser['fname'] ;
+                                echo "<a href='logout.php' role='button' class='btn btn-outline-light'>Logout</a>";
+                            }else{
+                                echo "<p class='text-warning'>login plz!</p>";
+                                echo "<a href='login.php' role='button' class='btn btn-outline-light'>Login </a>";
+
+                            }
+                            ?>
+                        </li>
+
+
+                    </ul>
+                </div>
         </nav>
 
 

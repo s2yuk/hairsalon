@@ -1,5 +1,10 @@
 <?php
 include 'userMenu.php';
+
+
+$skillList = $Hairsalon->displaySkill(); 
+$staffList=$Hairsalon->displayStaff();
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,7 +28,7 @@ include 'userMenu.php';
 
 
 </head>
-  <body>
+<body>
   
 
     <div class="container">
@@ -50,6 +55,7 @@ include 'userMenu.php';
         <div class="row">
             <div class="col-lg-2">
                 <figure>
+                
                     <img src="asset/staff1.jpg" alt="producer">
                     <figcaption class="text-center">
                         <p class="text-monospace p-3">Yuya <br> Yamaguchi</p>     
@@ -221,11 +227,63 @@ include 'userMenu.php';
                     echo "</div>";
                                      
                 }
+                if(isset($_POST[$row['staff_id']])){
+                    echo "<div class='row bg-light p-3'>";
+                    echo "<p class='lead'>";
+                
+                    echo "I'm grad to make you more cute!!<br>";
+                    echo "</p>";
+                    echo "</div>";
+                                     
+                }
 
             ?>
         
         </div>
     </div>
+
+    <!-- <div class="container">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <?php 
+                            //foreach($staffList as $row){
+                                
+                            // echo "<img src='upload/admin/$s_photo' alt='".$row['position']."'>";
+                            // if(!empty($row['staff_photo'])){
+                            //     $sphoto = $row['staff_photo'];
+                            //     echo "<img src='upload/admin/$sphoto' alt='reviewPhoto' class=' '>";
+                            // }else{
+                            //     echo "<img src='asset/logo.jpg' alt='image printing' class=''>";
+                            // }
+                       
+                           
+                            // echo " <p class='text-monospace p-3'>";
+                            // echo $row['staff_name'];
+                            // echo "</p>";
+                            // echo "<p>".$row['position']."</p>";
+                            // echo "<p>".$row['staff_gender']."</p>";
+                            // echo "<p>".$row['staff_bio']."</p>";
+
+                        
+
+                            // echo "<div class='text-center'>";
+                            // echo "<form action='' method='post'>"; 
+                            // echo "<button type='submit' name='".$row['staff_id']."' class='btn btn-outline-dark btn-sm'>More info</button>";
+                            // echo "</form>";
+                            // echo " </div>";
+                                                          
+                            //}
+                             ?>
+
+
+
+
+                    </div>
+                </div>
+
+    </div> -->
+
+
 
 
     <!-- footer -->

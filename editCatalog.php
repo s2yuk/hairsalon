@@ -1,15 +1,18 @@
-<?php 
+<?php
 include 'adminMenu.php';
 $staffList =$Hairsalon->displayStaff();
-$hairCatalogList = $Hairsalon->displayCatalog();
 
+$catalogID = $_GET['catalog_id'];
+$row2 = $Hairsalon->getCatalogID($catalogID);
+
+// print_r($row2);
 
 
 ?>
 <!doctype html>
 <html lang="en">
   <head>
-    <title>add catalog</title>
+    <title>edit catalog</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,22 +21,35 @@ $hairCatalogList = $Hairsalon->displayCatalog();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
-      
-    <div class="row m-3">
-        <div class="col-lg-4">
-            <div class="bg-light border border-dark">
-            <form action="hairsalonAction.php" method="post" enctype="multipart/form-data">
 
-              <div class="card">
+  <div class="bg-light border border-dark w-75 m-3 mx-auto">
+            <form action="hairsalonAction.php" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="catalog_id" value ="<?php echo $catalogID ?>">
+
+              <div class="card text-monospace">
                 <div class="card-header">
-                    <h3 class="text-monospace">add catalog:</h3>
+                    <h3 >edit catalog:</h3>
                 </div>
                 <div class="card-body">
+                    <div class="row ">
+                        <div class="col-lg-3 text-right">
+                            <p>old photo:</p>
+                        </div>
+                        <div class="col-lg-9">
+                        <?php
+                            $oldCatalogPhoto = $row2['catalog_photo'];
+                            echo "<img src='upload/admin/catalog/$oldCatalogPhoto' class='img-thumbnail w-  50'>";
+                        ?>
+                        
+                        </div>
+                    
+                    </div>
                     <div class="row">
                       <div class="col-lg-3 text-right">
                          <label for="">photo :</label>
                       </div>
                       <div class="col-lg-9">
+                      
                          <input type="file" name="catalog_photo" id="">
                       </div>
                     </div>
@@ -43,7 +59,7 @@ $hairCatalogList = $Hairsalon->displayCatalog();
                         <label for="">photo comment :</label>
                       </div>
                       <div class="col-lg-9">
-                       <textarea name="catalog_comment" id="" cols="30" rows="10"></textarea>
+                       <textarea name="catalog_comment" id="" cols="30" rows="10" placeholder="<?php echo $row2['catalog_comment']?>"></textarea>
                       </div>
                     </div>
                     <br>
@@ -63,60 +79,22 @@ $hairCatalogList = $Hairsalon->displayCatalog();
                       </div>
                     </div>
 
-                  <button type="submit" name="upload" class="btn btn-dark mt-3 float-right">upload</button>
+                  <button type="submit" name="editCatalog" class="btn btn-dark mt-3 float-right">Edit</button>
                 </div>
               </div>
+              <div class="text-right">
+                  <?php
+                  echo "<a href='deleteCatalog.php?catalog_id=$catalogID' role='button'  class='btn btn-outline-dark mr-4'>delete </a>";
+                  ?>
+              </div>
+             
                     
             </form>
           </div> 
-        </div>
-        <!-- edit catalog -->
-        <div class="col-lg-8"> 
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                      <th>#catalog id</th>
-                      <th>photo</th>
-                      <th>comment</th>
-                      <th>stylist</th>
-                      <th>option</th>
-                    </tr>
-                </thead>
-
-                
-                <tbody>
-                    <?php
-                    foreach($hairCatalogList as $row2 ){
-                            $catalogID = $row2['catalog_id'];
-                            $uploaded_photo = $row2['catalog_photo'];
-                        
-                        echo" <tr>";
-                            echo "<th>".$row2['catalog_id']."</th>";
-
-                            echo "<th class='w-25'>";
-                              echo "<img src='upload/admin/catalog/$uploaded_photo' alt='' class='w-25'>";
-                            echo "</th>";
-
-                            echo "<th>".$row2['catalog_comment']."</th>";
-                        
-                            echo "<th>".$row2['photo_stylist']."</th>";
-
-                            echo "<th><a href='editCatalog.php?catalog_id=$catalogID' role='button'  class='btn btn-outline-dark'>edit</a></th>";
-                        echo "</tr>";
-
-                    }
-                    
-                    ?>
-                </tbody>
-            </table>        
-
-        
-        </div>
-    </div>
 
 
 
-
+      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

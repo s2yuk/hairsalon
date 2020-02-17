@@ -1,7 +1,10 @@
 <?php
 include 'userMenu.php';
+
+// display menu list
 $addMenuList =$Hairsalon->displayServiceMenu();
-$serviceID =$menu['sevice_id'];
+$addCouponList =$Hairsalon->displayCouponMenu();
+
 
 ?>
 
@@ -42,182 +45,45 @@ $serviceID =$menu['sevice_id'];
         
        
 
-          <!-- form いる？ -->
-      <form action="" method="get">
+   
        
         <div class="w-75 mx-auto">
 
-      
-        <h4>Coupon</h4>
-        <!-- 1 -->
-        <!-- if you are first time .... -->
-        
+        <h3>Coupon</h3>
+        <?php 
+        foreach ($addCouponList as $coupon) :?>
+          
           <div class="card">
             <div class="card-body">
               <div class="row">
                 <div class="col-lg-2">
-                <img src="asset/logo.jpg" alt="">
+                <img src="asset/coupon1.png" alt="" class="img-thumbnail">
                 </div>
-                <div class="col-lg-4">
-                  first visit .... <br>
-                  <p class=" display-5 text-black-50">*except: <br> Yamaguchi & Ogawa</p>
+                <div class="col-lg-5">
+                  <h4><?php echo $coupon['coupon_name'] ?></h4>
+               
+                  <p class=" display-5 text-black-50">* except: Yamaguchi & Ogawa</p>
 
-                </div>
-                <div class="col-lg-4">
-                  each menu 15%OFF
-                </div>
-                <div class="col-lg-2">
-                  <a href="booking2.php">select</a>
-                  <!-- <button type="submit" name="order1" class="btn btn-outline-dark">select</button> -->
-                </div>
-
-
-              </div>
-            </div>
-          </div>
-
-          <!-- 2 -->
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-2">
-                <img src="asset/logo.jpg" alt="">
-                </div>
-                <div class="col-lg-4">
-                  cut +  color <br>
-                  <p class=" display-5 text-black-50">*except: <br> Yamaguchi & Ogawa</p>
                   
                 </div>
-                <div class="col-lg-4">
-                  ¥   13000
+                <div class="col-lg-3">
+                  <?php echo "¥".$coupon['coupon_price'] ?>
                 </div>
                 <div class="col-lg-2">
-                  <button type="submit" name="order2" class="btn btn-outline-dark">select</button>
+                    <?php 
+                    $couponID= $coupon['coupon_id'];
+                    echo "<a href='booking2.php?coupon_id=$couponID' role='button' class='btn btn-outline-dark'>select</a>"
+                      ?>
                 </div>
               </div>
             </div>
           </div>
 
 
-          <!-- 3 -->
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-2">
-                <img src="asset/logo.jpg" alt="">
-                </div>
-                <div class="col-lg-4">
-                  cut +  color + teratment <br>
-                  <p class=" display-5 text-black-50">*except: <br> Yamaguchi & Ogawa</p>
-                  
-                </div>
-                <div class="col-lg-4">
-                  ¥   15000
-            
-                </div>
-                <div class="col-lg-2">
-                  <button type="submit" name="order3" class="btn btn-outline-dark">select</button>
-                </div>
-              </div>
-            </div>
-          </div>
+        <?php endforeach; ?>
 
 
-          <!-- 4 -->
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-2">
-                <img src="asset/logo.jpg" alt="">
-                </div>
-                <div class="col-lg-4">
-                  cut +  perm <br>
-                  <p class=" display-5 text-black-50">*except: <br> Yamaguchi & Ogawa</p>
-                  
-                </div>
-                <div class="col-lg-4">
-                  ¥   13000
-                </div>
-                <div class="col-lg-2">
-                  <button type="submit" name="order1" class="btn btn-outline-dark">select</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <!-- 5 -->
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-2">
-                <img src="asset/logo.jpg" alt="">
-                </div>
-                <div class="col-lg-4">
-                  cut +  perm + treatment  <br>
-                  <p class=" display-5 text-black-50">*except: <br> Yamaguchi & Ogawa</p>
-                  
-                </div>
-                <div class="col-lg-4">
-                  ¥   15000
-                </div>
-                <div class="col-lg-2">
-                  <button type="submit" name="order1" class="btn btn-outline-dark">select</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-         
-
-
-          <p class="text-left">Ogawa</p>
-     
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-2">
-                <img src="asset/logo.jpg" alt="">
-                </div>
-                <div class="col-lg-4">
-                  cut +  color <br>
-                  
-                </div>
-                <div class="col-lg-4">
-                  ¥   15950
-                </div>
-                <div class="col-lg-2">
-                  <button type="submit" name="order1" class="btn btn-outline-dark">select</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-          <p class="text-left">Yamaguchi</p>  
-     
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-2">
-                <img src="asset/logo.jpg" alt="">
-                </div>
-                <div class="col-lg-4">
-                  cut +  color <br>
-                  
-                </div>
-                <div class="col-lg-4">
-                  ¥   16500
-                </div>
-                <div class="col-lg-2">
-                  <button type="submit" name="order1" class="btn btn-outline-dark">select</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
+        <hr>      
 
 
 
@@ -240,11 +106,11 @@ $serviceID =$menu['sevice_id'];
                   <?php echo "¥".$menu['price'] ?>
                 </div>
                 <div class="col-lg-2">
-                    <?php echo "<a href='booking2.php?service_id=$serviceID' role='button' class='btn btn-outline-dark'>select</a>"
+                    <?php 
+                    $serviceID =$menu['service_id'];
+                    echo "<a href='booking2.php?service_id=$serviceID' role='button' class='btn btn-outline-dark'>select</a>"
                       ?>
-
                 </div>
-
 
               </div>
             </div>
@@ -259,8 +125,7 @@ $serviceID =$menu['sevice_id'];
         <br><br>
         <!-- container -->
         </div>
-        
-      </form>
+
     </div>
     
     

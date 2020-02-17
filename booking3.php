@@ -40,8 +40,93 @@ include 'userMenu.php';
           <p class="text-monospace"> select stylist</p>
       </div>
 
+     
+        <div class="row mt-5">
+            <div class="col-lg-3">   
+                <h4 class="text-monospace">Producer</h4>
+            </div>
+            <div class="col-lg-3">
+                <h5 class="text-monospace">Manager</h5>
+            </div>
+            <div class="col-lg-6">
+                <h5 class="text-monospace">Stylist</h5>
+            </div>
+       
+            
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <figure>
+                
+                    <img src="asset/staff1.jpg" alt="producer">
+                    <figcaption class="text-center">
+                        <p class="text-monospace p-3">Yuya <br> Yamaguchi</p>     
+                    </figcaption>
+                </figure>
+                <div class="text-center">
+                    <form action="" method="post">
+                        <button type="submit" name="staff1"  class="btn btn-outline-dark btn-sm">SELECT</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                    <figure>
+                        <img src="asset/staff2.jpg" alt="Manager">
+                        <figcaption class="text-center">
+                            <p class="text-monospace p-3">Yasuaki <br> Ogawa</p>
+                        </figcaption>
+                    </figure>
+                    <div class="text-center">
+                        <form action="" method="post">
+                            <button type="submit" name="staff2"  class="btn btn-outline-dark btn-sm">SELECT</button>
+                        </form>
+                    </div>
+            </div>
+            <div class="col-lg-2">
+                    <figure>
+                        <img src="asset/staff3.jpg" alt="stylist">
+                    <figcaption class="text-center">
+                        <p class="text-monospace p-3"><br>KOUSUKE</p>
+                    </figcaption>
+                    <div class="text-center">
+                        <form action="" method="post">
+                            <button type="submit" name="staff3"  class="btn btn-outline-dark btn-sm">SELECT</button>
+                        </form>
+                    </div>
+            </div>
+            <div class="col-lg-2">
+                <figure>
+                    <img src="asset/staff4.jpg" alt="stylist">
+                    <figcaption class="text-center">
+                        <p class="text-monospace p-3">Ery<br>Hiramoto</p>
+                    </figcaption>
+                </figure>
+                <div class="text-center">
+                    <form action="" method="post">
+                        <button type="submit" name="staff4"  class="btn btn-outline-dark btn-sm">SELECT</button>
+                    </form>
+                </div>
 
-      
+            </div>
+            <div class="col-lg-2">
+                <figure>
+                    <img src="asset/staff5.jpg" alt="stylist">
+                    <figcaption class="text-center">
+                        <p class="text-monospace p-3">You<br>Ichijo</p>
+                    </figcaption>
+                </figure>
+                <div class="text-center">
+                    <form action="" method="post">
+                        <button type="submit" name="staff5"  class="btn btn-outline-dark btn-sm">SELECT</button>
+                    </form>
+                </div>
+            
+            </div>
+           
+        </div>
+
+
+
 
 
 

@@ -25,12 +25,12 @@
   </head>
   <body>
 
-    <div class="container">
+    <div class="container text-monospace">
         <p class="display-4 bg-light text-center">Welcome New Guest!</p>
 
         <div class="card w-50 mx-auto" >
-            <div class="card-header">
-                <p class="display-4">Registration</p>
+            <div class="card-header text-center">
+                <h3>Registration</h3>
             </div>
             <div class="card-body">
                 <form action="hairsalonAction.php" method="post">
@@ -61,7 +61,7 @@
                     <input type="password" name="password" id="" class="form-control">
               
 
-                    <button type="submit" name="register" class="form-control btn btn-outline-dark mt-2">Register</button>                
+                    <button type="submit" name="register" class="form-control btn btn-dark mt-3">Register</button>                
                 </form>
             </div>
         </div>

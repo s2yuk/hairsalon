@@ -109,7 +109,7 @@ $staffList=$Hairsalon->displayStaff();
                     echo "</th>";
 
                     echo "<th>".$row['staff_bio']."</th>";
-                    echo "<th><a href='editStaff.php?staff_id=$staffID' role='button'  class='btn btn-outline-dark'>edit</a></th>";
+                    echo "<th><a href='editStaff.php?staff_id=$staffID' role='button' class='btn btn-outline-dark'>edit</a></th>";
                 echo "</tr>";
 
               }

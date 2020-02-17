@@ -39,7 +39,11 @@ function login($email,$password){
 
         if($row['status']=='A'){
             header('location:admin.php');
-        }header('location:dashboard.php');
+        }else{
+
+            header('location:dashboard.php');
+
+        }
 
     }else{
         echo "user does not exist! Please register first... ";
@@ -97,20 +101,40 @@ function displayReviewList(){
 
 }
 
+//hairCatalog.php reaction of photos
+function addComment($comment,$comment_user,$catalogID,$userID){
+    $result = $this->conn->query("insert into catalog_comment(comment,user,catalog_id,user_id)VALUES('$comment','$comment_user','$catalogID','$userID')");
 
-//booking.php
-function getSelectServiceID($serviceID){
-    $sql="select * FROM service WHERE service_id = '$serviceID'";
-    $result=$this->conn->query($sql);
+    if(empty($userID == 1)){
+       header('location:guest.php');
 
-    if($result ==FALSE){
-        die('can not get service id'.$this->conn->error);
     }else{
-        return $result->fetch_assoc();
-
+        if($result==FALSE){
+            die($this->conn->error);
+        }else{
+            header('location:hairCatalog.php');
+        }
     }
+    
 
 }
+
+function displayCatalogComment($catalogID){
+    $sql="SELECT * FROM catalog_comment WHERE catalog_id ='$catalogID'";
+    $result =$this->conn->query($sql);
+
+    if($result->num_rows>0){
+        while($rows =$result->fetch_assoc()){
+            $row[]=$rows;
+        }return $row;
+    }else{
+        return FALSE;
+    }
+}
+
+
+
+
 
 
 
@@ -134,7 +158,7 @@ function addNews($news,$date){
 }
 
 function displayNews($news,$date){
-    $sql="SELECT * FROM info";
+    $sql="SELECT * FROM info ORDER BY info_id DESC";
     $result= $this->conn->query($sql);
 
     if($result->num_rows>0){
@@ -207,7 +231,7 @@ function addStaff($s_name,$position,$s_gender,$staffPhoto,$s_bio){
     }
 }
 function displayStaff(){
-    $sql="SELECT * FROM staff ORDER BY staff_id DESC";
+    $sql="SELECT * FROM staff ";   //ORDER BY staff_id DESC
     $result=$this->conn->query($sql);
 
     if($result->num_rows>0){
@@ -231,6 +255,7 @@ public function getStaffSkills($id){
     $sql = "SELECT skill_name FROM staffs_skills INNER JOIN staff ON staffs_skills.user_id=staff.staff_id WHERE user_id = '$id'";
     
     $result = $this->conn->query($sql);
+
     if($result->num_rows>0){
         $row = array();
         while($rows = $result->fetch_assoc()){
@@ -259,8 +284,7 @@ function getForEditstaff($staffID){
 
 }
 
-
-function editStaff($staffID,$s_name,$position,$s_gender,$staffPhoto,$s_bio){
+function editStaff($s_name,$position,$s_gender,$staffPhoto,$s_bio,$staffID){
     $target_dir ='upload/admin/';
     $target_file= $target_dir.basename($staffPhoto);
     
@@ -270,7 +294,7 @@ function editStaff($staffID,$s_name,$position,$s_gender,$staffPhoto,$s_bio){
 
     if($result = TRUE){
         move_uploaded_file($_FILES['s_photo']['tmp_name'],$target_file);
-
+        header('location:addStaff.php');
        
     }else{
         die('update skill is error'.$this->conn->error);       
@@ -278,9 +302,17 @@ function editStaff($staffID,$s_name,$position,$s_gender,$staffPhoto,$s_bio){
 }
 
 
-// function updateStaffSkill(){
+function updateStaffSkill(){
 
-// }
+
+
+
+
+
+}
+
+
+
 
 // addService.php ->ok
 function addServiceMenu($menuName,$menuPrice){
@@ -291,8 +323,8 @@ $result= $this->conn->query($sql);
             die($conn->connect_error);
 
         }else{
-            echo "add service sucssess";
-            header('location:serviceAdmin.php');
+           
+            header('location:addService.php');
         }
 }
 function displayServiceMenu(){
@@ -310,6 +342,141 @@ function displayServiceMenu(){
         return FALSE;
     }
 }
+
+function addCouponMenu($couponName,$couponPrice){
+    $sql="INSERT INTO coupon(coupon_name,coupon_price) VALUES('$couponName','$couponPrice')";
+    $result = $this->conn->query($sql);
+
+    if($result==FALSE){
+        die('input coupon menu failed'.$conn->connect_error);
+    }else{
+        header('location:addService.php');
+    }
+    
+}
+function displayCouponMenu(){
+    $sql="SELECT * FROM coupon";
+    $result = $this->conn->query($sql);
+
+    if($result ->num_rows>0){
+        while($rows = $result->fetch_assoc()){
+            $row[]=$rows;
+        }
+        return $row;
+    }else{
+        return FALSE;
+    }
+}
+//booking2.php
+function getSelectServiceID($selected_sID){
+    $sql="select * FROM service WHERE service_id ='$selected_sID'";
+    $result=$this->conn->query($sql);
+
+    if($result ==FALSE){
+        die('can not get service id'.$this->conn->connect_error);
+    }else{
+        return $result->fetch_assoc();
+
+    }
+
+}
+function getSelectCouponID($selected_cID){
+    $sql="select * FROM coupon WHERE coupon_id ='$selected_cID'";
+    $result=$this->conn->query($sql);
+
+    if($result ==FALSE){
+        die('can not get coupon id'.$this->conn->connect_error);
+    }else{
+        return $result->fetch_assoc();
+
+    }
+
+}
+
+
+
+
+
+
+
+// addCatalog.php
+function uploadCatalog($c_photo, $c_comment,$photo_stylist){
+    $target_dir ='upload/admin/catalog/';
+    $target_file= $target_dir.basename($c_photo);
+    
+    $sql = "INSERT INTO catalog(catalog_photo, catalog_comment, photo_stylist) VALUES('$c_photo', '$c_comment','$photo_stylist')";
+    
+    $result = $this->conn->query($sql);
+
+    if($result = TRUE){
+        move_uploaded_file($_FILES['catalog_photo']['tmp_name'],$target_file);
+       header ('location:addCatalog.php');
+    }else{
+        die('add catalog has an error'.$this->conn->error);       
+    }
+
+}
+function displayCatalog(){
+    $sql="SELECT * FROM catalog ORDER BY catalog_id DESC";
+    $result =$this->conn->query($sql);
+
+    if($result->num_rows>0){
+
+        while($rows =$result->fetch_assoc()){
+            $row[]=$rows;
+        }
+        return $row;
+    }else{
+        return FALSE;
+    }
+
+    
+}
+
+// editCatalog.php
+function getCatalogID($catalogID){
+    $sql="SELECT * FROM catalog WHERE catalog_id='$catalogID'";
+    $result = $this->conn->query($sql);
+
+    if($result ==FALSE){
+        die('can not get one photo id'.$this->conn->connect_error);
+    }else{
+        return $result->fetch_assoc();
+    }
+
+}
+
+function editCatalog($c_photo,$c_comment,$p_stylist,$catalogID){
+    $target_dir='upload/admin/catalog/';
+    $target_file=$target_dir.basename($c_photo);
+
+    $sql = "UPDATE catalog SET catalog_photo='$c_photo', catalog_comment='$c_comment', photo_stylist= '$p_stylist' WHERE catalog_id ='$catalogID' ";
+
+    $result = $this->conn->query($sql);
+
+    if($result == TRUE){
+        move_uploaded_file($_FILES['catalog_photo']['tmp_name'],$target_file);
+        header ('location:addCatalog.php');
+     }else{
+         die('edit catalog has an error'.$this->conn->error);       
+     }
+
+    
+}
+
+// deleteCatalog.php
+function deleteCatalog($catalogID){
+    $sql="DELETE FROM catalog WHERE catalog_id = '$catalogID'";
+    $result=$this->conn->query($sql);
+
+    if($result = FALSE){
+        die('deleteing catalog failed'.$this->conn->connect_error);
+    }else{
+        header('location:addCatalog.php');
+
+    }
+}
+
 
 
 

@@ -5,6 +5,8 @@ $skillList = $Hairsalon->displaySkill();
 
 $staffID = $_GET['staff_id'];
 $row1= $Hairsalon->getForEditStaff($staffID);
+
+print_r($row1);
  
 ?>
 <!doctype html>
@@ -21,13 +23,18 @@ $row1= $Hairsalon->getForEditStaff($staffID);
   <body>
 
 
-  <div class="container">
-        <div class="card w-75 mt-5 mx-auto">
+  <div class="container ">
+        <div class="card w-75 mt-5 mx-auto text-capitalize">
             <div class="card-header bg-warning">
                 Edit staff 
             </div>
             <div class="card-body">
                 <form action="hairsalonAction.php" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="staff_id" value ="<?php echo $staffID ?>">
+
+
+                    <label for="">Full name :</label> 
+                    <br>
                     <input type="text" name="staff_name" id="" placeholder="<?php echo $row1['staff_name']?>" class="form-control" required>
                     <br>
                     <label for="">position</label>
@@ -38,19 +45,19 @@ $row1= $Hairsalon->getForEditStaff($staffID);
                         <option value="assistant" class="form-control">assistant</option>
                     </select>
                     <br>
-                    <br>
+                    <!-- <br>
                     <label for="">skill:</label>
                     <br>
                     <?php
-                     foreach($skillList as $row){
-                        $skillName = $row['skillname'];
+                    // foreach($skillList as $row){
+                     //   $skillName = $row['skillname'];
                         
                       
-                      echo "<input type='checkbox' name='skill[]' id='' value='".$row['skillname']."'>".$skillName;
+                    //  echo "<input type='checkbox' name='skill[]' id='' value='".$row['skillname']."'>".$skillName;
 
-                     }
+                    // }
 
-                     ?>
+                     ?> -->
                     
 
                     <br>
@@ -71,13 +78,15 @@ $row1= $Hairsalon->getForEditStaff($staffID);
                             ?>
                         </div>
                         <div class="col-lg-6">
-                            <label for="">select stylist photo:</label><br>
+                            <label for="">select NEW stylist photo:</label><br>
                             <input type="file" name="s_photo" id="" required>
                         </div>
                     </div>
                         <br>
                         <br>
+                        <label for=""> Enter  NEW bio :</label>
                     <input type="text" name="bio" placeholder="<?php echo $row1['staff_bio']?>" class="form-control" required>
+
                     <button type="submit" name="editStaff" class="btn btn-warning btn-block mt-3">Edit Staff data</button>
                 </form>
 

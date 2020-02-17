@@ -4,9 +4,14 @@ $addMenuList =$Hairsalon->displayServiceMenu();
 $serviceID =$menu['sevice_id'];
 
 
-$serviceID =$_GET['service_id'];
-$firstSelect =$Hairsalon->getSelectServiceID($serviceID);
+$selected_sID =$_GET['service_id'];
+$firstSelect =$Hairsalon->getSelectServiceID($selected_sID);
+echo $_SESSION['service_id'];
 
+
+$selected_cID = $_GET['coupon_id'];
+$first_Select =$Hairsalon->getSelectCouponID($selected_cID);
+echo $_SESSION['coupon_id'];
 
 ?>
 
@@ -53,20 +58,50 @@ $firstSelect =$Hairsalon->getSelectServiceID($serviceID);
             <div class="card-body">
               <div class="row">
                 
-                <div class="col-lg-4">
-                  You are chosing :<br>
-                  <?php echo $row['service_name']?>
+                <div class="col-lg-5">
+                    You are chosing : <br>
+                    <form action="hairsalonAction.php" method="post">
+                  <?php 
+                  if($_GET['service_id']){
+                    
+                    echo "<h4>".$firstSelect['service_name']."</h4>";
+                    echo"</div>";
+                    echo "<div class='col-lg-3'>";
+                    echo "Price is:";
+                    echo "<br>";
+                    echo "<h4>".$firstSelect['price']."</h4>";
+                
+                  }else{
+
+                    echo "<h4>".$first_Select['coupon_name']."</h4>";
+                    echo"</div>";
+                    echo "<div class='col-lg-3'>";
+                    echo "Price is: ";
+                    echo "<br>";
+                    echo "<h4>".$first_Select['coupon_price']."</h4>";
+                 
+                  }
+                  ?>
+                    <input type="hidden" name="firstChoise" value="">
+
+                  </form>
 
                 </div>
-                <div class="col-lg-4">
-                    Price is: <br>
-                  
-                </div>
+
                 <div class="col-lg-2">
-                  <a href="booking.php" role='button' class="btn btn-dark">re-select</a>
+                  <a href="booking.php" role='button' class="btn btn-dark">Re:select</a>
                 </div>  
                 <div class="col-lg-2">
-                    <a href='booking3.php?service_id=$serviceID' role='button' class='btn btn-outline-dark'>Continue</a>
+                    <?php 
+                    if($_GET['service_id']){
+
+                        echo "<a href='booking3.php?service_id=$serviceID' role='button' class='btn btn-outline-dark'>Continue</a>";
+                    }elseif($_GET['coupon_id']){
+                        echo "<a href='booking3.php?coupon_id=$couponID' role='button' class='btn btn-outline-dark'>Continue</a>";
+                    }
+                    
+                    ?>
+                    
                 </div>
 
 
@@ -78,9 +113,9 @@ $firstSelect =$Hairsalon->getSelectServiceID($serviceID);
        
 
         
+        
 
-
-        <h4>regular menu</h4>
+        <h4>Additional menu</h4>
         <!-- 0 -->
         <?php 
         foreach ($addMenuList as $menu) :?>
@@ -99,8 +134,16 @@ $firstSelect =$Hairsalon->getSelectServiceID($serviceID);
                   <?php echo "¥".$menu['price'] ?>
                 </div>
                 <div class="col-lg-2">
-                    <?php echo "<a href='booking3.php?service_id=$serviceID' role='button' class='btn btn-outline-dark'>add</a>"
+                    <?php 
+
+                    echo "<a href='booking3.php?service_id=$serviceID' role='button' class='btn btn-outline-dark'>add</a>"
                       ?>
+                    <form action="hairsalonAction.php" method="post">
+                        <input type="checkbox" name="menu[]" id="" value="<?php echo$serviceID ?>">
+                        <input type="checkbox" name="menu[]" id="" value="<?php echo$couponID ?>">
+
+                    </form>
+
 
                 </div>
               </div>
