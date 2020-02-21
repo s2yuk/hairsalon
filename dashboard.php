@@ -44,7 +44,7 @@ $newsList=$Hairsalon->displayNews($news,$date);
 
     </style>
     <!-- google font -->
-    <!-- <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
     
   </head>
   <body>

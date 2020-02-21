@@ -29,8 +29,8 @@ $currentUser = $Hairsalon->getOneUser($loginid);
           margin-top:100px;  
         }
         #hairCatalog{
-            width:300px;
-            height:250px;
+            width:250px;
+            height:300px;
         }
         #pGrey{
             color: grey;
@@ -95,6 +95,7 @@ $currentUser = $Hairsalon->getOneUser($loginid);
                             // $comments=$Hairsalon->displayCatalogComment($catalogID);
                             $comments = $Hairsalon->displayCatalogComment($row['catalog_id']);
 
+                            // print_r($comments);
                             foreach($comments as $row2){
                                 echo "<p>".$row2['comment']."</p>";
                                 echo "<p class='text-right' id='pGrey'>comment by:".$row2['user']."</p>";

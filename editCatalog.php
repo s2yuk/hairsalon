@@ -38,7 +38,7 @@ $row2 = $Hairsalon->getCatalogID($catalogID);
                         <div class="col-lg-9">
                         <?php
                             $oldCatalogPhoto = $row2['catalog_photo'];
-                            echo "<img src='upload/admin/catalog/$oldCatalogPhoto' class='img-thumbnail w-  50'>";
+                            echo "<img src='upload/admin/catalog/$oldCatalogPhoto' class='img-thumbnail w-50'>";
                         ?>
                         
                         </div>

@@ -41,17 +41,20 @@ $currentUser = $Hairsalon->getOneUser($loginid);
                     <a href="addStaff.php" role="button" class="btn btn-outline-light mr-1">add staff</a>
                 </li>
                 <li class="nav-item">
+                    <a href="userList.php" role="button" class="btn btn-outline-light mr-1">User List</a>
+                </li> 
+                <li class="nav-item">
+                    <a href="reservation.php" role="button" class="btn btn-outline-light mr-1">Reservation</a>
+                </li>
+                <!-- <li class="nav-item">
                     <a href="skillpage.php" role="button" class="btn btn-outline-light mr-1">skill page</a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                     <a href="contactpage.php" role="button" class="btn btn-outline-light mr-1">Contact/access</a>
-                </li>
-                <li class="nav-item">
-                    <a href="booking.php" role="button" class="btn btn-outline-light mr-1">Booking</a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                     <a href="testimonial.php" role="button" class="btn btn-outline-light mr-1">testimonial</a>
-                </li>  
+                </li>   -->
 
             
             </ul>

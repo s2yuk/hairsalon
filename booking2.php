@@ -12,8 +12,8 @@ $Selected_service =$Hairsalon->getSelectServiceID($selected_sID);
 // echo $_SESSION['service_id'];
 
 
-// $selected_cID = ;
-$Selected_coupon =$Hairsalon->getSelectCouponID($_SESSION['coupon']);
+$selected_cID = $_SESSION['coupon_id'];
+$Selected_coupon =$Hairsalon->getSelectCouponID($selected_cID);
 
 
 
@@ -58,6 +58,7 @@ $Selected_coupon =$Hairsalon->getSelectCouponID($_SESSION['coupon']);
             ?>
             <p class="text-monospace"> additional menu</p>
         </div>
+          
 
 
         <div class="w-75 mx-auto">
@@ -97,21 +98,15 @@ $Selected_coupon =$Hairsalon->getSelectCouponID($_SESSION['coupon']);
                 </div>
 
                 <div class="col-lg-2">
-                  <a href="booking.php" role='button' class="btn btn-dark">Re:select</a>
+                  <form action="hairsalonAction.php" method="post">
+                    <button type="submit" name="reselect" class="btn btn-dark">reselect</button>
+                  </form>
                 </div>  
                 <div class="col-lg-2">
-                    <?php 
-                    if($_SESSION['service_id']){
-                        echo "<a href='booking3.php' role='button' class='btn btn-outline-dark'>Continue</a>";
-                    }elseif($_SESSION['coupon_id']){
-                        echo "<a href='booking3.php' role='button' class='btn btn-outline-dark'>Continue</a>";
-                    }
-                    
-                    ?>
-                    
+                    <a href='booking3.php' role='button' class='btn btn-outline-dark'>Continue</a>
                 </div>
 
-                </form>
+               
 
               </div>
             </div>
@@ -145,24 +140,13 @@ $Selected_coupon =$Hairsalon->getSelectCouponID($_SESSION['coupon']);
                     <?php 
                     ?>
                     <form action="hairsalonAction.php" method="post">
-                    <input type="hidden" name="booking2_id" value="<?php echo $menu['service_id'];?>">
-                    <input type="hidden" name="booking2_price" value="<?php echo $menu['price'];?>">
+                      <input type="hidden" name="booking2_id" value="<?php echo $menu['service_id'];?>">
+                      <input type="hidden" name="booking2_price" value="<?php echo $menu['price'];?>">
 
-                    
-                    <br>
-                    <button type="submit" name="addBooking2" class="btn btn-outline-dark">select</button>
-                  </form>
-
-                    <?php
-
-                   
-                      ?>
-                    <form action="hairsalonAction.php" method="post">
-                        <input type="checkbox" name="menu[]" id="" value="<?php echo$serviceID ?>">
-                        <input type="checkbox" name="menu[]" id="" value="<?php echo$couponID ?>">
-
+                      
+                      <br>
+                      <button type="submit" name="addBooking2" class="btn btn-outline-dark">select</button>
                     </form>
-
 
                 </div>
               </div>

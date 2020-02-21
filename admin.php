@@ -1,10 +1,14 @@
 <?php
 include 'adminMenu.php';
 
-// $reservationList=$Hairsalon->displayReserve();
 $staffList =$Hairsalon->displayStaff();
 
+// $today= date('Y/m/d');
+$today = new DateTime();
+$dateToday = $today->format('Y-m-d');
 
+$TodaysReservation = $Hairsalon->displayTodaysReservation($dateToday);
+$latest_reservation = $Hairsalon->displayLatestReservation();
 
 
 ?>
@@ -19,18 +23,20 @@ $staffList =$Hairsalon->displayStaff();
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!--   
+      
     <style>
-      header{
-        margin-top:50px;
-        height: 600px;
-        background-image: url(asset/state.jpeg);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size : cover;
-
+    
+      #todaystable{
+        height : 400px;
+        overflow: scroll;
       }
-    </style> -->
+      #latestTable{
+        height : 300px;
+        overflow: scroll;
+      }
+    
+      
+    </style>
     
   </head>
   <body>
@@ -38,45 +44,100 @@ $staffList =$Hairsalon->displayStaff();
   
       <!-- <header></header> -->
     <div class="jumbotron bg-light">      
-      
       <!-- <div class="row">       -->
-        
-        <div class=" bg-light border border-dark">
-        <p class="text-monospace display-4">Today's reservation:  <?php// echo count()?></p>  
-
+       
+        <div class="row bg-light border border-dark" id="todaystable">
+          <div class="col-lg-8">
+            <p class="text-monospace display-4 mt-3">Today's reservation:  <?php echo count($TodaysReservation)?></p>  
+          </div>
+          <div class="col-lg-4 text-right mt-5">
+            <a href="reservation.php" role="button" class="btn btn-dark">go to  All reservation</a>
+          </div>
         <table class="table table-hover">
           <thead>
             <tr>
-              <th>#reservation id</th>
-              <th>appoint time</th>
+              <th>#reserve id</th>
+              <th colspan="2">appoint time</th>
+              <th>#customer id</th>
               <th>First Name</th>
               <th>Last Name</th>
-              <th>Menu</th>
+              <th colspan="3">Menu</th>
               <th>Price</th>
+              <th>Nomination</th>
+
+            </tr>
+          </thead>
+          <?php
+            
+            foreach($TodaysReservation as $row ){
+                echo"<tbody id='TodaysTable'>";
+                  echo "<th>".$row['reserve_id']."</th>";
+                  echo "<th>".$row['reserve_date']."</th>";
+                  echo "<th>".$row['reserve_hour']."</th>";
+                  echo "<th>".$row['c_id']."</th>";
+                  echo "<th>".$row['fname']."</th>";
+                  echo "<th>".$row['lname']."</th>";
+                  echo "<th>".$row['order_menu']."</th>";
+                  echo "<th>".$row['order_menu2']."</th>";
+                  echo "<th>".$row['add_menu']."</th>";
+                 
+                  echo "<th>¥".$row['total_price']."</th>";
+                  echo "<th>".$row['nomination']."</th>";
+                echo "</tbody>";
+              }
+            
+            ?>
+      
+        
+        </table>
+        </div>
+        <br>
+        <div class=" border border-dark" id="latestTable">
+          <h3 class="text-monospace">Latest reservation:</h3>
+          <!--repeat table -->
+          <table class="table table-hover" >
+          <thead class="bg-dark text-light">
+            <tr>
+              <th>#reserve id</th>
+              <th colspan="2">appoint time</th>
+              <th>#customer id</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th colspan="3">Menu</th>
+              <th>Price</th>
+              <th>Nomination</th>
+
             </tr>
           </thead>
           <tbody>
             <?php
-              // foreach($reservationList as $row ){
-              //   echo "<th>".$reserve_id."</th>";
-              //   echo "<th>".$reserve_hour."</th>";
-              //   echo "<th>".$fname."</th>";
-              //   echo "<th>".$lname."</th>";
-              //   echo "<th>".$sevice_name."</th>";
-              //   echo "<th>".$price."</th>";
+            
+              foreach($latest_reservation as $row2 ){
+                echo"<tbody id=''>";
+                  echo "<th>".$row2['reserve_id']."</th>";
+                  echo "<th>".$row2['reserve_date']."</th>";
+                  echo "<th>".$row2['reserve_hour']."</th>";
+                  echo "<th>".$row2['c_id']."</th>";
+                  echo "<th>".$row2['fname']."</th>";
+                  echo "<th>".$row2['lname']."</th>";
+                  echo "<th>".$row2['order_menu']."</th>";
+                  echo "<th>".$row2['order_menu2']."</th>";
+                  echo "<th>".$row2['add_menu']."</th>";
+                
+                  echo "<th>¥".$row2['total_price']."</th>";
+                  echo "<th>".$row2['nomination']."</th>";
+                echo "</tbody>";
 
-              // }
+              }
             
             ?>
       
         
           </tbody>
         </table>
-        </div>
-        <br>
-        <div class=" bg-dark text-light   border border-dark">
-          <h3 class="text-monospace">Latest reservation:</h3>
-          <!--repeat table -->
+
+
+          
 
 
         </div>

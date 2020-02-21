@@ -103,18 +103,24 @@ function displayReviewList(){
 
 //hairCatalog.php reaction of photos
 function addComment($comment,$comment_user,$catalogID,$userID){
-    $result = $this->conn->query("insert into catalog_comment(comment,user,catalog_id,user_id)VALUES('$comment','$comment_user','$catalogID','$userID')");
+    
 
-    if(empty($userID == 1)){
+    if(is_null($userID)){
        header('location:guest.php');
 
     }else{
+
+    $sql = "INSERT INTO catalog_comment(comment,user,catalog_id,user_id)VALUES('$comment','$comment_user','$catalogID','$userID')";
+        $result = $this->conn->query($sql);
+
         if($result==FALSE){
             die($this->conn->error);
         }else{
             header('location:hairCatalog.php');
         }
     }
+
+    // $result = $this->conn->query("INSERT INTO catalog_comment(`comment`, `user`, `catalog_id`, `user_id`)VALUES('$comment','$comment_user','$catalogID','$userID')");
     
 
 }
@@ -151,7 +157,7 @@ function addNews($news,$date){
     $result = $this->conn->query($sql);
 
     if($result=FALSE){
-      die('insert into info failed'.$conn->connect_error);
+      die('insert into info failed'.$this->conn->connect_error);
     }else{
       header("location:dashboard.php");
     }
@@ -320,7 +326,7 @@ $sql="INSERT INTO service(service_name,price) VALUE('$menuName','$menuPrice')";
 $result= $this->conn->query($sql);
 
         if($result ==FALSE){
-            die($conn->connect_error);
+            die($this->conn->connect_error);
 
         }else{
            
@@ -342,13 +348,36 @@ function displayServiceMenu(){
         return FALSE;
     }
 }
+// function getForEditService($serviceID){
+//     $sql="SELECT * service WHERE service_id = $serviceID";
+//     $result =$this->conn->query($sql);
+
+//     if($result ==FALSE){
+//         die('cannot get one service_id'.$this->conn->connect_error);
+
+//     }else{
+//         return $result->fetch_assoc();
+//     }
+// }
+// function editServiceMenu($serviceID,$menuName,$menuPrice){
+//     $sql="UPDATE service SET service_name = '$menuName', price = '$menuPrice' WHERE service_id ='$serviceID'";
+//     $result =$this->conn->query($sql);
+
+//     if($result==FALSE){
+//         die('Update service is failed'.$this->conn->connect_error);
+        
+//     }else{
+//         header('location:addService.php');
+
+// }
+
 
 function addCouponMenu($couponName,$couponPrice){
     $sql="INSERT INTO coupon(coupon_name,coupon_price) VALUES('$couponName','$couponPrice')";
     $result = $this->conn->query($sql);
 
     if($result==FALSE){
-        die('input coupon menu failed'.$conn->connect_error);
+        die('input coupon menu failed'.$this->conn->connect_error);
     }else{
         header('location:addService.php');
     }
@@ -392,6 +421,7 @@ function getSelectCouponID($selected_cID){
     }
 
 }
+
 
 
 
@@ -477,12 +507,224 @@ function deleteCatalog($catalogID){
     }
 }
 
+// booking4.php  not working
+function display10hReservation($today){
+    $sql="SELECT * FROM reservation WHERE reserve_date='$today' AND reserve_hour='10:00'";
+   
+    $result = $this->conn->query($sql);
+
+    if($result->num_rows>0){
+        while($rows =$result->fetch_assoc()){
+            $row[]=$rows;
+        }return $row;
+    }else{
+        return FALSE;
+    }
+}
+function display11hReservation($today){
+    $sql="SELECT * FROM reservation WHERE reserve_date='$today' AND reserve_hour='11:00'";
+    
+    $result = $this->conn->query($sql);
+
+    if($result->num_rows>0){
+        while($rows =$result->fetch_assoc()){
+            $row[]=$rows;
+        }return $row;
+    }else{
+        return FALSE;
+    }
+}
+function display12hREservation($today){
+    $sql="SELECT * FROM reservation WHERE reserve_date='$today' AND reserve_hour='12:00'";
+    
+    $result = $this->conn->query($sql);
+
+    if($result->num_rows>0){
+        while($rows =$result->fetch_assoc()){
+            $row[]=$rows;
+        }return $row;
+    }else{
+        return FALSE;
+    }
+}
+// tomorrow
+function displayTMR10h($tmr){
+    $sql="SELECT * FROM reservation WHERE reserve_date='$tmr' AND reserve_hour='10:00'";
+   
+    $result = $this->conn->query($sql);
+
+    if($result->num_rows>0){
+        while($rows =$result->fetch_assoc()){
+            $row[]=$rows;
+        }return $row;
+    }else{
+        return FALSE;
+    }
+}
+function displayPlus2days10h($plus2days){
+    $sql="SELECT * FROM reservation WHERE reserve_date='$plus2days' AND reserve_hour='10:00'";
+   
+    $result = $this->conn->query($sql);
+
+    if($result->num_rows>0){
+        while($rows =$result->fetch_assoc()){
+            $row[]=$rows;
+        }return $row;
+    }else{
+        return FALSE;
+    }
+}
+function display3days10h($threedays){
+    $sql="SELECT * FROM reservation WHERE reserve_date='$threedays' AND reserve_hour='10:00'";
+   
+    $result = $this->conn->query($sql);
+
+    if($result->num_rows>0){
+        while($rows =$result->fetch_assoc()){
+            $row[]=$rows;
+        }return $row;
+    }else{
+        return FALSE;
+    }
+}
+
+
+
+
+// booking5
+function getSelectedAddMenu($selectedAdditionalMenu){
+    $sql="select * FROM service WHERE service_id ='$selectedAdditionalMenu'";
+    $result=$this->conn->query($sql);
+
+    if($result ==FALSE){
+        die('can not get AddMenu id'.$this->conn->connect_error);
+    }else{
+        return $result->fetch_assoc();
+
+    }
+
+}
+function getSelectedStylist($selected_stylistID){
+    $sql="select * FROM staff WHERE staff_id ='$selected_stylistID'";
+    $result=$this->conn->query($sql);
+
+    if($result ==FALSE){
+        die('can not get staff id'.$this->conn->connect_error);
+    }else{
+        return $result->fetch_assoc();
+
+    }
+
+}
+// confirm resrvation
+function addReservation($date,$hour,$fname,$lname,$customerID,$order,$order2,$addMenu,$nomination,$totalPrice){
+    $sql="INSERT INTO `reservation`(`reserve_date`, `reserve_hour`, `fname`, `lname`, `c_id`, `order_menu`, `order_menu2`, `add_menu`, `nomination`, `total_price`) VALUES ('$date','$hour','$fname','$lname','$customerID','$order','$order2','$addMenu','$nomination','$totalPrice')";
+    $result = $this->conn->query($sql);
+
+    if($result ==FALSE){
+        die('insert reservation is failed'.$this->conn_connect_error);
+    }else{
+        header('location:booking6.php');
+
+    }
+
+}
 
 
 
 
 
 
+
+// admin.php
+// dispaly todays reservation
+function displayTodaysReservation($today){
+    $sql ="SELECT * FROM reservation WHERE reserve_date='$today'";
+    $result = $this->conn->query($sql);
+
+    if($result->num_rows>0){
+
+        while($rows =$result->fetch_assoc()){
+            $row[]=$rows;
+        }
+        return $row;
+    }else{
+        return FALSE;
+    }
+
+}
+
+// display latest reservation
+function displayLatestReservation(){
+    $sql ="SELECT * FROM reservation ORDER BY reserve_id DESC";
+    $result = $this->conn->query($sql);
+
+    if($result->num_rows>0){
+
+        while($rows =$result->fetch_assoc()){
+            $row[]=$rows;
+        }
+        return $row;
+    }else{
+        return FALSE;
+    }
+
+}
+
+// edit reservation
+function getReserveID($reserveID){
+    $sql="SELECT * FROM reservation WHERE reserve_id='$reserveID'";
+    $result = $this->conn->query($sql);
+
+    if($result ==FALSE){
+        die('can not get one photo id'.$this->conn->connect_error);
+    }else{
+        return $result->fetch_assoc();
+    }
+
+}
+// delete reservation
+function deleteReserve($reserveID){
+    $sql="DELETE FROM reservation WHERE reserve_id = '$reserveID'";
+    $result=$this->conn->query($sql);
+
+    if($result = FALSE){
+        die('deleteing reservation failed'.$this->conn->connect_error);
+    }else{
+        header('location:reservation.php');
+
+    }
+}
+
+// reservation.php
+function displayReservation(){
+    $sql ="SELECT * FROM reservation ORDER BY reserve_id DESC";
+    $result = $this->conn->query($sql);
+
+    if($result->num_rows>0){
+
+        while($rows =$result->fetch_assoc()){
+            $row[]=$rows;
+        }
+        return $row;
+    }else{
+        return FALSE;
+    }
+
+}
+function updateReservation($n_date,$n_hour,$n_coupon,$n_service,$n_addMenu,$n_nomination){
+    $sql="UPDATE `reservation` SET `reserve_date`='$n_date',`reserve_hour`='$n_hour',`order_menu`='$n_coupon',`order_menu2`='$n_service',`add_menu`='$n_addMenu',`nomination`='$n_nomination'";
+
+    $result = $this->conn->query($sql);
+
+    if($result = TRUE){
+        header('location:reservation.php');
+       
+    }else{
+        die('update reservation is error'.$this->conn->error);       
+    }
+
+}
 
 
 

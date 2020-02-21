@@ -14,7 +14,7 @@ class Connection{
     function __construct(){
         $this->conn = new mysqli($this->servername,$this->username,$this->password,$this->db_name);
 
-        if($this->conn ->$conn_error){
+        if($this->conn->connect_error){
             die('error connection to database'.$this->conn->connect_error);
         }else{
             return $this->conn;

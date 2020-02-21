@@ -65,16 +65,22 @@
                 <th>service id</th>
                 <th>service name</th>
                 <th>service price</th>
+                <th>option</th>
+
             
             </tr>
            </thead>
             <tbody>
             <?php 
                 foreach($addMenuList as $row){
+                    $serviceID=$row['service_id'];
+
                     echo "<tr>";
                     echo "<td>".$row['service_id']."</td>";
                     echo "<td>".$row['service_name']."</td>";
                     echo "<td>".$row['price']."</td>";
+                    echo "<th><a href='editService.php?service_id=$serviceID' role='button' class='btn btn-outline-dark'>edit</a></th>";
+
                     
                     echo "</tr>";
                     

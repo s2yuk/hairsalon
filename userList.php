@@ -1,47 +1,23 @@
 <?php
- include 'userMenu.php';
+include 'adminMenu.php';
 ?>
 <!doctype html>
 <html lang="en">
   <head>
-    <title>dear guest </title>
+    <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
-    <style>
-        body{
-           margin-top:150px;
-        
-        }
-      
-    </style>
-
-
-</head>
+  </head>
   <body>
-    <div class="container">
-        <div class="card">
-            <div class="card-header alert-warning" >
-                <h3>Sorry guest</h3>
-            </div>
-            <div class="card-body">
-                <p>
-                    If you would like to continue, please log in :)
-                    <a href ='login.php' role='button' class='btn btn-outline-dark ml-2'> >> Login </a>
-                    <br>
-                    or just looking 
-                    
-                    <a href ='hairCatalog.php' role='button' class='btn btn-dark ml-2'>  >> Back to catalog</a>
-                    <a href ='booking4.php' role='button' class='btn btn-dark ml-2'>  >> Back to Booking</a>
+      
+    
+    <p>sorry , its not finish yet this page</p>
 
-                </p>
-            </div>
-        </div>
-    </div>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

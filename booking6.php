@@ -1,47 +1,59 @@
 <?php
- include 'userMenu.php';
+include 'userMenu.php';
+
 ?>
 <!doctype html>
 <html lang="en">
   <head>
-    <title>dear guest </title>
+    <title>booking 6 </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
+  
     <style>
-        body{
-           margin-top:150px;
-        
-        }
-      
+      body{
+        margin-top:100px;
+        height: 600px;
+        background-image: url(asset/state.jpeg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size : cover;
+
+      }
+    
+      #thankyou{
+        font-family: 'Oleo Script', cursive;
+        margin-top:300px;
+        padding:20px;
+          
+      }
+      p{
+        font-family: 'Oleo Script', cursive;
+      }
     </style>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+    
 
 
 </head>
   <body>
-    <div class="container">
-        <div class="card">
-            <div class="card-header alert-warning" >
-                <h3>Sorry guest</h3>
-            </div>
-            <div class="card-body">
-                <p>
-                    If you would like to continue, please log in :)
-                    <a href ='login.php' role='button' class='btn btn-outline-dark ml-2'> >> Login </a>
-                    <br>
-                    or just looking 
-                    
-                    <a href ='hairCatalog.php' role='button' class='btn btn-dark ml-2'>  >> Back to catalog</a>
-                    <a href ='booking4.php' role='button' class='btn btn-dark ml-2'>  >> Back to Booking</a>
 
-                </p>
-            </div>
+ 
+
+    <div class="container">
+
+        <div class="container bg-light mx-auto w-50 mt-5"> 
+            <h1 id="thankyou">Thank you</h1>
+            <p>We receive your reservation. See you soon!</p>
+
         </div>
+
     </div>
+      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

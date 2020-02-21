@@ -13,7 +13,9 @@ include 'userMenu.php';
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+    
     <style>
         
       body{
@@ -26,7 +28,8 @@ include 'userMenu.php';
         background-size :cover ;
 
       }
-      h2{
+      h2,h4{
+        font-family: 'Oleo Script', cursive;
         -webkit-text-stroke: 1px black;
       }
     </style>
@@ -40,7 +43,7 @@ include 'userMenu.php';
     </header>
 
     <div class="container bg-white">
-        <h4 class="text-monospace">OUR VALUE CUSTOMER</h4>
+        <h4 class="text-monospace text-center">OUR VALUE CUSTOMER</h4>
         <p>An important customer who has a relationship and can meet. Instead of visiting the store only once, I face customers every day with the aim of creating a salon where I want to go after one or three years. It is our mission and our greatest pleasure to be our customers' "lifelong beauty partner" through hairstyle and hair design.</p>
     </div>
 
