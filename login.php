@@ -13,15 +13,21 @@
     <style>        
         body{
           margin-top:100px;
-          height: 700px;
-          background-image: url(asset/logo1.jpeg);
+          /* height: 700px; */
+          background-image: url(asset/logo1.jpg);
           background-repeat: no-repeat;
           background-attachment: fixed;
           background-position: center center;
           background-size :cover ;
   
         }
+        div p{
+          font-family: 'Oleo Script', cursive;
+        }
       </style>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+    
   
   </head>
   <body>
@@ -32,13 +38,13 @@
           <div class="card-header">
             <p class="display-4"> Please login</p>
           </div>
-          <div class="card-body">
+          <div class="card-body text-monospace">
             <form action="hairsalonAction.php" method="post">
             
-              <label for="">Enter email</label>
+              <label for="">Enter email :</label>
               <input type="email" name="email" id="" class="form-control">
             <br>
-              <label for="">Enter password</label>
+              <label for="">Enter password :</label>
               <input type="password" name="password" id="" class="form-control">
             <br>
               <button type="submit" name="login" class="btn btn-secondary   form-control">Login</button>
@@ -56,11 +62,10 @@
 
 
       <!-- footer -->
-    <nav class="navbar bg-dark fixed-bottom">
-      <a class="" href="dashboard.php" >Go to top</a>
-      <p class="text-light">copyright@ Yuka</p>
-      <a href="contactpage.php">contact</a>
-        
+    <nav class="nav navbar bg-dark fixed-bottom">
+        <a href="dashboard.php" >Home</a>
+        <p class="text-light">Copyright@ Yuka Matsumoto</p>
+        <a href="contactpage.php">Contact</a>
     </nav>
 
 

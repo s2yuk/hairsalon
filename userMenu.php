@@ -9,22 +9,27 @@ $currentUser = $Hairsalon->getOneUser($loginid);
 <!doctype html>
 <html lang="en">
   <head>
-    <title>welcome our salon</title>
+    <title>Smile</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+    <!-- font awesome icon -->
+    <script src="https://kit.fontawesome.com/eb83b1af77.js" crossorigin="anonymous"></script>
+
+    
     <style>
         body{
             height:150px;
-        
         }
         #logo{
             height:61px;
         }
- 
     </style>
 
 
@@ -33,9 +38,9 @@ $currentUser = $Hairsalon->getOneUser($loginid);
 
 
   <div class="container">  
-    <nav class="navbar navbar-expand fixed-top bg-light ">
+    <nav class="navbar navbar-expand fixed-top bg-light">
 
-        <a href="dashboard.php" class="text-dark mr-5"><img src="asset/logo.jpg" alt="logo" id="logo"></a>
+        <a href="dashboard.php" class="text-dark mr-5"><img src="asset/smile.jpg" alt="logo" id="logo"></a>
                 
         <div class="text-left">
            <ul class="nav nav-bar">
@@ -58,22 +63,28 @@ $currentUser = $Hairsalon->getOneUser($loginid);
                     <a href="testimonial.php" role="button" class="btn btn-outline-dark mr-1">testimonial</a>
                 </li>
                 <li class="nav-item">
-                    <a href="contactpage.php" role="button" class="btn btn-outline-dark">Contact/access</a>
+                    <a href="contactpage.php" role="button" class="btn btn-outline-dark mr-1">Contact/access</a>
                 </li>
+                <?php  if(!empty($_SESSION['loginid'])){
+                       
+                    echo "<li class='nav-item'>";
+                    echo "<a href='mypage.php' role='button' class='btn btn-outline-dark'>My page</a>";
+                    echo"</li>";
+                    } ;
+                ?>
             </ul>
         </div>
 
         <div class="ml-auto">
             <ul class="nav nav-bar">
                 <li class="nav-item">
-                    Welcome
                     <?php
                         if(!empty($_SESSION['loginid'])){
-                            echo $currentUser['fname'];
-                            echo "<a href='logout.php' role='button' class='btn btn-outline-dark'>Logout</a>";
+                            echo "Hello ".$currentUser['fname'] ;
+                            echo "<a href='logout.php' role='button' class='btn btn-outline-dark ml-2'>Logout</a>";
                         }else{
-                            echo "Guest";
-                            echo "<a href='login.php' role='button' class='btn btn-outline-dark'>Login </a>";
+                            echo "Welcome Guest";
+                            echo "<a href='login.php' role='button' class='btn btn-outline-dark ml-2'>Login </a>";
                         }
 
                     ?>             

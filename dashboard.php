@@ -16,14 +16,16 @@ $newsList=$Hairsalon->displayNews($news,$date);
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   
     <style>
+      body{
+        background-color: #F8F9FA;
+      }
       header{
-        margin-top:100px;
+        margin-top:75px;
         height: 600px;
         background-image: url(asset/state.jpeg);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size : cover;
-        
 
       }
       #welcome{
@@ -33,13 +35,16 @@ $newsList=$Hairsalon->displayNews($news,$date);
       }
     
       #div2{
-        height:420px;
+        height:380px;
       }
    
       #news{
         overflow: scroll;
       } 
-      
+      h2{
+        font-family: 'Oleo Script', cursive;
+
+      }
       
 
     </style>
@@ -56,58 +61,61 @@ $newsList=$Hairsalon->displayNews($news,$date);
     </header>
 
 
-    <div class="jumbotron bg-light mt-2" id="div2">
+    <div class="jumbotron bg-light" id="div2">
 
       <div class="row">      
         <div class="col-lg-8 bg-light border" >
-          <h2 class=" text-monospace">News:</h2>
-            <div id="news" style="height:200px;">
-              <?php foreach($newsList as $row) {
-                // $info_id = $row['info_id'];
-                  echo "<h4>◆ ".$row['news']."</h4>";
-                  echo "<br>";
-                  echo "<p class='text-right'>---".$row['date']." update</p>";
-                  echo "<br>";
-              }
-              ?>
-            </div>
+          <h2 class="mt-2">News:</h2>
+          <hr>
+          <div id="news" style="height:250px;">
+            <?php foreach($newsList as $row) {
+              // $info_id = $row['info_id'];
+                echo "<h4>◆ ".$row['news']."</h4>";
+                echo "<br>";
+                echo "<p class='text-right'>---".$row['date']." update</p>";
+                echo "<br>";
+            }
+            ?>
+          </div>
         </div>
-        <div class="col-lg-4 bg-light border text-monospace">
-            <table>
-                <tr>
-                <h2 class="mt-2">Our Business hours:</h2>
-                <br>
-                </tr>
-                <tr>
-                    <td>Mon, Wed, Thu:</td>
-                    <td>11:00~20:00</td>
-                </tr>
-                <tr>
-                    <td>Fri, Sat:</td>
-                    <td>10:30~21:00</td>
-                </tr>
-                <tr>
-                    <td>Sun:</td>
-                    <td>10:30~19:00</td>
-                </tr>
-                <tr>
-                    <td>Tue:</td>
-                    <td>Close</td>
-                </tr>
-            </table>
+        <div class="col-lg-4 border text-monospace">
+          <table>
+              <tr>
+              <h2 class="mt-2">Our Business hours:</h2>
+              <br>
+              </tr>
+              <tr>
+                  <td>Mon, Wed, Thu:</td>
+                  <td>11:00~20:00</td>
+              </tr>
+              <tr>
+                  <td>Fri, Sat:</td>
+                  <td>10:30~21:00</td>
+              </tr>
+              <tr>
+                  <td>Sun:</td>
+                  <td>10:30~19:00</td>
+              </tr>
+              <tr>
+                  <td>Tue:</td>
+                  <td>Close</td>
+              </tr>
+          </table>
+            <br>
+            <br>
+          <h4>TEL: 03-1234-5678</h4>
         </div>
       </div>
     </div>  
 
-    <div class="mt-2">
+   
     <!-- footer -->
-      <nav class="nav navbar bg-dark">
-          <a href="dashboard.php" >Go to top</a>
-          <p class="text-light">copyright@ Yuka</p>
-          <a href="contactpage.php">contact</a>
-            
-        </nav>
-    </div>
+    <nav class="nav navbar bg-dark">
+        <a href="dashboard.php" >Home</a>
+        <p class="text-light">Copyright@ Yuka Matsumoto</p>
+        <a href="contactpage.php">Contact</a>
+    </nav>
+ 
   
 
     <!-- Optional JavaScript -->

@@ -16,7 +16,7 @@ include 'userMenu.php';
     <style>
       body{
         margin-top:100px;
-        height: 600px;
+        height: 500px;
         background-image: url(asset/state.jpeg);
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -27,12 +27,12 @@ include 'userMenu.php';
       #thankyou{
         font-family: 'Oleo Script', cursive;
         margin-top:300px;
-        padding:20px;
-          
+        padding:20px; 
       }
-      p{
+      div p{
         font-family: 'Oleo Script', cursive;
       }
+
     </style>
     <!-- google font -->
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
@@ -53,6 +53,15 @@ include 'userMenu.php';
         </div>
 
     </div>
+
+
+
+    <!-- footer -->
+    <nav class="nav navbar bg-dark fixed-bottom">
+        <a href="dashboard.php" >Home</a>
+        <p class="text-light">Copyright@ Yuka Matsumoto</p>
+        <a href="contactpage.php">Contact</a>
+    </nav>
       
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

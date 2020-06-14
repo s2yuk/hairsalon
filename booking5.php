@@ -42,152 +42,171 @@
         background-size : cover;
 
       }
+      div h4{
+        font-family: 'Oleo Script', cursive;
+
+      }
     </style>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+    
 
 </head>
   <body>
 
-      <div class="container bg-light text-monospace text-center">
-          <h4 class="display-4 p-3">Booking</h4>
-      </div>
-      <div class="container bg-light ">
-          <div class="col-lg-4">
-                  <form action="hairsalonAction.php" method="post">
-                    <button type="submit" name="reselect5" class="btn btn-outline-dark m-2">Re select</button>
-                  </form>
-                </div> 
-          <div class="alert alert-dark text-center text-monospace">
-              <h5 class="p-3">Confirmation</h5>
-          </div>
-          <div class="w-75 border mx-auto text-capitalize m-3 p-3 text-monospace">
-             
-                 <div class="row ml-5">
-                    <div class="col-lg-4">
-                            customer ID
-                    </div>
-                    <div class="col-lg-7">
-                        <?php
-                            echo $_SESSION['loginid'];
-                        ?>
-                    </div>
+    <div class="container bg-light text-monospace text-center">
+        <h4 class="display-4 p-3">Booking</h4>
+    </div>
+    <div class="container bg-light">
+       <br>
+        <div class="alert alert-dark text-center text-monospace mt-3">
+            <h5 class="p-3">Confirmation</h5>
+        </div>
+        <div class="w-75 border mx-auto text-capitalize m-3 p-3 text-monospace">
+            
+                <div class="row ml-5">
+                <div class="col-lg-4">
+                        customer ID
                 </div>
-                <div class="row mt-3 ml-5">
-                    <div class="col-lg-4">
-                        name
-                    </div>
-                    <div class="col-lg-8 ">
-                        <?php
-                            echo $currentUser['fname']," ".$currentUser['lname'];
+                <div class="col-lg-7">
+                    <?php
+                        echo $_SESSION['loginid'];
+                    ?>
+                </div>
+            </div>
+            <div class="row mt-3 ml-5">
+                <div class="col-lg-4">
+                    name
+                </div>
+                <div class="col-lg-8 ">
+                    <?php
+                        echo $currentUser['fname']," ".$currentUser['lname'];
 
-                        ?>
-                    </div>
+                    ?>
                 </div>
-                <div class="row mt-3 ml-5">
-                    <div class="col-lg-4">
-                        select time
-                    </div>
-                    <div class="col-lg-8">
-                        <?php
-                            echo $_SESSION['selected_date'];
-                            echo " ";
-                            echo $_SESSION['hour'];
-                        ?>
-                    </div>
+            </div>
+            <div class="row mt-3 ml-5">
+                <div class="col-lg-4">
+                    select time
                 </div>
-                <div class="row  mt-3 ml-5">
-                    <div class="col-lg-4">
-                        <!-- booking.php -->
-                        Select menu   
-                    </div>
-                    <div class="col-lg-8">
-                        <?php
-                            // echo "#";
-                            // echo $_SESSION['coupon_id'];
-                            echo $Selected_coupon['coupon_name'];
-                            // echo $_SESSION['service_id'];
-                            echo $Selected_service['service_name'];
-                        ?>
-                    </div>
+                <div class="col-lg-8">
+                    <?php
+                        echo $_SESSION['selected_date'];
+                        echo " ";
+                        echo $_SESSION['hour'];
+                    ?>
                 </div>
-                <div class="row  mt-3 ml-5">
-                    <div class="col-lg-4">
-                        Additional menu
-                    </div>
-                    <div class="col-lg-8">
-                        <?php
-                            //booking2
-                            // echo $_SESSION['booking2_id'];
-                            echo $selected_AddMenu['service_name'];
-                            
-                            
+            </div>
+            <div class="row  mt-3 ml-5">
+                <div class="col-lg-4">
+                    <!-- booking.php -->
+                    Select menu   
+                </div>
+                <div class="col-lg-8">
+                    <?php
+                        // echo "#";
+                        // echo $_SESSION['coupon_id'];
+                        echo $Selected_coupon['coupon_name'];
+                    ?>
+                </div>
+            </div>
+            <div class="row  mt-3 ml-5">
+                <div class="col-lg-4">
+                    Additional menu
+                </div>
+                <div class="col-lg-8">
+                    <?php
+                        //booking2
+                        // echo $_SESSION['booking2_id'];
+                        echo $selected_AddMenu['service_name'];
+                        
+                        
 
-                        ?>
-                    </div>
+                    ?>
                 </div>
-                <div class="row  mt-3 ml-5">
-                    <div class="col-lg-4">
-                        Price
-                    </div>
-                    <div class="col-lg-8">
-                        <?php
-                            echo $Selected_coupon['coupon_price'];
-                            echo $Selected_service['price'];
-                            echo " + ";
-                            echo $_SESSION['booking2_price'];
-                           
-                            echo "  =  Total :";
-                            $totalPrice=  $Selected_coupon['coupon_price'] + $Selected_service['price'] + $_SESSION['booking2_price'];
+            </div>
+            <div class="row  mt-3 ml-5">
+                <div class="col-lg-4">
+                    Price
+                </div>
+                <div class="col-lg-8">
+                    <?php
+                        if(!empty($Selected_coupon['coupon_price'] and $_SESSION['booking2_price'])){
+                            echo $Selected_coupon['coupon_price']."+".$_SESSION['booking2_price'];
+                            $totalPrice = $Selected_coupon['coupon_price']+$_SESSION['booking2_price'];
+                            echo "=".$totalPrice;
+                        }elseif(!empty($Selected_coupon['coupon_price'])){
+                            $totalPrice = $Selected_coupon['coupon_price'];
                             echo $totalPrice;
-                        ?>
-                    </div>
+                        }elseif(!empty($_SESSION['booking2_price'])){
+                            $totalPrice = $_SESSION['booking2_price'];
+                            echo $totalPrice;
+                        }
+                        echo "<br>";
+                    ?>
                 </div>
-                <div class="row  mt-3 ml-5">
-                    <div class="col-lg-4">
-                        select stylist
-                    </div>
-                    <div class="col-lg-8">
-                        <?php
-                            // echo $_SESSION['select_stylist'];
-                            echo $selected_stylist['staff_name'];
-
-                        ?>
-                    </div>
+            </div>
+            <div class="row  mt-3 ml-5">
+                <div class="col-lg-4">
+                    select stylist
                 </div>
+                <div class="col-lg-8">
+                    <?php
+                        // echo $_SESSION['select_stylist'];
+                        echo $selected_stylist['staff_name'];
 
-          </div> 
-          <div class="alert alert-dark w-50 mx-auto m-3 text-center">
-              <p>Please make sure your entery. <br>
-              Can we proceed with the reservation?</p>
-              <div class="row">  
-                <div class="col-lg-12">
+                    ?>
+                </div>
+            </div>
+
+        </div> 
+        <div class="alert alert-dark w-50 mx-auto m-3 text-center">
+            <p>Please make sure your entery. <br>
+            Can we proceed with the reservation?</p>
+            <div class="row">  
+            <div class="col-lg-12">
+                
+                <!-- <a href='booking6.php' role='button' class='btn btn-dark btn-block'>RESERVE</a> -->
                     
-                    <!-- <a href='booking6.php' role='button' class='btn btn-dark btn-block'>RESERVE</a> -->
-                      
-                    <form action="hairsalonAction.php" method="post">
-                        <input type="hidden" name="fname" value="<?php echo $currentUser['fname']?>">
-                        <input type="hidden" name="lname" value="<?php echo $currentUser['lname']?>">
-                        <input type="hidden" name="order" value="<?php echo $Selected_coupon['coupon_name']?>">
-                        <input type="hidden" name="order2" value="<?php echo $Selected_service['service_name']?>">
-                        <input type="hidden" name="addMenu" value="<?php echo $selected_AddMenu['service_name']?>">
-                        <input type="hidden" name="price" value="<?php echo $totalPrice?>">
-                        <input type="hidden" name="nomination" value="<?php echo $selected_stylist['staff_name']?>">
+                <form action="hairsalonAction.php" method="post">
+                    <input type="hidden" name="fname" value="<?php echo $currentUser['fname']?>">
+                    <input type="hidden" name="lname" value="<?php echo $currentUser['lname']?>">
+                    <!-- <input type="hidden" name="order" value="<?php //echo $Selected_coupon['coupon_name']?>"> -->
+                    <input type="hidden" name="order" value="<?php echo $_SESSION['coupon_id'];?>">
+                    <input type="hidden" name="addMenu" value="<?php echo $_SESSION['booking2_id'];?>">
+
+                    <!-- <input type="hidden" name="addMenu" value="<?php //echo $selected_AddMenu['service_name']?>"> -->
+                    <input type="hidden" name="price" value="<?php echo $totalPrice?>">
+                    <input type="hidden" name="nomination" value="<?php echo $selected_stylist['staff_name']?>">
 
 
-                        <button type="submit" name="reserve" class='btn btn-dark btn-block text-monospace'>R E S E R V E</button>
-                    </form>
-                    
-                </div>
-              </div>
-          </div>
-          
+                    <button type="submit" name="reserve" class='btn btn-dark btn-block text-monospace'>R E S E R V E</button>
+                </form>
+                <br>
 
-         
-      </div>
+            </div>
+            <div class="col-lg-12">
+                <form action="hairsalonAction.php" method="post">
+                <button type="submit" name="reselect5" class="btn btn-secondary m-2"> << Reselect</button>
+                </form>
+            </div> 
+            
+            </div>
+            
+        </div>
+    <br>
+    </div>
 
 
    
 
 
+    <!-- footer -->
+    <nav class="nav navbar bg-dark mt-5">
+        <a href="dashboard.php" >Home</a>
+        <p class="text-light">Copyright@ Yuka Matsumoto</p>
+        <a href="contactpage.php">Contact</a>
+    </nav>
 
 
 

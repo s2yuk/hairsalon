@@ -13,20 +13,28 @@
         body{
           margin-top:100px;
           height: 700px;
-          background-image: url(asset/logo1.jpeg);
+          background-image: url(asset/logo1.jpg);
           background-repeat: no-repeat;
           background-attachment: fixed;
           background-position: center center;
           background-size :cover ;
   
         }
+        div p, div h3{
+          font-family: 'Oleo Script', cursive;
+        }
       </style>
+       <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+    
   
   </head>
   <body>
 
     <div class="container text-monospace">
-        <p class="display-4 bg-light text-center">Welcome New Guest!</p>
+        <div class="bg-light w-50 mx-auto">
+          <p class="display-4 text-center">Welcome New Guest!</p>
+        </div>
 
         <div class="card w-50 mx-auto" >
             <div class="card-header text-center">
@@ -34,39 +42,46 @@
             </div>
             <div class="card-body">
                 <form action="hairsalonAction.php" method="post">
-                    <label for="">First name</label>
-                    <input type="tel" name="fname" id="" class="form-control">
+                    <label for="">First name :</label>
+                    <input type="tel" name="fname" id="" class="form-control"><br>
+                    
+                    <label for="">Last name :</label>
+                    <input type="text" name="lname" id="" class="form-control"> <br>
 
-                    <label for="">Last name</label>
-                    <input type="text" name="lname" id="" class="form-control">
-                 
 
-                    <label for="">Gender</label>
+                    <label for="">Gender :</label>
                     <select name="gender" id="" class="form-control">
                         <option value=male>Male</option>
                         <option value="femal">Female</option>
-                    </select>
+                    </select><br>
                
 
-                    <label for="">Telephone number (Number only)</label>
-                    <input type="number" name="telephone" id="" class="form-control">
+                    <label for="">Telephone number (Number only) :</label>
+                    <input type="number" name="telephone" id="" class="form-control"><br>
                     
             
 
-                    <label for="">Email</label>
-                    <input type="email" name="email" id="" class="form-control">
+                    <label for="">Email :</label>
+                    <input type="email" name="email" id="" class="form-control"><br>
                
 
-                    <label for="">Password</label>
-                    <input type="password" name="password" id="" class="form-control">
+                    <label for="">Password :</label>
+                    <input type="password" name="password" id="" class="form-control"><br>
               
-
-                    <button type="submit" name="register" class="form-control btn btn-dark mt-3">Register</button>                
+                    <div class="text-center mb-3">
+                      <button type="submit" name="register" class="form-control btn btn-dark w-75 mt-3">Register</button>                
+                    </div>
                 </form>
             </div>
         </div>
 
     </div>
+     <!-- footer -->
+    <nav class="nav navbar bg-dark mt-5">
+        <a href="dashboard.php" >Home</a>
+        <p class="text-light">Copyright@ Yuka Matsumoto</p>
+        <a href="contactpage.php">Contact</a>
+    </nav>
       
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

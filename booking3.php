@@ -27,15 +27,25 @@ $staffList=$Hairsalon->displayStaff();
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size : cover;
+      }
+      div h5{
+        font-family: 'Oleo Script', cursive;
 
       }
+      div img{
+        width: 160px;
+        height: 213px;
+      }
     </style>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+    
   
   </head>
   <body>
       
   <div class="container bg-light text-monospace text-center">        
-      <h4 class="display-4 text-monospace p-3">Booking</h4>
+      <h5 class="display-4 p-3">Booking</h5>
   </div>
   <div class="container bg-light text-monospace text-center">        
      <br>
@@ -59,16 +69,14 @@ $staffList=$Hairsalon->displayStaff();
                           $sphoto = $row['staff_photo'];
                           echo "<img src='upload/admin/$sphoto' alt='".$row['staff_name']."' class=' '>";
                       }else{
-                          echo "<img src='asset/logo.jpg' alt='image printing' class=''>";
+                          echo "<img src='asset/smile.jpg' alt='image printing' class='w-100'>";
                       }
               
                       echo " <p class='text-monospace'>";
                           echo $row['staff_name'];
                       echo "</p>";
                       
-                      // echo "<p>".$row['staff_gender']."</p>";
-                      // echo "<p>".$row['staff_bio']."</p>";
-
+                    
                       echo "<div class='text-center'>";
                           echo "<form action='hairsalonAction.php' method='post'>"; 
                               echo "<input type='hidden' name='selectStylist' value='".$row['staff_id']."' >";
@@ -89,9 +97,9 @@ $staffList=$Hairsalon->displayStaff();
             
       </div>
             <br>
-      <div class="row">
+      <div class="text-center">
           <form action="hairsalonAction.php" method="post">
-            <button type="submit" name="reselect3" class="btn btn-dark m-2">Previous page</button>
+            <button type="submit" name="reselect3" class="btn btn-secondary m-2"> << Previous page</button>
           </form>
       </div> 
     <!--container  -->
@@ -99,6 +107,12 @@ $staffList=$Hairsalon->displayStaff();
 
     <br><br>
 
+    <!-- footer -->
+    <nav class="nav navbar bg-dark mt-5">
+        <a href="dashboard.php" >Home</a>
+        <p class="text-light">Copyright@ Yuka Matsumoto</p>
+        <a href="contactpage.php">Contact</a>
+    </nav>
 
 
 

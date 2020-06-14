@@ -4,12 +4,17 @@ include 'adminMenu.php';
 $staffList =$Hairsalon->displayStaff();
 
 // $today= date('Y/m/d');
-$today = new DateTime();
-$dateToday = $today->format('Y-m-d');
+$date = new DateTime();
+$today = $date->format('Y-m-d');
+$TodaysReservation = $Hairsalon->displayTodaysReservation($today);
+$todaysCount=$Hairsalon->todaysCount($today);
+// print_r($todaysCount);
+$numToday=$todaysCount['count(*)'];
+// echo $numToday;
 
-$TodaysReservation = $Hairsalon->displayTodaysReservation($dateToday);
 $latest_reservation = $Hairsalon->displayLatestReservation();
 
+$msg_list = $Hairsalon->displayContact();
 
 ?>
 
@@ -27,14 +32,24 @@ $latest_reservation = $Hairsalon->displayLatestReservation();
     <style>
     
       #todaystable{
-        height : 400px;
+        max-height: 400px;
         overflow: scroll;
       }
       #latestTable{
-        height : 300px;
+        max-height : 400px;
         overflow: scroll;
       }
-    
+      #addnews{
+        height: 328px;
+      }
+      #msg_list{
+        height : 328px;
+        overflow: scroll;
+      }
+      h3{
+        font-family: 'Oleo Script', cursive;
+      }
+      
       
     </style>
     
@@ -42,208 +57,181 @@ $latest_reservation = $Hairsalon->displayLatestReservation();
   <body>
 
   
-      <!-- <header></header> -->
-    <div class="jumbotron bg-light">      
-      <!-- <div class="row">       -->
-       
+  
+    <div class="jumbotron bg-light m-0">      
         <div class="row bg-light border border-dark" id="todaystable">
           <div class="col-lg-8">
-            <p class="text-monospace display-4 mt-3">Today's reservation:  <?php echo count($TodaysReservation)?></p>  
+            <h3 class="display-4 mt-3">Today's reservation:  <?php echo $numToday; ?></h3>  
           </div>
-          <div class="col-lg-4 text-right mt-5">
-            <a href="reservation.php" role="button" class="btn btn-dark">go to  All reservation</a>
+          <div class="col-lg-4 text-right">
+            <a href="reservation.php" role="button" class="btn btn-dark mt-4 mr-5 p-3">go to  All reservation</a>
           </div>
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>#reserve id</th>
-              <th colspan="2">appoint time</th>
-              <th>#customer id</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th colspan="3">Menu</th>
-              <th>Price</th>
-              <th>Nomination</th>
+          
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>#reserve id</th>
+                <th colspan="2">appoint time</th>
+                <th>#customer id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th colspan="2">Menu</th>
+                <th>Price</th>
+                <th>Nomination</th>
 
-            </tr>
-          </thead>
-          <?php
-            
-            foreach($TodaysReservation as $row ){
-                echo"<tbody id='TodaysTable'>";
-                  echo "<th>".$row['reserve_id']."</th>";
-                  echo "<th>".$row['reserve_date']."</th>";
-                  echo "<th>".$row['reserve_hour']."</th>";
-                  echo "<th>".$row['c_id']."</th>";
-                  echo "<th>".$row['fname']."</th>";
-                  echo "<th>".$row['lname']."</th>";
-                  echo "<th>".$row['order_menu']."</th>";
-                  echo "<th>".$row['order_menu2']."</th>";
-                  echo "<th>".$row['add_menu']."</th>";
-                 
-                  echo "<th>¥".$row['total_price']."</th>";
-                  echo "<th>".$row['nomination']."</th>";
-                echo "</tbody>";
-              }
-            
-            ?>
-      
-        
-        </table>
+              </tr>
+            </thead>
+            <?php
+              foreach($TodaysReservation as $row ){
+                  echo"<tbody id='TodaysTable'>";
+                    echo "<td>".$row['reserve_id']."</td>";
+                    echo "<td>".$row['reserve_date']."</td>";
+                    echo "<td>".$row['reserve_hour']."</td>";
+                    echo "<td>".$row['c_id']."</td>";
+                    echo "<td>".$row['fname']."</td>";
+                    echo "<td>".$row['lname']."</td>";
+                    echo "<td>";
+                            $selected_cID=$row['order_menu'];
+                            $Selected_coupon =$Hairsalon->getSelectCouponID($selected_cID);
+                            echo $Selected_coupon['coupon_name'];
+                    echo "</td>";
+                    echo "<td>";
+                            $selected_sID=$row['add_menu'];
+                            $selected_service=$Hairsalon->getSelectServiceID($selected_sID);
+                            echo $selected_service['service_name'];
+                    echo "</td>";
+                  
+                    echo "<td>¥".$row['total_price']."</td>";
+                    echo "<td>".$row['nomination']."</td>";
+                  echo "</tbody>";
+                }
+            ?>          
+          </table>
         </div>
         <br>
-        <div class=" border border-dark" id="latestTable">
-          <h3 class="text-monospace">Latest reservation:</h3>
+        <div class="row border border-dark" id="latestTable">
+          <h3 class="p-3">Latest reservation:</h3>
           <!--repeat table -->
           <table class="table table-hover" >
-          <thead class="bg-dark text-light">
-            <tr>
-              <th>#reserve id</th>
-              <th colspan="2">appoint time</th>
-              <th>#customer id</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th colspan="3">Menu</th>
-              <th>Price</th>
-              <th>Nomination</th>
+            <thead class="bg-dark text-light">
+              <tr>
+                <th>#reserve id</th>
+                <th colspan="2">appoint time</th>
+                <th>#customer id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th colspan="2">Menu</th>
+                <th>Price</th>
+                <th>Nomination</th>
 
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-            
-              foreach($latest_reservation as $row2 ){
-                echo"<tbody id=''>";
-                  echo "<th>".$row2['reserve_id']."</th>";
-                  echo "<th>".$row2['reserve_date']."</th>";
-                  echo "<th>".$row2['reserve_hour']."</th>";
-                  echo "<th>".$row2['c_id']."</th>";
-                  echo "<th>".$row2['fname']."</th>";
-                  echo "<th>".$row2['lname']."</th>";
-                  echo "<th>".$row2['order_menu']."</th>";
-                  echo "<th>".$row2['order_menu2']."</th>";
-                  echo "<th>".$row2['add_menu']."</th>";
-                
-                  echo "<th>¥".$row2['total_price']."</th>";
-                  echo "<th>".$row2['nomination']."</th>";
-                echo "</tbody>";
+              </tr>
+            </thead>
+            <tbody>
+              <?php
+              
+                foreach($latest_reservation as $row2 ){
+                  echo"<tbody id=''>";
+                    echo "<td>".$row2['reserve_id']."</td>";
+                    echo "<td>".$row2['reserve_date']."</td>";
+                    echo "<td>".$row2['reserve_hour']."</td>";
+                    echo "<td>".$row2['c_id']."</td>";
+                    echo "<td>".$row2['fname']."</td>";
+                    echo "<td>".$row2['lname']."</td>";
+                    // echo "<td>".$row2['order_menu']."</td>";
+                    // echo "<td>".$row2['order_menu2']."</td>";
+                    // echo "<td>".$row2['add_menu']."</td>";
+                    echo "<td>";
+                              $selected_cID=$row2['order_menu'];
+                              $Selected_coupon =$Hairsalon->getSelectCouponID($selected_cID);
+                              echo $Selected_coupon['coupon_name'];
+                    echo "</td>";
+                    echo "<td>";
+                              $selected_sID=$row2['add_menu'];
+                              $selected_service=$Hairsalon->getSelectServiceID($selected_sID);
+                              echo $selected_service['service_name'];
+                    echo "</td>";
+                  
+                    echo "<td>¥".$row2['total_price']."</td>";
+                    echo "<td>".$row2['nomination']."</td>";
+                  echo "</tbody>";
 
-              }
-            
-            ?>
-      
+                }
+              
+              ?>
         
-          </tbody>
-        </table>
-
-
           
-
-
+            </tbody>
+          </table>
         </div>
-
-    
-
-      <!-- </div> row-->
+     
 
 
-      <div class="row mt-5">
-        <div class="col-lg-6">
-<!-- addNews -->
-          <div class=" bg-light border border-dark">
+        <div class="row mt-5">
+         <div class="col-lg-5">
+            <!-- addNews -->
+            <div class=" bg-light border border-dark" id="addnews">
               <form action="" method="post">  
-                    <div class="card">
-                      <div class="card-header">
-                          <h3 class="text-monospace">add  News:</h3>
+                <div class="card">
+                  <div class="card-header">
+                      <h3 class="">add  News:</h3>
+                  </div>
+                  <div class="card-body"> 
+                    <div class="row">
+                      <div class="col-lg-3 text-right">
+                        <label for=""> news <br> content : </label>
                       </div>
-                      <div class="card-body"> 
-                        <div class="row">
-                          <div class="col-lg-3 text-right">
-                            <label for=""> news content : </label>
-                          </div>
-                          <div class="col-lg-9">
-                            <textarea name="news" id="" cols="50" rows="5"></textarea>
-                          </div>
-                        </div>
-
-
-                        <div class="row">
-                          <div class="col-lg-3 text-right">
-                            <label for=""> date : </label>
-                          </div>
-                          <div class="col-lg-9">
-                            <input type="date" name="date">
-                          </div>
-                        </div>
-                          <button type="submit" name="submit" class="btn btn-dark mt-3 float-right">submit</button>  
+                      <div class="col-lg-9">
+                        <textarea name="news" id="" cols="43" rows="5"></textarea>
                       </div>
                     </div>
-                </form>           
+                    <div class="row">
+                      <div class="col-lg-3 text-right">
+                        <label for=""> date : </label>
+                      </div>
+                      <div class="col-lg-9">
+                        <input type="date" name="date">
+                      </div>
+                    </div>
+                      <button type="submit" name="submit" class="btn btn-dark mt-3 float-right">submit</button>  
+                  </div>
+                </div>
+              </form>           
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="border border-dark" id="msg_list">
+              <h3 class="ml-3 p-2"> New Message received</h3>
+              <table class="table table-hover">
+                <thead>
+                  <th>contact_id</th>
+                  <th>name</th>
+                  <th>email</th>
+                  <th>message</th>
+                  <th></th>
+                </thead>
+                <div class="div">
+                <?php foreach($msg_list as $row3) :?>
+                <tbody>
+                    <td><?php echo $row3['contact_id']?></td>
+                    <td><?php echo $row3['contact_name']?></td>
+                    <td><?php echo $row3['contact_email']?></td>
+                    <td><?php echo $row3['comment'] ?></td>
+                    <td><a href="msg_detail.php?contact_id=<?php echo $row3['contact_id'];?>" class="btn btn-dark">Read</a></td>
+                </tbody>
+                <?php endforeach ;?>
+                </div>
+                
+              </table>
+            </div>
           </div>
         </div>
-
-<!-- add catalog -->
-        <div class="col-lg-6">
-          <!-- <div class="bg-light border border-dark">
-            <form action="hairsalonAction.php" method="post" enctype="multipart/form-data">
-
-              <div class="card">
-                <div class="card-header">
-                    <h3 class="text-monospace">add catalog:</h3>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                      <div class="col-lg-3 text-right">
-                         <label for="">photo :</label>
-                      </div>
-                      <div class="col-lg-9">
-                         <input type="file" name="catalog_photo" id="">
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-3 text-right">
-                        <label for="">photo comment :</label>
-                      </div>
-                      <div class="col-lg-9">
-                       <textarea name="catalog_comment" id="" cols="50" rows="5"></textarea>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-3 text-right">
-                        <label for="">stylist :</label>
-                      </div>
-                      <div class="col-lg-9">
-                        <select name="photo_stylist" id="">
-                          <?php 
-                            //foreach($staffList as $row){
-                            //  $staffList =$row['staffname'];
-                            //  echo "<option value='".$row['staff_name']."'> ".$row['staff_name']."</option>";
-                           // }
-                          ?>
-                          </select>
-                      </div>
-                    </div>
-
-                  <button type="submit" name="upload" class="btn btn-dark mt-3 float-right">upload</button>
-                </div>
-              </div>
-                    
-            </form>
-          </div>  -->
-        </div>
-      </div>
-
-      
-  
+        <!-- /row -->
     </div>  
-
-
-<!-- footer -->
-    <nav class="nav navbar  bg-dark">
-      <a class="" href="#!" >go to top</a>
-      <p class="text-light">copyright@ Yuka</p>
-      <a href="">access</a>
-        
+    <!-- footer -->
+    <nav class="nav navbar bg-dark">
+      <a href="dashboard.php" >Home</a>
+      <p class="text-light">Copyright@ Yuka Matsumoto</p>
+      <a href="contactpage.php">Contact</a>      
     </nav>
 
     <!-- Optional JavaScript -->

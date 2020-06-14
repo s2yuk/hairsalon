@@ -1,10 +1,11 @@
 <?php
- include 'userMenu.php';
+  include 'userMenu.php';
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
-    <title>dear guest </title>
+    <title>contact/access</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,38 +14,48 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
     <style>
+        
         body{
-           margin-top:150px;
+          margin-top:150px;
+          /* height: 700px; */
+          background-image: url(asset/logo1.jpg);
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-position: center center;
+          background-size :cover ;
         }
-    </style>
+        #thankyou{
+            font-family: 'Oleo Script', cursive;
+            margin-bottom: 50px;
+            padding:20px; 
+            border: 10px solid #f4e6e1;
+        }
+    
+      </style>
+      <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+    
+
+
 </head>
   <body>
-    <div class="container">
-        <div class="card">
-            <div class="card-header alert-warning" >
-                <h3>Sorry guest</h3>
-            </div>
-            <div class="card-body">
-                <p>
-                    If you would like to continue, please log in :)
-                    <a href ='login.php' role='button' class='btn btn-outline-dark ml-2'> >> Login </a>
-                    <br>
-                    or just looking 
-                    
-                    <a href ='hairCatalog.php' role='button' class='btn btn-dark ml-2'>  >> Back to catalog</a>
-                    <a href ='booking4.php' role='button' class='btn btn-dark ml-2'>  >> Back to Booking</a>
+    <div class="container w-50 bg-light mt-3 p-5 text-monospace">
+        <h1 class="text-center p-3">Contact us</h1>
 
-                </p>
-            </div>
+        <div class="container mx-auto w-50 mb-5" id="thankyou"> 
+            <h1 >Thank you</h1>
+            <p>We receive your message and reply soon!</p>
         </div>
     </div>
 
+
     <!-- footer -->
-    <nav class="nav navbar bg-dark fixed-bottom">
-        <a href="dashboard.php" >Home</a>
-        <p class="text-light">Copyright@ Yuka Matsumoto</p>
-        <a href="contactpage.php">Contact</a>
+    <nav class="nav navbar bg-dark mt-5 fixed-bottom">
+      <a class="" href="dashboard.php" >Go to top</a>
+      <p class="text-light">copyright@ Yuka</p>
+      <a href="contactpage.php">contact</a>
     </nav>
+      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

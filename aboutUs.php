@@ -13,41 +13,42 @@ include 'userMenu.php';
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- google font -->
-    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
-    
+   
     <style>
         
       body{
         margin-top:100px;
         height: 700px;
-        background-image: url(asset/logo1.jpeg);
+        background-image: url(asset/logo1.jpg);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center center;
         background-size :cover ;
 
       }
-      h2,h4{
+      header h2, h1{
         font-family: 'Oleo Script', cursive;
         -webkit-text-stroke: 1px black;
       }
     </style>
-
-
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+    
 </head>
   <body>
 
-    <header>
-        <h2 class="display-4 text-light ml-5 text-monospace"> About us</h2>
+    <header class="text-center">
+        <h2 class="display-4 text-light ml-5"> About us</h2>
     </header>
 
     <div class="container bg-white">
         <h4 class="text-monospace text-center">OUR VALUE CUSTOMER</h4>
         <p>An important customer who has a relationship and can meet. Instead of visiting the store only once, I face customers every day with the aim of creating a salon where I want to go after one or three years. It is our mission and our greatest pleasure to be our customers' "lifelong beauty partner" through hairstyle and hair design.</p>
     </div>
+    <div class="text-center">
+        <h1 class="text-light ml-5">Our commitment</h1>
 
-        <h2 class="text-light ml-5 text-monospace ">Our commitment</h2>
+    </div>
 
     <div class="container bg-white mt-3 mb-5">
         <br>
@@ -129,10 +130,9 @@ include 'userMenu.php';
 
    <!-- footer -->
    <nav class="nav navbar  bg-dark mt-5">
-      <a class="" href="dashboard.php" >Go to top</a>
-      <p class="text-light">copyright@ Yuka</p>
-      <a href="contactpage.php">contact</a>
-        
+        <a href="dashboard.php" >Home</a>
+        <p class="text-light">Copyright@ Yuka Matsumoto</p>
+        <a href="contactpage.php">Contact</a>
     </nav>
     
 

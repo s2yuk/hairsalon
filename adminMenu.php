@@ -6,22 +6,31 @@ $loginid=$_SESSION['loginid'];
 $currentUser = $Hairsalon->getOneUser($loginid);
 
 ?>
-
-
 <!doctype html>
 <html lang="en">
   <head>
-    <title>admin</title>
+    <title>Smile admin</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <!-- font awesome icon -->
+    <script src="https://kit.fontawesome.com/eb83b1af77.js" crossorigin="anonymous"></script>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
+   <style>
+        body{
+            height:150px;
+        }
+       #logo{
+           height: 61px;
+       }
+   </style>
+ </head>
   <body>
-        <nav class="nav navbar-expand fix-top bg-dark text-light p-2">
-        <a href="dashboard.php" class="text-dark mr-5"><img src="asset/logo.jpg" alt="logo"></a>
+        <nav class="navbar navbar-expand fix-top bg-dark text-light p-2">
+        <a href="dashboard.php" target="_blank" class="text-dark mr-5"><img src="asset/smile.jpg" alt="logo" id="logo"></a>
 
             <div class="text-left">
             <ul class="nav nav-bar">
@@ -31,9 +40,6 @@ $currentUser = $Hairsalon->getOneUser($loginid);
                 <li class="nav-item">
                     <a href="addCatalog.php" role="button" class="btn btn-outline-light mr-1">add Catalog</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a href="catalog_fb.php" role="button" class="btn btn-outline-light mr-1">Catalog feedback</a>
-                </li> -->
                 <li class="nav-item">
                     <a href="addService.php" role="button" class="btn btn-outline-light mr-1">add Service</a>
                 </li>
@@ -46,40 +52,27 @@ $currentUser = $Hairsalon->getOneUser($loginid);
                 <li class="nav-item">
                     <a href="reservation.php" role="button" class="btn btn-outline-light mr-1">Reservation</a>
                 </li>
-                <!-- <li class="nav-item">
-                    <a href="skillpage.php" role="button" class="btn btn-outline-light mr-1">skill page</a>
-                </li> -->
-                <!-- <li class="nav-item">
-                    <a href="contactpage.php" role="button" class="btn btn-outline-light mr-1">Contact/access</a>
-                </li> -->
-                <!-- <li class="nav-item">
-                    <a href="testimonial.php" role="button" class="btn btn-outline-light mr-1">testimonial</a>
-                </li>   -->
-
-            
+                <li class="nav-item">
+                    <a href="msg_list.php" role="button" class="btn btn-outline-light mr-1">Message</a>
+                </li>
             </ul>
             </div>
 
             <div class="ml-auto">
-                    <ul class="nav nav-bar">
-            
-                        <li class="nav-item mr-2">
-                            Hello 
-                            <?php
-                            if(!empty($_SESSION['loginid'])){
-                                echo $currentUser['fname'] ;
-                                echo "<a href='logout.php' role='button' class='btn btn-outline-light'>Logout</a>";
-                            }else{
-                                echo "<p class='text-warning'>login plz!</p>";
-                                echo "<a href='login.php' role='button' class='btn btn-outline-light'>Login </a>";
-
-                            }
-                            ?>
-                        </li>
-
-
-                    </ul>
-                </div>
+                <ul class="nav nav-bar">
+                    <li class="nav-item">
+                        <?php
+                        if(!empty($_SESSION['loginid'])){
+                            echo "Hello ".$currentUser['fname'] ;
+                            echo "<a href='logout.php' role='button' class='btn btn-outline-light ml-2'>Logout</a>";
+                        }else{
+                            echo "<p class='text-warning'>login plz!</p>";
+                            echo "<a href='login.php' role='button' class='btn btn-outline-light ml-2'>Login </a>";
+                        }
+                        ?>
+                    </li>
+                </ul>
+            </div>
         </nav>
 
 

@@ -9,9 +9,9 @@
 
     $staffList =$Hairsalon->displayStaff();
     
-    $selected_cID=$row['order_menu'];
+    $selected_cID=$_SESSION['newCoupon'];
     $Selected_coupon =$Hairsalon->getSelectCouponID($selected_cID);
-    $selected_sID=$row['add_menu'];
+    $selected_sID=$_SESSION['newAddMenu'];
     $selected_service=$Hairsalon->getSelectServiceID($selected_sID);
 
 ?>
@@ -33,9 +33,7 @@
   <body>
      <div class="container">
         <a href="reservation.php" class="btn btn-outline-dark mt-3">Reservation list</a>
-        <form action="hairsalonAction.php" method="post"> 
-            <!-- hairsalonAction.php -->
-        <input type="hidden" name="reserve_id" value ="<?php echo $reserveID ;?>">
+       
         <div class="card mt-2">
             <div class="card-header">
                 <div class="row">
@@ -56,7 +54,7 @@
                 reserve ID
                 </div>
                 <div class="col-lg-9">
-                <?php echo $row['reserve_id']?>
+                <?php echo $row['reserve_id'];?>
                 </div>
             </div>
             <div class="row">
@@ -81,7 +79,10 @@
                 date
                 </div>
                 <div class="col-lg-9">
-                <input type="date" name="n_date" id="" value="<?php echo $row['reserve_date']?>">
+                    <?php 
+                    // echo $row['reserve_date'];
+                    echo $_SESSION['n_date'];
+                    ?>
                 </div>
             </div>
             <div class="row mt-3">
@@ -89,19 +90,10 @@
                   time
               </div>
               <div class="col-lg-9">
-                  <select name="hour" id="">
-                      <option value="<?php echo $row['reserve_hour']?>" class="text-success">selected: <?php echo $row['reserve_hour']?></option>
-                      <option value="10:00">10:00</option>
-                      <option value="11:00">11:00</option>
-                      <option value="12:00">12:00</option>
-                      <option value="13:00">13:00</option>
-                      <option value="14:00">14:00</option>
-                      <option value="15:00">15:00</option>
-                      <option value="16:00">16:00</option>
-                      <option value="17:00">17:00</option>
-                      <option value="18:00">18:00</option>
-                      <option value="19:00">19:00</option>
-                  </select>
+                <?php 
+                // echo $row['reserve_hour'];
+                echo $_SESSION['n_hour'];
+                ?>
               </div>
             </div>
             <div class="row mt-3">
@@ -109,27 +101,13 @@
                 Coupon menu
                 </div>
                 <div class="col-lg-9">
-                    <select name="newCoupon" id="" class="">
-                    <option value="<?php echo $row['order_menu']?>">selected: 
                         <?php 
-                         if (empty($row['order_menu'])){
+                         if (empty($_SESSION['newCoupon'])){
                             echo "-----";
                         }else{
                             echo $Selected_coupon['coupon_name'];
                         }
                         ?>
-                    </option>
-                    <option value="">nothing</option>
-                    <?php 
-                        foreach ($CouponList as $coupon){
-                        echo"<option value='".$coupon['coupon_id']."'>";
-                        echo $coupon['coupon_name'], " ¥".$coupon['coupon_price'];
-                        echo " </option>";
-                        $coupon_price=$coupon['coupon_price'];
-                    }  
-                    ?>    
-                    </select>
-
                 </div>
             </div>
             <div class="row mt-3">
@@ -137,28 +115,14 @@
                   Regular menu
                 </div>
                 <div class="col-lg-9">
-                    <!-- <label for="">Additional menu</label> -->
-                    <select name="newAddMenu" id="" class="">
-                        <option value="<?php echo $row['add_menu']?>">selected: 
                         <?php 
-                             if (empty($row['add_menu'])){
+                             if (empty($_SESSION['newAddMenu'])){
                                 echo "-----";
                             }else{
                                 echo $selected_service['service_name'];
                                
                             }
                         ?>
-                        </option>
-                        <option value="">nothing</option>
-                        <?php 
-                            foreach ($MenuList as $menu){
-                            echo"<option value='".$menu['service_id']."'>";
-                            echo $menu['service_name'], " ¥".$menu['price'];
-                            echo " </option>";
-                            }
-                        ?>
-                    </select>
-
                 </div>         
             </div>
             <div class="row mt-3 ">
@@ -166,22 +130,13 @@
                     nomination
                 </div>
                 <div class="col-lg-9">
-                    <select name="n_nomination" id="">
                         <?php 
-                            echo "<option value='".$row['nomination']."'>selected: ";
-                            if (empty($row['nomination'])){
+                            if (empty($_SESSION['n_nomination'])){
                                 echo "-----";
                             }else{
-                                echo $row['nomination'];
-                            }
-                            echo "</option>";
-
-                            foreach($staffList as $row){
-                            $staffList =$row['staffname'];
-                            echo "<option value='".$row['staff_name']."'> ".$row['staff_name']."</option>";
+                                echo $_SESSION['n_nomination'];
                             }
                         ?>
-                    </select>
                 </div>
             </div>
             <div class="row mt-3">
@@ -190,29 +145,40 @@
                 </div>
                 <div class="col-lg-9">
                     ¥<?php 
-                    if(!empty($Selected_coupon['coupon_price'] and $selected_service['price'])){
-                        echo $Selected_coupon['coupon_price']."+".$selected_service['price'];
-                        $total = $Selected_coupon['coupon_price']+$selected_service['price'];
-                        echo "=".$total;
-                    }elseif(!empty($Selected_coupon['coupon_price'])){
-                        $total = $Selected_coupon['coupon_price'];
-                        echo $total;
-                    }elseif(!empty($selected_service['price'])){
-                        $total = $selected_service['price'];
-                        echo $total;
-                       
-                    }
+                        if(!empty($Selected_coupon['coupon_price'] and $selected_service['price'])){
+                                echo $Selected_coupon['coupon_price']."+".$selected_service['price'];
+                                $total = $Selected_coupon['coupon_price']+$selected_service['price'];
+                                echo "=".$total;
+                            }elseif(!empty($Selected_coupon['coupon_price'])){
+                                $total = $Selected_coupon['coupon_price'];
+                                echo $total;
+                            }elseif(!empty($selected_service['price'])){
+                                $total = $selected_service['price'];
+                                echo $total;
+                            }
                     ?>
                 </div>
             </div>
-                    
-            <button type="submit" name="editReserve" class="btn btn-dark mt-3 btn-block w-50 mx-auto">Edit</button>
-   
+            <br>
+            <hr>
+            <div class="row mt-2">
+                <div class="col-lg-3">
+                    <a href="editReservation.php?reserve_id=<?php echo $reserveID ;?>" class="btn btn-outline-dark">back</a>
+                </div>
+                <div class="col-lg-9">
+                    <form action="hairsalonAction.php" method="post"> 
+                        <!-- hairsalonAction.php -->
+                        <input type="hidden" name="reserve_id" value ="<?php echo $reserveID ;?>">
+                        <input type="hidden" name="total" value="<?php echo $total ;?>">
+                        <button type="submit" name="editReserve2" class="btn btn-dark btn-block">confirm</button>
+                    </form>
+                </div>
+            </div>
+
             </div>
             <!-- /card-body -->
         </div>
         <!-- /card -->
-    </form>
     </div>
     <!-- /container -->
 

@@ -1,12 +1,10 @@
 <?php
 include 'adminMenu.php';
 
-$skillList = $Hairsalon->displaySkill();
-
 $staffID = $_GET['staff_id'];
 $row1= $Hairsalon->getForEditStaff($staffID);
 
-print_r($row1);
+// print_r($row1);
  
 ?>
 <!doctype html>
@@ -16,7 +14,11 @@ print_r($row1);
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <style>
+      h3{
+        font-family: 'Oleo Script', cursive;
+      }
+    </style>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
@@ -25,51 +27,58 @@ print_r($row1);
 
   <div class="container ">
         <div class="card w-75 mt-5 mx-auto text-capitalize">
-            <div class="card-header bg-warning">
-                Edit staff 
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <h3 class="">Edit staff </h3> 
+                    </div>
+                    <div class="col-lg-2">
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="staff_id" value="<?php echo $staffID;?>">
+                            <button type="submit" name="delete_staff" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <form action="hairsalonAction.php" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="staff_id" value ="<?php echo $staffID ?>">
+                    <input type="hidden" name="staff_id" value ="<?php echo $staffID;?>">
+                    <div class="row">
+                        <div class="col-lg-3">
+                          Full name :
+                        </div>
+                        <div class="col-lg-9">
+                            <input type="text" name="staff_name" id="" value="<?php echo $row1['staff_name']?>" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-lg-3">
+                            <label for="">position</label>
 
-
-                    <label for="">Full name :</label> 
-                    <br>
-                    <input type="text" name="staff_name" id="" placeholder="<?php echo $row1['staff_name']?>" class="form-control" required>
-                    <br>
-                    <label for="">position</label>
-                    <select name="position" id="" required>
-                        <option value="producer" class="form-control">producer</option>
-                        <option value="manager" class="form-control">manager</option>
-                        <option value="stylist" class="form-control">stylist</option>
-                        <option value="assistant" class="form-control">assistant</option>
-                    </select>
-                    <br>
-                    <!-- <br>
-                    <label for="">skill:</label>
-                    <br>
-                    <?php
-                    // foreach($skillList as $row){
-                     //   $skillName = $row['skillname'];
-                        
-                      
-                    //  echo "<input type='checkbox' name='skill[]' id='' value='".$row['skillname']."'>".$skillName;
-
-                    // }
-
-                     ?> -->
-                    
-
-                    <br>
-                    <br>
-                    <label for=""> chose gender:</label>
-                    <input type="radio" name="staff_gender" id="" value="M">Male  
-                    <input type="radio" name="staff_gender" id="" value="F">Female  
-                        <br>
-                        <br>
-                    <div class="row bg-light">
-                        <div class="col-lg-6">
-                            old photo: 
+                        </div>
+                        <div class="col-lg-9">
+                            <select name="position" id="" required>
+                                <option value="<?php echo $row1['position']?>"><?php echo $row1['position']?></option>
+                                <option value="producer" class="form-control">producer</option>
+                                <option value="manager" class="form-control">manager</option>
+                                <option value="stylist" class="form-control">stylist</option>
+                                <option value="assistant" class="form-control">assistant</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-lg-3">
+                            <label for=""> chose gender:</label>
+                        </div>
+                        <div class="col-lg-9">
+                            
+                            <input type="radio" name="staff_gender" id="" value="Male">Male  
+                            <input type="radio" name="staff_gender" id="" value="Female">Female          
+                        </div>
+                    </div>
+                    <div class="row bg-light mt-2">
+                        <div class="col-lg-3">
+                            old photo: <br>
                             <?php
                                 if(!empty($row1['staff_photo'])){
                                         $oldphoto = $row1['staff_photo'];
@@ -77,17 +86,21 @@ print_r($row1);
                                 }
                             ?>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-9">
                             <label for="">select NEW stylist photo:</label><br>
-                            <input type="file" name="s_photo" id="" required>
+                            <input type="file" name="s_photo" id="" value="<?php echo $row1['staff_photo'];?>">
                         </div>
                     </div>
-                        <br>
-                        <br>
-                        <label for=""> Enter  NEW bio :</label>
-                    <input type="text" name="bio" placeholder="<?php echo $row1['staff_bio']?>" class="form-control" required>
-
-                    <button type="submit" name="editStaff" class="btn btn-warning btn-block mt-3">Edit Staff data</button>
+                    <div class="row mt-2">
+                        <div class="col-lg-3">
+                            <label for=""> Enter  NEW bio :</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <input type="text" name="bio" value="<?php echo $row1['staff_bio']?>" class="form-control" required>
+                        </div>
+                    </div>
+                
+                    <button type="submit" name="editStaff" class="btn btn-dark btn-block mt-3">Edit Staff data</button>
                 </form>
 
             </div>

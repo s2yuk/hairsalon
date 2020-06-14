@@ -29,24 +29,27 @@ $addCouponList =$Hairsalon->displayCouponMenu();
         background-size : cover;
 
       }
+      div h5{
+        font-family: 'Oleo Script', cursive;
+
+      }
     </style>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+    
 </head>
   <body>
 
     <div class="container bg-light text-monospace text-center">        
-      <h4 class="display-4 text-monospace p-3">Booking</h4>
+      <h5 class="display-4 p-3">Booking</h5>
     </div>
     <div class="container bg-light text-monospace text-center mb-5">        
       <br>
-      <div class="alert alert-dark ">
+      <div class="alert alert-dark">
           <h5 class="text-monospace p-3">Step 1</h4>
           <p class="text-monospace"> select menu</p>
-      </div>
-        
-       
-
-   
-       
+          if you want only one menu >> <a href="booking2.php" class="btn btn-dark">Regular menu</a>
+      </div>    
         <div class="w-75 mx-auto">
 
         <h3>Coupon</h3>
@@ -62,10 +65,7 @@ $addCouponList =$Hairsalon->displayCouponMenu();
                 </div>
                 <div class="col-lg-5">
                   <h4><?php echo $coupon['coupon_name'] ?></h4>
-               
                   <p class=" display-5 text-black-50">* except: Yamaguchi & Ogawa</p>
-
-                  
                 </div>
                 <div class="col-lg-3">
                   <?php echo "¥".$coupon['coupon_price'] ?>
@@ -75,69 +75,14 @@ $addCouponList =$Hairsalon->displayCouponMenu();
                     <input type="hidden" name="coupon" value="<?php echo $coupon['coupon_id'];?>">
                     <input type="hidden" name="coupon_name" value="<?php echo $coupon['coupon_name'];?>">
                     <input type="hidden" name="coupon_price" value="<?php echo $coupon['coupon_price'];?>">
-
-                    
                     <br>
                     <button type="submit" name="addCoupon" class="btn btn-outline-dark">select</button>
-                  </form>
-                   
+                  </form> 
                 </div>
               </div>
             </div>
           </div>
-
-
         <?php endforeach; ?>
-
-
-        <hr>      
-
-
-
-        <h4 class="mt-3 p-3">Regular menu</h4>
-        <!-- 0 -->
-        <?php 
-        foreach ($addMenuList as $menu) :?>
-          
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-lg-2">
-                <img src="asset/logo.jpg" alt="">
-                </div>
-                <div class="col-lg-4">
-                  <?php echo $menu['service_name'] ?>
-                  
-                </div>
-                <div class="col-lg-4">
-                  <?php echo "¥".$menu['price'] ?>
-                </div>
-                <div class="col-lg-2">
-                    <?php 
-                    $serviceID =$menu['service_id'];
-                    ?>
-
-                   <form action="hairsalonAction.php" method="post">
-                    <input type="hidden" name="menu_id" value="<?php echo $menu['service_id'];?>">
-                    <input type="hidden" name="menu_name" value="<?php echo $menu['service_name'];?>">
-                    <input type="hidden" name="menu_price" value="<?php echo $menu['price'];?>">
-
-                    <button type="submit" name="addServiceMenuNow" class="btn btn-outline-dark">select</button>
-                  </form>
-
-                  <?php
-                      ?>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-
-        <?php endforeach; ?>
-
-
-
 
         <br><br>
         <!-- container -->
@@ -160,9 +105,9 @@ $addCouponList =$Hairsalon->displayCouponMenu();
 
       <!-- footer -->
       <nav class="nav navbar bg-dark mt-5">
-        <a class="" href="dashboard.php" >Go to top</a>
-        <p class="text-light">copyright@ Yuka</p>
-        <a href="contactpage.php">contact</a>   
+        <a href="dashboard.php" >Home</a>
+        <p class="text-light">Copyright@ Yuka Matsumoto</p>
+        <a href="contactpage.php">Contact</a>
       </nav>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

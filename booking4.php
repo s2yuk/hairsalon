@@ -24,20 +24,26 @@ include 'userMenu.php';
         background-size : cover;
 
       }
+      div h5{
+        font-family: 'Oleo Script', cursive;
+      }
     </style>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+    
 
 </head>
   <body>
       
 
     <div class="container bg-light text-monospace text-center">
-      <h4 class="display-4 p-3"> Booking</h4>
+      <h5 class="display-4 p-3"> Booking</h5>
     </div>
     
     <div class="container bg-light text-monospace text-center">
-       
+       <br>
       <div class="alert alert-dark">
-          <h5 class="p-3">Step 4</h5>
+          <h4 class="p-3">Step 4</h4>
           <p> select date & time</p>
       </div>
       
@@ -94,9 +100,7 @@ include 'userMenu.php';
                   <form action="hairsalonAction.php" method="post">
                       <input type="hidden" name="select_date" value="<?php echo date('Y-m-d')?>">
                       <input type="hidden" name="hour" value="10:00">
-                      <button type="submit" name="submit_date">
-                        
-                      </button>
+                      <button type="submit" name="submit_date"></button>
                   </form>
               </div>
               <div class="col-lg-1 border">
@@ -104,9 +108,7 @@ include 'userMenu.php';
                       <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+1 day'))?> ">
                       <input type="hidden" name="hour" value="10:00">
 
-                      <button type="submit" name="submit_date">
-                           
-                      </button>
+                      <button type="submit" name="submit_date"></button>
                   </form>
               </div>
               <div class="col-lg-1 border">
@@ -114,9 +116,7 @@ include 'userMenu.php';
                       <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+2 day'))?> ">
                       <input type="hidden" name="hour" value="10:00">
 
-                      <button type="submit" name="submit_date">
-                           
-                      </button>
+                      <button type="submit" name="submit_date"></button>
                   </form>
               </div>
               <div class="col-lg-1 border">
@@ -124,9 +124,7 @@ include 'userMenu.php';
                       <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+3 day'))?>">
                       <input type="hidden" name="hour" value="10:00">
 
-                      <button type="submit" name="submit_date">
-                           
-                      </button>
+                      <button type="submit" name="submit_date"></button>
                   </form>
               </div>
               <div class="col-lg-1 border">
@@ -134,9 +132,7 @@ include 'userMenu.php';
                       <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+4 day'))?>">
                       <input type="hidden" name="hour" value="10:00">
 
-                      <button type="submit" name="submit_date">
-                            
-                      </button>
+                      <button type="submit" name="submit_date"></button>
                   </form>
               </div>
               <div class="col-lg-1 border">
@@ -144,9 +140,7 @@ include 'userMenu.php';
                       <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+5 day'))?> ">
                       <input type="hidden" name="hour" value="10:00">
 
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
+                      <button type="submit" name="submit_date"></button>
                   </form>
               </div>
               <div class="col-lg-1 border">
@@ -154,11 +148,7 @@ include 'userMenu.php';
                       <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+6 day'))?>">
                       <input type="hidden" name="hour" value="10:00">
 
-                      <button type="submit" name="submit_date">
-                            <?php 
-                             
-                            ?>
-                      </button>
+                      <button type="submit" name="submit_date"></button>
                   </form>
               </div>
               <div class="col-lg-1 border">
@@ -166,12 +156,7 @@ include 'userMenu.php';
                       <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+7 day'))?>">
                       <input type="hidden" name="hour" value="10:00">
 
-                      <button type="submit" name="submit_date">
-                            <?php 
-                              
-                            
-                            ?>
-                      </button>
+                      <button type="submit" name="submit_date"></button>
                   </form>
               </div>
 
@@ -191,9 +176,7 @@ include 'userMenu.php';
                       <input type="hidden" name="select_date" value="<?php echo date('Y-m-d')?>">
                       <input type="hidden" name="hour" value="11:00">
 
-                      <button type="submit" name="submit_date">
-                            
-                      </button>
+                      <button type="submit" name="submit_date"></button>
                   </form>
               </div>
               <div class="col-lg-1 border">
@@ -201,9 +184,7 @@ include 'userMenu.php';
                       <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+1 day'))?> ">
                       <input type="hidden" name="hour" value="11:00">
 
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
+                      <button type="submit" name="submit_date"></button>
                   </form>
               </div>
               <div class="col-lg-1 border">
@@ -1108,15 +1089,21 @@ include 'userMenu.php';
             <!-- row -->
 
         </div>
-        <div class="row">
+        <div class="text-center">
             <form action="hairsalonAction.php" method="post">
-            <button type="submit" name="reselect4" class="btn btn-dark m-3">Previous page</button>
+            <button type="submit" name="reselect4" class="btn btn-secondary m-3"> << Previous page</button>
             </form>
         </div> 
 
 
     </div>
 
+    <!-- footer -->
+    <nav class="nav navbar bg-dark mt-5">
+        <a href="dashboard.php" >Home</a>
+        <p class="text-light">Copyright@ Yuka Matsumoto</p>
+        <a href="contactpage.php">Contact</a>
+    </nav>
 
 
     <!-- Optional JavaScript -->

@@ -16,7 +16,11 @@ $row2 = $Hairsalon->getCatalogID($catalogID);
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <style>
+      h3{
+        font-family: 'Oleo Script', cursive;
+      }
+    </style>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
@@ -28,7 +32,7 @@ $row2 = $Hairsalon->getCatalogID($catalogID);
 
               <div class="card text-monospace">
                 <div class="card-header">
-                    <h3 >edit catalog:</h3>
+                    <h3>Edit catalog:</h3>
                 </div>
                 <div class="card-body">
                     <div class="row ">
@@ -78,13 +82,14 @@ $row2 = $Hairsalon->getCatalogID($catalogID);
                           </select>
                       </div>
                     </div>
-
-                  <button type="submit" name="editCatalog" class="btn btn-dark mt-3 float-right">Edit</button>
+                    <div class="text-center">
+                      <button type="submit" name="editCatalog" class="btn btn-dark w-50 mt-5">Edit</button>
+                    </div>
                 </div>
               </div>
               <div class="text-right">
                   <?php
-                  echo "<a href='deleteCatalog.php?catalog_id=$catalogID' role='button'  class='btn btn-outline-dark mr-4'>delete </a>";
+                  echo "<a href='deleteCatalog.php?catalog_id=$catalogID' role='button' class='btn btn-outline-danger m-2'>delete</a>";
                   ?>
               </div>
              

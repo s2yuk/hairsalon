@@ -19,9 +19,7 @@ $currentUser = $Hairsalon->getOneUser($loginid);
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
-    <!-- font awesome icon -->
-    <!-- <script src="https://kit.fontawesome.com/eb83b1af77.js" crossorigin="anonymous"></script> -->
-
+    
 
     <style>        
         
@@ -35,15 +33,21 @@ $currentUser = $Hairsalon->getOneUser($loginid);
         #pGrey{
             color: grey;
         }
+        div h5{
+            font-family: 'Oleo Script', cursive;
+            /* letter-spacing: 20px; */
+        }
         
     </style>
     
-
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+        
 
 </head>
   <body>
     <div class="bg-white w-50 mx-auto rounded text-center">
-        <p class="display-4 text-monospace">Catalog</p>
+        <h5 class="display-4">Catalog</h5>
         <p class="text-monospace"><?php echo count($hairCatalogList);?> of picture </p>
     </div>
 
@@ -97,9 +101,17 @@ $currentUser = $Hairsalon->getOneUser($loginid);
 
                             // print_r($comments);
                             foreach($comments as $row2){
+                                echo "<form action='hairsalonAction.php' method='post'>";
+                            
                                 echo "<p>".$row2['comment']."</p>";
-                                echo "<p class='text-right' id='pGrey'>comment by:".$row2['user']."</p>";
-                                echo "<br>";
+                                echo "<p class='text-right' id='pGrey'>comment by:".$row2['user'];
+                                    if($loginid==$row2['user_id']){
+                                        // echo $row2['comment_id'];
+                                        echo "<input type='hidden' name='comment_id' value=".$row2['comment_id'].">";
+                                        echo "<button type='submit' name='delete_comment'class='btn btn-outline-danger btn-sm'> <i class='fa fa-trash' aria-hidden='true'></i></button>";
+                                    }                     
+                                echo "</p>";
+                                echo "</form>";
                             }
 
                            
@@ -111,11 +123,12 @@ $currentUser = $Hairsalon->getOneUser($loginid);
                             ?>
                                 <input type="hidden" name="fname" value="<?php echo $currentUser['fname'] ?>">
                                 <input type="hidden" name="catalog_id" value="<?php echo $row['catalog_id'] ?>">
-
-                                <input type="text" name="content" class='form-control' placeholder='add a comment' id="" required>
-                                
-                                <button type="submit" name='send' class="btn btn-outline-primary mt-1 ">Post Comment</button>
-
+                                <div class="input-group">
+                                    <input type="text" name="content" class="form-control" placeholder="add a comment" aria-label="" aria-describedby="basic-addon1" required>
+                                    <div class="input-group-append">
+                                        <button type="submit" name='send' class="btn btn-outline-dark">Post</button>
+                                    </div>
+                                </div>
 
                            <?php
                             echo "</form>";
@@ -138,20 +151,12 @@ $currentUser = $Hairsalon->getOneUser($loginid);
 
 
 
-
-   
-  
-
-
-
 <br><br>
    <!-- footer -->
-    <nav class="nav navbar bg-dark mt-5 ">
-    <!-- fixed-bottom -->
-    
-      <a class="" href="dashboard.php" >Go to top</a>
-      <p class="text-light">copyright@ Yuka</p>
-      <a href="contactpage.php">contact</a>    
+    <nav class="nav navbar bg-dark mt-5">
+        <a href="dashboard.php" >Home</a>
+        <p class="text-light">Copyright@ Yuka Matsumoto</p>
+        <a href="contactpage.php">Contact</a>
     </nav>
 
       

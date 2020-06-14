@@ -1,5 +1,15 @@
 <?php
-include 'userMenu.php';
+  include 'userMenu.php';
+  $loginid=$_SESSION['loginid'];
+  $currentUser = $Hairsalon->getOneUser($loginid);
+
+  if(!empty($_SESSION['loginid'])){
+    $login_email = $Hairsalon->getEmail($loginid);
+    // echo "login Email:".$login_email['email'];
+    $email = $login_email['email'];
+  }
+
+
 ?>
 
 <!doctype html>
@@ -15,30 +25,60 @@ include 'userMenu.php';
     
     <style>
         
-        body{
-          margin-top:150px;
-          height: 700px;
-          background-image: url(asset/logo1.jpeg);
-          background-repeat: no-repeat;
-          background-attachment: fixed;
-          background-position: center center;
-          background-size :cover ;
-        }
+      body{
+        margin-top:150px;
+        height: 700px;
+        background-image: url(asset/logo1.jpg);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center center;
+        background-size :cover ;
+      }
+      div h5{
+        font-family: 'Oleo Script', cursive;
+      }
+      #loginMsg{
+        font-size: 10px;
+      }
+
       </style>
+      <!-- google font -->
+      <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+
 
 
 </head>
   <body>
     <div class="container w-50 bg-light mt-3 text-monospace">
-        <h1 class="text-center p-3">Contact us</h1>
-
-        <form action="hairsalonAction.php" method="post">
+        <h5 class="text-center display-4 p-3">Contact us</h5>
+      
+        <p class="text-center">TEL: 03-1234-5678</p>
+        
+        <br>
+        <form action="hairsalonAction.php" method="post" enctype="multipart/form-data">
             
                 <!-- <legend>Contact us</legend> -->
-
-                <input type="text" name="name" required value="name" maxlength="20" class="form-control">
+                <?php if(!empty($_SESSION['loginid'])) :?>
+                  <input type="hidden" name="c_id" value="<?php echo $currentUser['loginid'];?>">
+                <?php else :?>
+                  <p id="loginMsg">
+                    if you have an account please login.
+                    <a href="login.php" class='badge badge-secondary ml-2 p-1'> >> Login <<</a>
+                  </p>
+                <?php endif;?>
+                    
+                <?php if(!empty($_SESSION['loginid'])) :?>
+                  <input type="text" name="name" value="<?php echo $currentUser['fname']." ".$currentUser['lname']?>" class="form-control">
+                <?php else :?>
+                  <input type="text" name="name" required placeholder="name" maxlength="30" class="form-control">
+                <?php endif;?>
+                
                 <br>
-                <input type="email" name="email" required value="Email" class="form-control">
+                <?php if(!empty($_SESSION['loginid'])) :?>
+                  <input type="email" name="email" value="<?php echo $email;?>" id="" class="form-control">
+                <?php else :?>
+                  <input type="email" name="email" required placeholder="Email" class="form-control">
+                <?php endif;?>
                 <br>
             <div class=row>
               <div class="col-lg-6">
@@ -65,6 +105,7 @@ include 'userMenu.php';
             <div>
                     <label for="">Which stylist do you prefere?</label>
                     <select name="stylist" id="" class="form-control">
+                        <option value="no_choice">Chose stylist</option>
                         <option value="Manager">Manager</option>
                         <option value="t-stylist1">Top stylist1</option>
                         <option value="t-stylist"2>Top stylist2</option>
@@ -74,48 +115,38 @@ include 'userMenu.php';
                     </select>
             </div>  
              <br>
-            <textarea name="comment" id="comment" cols="30" rows="10" class="form-control">Comment</textarea>
+            <textarea name="comment" id="comment" cols="30" rows="10" class="form-control" placeholder="Write here" required></textarea>
               <br>
-            <div>
+            <div class="text-center">
                 <label for="">If you have any referance image photo, please let me know.</label>
-                <input type="file" name="imagephoto">
+                <input type="file" name="photo">
+                <button type="submit" name="sent" class="btn btn-block btn-outline-dark mt-5 w-75 mx-auto">sent</button>
             </div>
               <br>
-            <button type="submit" name="sent" class="btn btn-block btn-outline-dark mt-3">sent</button>
               <br>
         </form>
+
     </div>
 
-    <div class="container w-75 mt-3 bg-light text-monospace text-center" id="access">
+    <div class="container w-50 mt-3 bg-light text-monospace text-center" id="access">
     <br>
-      <h3>Access</h3>
+      <h5 class="display-4">Access</h5>
       <br>
-      <h5>Address:
-
-          <a href="https://goo.gl/maps/MXTUbCnBdhHb4JZ58" target="_blank">4-15-4 Jingu-mae, Omotesando, Shibuya-city, Tokyo
-          <img src="asset/map_states.png" alt="map" class="w-50">
-          </a>
-      </h5>
+        <p>Address:
+          1-2-3 Omotesando, Shibuya-city, Tokyo</a>
+        </p>
       <br>
       <p>
           5 mins by walk from nearlest subway station:  Omotesando (Exit A2)
       </p>
       <br>
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
-
-
-
-
+  
     <!-- footer -->
     <nav class="nav navbar bg-dark mt-5">
-      <a class="" href="dashboard.php" >Go to top</a>
-      <p class="text-light">copyright@ Yuka</p>
-      <a href="contactpage.php">contact</a>
-        
+        <a href="dashboard.php" >Home</a>
+        <p class="text-light">Copyright@ Yuka Matsumoto</p>
+        <a href="contactpage.php">Contact</a>
     </nav>
       
     <!-- Optional JavaScript -->

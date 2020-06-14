@@ -52,9 +52,6 @@ function login($email,$password){
 }
 
 
-
-
-
 // userMenu.php
     //client table 
 function getOneUser($loginid){
@@ -98,7 +95,17 @@ function displayReviewList(){
         return FALSE;
 
     }
+}
+function deleteReview($review_id){
+    $sql="DELETE FROM review WHERE review_id = '$review_id'";
+    $result=$this->conn->query($sql);
 
+    if($result == FALSE){
+        die('deleteing review failed'.$this->conn->connect_error);
+    }else{
+        header('location:hairCatalog.php');
+
+    }
 }
 
 //hairCatalog.php reaction of photos
@@ -137,14 +144,154 @@ function displayCatalogComment($catalogID){
         return FALSE;
     }
 }
+function deleteCatalogComment($comment_id){
+    $sql="DELETE FROM catalog_comment WHERE comment_id ='$comment_id'";
+    $result = $this->conn->query($sql);
+
+    if($result ==FALSE){
+        die('can not delete catalog comment'.$this->conn->connect_error);
+    }else{
+        header('location:hairCatalog.php');
+    }
+
+}
 
 
+function contact($name,$email,$gender,$service,$stylist,$comment,$iphoto,$c_id){
+    $target_dir ='upload/user/msg/';
+    $target_file= $target_dir.basename($iphoto);
+
+    $sql="INSERT INTO contact(contact_name, contact_email, gender, service, stylist, comment, iphoto, c_id) VALUES('$name', '$email','$gender','$service','$stylist','$comment','$iphoto','$c_id')";
+    $result = $this->conn->query($sql);
+
+    if($result == FALSE){
+        die($this->conn->error);
+    }else{
+        move_uploaded_file($_FILES['photo']['tmp_name'],$target_file);
+        header('location:contact_send.php');
+    }
+}
+// for admin
+function displayContact(){
+    $sql ="SELECT * FROM contact ORDER BY send_time DESC";
+    $result = $this->conn->query($sql);
+
+    if ($result->num_rows > 0){
+        while ($rows = $result ->fetch_assoc()){
+            $row[] = $rows;
+        }return $row;
+    }else{
+        return FALSE;
+    }
+}
+// for msg_detail.php
+function getMsgID($msgID){
+    $sql = "SELECT * FROM contact WHERE contact_id = $msgID";
+    $result = $this->conn->query($sql);
+
+    if ($result ==FALSE){
+        die ('can not get contact_id'.$this->conn->connect_error);
+    }else{
+        return $result->fetch_assoc();
+    }
+}
+
+// My page
+// my reservation
+function myReserve($loginid){
+    $sql = "SELECT * FROM reservation WHERE c_id=$loginid ORDER BY reserve_id DESC";
+    $result = $this->conn->query($sql);
+
+    if($result->num_rows>0){
+        while($rows = $result->fetch_assoc()){
+            $row[]=$rows;
+        }
+        return $row;
+    }else{
+        echo "error ";
+        return FALSE;
+    }
+}
+// message
+function getEmail($loginid){
+    $sql="SELECT * FROM login WHERE login_id='$loginid'";
+    $result= $this->conn->query($sql);
+
+    if($result == FALSE){
+        die('get email error'.$this->conn->connect_error);
+    }else{
+        return $result->fetch_assoc();
+    }
+}
+
+function myMessage($email){
+    $sql="SELECT * FROM contact WHERE contact_email='$email' ORDER BY contact_id DESC";
+    $result = $this->conn->query($sql);
+
+    if($result->num_rows> 0){
+        while($rows = $result->fetch_assoc()){
+            $row[]= $rows;
+        }
+        return $row;
+    }else{
+        return FALSE;
+    }
+}
+// msg_detail.php  for reply
+function msg_reply($c_id,$text,$file,$user_id){
+    $target_dir ='upload/user/msg/';
+    $target_file= $target_dir.basename($file);
+
+    $sql = "INSERT INTO msg_reply(c_id,text,file,user_id) VALUE('$c_id','$text','$file','$user_id')";
+    $result = $this->conn->query($sql);
+
+    if($result== FALSE){
+        die('Reply submit error'.$this->conn->error);
+    }else{
+        move_uploaded_file($_FILES['file']['tmp_name'],$target_file);
+
+        $sql2 ="SELECT * FROM login WHERE login_id='$user_id'";
+        $result2 = $this->conn->query($sql2);
+
+        if($result2->num_rows == 1){
+            $row = $result2->fetch_assoc();    
+            if($row['status']=='A'){
+                header("location:msg_detail.php?contact_id='$c_id'");
+            }else{  
+                header("location:message_detail.php?contact_id='$c_id'");
+            }
+        }else{
+            die('heading error'.$this->conn->connect_error);
+        }
+    }
+}
 
 
+// disply reply
+function displayReply($msgID){
+    // $sql = "SELECT * FROM msg_reply WHERE c_id=$msgID";
+    $sql="SELECT * FROM msg_reply INNER JOIN client ON msg_reply.user_id=client.c_id WHERE msg_reply.c_id=$msgID";
+    $result = $this->conn->query($sql);
 
+    if($result ->num_rows >0){
+        while($rows = $result->fetch_assoc()){
+            $row[] =$rows; 
+        }
+        return $row;
+    }else{
+        return FALSE;
+    }
+}
+function countReply($c_id){
+    $sql = "SELECT COUNT(*) FROM msg_reply WHERE c_id='$c_id";
+    $result = $this->conn->query($sql);
 
-
-
+    if($result->num_rows > 0 ){
+        return $result->fetch_assoc();
+    }else{
+        echo "no reply";
+    }
+}
 
 
 
@@ -156,10 +303,10 @@ function addNews($news,$date){
     $sql="INSERT INTO info(news,date) VALUES('$news','$date')";
     $result = $this->conn->query($sql);
 
-    if($result=FALSE){
-      die('insert into info failed'.$this->conn->connect_error);
+    if($result==FALSE){
+        die('insert into info failed'.$this->conn->connect_error);
     }else{
-      header("location:dashboard.php");
+        header("location:dashboard.php");
     }
 }
 
@@ -180,48 +327,8 @@ function displayNews($news,$date){
 }
 
 
-
-// addStaff.php
-public function addstaffskills($skill){
-    $sql1 = "SELECT MAX(staff_id) FROM staff";
-    $result1 = $this->conn->query($sql1);
- 
-     if($result1->num_rows == 1){
-     $row = $result1->fetch_assoc();
-     $staffID = $row['MAX(staff_id)'];
- 
-         $sql2 = "INSERT INTO staffs_skills(user_id,skill_name)VALUES('$staffID','$skill')";
-         $result2 = $this->conn->query($sql2);
- 
-             if($result2 == false){
-                      echo "error sql 2";
-             }
-             else{
-                       echo "working";
-             }
-     }else{
-         echo "error sql 1";
-     }
- 
- }
-
-
-
 //addStaff.php
-function displaySkill(){
-    $sql="SELECT * FROM skill";
-    $result =$this->conn->query($sql);
-    
-    if($result->num_rows >0 ){
-        // $row = array();
-        while($rows =$result->fetch_assoc()){
-            $row[]=$rows;
-        }
-        return $row;
-    }else{
-        return FALSE;
-    }
-}
+
 function addStaff($s_name,$position,$s_gender,$staffPhoto,$s_bio){
     $target_dir ='upload/admin/';
     $target_file= $target_dir.basename($staffPhoto);
@@ -229,7 +336,7 @@ function addStaff($s_name,$position,$s_gender,$staffPhoto,$s_bio){
     $sql = "INSERT INTO `staff`(`staff_name`, `position`,`staff_gender`, `staff_photo`, `staff_bio`) VALUES ('$s_name','$position','$s_gender','$staffPhoto','$s_bio')";
     $result = $this->conn->query($sql);
 
-    if($result = FALSE){
+    if($result == FALSE){
         die($this->conn->error);
     }else{
         move_uploaded_file($_FILES['s_photo']['tmp_name'],$target_file);
@@ -250,30 +357,6 @@ function displayStaff(){
         return FALSE;
     }
 }
-
-
-
-
-// staffpage.php
-public function getStaffSkills($id){
-    // $sql = "SELECT skill_name,user_id FROM staff INNER JOIN staffs_skills WHERE staffs_skills.user_id = '$id'";
-
-    $sql = "SELECT skill_name FROM staffs_skills INNER JOIN staff ON staffs_skills.user_id=staff.staff_id WHERE user_id = '$id'";
-    
-    $result = $this->conn->query($sql);
-
-    if($result->num_rows>0){
-        $row = array();
-        while($rows = $result->fetch_assoc()){
-            $row[] = $rows;
-        }
-        return $row;
-    }else{
-        return FALSE;
-    }
-}
-
-
 
 
 // editStaff.php
@@ -303,19 +386,20 @@ function editStaff($s_name,$position,$s_gender,$staffPhoto,$s_bio,$staffID){
         header('location:addStaff.php');
        
     }else{
-        die('update skill is error'.$this->conn->error);       
+        die('update staff error'.$this->conn->error);       
+    }
+}
+function deleteStaff($staffID){
+    $sql="DELETE FROM staff WHERE staff_id = '$staffID'";
+    $result=$this->conn->query($sql);
+
+    if($result ==FALSE){
+        die('can not delet staff'.$this->conn->connect_error);
+    }else{
+        header('location:addStaff.php');
     }
 }
 
-
-function updateStaffSkill(){
-
-
-
-
-
-
-}
 
 
 
@@ -348,30 +432,45 @@ function displayServiceMenu(){
         return FALSE;
     }
 }
-// function getForEditService($serviceID){
-//     $sql="SELECT * service WHERE service_id = $serviceID";
-//     $result =$this->conn->query($sql);
+function getForEditService($serviceID){
+    $sql="SELECT * FROM service WHERE service_id = '$serviceID'";
+    $result =$this->conn->query($sql);
 
-//     if($result ==FALSE){
-//         die('cannot get one service_id'.$this->conn->connect_error);
+    if($result ==FALSE){
+        die('cannot get one service_id'.$this->conn->connect_error);
 
-//     }else{
-//         return $result->fetch_assoc();
-//     }
-// }
-// function editServiceMenu($serviceID,$menuName,$menuPrice){
-//     $sql="UPDATE service SET service_name = '$menuName', price = '$menuPrice' WHERE service_id ='$serviceID'";
-//     $result =$this->conn->query($sql);
+    }else{
+        return $result->fetch_assoc();
+    }
+}
+function editServiceMenu($serviceID,$menuName,$menuPrice){
+    $sql="UPDATE service SET service_name = '$menuName', price = '$menuPrice' WHERE service_id ='$serviceID'";
+    
+    $result =$this->conn->query($sql);
 
-//     if($result==FALSE){
-//         die('Update service is failed'.$this->conn->connect_error);
+    if($result==FALSE){
+        die('Update service is failed'.$this->conn->connect_error);
         
-//     }else{
-//         header('location:addService.php');
+    }else{
+        header('location:addService.php');
+    }
 
-// }
+}
+function deleteService($serviceID){
+    $sql="DELETE FROM service WHERE service_id = '$serviceID'";
+    $result=$this->conn->query($sql);
+
+    if($result == FALSE){
+        die('deleteing service failed'.$this->conn->connect_error);
+    }else{
+        header('location:addService.php');
+
+    }
+
+}
 
 
+// addCoupon.php
 function addCouponMenu($couponName,$couponPrice){
     $sql="INSERT INTO coupon(coupon_name,coupon_price) VALUES('$couponName','$couponPrice')";
     $result = $this->conn->query($sql);
@@ -396,6 +495,44 @@ function displayCouponMenu(){
         return FALSE;
     }
 }
+function getForEditCoupon($couponID){
+    $sql="SELECT * FROM coupon WHERE coupon_id = '$couponID'";
+    $result =$this->conn->query($sql);
+
+    if($result ==FALSE){
+        die('cannot get one coupon_id'.$this->conn->connect_error);
+
+    }else{
+        return $result->fetch_assoc();
+    }
+}
+function editCouponMenu($couponID,$couponName,$couponPrice){
+    $sql="UPDATE coupon SET coupon_name = '$couponName', coupon_price = '$couponPrice' WHERE coupon_id ='$couponID'";
+    
+    $result =$this->conn->query($sql);
+
+    if($result==FALSE){
+        die('Update coupon is failed'.$this->conn->connect_error);
+        
+    }else{
+        header('location:addService.php');
+    }
+
+}
+function deleteCoupon($couponID){
+    $sql="DELETE FROM coupon WHERE coupon_id = '$couponID'";
+    $result=$this->conn->query($sql);
+
+    if($result == FALSE){
+        die('deleteing coupon failed'.$this->conn->connect_error);
+    }else{
+        header('location:addService.php');
+
+    }
+
+}
+
+
 //booking2.php
 function getSelectServiceID($selected_sID){
     $sql="select * FROM service WHERE service_id ='$selected_sID'";
@@ -421,11 +558,6 @@ function getSelectCouponID($selected_cID){
     }
 
 }
-
-
-
-
-
 
 
 
@@ -499,96 +631,13 @@ function deleteCatalog($catalogID){
     $sql="DELETE FROM catalog WHERE catalog_id = '$catalogID'";
     $result=$this->conn->query($sql);
 
-    if($result = FALSE){
+    if($result == FALSE){
         die('deleteing catalog failed'.$this->conn->connect_error);
     }else{
         header('location:addCatalog.php');
 
     }
 }
-
-// booking4.php  not working
-function display10hReservation($today){
-    $sql="SELECT * FROM reservation WHERE reserve_date='$today' AND reserve_hour='10:00'";
-   
-    $result = $this->conn->query($sql);
-
-    if($result->num_rows>0){
-        while($rows =$result->fetch_assoc()){
-            $row[]=$rows;
-        }return $row;
-    }else{
-        return FALSE;
-    }
-}
-function display11hReservation($today){
-    $sql="SELECT * FROM reservation WHERE reserve_date='$today' AND reserve_hour='11:00'";
-    
-    $result = $this->conn->query($sql);
-
-    if($result->num_rows>0){
-        while($rows =$result->fetch_assoc()){
-            $row[]=$rows;
-        }return $row;
-    }else{
-        return FALSE;
-    }
-}
-function display12hREservation($today){
-    $sql="SELECT * FROM reservation WHERE reserve_date='$today' AND reserve_hour='12:00'";
-    
-    $result = $this->conn->query($sql);
-
-    if($result->num_rows>0){
-        while($rows =$result->fetch_assoc()){
-            $row[]=$rows;
-        }return $row;
-    }else{
-        return FALSE;
-    }
-}
-// tomorrow
-function displayTMR10h($tmr){
-    $sql="SELECT * FROM reservation WHERE reserve_date='$tmr' AND reserve_hour='10:00'";
-   
-    $result = $this->conn->query($sql);
-
-    if($result->num_rows>0){
-        while($rows =$result->fetch_assoc()){
-            $row[]=$rows;
-        }return $row;
-    }else{
-        return FALSE;
-    }
-}
-function displayPlus2days10h($plus2days){
-    $sql="SELECT * FROM reservation WHERE reserve_date='$plus2days' AND reserve_hour='10:00'";
-   
-    $result = $this->conn->query($sql);
-
-    if($result->num_rows>0){
-        while($rows =$result->fetch_assoc()){
-            $row[]=$rows;
-        }return $row;
-    }else{
-        return FALSE;
-    }
-}
-function display3days10h($threedays){
-    $sql="SELECT * FROM reservation WHERE reserve_date='$threedays' AND reserve_hour='10:00'";
-   
-    $result = $this->conn->query($sql);
-
-    if($result->num_rows>0){
-        while($rows =$result->fetch_assoc()){
-            $row[]=$rows;
-        }return $row;
-    }else{
-        return FALSE;
-    }
-}
-
-
 
 
 // booking5
@@ -616,30 +665,34 @@ function getSelectedStylist($selected_stylistID){
     }
 
 }
-// confirm resrvation
-function addReservation($date,$hour,$fname,$lname,$customerID,$order,$order2,$addMenu,$nomination,$totalPrice){
-    $sql="INSERT INTO `reservation`(`reserve_date`, `reserve_hour`, `fname`, `lname`, `c_id`, `order_menu`, `order_menu2`, `add_menu`, `nomination`, `total_price`) VALUES ('$date','$hour','$fname','$lname','$customerID','$order','$order2','$addMenu','$nomination','$totalPrice')";
+// confirm reservation
+function addReservation($date,$hour,$fname,$lname,$customerID,$order,$addMenu,$nomination,$totalPrice){
+    $sql="INSERT INTO `reservation`(`reserve_date`, `reserve_hour`, `fname`, `lname`, `c_id`, `order_menu`, `add_menu`, `nomination`, `total_price`) VALUES ('$date','$hour','$fname','$lname','$customerID','$order','$addMenu','$nomination','$totalPrice')";
     $result = $this->conn->query($sql);
 
     if($result ==FALSE){
         die('insert reservation is failed'.$this->conn_connect_error);
     }else{
         header('location:booking6.php');
-
     }
 
 }
+function addReserve_by_admin($date,$hour,$fname,$lname,$c_id,$coupon_id,$service_id,$nomination,$totalPrice){
+    $sql="INSERT INTO `reservation`(`reserve_date`, `reserve_hour`, `fname`, `lname`, `c_id`, `order_menu`, `add_menu`, `nomination`, `total_price`) VALUES ('$date','$hour','$fname','$lname','$c_id','$coupon_id','$service_id','$nomination','$totalPrice')";
+    $result = $this->conn->query($sql);
 
-
-
-
-
+    if($result ==FALSE){
+        die('insert reservation is failed'.$this->conn_connect_error);
+    }else{
+        header('location:reservation.php');
+    }
+}
 
 
 // admin.php
 // dispaly todays reservation
 function displayTodaysReservation($today){
-    $sql ="SELECT * FROM reservation WHERE reserve_date='$today'";
+    $sql ="SELECT * FROM reservation WHERE reserve_date='$today' ORDER BY reserve_hour";
     $result = $this->conn->query($sql);
 
     if($result->num_rows>0){
@@ -652,6 +705,16 @@ function displayTodaysReservation($today){
         return FALSE;
     }
 
+}
+function todaysCount($today){
+    $sql="SELECT count(*) FROM reservation WHERE reserve_date='$today'";
+    $result=$this->conn->query($sql);
+
+    if($result ==FALSE){
+        die('cannot get todays count');
+    }else{
+        return $result->fetch_assoc();
+    }
 }
 
 // display latest reservation
@@ -677,7 +740,7 @@ function getReserveID($reserveID){
     $result = $this->conn->query($sql);
 
     if($result ==FALSE){
-        die('can not get one photo id'.$this->conn->connect_error);
+        die('can not get reserve id'.$this->conn->connect_error);
     }else{
         return $result->fetch_assoc();
     }
@@ -688,7 +751,7 @@ function deleteReserve($reserveID){
     $sql="DELETE FROM reservation WHERE reserve_id = '$reserveID'";
     $result=$this->conn->query($sql);
 
-    if($result = FALSE){
+    if($result == FALSE){
         die('deleteing reservation failed'.$this->conn->connect_error);
     }else{
         header('location:reservation.php');
@@ -712,13 +775,15 @@ function displayReservation(){
     }
 
 }
-function updateReservation($n_date,$n_hour,$n_coupon,$n_service,$n_addMenu,$n_nomination){
-    $sql="UPDATE `reservation` SET `reserve_date`='$n_date',`reserve_hour`='$n_hour',`order_menu`='$n_coupon',`order_menu2`='$n_service',`add_menu`='$n_addMenu',`nomination`='$n_nomination'";
+// edit reserve
+function updateReservation($reserve_id,$n_date,$n_hour,$n_coupon,$n_addMenu,$n_nomination,$totalPrice){
+    $sql="UPDATE `reservation` SET `reserve_date`='$n_date',`reserve_hour`='$n_hour',`order_menu`='$n_coupon',`add_menu`='$n_addMenu',`nomination`='$n_nomination', total_price = '$totalPrice' where reserve_id ='$reserve_id'";
 
     $result = $this->conn->query($sql);
 
-    if($result = TRUE){
+    if($result == TRUE){
         header('location:reservation.php');
+        // header("location:editReserve2.php?reserve_id=$reserve_id");    
        
     }else{
         die('update reservation is error'.$this->conn->error);       
@@ -727,7 +792,77 @@ function updateReservation($n_date,$n_hour,$n_coupon,$n_service,$n_addMenu,$n_no
 }
 
 
+// userlist.php
+function displayUserList(){
+    $sql="SELECT * FROM client INNER JOIN login ON client.c_id= login.login_id ORDER BY client.c_id DESC";
+    $result = $this->conn->query($sql);
 
+    if($result->num_rows>0){
+
+        while($rows =$result->fetch_assoc()){
+            $row[]=$rows;
+        }
+        return $row;
+    }else{
+        return FALSE;
+    }
+}
+function searchUser($keyword){
+    $sql = "SELECT * FROM client INNER JOIN login ON client.c_id=login.login_id WHERE client.fname='$keyword'";
+    $result = $this->conn->query($sql);
+
+    if($result->num_rows>0){
+        while($rows=$result->fetch_assoc()){
+            $row[]=$rows;
+        }
+        return $row;
+    }else{
+        // echo 'no result';
+        return FALSE;
+    }
+}
+// edit user.php
+function getUserforEdit($client_id){
+    $sql="SELECT * FROM client INNER JOIN login ON client.c_id= login.login_id WHERE client.c_id='$client_id'";
+    $result = $this->conn->query($sql);
+
+    if($result == FALSE){
+        die('can not get one user'.$this->conn->connect_error);
+
+    }else{
+        return $result ->fetch_assoc();
+    }
+}
+function addUserBio($c_id,$user_bio){
+    $sql="UPDATE client SET bio ='$user_bio' WHERE c_id='$c_id'";
+    $result=$this->conn->query($sql);
+
+    if($result==FALSE){
+        die('can not add user bio'.$this->conn->connect_error);
+    }else{
+        header("location:editUser.php?id=$c_id");
+    }
+
+}
+
+########################
+
+function getTimeHourReserve($date,$hour){
+    $sql="SELECT * FROM reservation WHERE reserve_date='$date' AND reserve_hour='$hour'";
+    $result = $this->conn->query($sql);
+
+    if($result->num_rows >=0 ){
+        while($rows=$result->fetch_assoc()){
+            $row[]=$rows;
+        }
+        return $row;
+    }else{
+        echo "error";
+        // return $result->fetch_assoc();
+    }
+}
+
+################
 
 
 } //class

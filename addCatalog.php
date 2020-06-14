@@ -16,6 +16,11 @@ $hairCatalogList = $Hairsalon->displayCatalog();
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      h3{
+        font-family: 'Oleo Script', cursive;
+      }
+    </style>
   </head>
   <body>
       
@@ -26,7 +31,7 @@ $hairCatalogList = $Hairsalon->displayCatalog();
 
               <div class="card">
                 <div class="card-header">
-                    <h3 class="text-monospace">add catalog:</h3>
+                    <h3 class="">add catalog:</h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -91,17 +96,17 @@ $hairCatalogList = $Hairsalon->displayCatalog();
                             $uploaded_photo = $row2['catalog_photo'];
                         
                         echo" <tr>";
-                            echo "<th>".$row2['catalog_id']."</th>";
+                            echo "<td>".$row2['catalog_id']."</td>";
 
-                            echo "<th class='w-25'>";
+                            echo "<td class='w-25'>";
                               echo "<img src='upload/admin/catalog/$uploaded_photo' alt='' class='w-25'>";
-                            echo "</th>";
+                            echo "</td>";
 
-                            echo "<th>".$row2['catalog_comment']."</th>";
+                            echo "<td>".$row2['catalog_comment']."</td>";
                         
-                            echo "<th>".$row2['photo_stylist']."</th>";
+                            echo "<td>".$row2['photo_stylist']."</td>";
 
-                            echo "<th><a href='editCatalog.php?catalog_id=$catalogID' role='button'  class='btn btn-outline-dark'>edit</a></th>";
+                            echo "<td><a href='editCatalog.php?catalog_id=$catalogID' role='button'  class='btn btn-outline-dark'>edit</a></td>";
                         echo "</tr>";
 
                     }
@@ -113,6 +118,12 @@ $hairCatalogList = $Hairsalon->displayCatalog();
         
         </div>
     </div>
+    <!-- footer -->
+    <nav class="nav navbar bg-dark mt-5">
+      <a href="dashboard.php" >Home</a>
+      <p class="text-light">Copyright@ Yuka Matsumoto</p>
+      <a href="contactpage.php">Contact</a>      
+    </nav>
 
 
 

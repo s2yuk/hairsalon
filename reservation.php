@@ -7,36 +7,48 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>edit reserve</title>
+    <title></title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <!-- Font awesome icon -->
+     <script src="https://kit.fontawesome.com/eb83b1af77.js" crossorigin="anonymous"></script>
+    <style>
+      h3{
+        font-family: 'Oleo Script', cursive;
+      }
+    </style>
   </head>
   <body>
       
 
-    <div class="jumbotron">
-    <div class=" bg-light border border-dark">
-        <p class="text-monospace display-4">ALL reservation:  <?php //echo count($TodaysReservation)?></p>  
-       
+    <div class="jumbotron mb-0">
+      <div class="row">
+        <div class="col-lg-9">
+          <h3 class="display-4">All reservation</h3>
+        </div>
+        <div class="col-lg-3">
+          <a href="reserve_by_admin.php" class="btn float-right"><i class="far fa-plus-square fa-3x"></i><br>add reserve</a>
+        </div>
+      </div>
 
+
+    <div class=" bg-light border border-dark mb-3">
         <table class="table table-hover">
           <thead>
             <tr>
-              <th>#reservation id</th>
+              <th>reservation id</th>
               <th colspan="2">appoint time</th>
-              <th>#customer id</th>
+              <th>customer id</th>
               <th>First Name</th>
               <th>Last Name</th>
-              <th colspan="3">Menu</th>
+              <th colspan="2">Menu</th>
               <th>Price</th>
               <th>Nomination</th>
               <th>Option</th>
-
-
             </tr>
           </thead>
           <?php
@@ -45,30 +57,39 @@
                 $reserveID=$row['reserve_id'];
                 
                 echo"<tbody id=''>";
-                  echo "<th>".$row['reserve_id']."</th>";
-                  echo "<th>".$row['reserve_date']."</th>";
-                  echo "<th>".$row['reserve_hour']."</th>";
-                  echo "<th>".$row['c_id']."</th>";
-                  echo "<th>".$row['fname']."</th>";
-                  echo "<th>".$row['lname']."</th>";
-                  echo "<th>".$row['order_menu']."</th>";
-                  echo "<th>".$row['order_menu2']."</th>";
-                  echo "<th>".$row['add_menu']."</th>";
-                  echo "<th>¥".$row['total_price']."</th>";
-                  echo "<th>".$row['nomination']."</th>";
-                  echo "<th><a href='editReservation.php?reserve_id=$reserveID' role='button'  class='btn btn-outline-dark'>edit</a></th>";
-                  
+                  echo "<td>".$row['reserve_id']."</td>";
+                  echo "<td>".$row['reserve_date']."</td>";
+                  echo "<td>".$row['reserve_hour']."</td>";
+                  echo "<td>".$row['c_id']."</td>";
+                  echo "<td>".$row['fname']."</td>";
+                  echo "<td>".$row['lname']."</td>";
+                  echo "<td>";
+                            $selected_cID=$row['order_menu'];
+                            $Selected_coupon =$Hairsalon->getSelectCouponID($selected_cID);
+                            echo $Selected_coupon['coupon_name'];
+                  echo "</td>";
+                  echo "<td>";
+                            $selected_sID=$row['add_menu'];
+                            $selected_service=$Hairsalon->getSelectServiceID($selected_sID);
+                            echo $selected_service['service_name'];
+                  echo "</td>";
+                  echo "<td>¥".$row['total_price']."</td>";
+                  echo "<td>".$row['nomination']."</td>";
+                  echo "<td><a href='editReservation.php?reserve_id=$reserveID' role='button' class='btn btn-outline-dark'>edit</a></td>";
                 echo "</tbody>";
               }
-            
             ?>
-      
-        
         </table>
         </div>
 
 
     </div>
+    <!-- footer -->
+    <nav class="nav navbar bg-dark">
+      <a href="dashboard.php" >Home</a>
+      <p class="text-light">Copyright@ Yuka Matsumoto</p>
+      <a href="contactpage.php">Contact</a>      
+    </nav>
 
 
     <!-- Optional JavaScript -->

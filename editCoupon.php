@@ -1,8 +1,8 @@
 <?php
 include 'adminMenu.php';
 
-$serviceID = $_GET['service_id'];
-$row =$Hairsalon->getForEditService($serviceID);
+$couponID = $_GET['coupon_id'];
+$row =$Hairsalon->getForEditCoupon($couponID);
 
 
  
@@ -32,23 +32,23 @@ $row =$Hairsalon->getForEditService($serviceID);
           </div>
           <div class="card-body">
               <form action="hairsalonAction.php" method="post">
-                <input type="hidden" name="serviceID" value="<?php echo $serviceID?>">
-                <label for="">Enter new service name</label>
-                <input type="text" name="service_name" id="" placeholder="<?php echo $row['service_name']?>" class="form-control" required>
+                <input type="hidden" name="couponID" value="<?php echo $couponID?>">
+                <label for="">Enter new coupon name</label>
+                <input type="text" name="coupon_name" id="" placeholder="<?php echo $row['coupon_name']?>" class="form-control" required>
                 <br>
                 <label for="">New price</label>
                 <br>
-                <input type="number" name="service_price" placeholder="<?php echo $row['price']?>" required>
+                <input type="number" name="coupon_price" placeholder="<?php echo $row['coupon_price']?>" required>
                 <br>
 
-                <button type="submit" name="editService" class="btn btn-dark btn-block mt-3"> Edit </button>
+                <button type="submit" name="editCoupon" class="btn btn-dark btn-block mt-4"> Edit </button>
 
 
               </form>
           </div>
           <div class="text-right">
                   <?php
-                  echo "<a href='deleteService.php?service_id=$serviceID' role='button' class='btn btn-outline-danger mr-4'>delete </a>";
+                  echo "<a href='deleteCoupon.php?coupon_id=$couponID' role='button'  class='btn btn-outline-danger mb-2 mr-4'>delete </a>";
                   ?>
               </div>
 

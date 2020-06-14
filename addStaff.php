@@ -1,7 +1,5 @@
 <?php
 include 'adminMenu.php';
-$skillList = $Hairsalon->displaySkill(); 
-
 $staffList=$Hairsalon->displayStaff();
 
 ?>
@@ -15,12 +13,21 @@ $staffList=$Hairsalon->displayStaff();
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      div img{
+        width: 160px;
+        height: 213px;
+      }
+      h3{
+        font-family: 'Oleo Script', cursive;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
         <div class="card w-50 mt-5 mx-auto">
             <div class="card-header">
-                add staff 
+                <h3>add staff </h3>
             </div>
             <div class="card-body">
                 <form action="hairsalonAction.php" method="post" enctype="multipart/form-data">
@@ -33,26 +40,12 @@ $staffList=$Hairsalon->displayStaff();
                         <option value="stylist" class="form-control">stylist</option>
                         <option value="assistant" class="form-control">assistant</option>
                     </select>
-                    <br>
-                    <br>
-                    <label for="">skill:</label>
-                    <br>
-                    <?php
-                     foreach($skillList as $row){
-                        $skillName = $row['skillname'];
-                      
-                      echo "<input type='checkbox' name='skill[]' id='' value='".$row['skillname']."'>".$skillName;
-
-                     }
-
-                ?>
-                    
 
                     <br>
                     <br>
                     <label for=""> chose gender:</label>
-                    <input type="radio" name="staff_gender" id="" value="M">Male  
-                    <input type="radio" name="staff_gender" id="" value="F">Female  
+                    <input type="radio" name="staff_gender" id="" value="Male">Male  
+                    <input type="radio" name="staff_gender" id="" value="Female">Female  
                     <br>
                     <br>
                     <label for="">select stylist photo:</label>
@@ -77,7 +70,7 @@ $staffList=$Hairsalon->displayStaff();
           <thead>
             <tr>
               <th>#staff id</th>
-              <th>FUllname</th>
+              <th>Fullname</th>
               <th>position</th>
               
               <th>gender</th>
@@ -104,7 +97,7 @@ $staffList=$Hairsalon->displayStaff();
                         $sphoto = $row['staff_photo'];
                         echo "<img src='upload/admin/$sphoto' alt='reviewPhoto' class='img-thumbnail w-50'>";
                     }else{
-                        echo "<img src='asset/logo.jpg' alt='image printing' class='img-thumbnail w-50'>";
+                        echo "<img src='asset/smile.jpg' alt='image now printing' class='img-thumbnail w-50'>";
                     }
                     echo "</th>";
 
@@ -120,6 +113,12 @@ $staffList=$Hairsalon->displayStaff();
 
      
     </div>
+    <!-- footer -->
+    <nav class="nav navbar bg-dark mt-5">
+      <a href="dashboard.php" >Home</a>
+      <p class="text-light">Copyright@ Yuka Matsumoto</p>
+      <a href="contactpage.php">Contact</a>      
+    </nav>
 
       
     <!-- Optional JavaScript -->
