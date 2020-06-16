@@ -255,7 +255,7 @@ elseif(isset($_POST['addBooking2'])){
     //   echo $_SESSION['select_stylist'];
 
     if(!empty($_SESSION['select_stylist'])){
-        header('location:booking4.1.php');
+        header('location:booking4.php');
     }
 
 
@@ -348,7 +348,7 @@ elseif(isset($_POST['reserve_by_admin2'])){
     $lname=$_SESSION['lname'];
     $c_id=$_SESSION['c_id'];
     $coupon_id=$_SESSION['coupon_id'];
-    $serviceid=$_SESSION['service_id'];
+    $service_id=$_SESSION['service_id'];
     $nomination=$_SESSION['nomination'];
     $totalPrice=$_POST['total'];
     $Hairsalon->addReserve_by_admin($date,$hour,$fname,$lname,$c_id,$coupon_id,$service_id,$nomination,$totalPrice);

@@ -1,6 +1,25 @@
 <?php 
 include 'userMenu.php';
 
+$date = new DateTime();
+$today = $date->format('Y-m-d');
+$tmr =date('Y-m-d',strtotime('+1 day'));
+$plus2day =date('Y-m-d',strtotime('+2 day'));
+$plus3day = date('Y-m-d',strtotime('+3 day'));
+$plus4day = date('Y-m-d',strtotime('+4 day'));
+$plus5day = date('Y-m-d',strtotime('+5 day'));
+$plus6day = date('Y-m-d',strtotime('+6 day'));
+$plus7day = date('Y-m-d',strtotime('+7 day'));
+
+$Date= date("D");
+$Date1 = date("D", strtotime('+1 day'));
+$Date2 = date("D", strtotime('+2 day'));
+$Date3 = date("D", strtotime('+3 day'));
+$Date4 = date("D", strtotime('+4 day'));
+$Date5 = date("D", strtotime('+5 day'));
+$Date6 = date("D", strtotime('+6 day'));
+$Date7 = date("D", strtotime('+7 day'));
+
 
 ?>
 <!doctype html>
@@ -22,11 +41,30 @@ include 'userMenu.php';
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size : cover;
-
       }
       div h5{
         font-family: 'Oleo Script', cursive;
       }
+      #x{
+        padding:7px;
+        background-color: #d7d8d9;
+      }
+      #openCell{
+        padding: 0;
+        margin: 0;
+      }
+      #openCell :hover{
+        background-color: #efdad2;
+      }
+    .table td, .table th {
+        padding: 0;
+        vertical-align: inherit;
+    }
+    .table{
+        border:1px solid black;
+    }
+  
+  
     </style>
     <!-- google font -->
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
@@ -41,1069 +79,2682 @@ include 'userMenu.php';
     </div>
     
     <div class="container bg-light text-monospace text-center">
-       <br>
+        <div class="row">
+            <form action="hairsalonAction.php" method="post">
+            <button type="submit" name="reselect4" class="btn btn-secondary m-2"> << Reselect</button>
+            </form>
+        </div> 
       <div class="alert alert-dark">
-          <h4 class="p-3">Step 4</h4>
+          <h5 class="p-3">Step 4</h5>
           <p> select date & time</p>
       </div>
       
-
       <div class="container">
-          <div class="row">
+        <div class="">
              <h3 class="text-monospace mx-auto"><?php echo date("F/Y")?></h3> 
-          </div>
-          <div class="row">
-              <div class="col-lg-2 border">
-                  hour
-              </div>
-              <div class="col-lg-1 border">
-                <?php echo date("d");?><br>
-                <?php echo date("D");?>
-              </div>
-              <div class="col-lg-1 border">
-                <?php echo date("d", strtotime('+1 day'));?><br>
-                <?php echo date("D", strtotime('+1 day'));?>
-              </div>
-              <div class="col-lg-1 border">
-                <?php echo date("d", strtotime('+2 day'));?><br>
-                <?php echo date("D", strtotime('+2 day'));?>
-              </div>
-              <div class="col-lg-1 border"> 
-                <?php echo date("d", strtotime('+3 day'));?><br>
-                <?php echo date("D", strtotime('+3 day'));?>
-            </div>
-              <div class="col-lg-1 border">
-                <?php echo date("d", strtotime('+4 day'));?><br>
-                <?php echo date("D", strtotime('+4 day'));?>
-              </div>
-              <div class="col-lg-1 border">
-                <?php echo date("d", strtotime('+5 day'));?><br>
-                <?php echo date("D", strtotime('+5 day'));?>
-              </div>
-              <div class="col-lg-1 border">
-                <?php echo date("d", strtotime('+6 day'));?><br>
-                <?php echo date("D", strtotime('+6 day'));?>
-              </div>
-              <div class="col-lg-1 border">
-                <?php echo date("d", strtotime('+7 day'));?><br>
-                <?php echo date("D", strtotime('+7 day'));?>
-              </div>
-              <div class="col-lg-2 border">
-                  hour
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-lg-2 border">
-                  10:00~
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d')?>">
-                      <input type="hidden" name="hour" value="10:00">
-                      <button type="submit" name="submit_date"></button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+1 day'))?> ">
-                      <input type="hidden" name="hour" value="10:00">
-
-                      <button type="submit" name="submit_date"></button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+2 day'))?> ">
-                      <input type="hidden" name="hour" value="10:00">
-
-                      <button type="submit" name="submit_date"></button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+3 day'))?>">
-                      <input type="hidden" name="hour" value="10:00">
-
-                      <button type="submit" name="submit_date"></button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+4 day'))?>">
-                      <input type="hidden" name="hour" value="10:00">
-
-                      <button type="submit" name="submit_date"></button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+5 day'))?> ">
-                      <input type="hidden" name="hour" value="10:00">
-
-                      <button type="submit" name="submit_date"></button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+6 day'))?>">
-                      <input type="hidden" name="hour" value="10:00">
-
-                      <button type="submit" name="submit_date"></button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+7 day'))?>">
-                      <input type="hidden" name="hour" value="10:00">
-
-                      <button type="submit" name="submit_date"></button>
-                  </form>
-              </div>
-
-              <div class="col-lg-2 border">
-                  10:00~
-              </div>
-
-        
-        
-            </div>
-            <div class="row">
-              <div class="col-lg-2 border">
-                  11:00~
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d')?>">
-                      <input type="hidden" name="hour" value="11:00">
-
-                      <button type="submit" name="submit_date"></button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+1 day'))?> ">
-                      <input type="hidden" name="hour" value="11:00">
-
-                      <button type="submit" name="submit_date"></button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+2 day'))?>">
-                      <input type="hidden" name="hour" value="11:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+3 day'))?> ">
-                      <input type="hidden" name="hour" value="11:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+4 day'))?>">
-                      <input type="hidden" name="hour" value="11:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+5 day'))?>">
-                      <input type="hidden" name="hour" value="11:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+6 day'))?>">
-                      <input type="hidden" name="hour" value="11:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+7 day'))?>">
-                      <input type="hidden" name="hour" value="11:00">
-
-                      <button type="submit" name="submit_date">
-                           
-                      </button>
-                  </form>
-              </div>
-
-              <div class="col-lg-2 border">
-                  11:00~
-              </div>
-
-        
-        
-            </div>
-            <!-- row -->
-            <div class="row">
-              <div class="col-lg-2 border">
-                  12:00~
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d')?>">
-                      <input type="hidden" name="hour" value="12:00">
-
-                      <button type="submit" name="submit_date">
-                            
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+1 day'))?> ">
-                      <input type="hidden" name="hour" value="12:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+2 day'))?>">
-                      <input type="hidden" name="hour" value="12:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+3 day'))?> ">
-                      <input type="hidden" name="hour" value="12:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+4 day'))?>">
-                      <input type="hidden" name="hour" value="12:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+5 day'))?>">
-                      <input type="hidden" name="hour" value="12:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+6 day'))?>">
-                      <input type="hidden" name="hour" value="12:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+7 day'))?>">
-                      <input type="hidden" name="hour" value="12:00">
-
-                      <button type="submit" name="submit_date">
-                           
-                      </button>
-                  </form>
-              </div>
-
-              <div class="col-lg-2 border">
-                  12:00~
-              </div>
-
-        
-        
-            </div>
-            <!-- row -->
-            <div class="row">
-              <div class="col-lg-2 border">
-                  13:00~
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d')?>">
-                      <input type="hidden" name="hour" value="13:00">
-
-                      <button type="submit" name="submit_date">
-                            
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+1 day'))?> ">
-                      <input type="hidden" name="hour" value="13:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+2 day'))?>">
-                      <input type="hidden" name="hour" value="13:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+3 day'))?> ">
-                      <input type="hidden" name="hour" value="13:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+4 day'))?>">
-                      <input type="hidden" name="hour" value="13:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+5 day'))?>">
-                      <input type="hidden" name="hour" value="13:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+6 day'))?>">
-                      <input type="hidden" name="hour" value="13:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+7 day'))?>">
-                      <input type="hidden" name="hour" value="13:00">
-
-                      <button type="submit" name="submit_date">
-                           
-                      </button>
-                  </form>
-              </div>
-
-              <div class="col-lg-2 border">
-                  13:00~
-              </div>
-        
-            </div>
-            <!-- row -->
-            <div class="row">
-              <div class="col-lg-2 border">
-                  14:00~
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d')?>">
-                      <input type="hidden" name="hour" value="14:00">
-
-                      <button type="submit" name="submit_date">
-                            
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+1 day'))?> ">
-                      <input type="hidden" name="hour" value="14:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+2 day'))?>">
-                      <input type="hidden" name="hour" value="14:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+3 day'))?> ">
-                      <input type="hidden" name="hour" value="14:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+4 day'))?>">
-                      <input type="hidden" name="hour" value="14:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+5 day'))?>">
-                      <input type="hidden" name="hour" value="14:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+6 day'))?>">
-                      <input type="hidden" name="hour" value="14:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+7 day'))?>">
-                      <input type="hidden" name="hour" value="14:00">
-
-                      <button type="submit" name="submit_date">
-                           
-                      </button>
-                  </form>
-              </div>
-
-              <div class="col-lg-2 border">
-                  14:00~
-              </div>
-            </div>
-            <!-- row -->
-            <div class="row">
-              <div class="col-lg-2 border">
-                  15:00~
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d')?>">
-                      <input type="hidden" name="hour" value="15:00">
-
-                      <button type="submit" name="submit_date">
-                            
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+1 day'))?> ">
-                      <input type="hidden" name="hour" value="15:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+2 day'))?>">
-                      <input type="hidden" name="hour" value="15:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+3 day'))?> ">
-                      <input type="hidden" name="hour" value="15:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+4 day'))?>">
-                      <input type="hidden" name="hour" value="15:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+5 day'))?>">
-                      <input type="hidden" name="hour" value="15:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+6 day'))?>">
-                      <input type="hidden" name="hour" value="15:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+7 day'))?>">
-                      <input type="hidden" name="hour" value="15:00">
-
-                      <button type="submit" name="submit_date">
-                           
-                      </button>
-                  </form>
-              </div>
-
-              <div class="col-lg-2 border">
-                  15:00~
-              </div>
-
-        
-        
-            </div>
-            <!-- row -->
-            <div class="row">
-              <div class="col-lg-2 border">
-                  16:00~
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d')?>">
-                      <input type="hidden" name="hour" value="16:00">
-
-                      <button type="submit" name="submit_date">
-                            
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+1 day'))?> ">
-                      <input type="hidden" name="hour" value="16:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+2 day'))?>">
-                      <input type="hidden" name="hour" value="16:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+3 day'))?> ">
-                      <input type="hidden" name="hour" value="16:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+4 day'))?>">
-                      <input type="hidden" name="hour" value="16:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+5 day'))?>">
-                      <input type="hidden" name="hour" value="16:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+6 day'))?>">
-                      <input type="hidden" name="hour" value="16:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+7 day'))?>">
-                      <input type="hidden" name="hour" value="16:00">
-
-                      <button type="submit" name="submit_date">
-                           
-                      </button>
-                  </form>
-              </div>
-
-              <div class="col-lg-2 border">
-                  16:00~
-              </div>
-
-        
-        
-            </div>
-            <!-- row -->
-            <div class="row">
-              <div class="col-lg-2 border">
-                  17:00~
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d')?>">
-                      <input type="hidden" name="hour" value="17:00">
-
-                      <button type="submit" name="submit_date">
-                            
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+1 day'))?> ">
-                      <input type="hidden" name="hour" value="17:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+2 day'))?>">
-                      <input type="hidden" name="hour" value="17:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+3 day'))?> ">
-                      <input type="hidden" name="hour" value="17:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+4 day'))?>">
-                      <input type="hidden" name="hour" value="17:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+5 day'))?>">
-                      <input type="hidden" name="hour" value="17:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+6 day'))?>">
-                      <input type="hidden" name="hour" value="17:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+7 day'))?>">
-                      <input type="hidden" name="hour" value="17:00">
-
-                      <button type="submit" name="submit_date">
-                           
-                      </button>
-                  </form>
-              </div>
-
-              <div class="col-lg-2 border">
-                  17:00~
-              </div>
-
-        
-        
-            </div>
-            <!-- row -->
-            <div class="row">
-              <div class="col-lg-2 border">
-                  18:00~
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d')?>">
-                      <input type="hidden" name="hour" value="18:00">
-
-                      <button type="submit" name="submit_date">
-                            
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+1 day'))?> ">
-                      <input type="hidden" name="hour" value="18:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+2 day'))?>">
-                      <input type="hidden" name="hour" value="18:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+3 day'))?> ">
-                      <input type="hidden" name="hour" value="18:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+4 day'))?>">
-                      <input type="hidden" name="hour" value="18:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+5 day'))?>">
-                      <input type="hidden" name="hour" value="18:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+6 day'))?>">
-                      <input type="hidden" name="hour" value="18:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+7 day'))?>">
-                      <input type="hidden" name="hour" value="18:00">
-
-                      <button type="submit" name="submit_date">
-                           
-                      </button>
-                  </form>
-              </div>
-
-              <div class="col-lg-2 border">
-                  18:00~
-              </div>
-
-    
-            </div>
-            <!-- row -->
-            <div class="row">
-              <div class="col-lg-2 border">
-                  19:00~
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d')?>">
-                      <input type="hidden" name="hour" value="19:00">
-
-                      <button type="submit" name="submit_date">
-                            
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+1 day'))?> ">
-                      <input type="hidden" name="hour" value="19:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+2 day'))?>">
-                      <input type="hidden" name="hour" value="19:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+3 day'))?> ">
-                      <input type="hidden" name="hour" value="19:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+4 day'))?>">
-                      <input type="hidden" name="hour" value="19:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+5 day'))?>">
-                      <input type="hidden" name="hour" value="19:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+6 day'))?>">
-                      <input type="hidden" name="hour" value="19:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+7 day'))?>">
-                      <input type="hidden" name="hour" value="19:00">
-
-                      <button type="submit" name="submit_date">
-                           
-                      </button>
-                  </form>
-              </div>
-
-              <div class="col-lg-2 border">
-                  19:00~
-              </div>
-
-        
-        
-            </div>
-            <!-- row -->
-            <div class="row">
-              <div class="col-lg-2 border">
-                  20:00~
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d')?>">
-                      <input type="hidden" name="hour" value="20:00">
-
-                      <button type="submit" name="submit_date">
-                            
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+1 day'))?> ">
-                      <input type="hidden" name="hour" value="20:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+2 day'))?>">
-                      <input type="hidden" name="hour" value="20:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+3 day'))?> ">
-                      <input type="hidden" name="hour" value="20:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+4 day'))?>">
-                      <input type="hidden" name="hour" value="20:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+5 day'))?>">
-                      <input type="hidden" name="hour" value="20:00">
-
-                      <button type="submit" name="submit_date">
-                         
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+6 day'))?>">
-                      <input type="hidden" name="hour" value="20:00">
-
-                      <button type="submit" name="submit_date">
-                          
-                      </button>
-                  </form>
-              </div>
-              <div class="col-lg-1 border">
-                  <form action="hairsalonAction.php" method="post">
-                      <input type="hidden" name="select_date" value="<?php echo date('Y-m-d',strtotime('+7 day'))?>">
-                      <input type="hidden" name="hour" value="20:00">
-
-                      <button type="submit" name="submit_date">
-                           
-                      </button>
-                  </form>
-              </div>
-
-              <div class="col-lg-2 border">
-                  20:00~
-              </div>
-
-        
-        
-            </div>
-            <!-- row -->
-
         </div>
+        <table border="1" class="table">
+            <thead>
+                <tr>
+                    <th colspan="2">hour</th>
+                    <th>
+                        <?php echo date("d");?><br>
+                        <?php echo $Date; ?>
+                    </th>
+                    <th>
+                        <?php echo date("d", strtotime('+1 day'));?><br>
+                        <?php echo $Date1;?>
+                    </th>
+                    <th>
+                        <?php echo date("d", strtotime('+2 day'));?><br>
+                        <?php echo $Date2;?>
+                    </th>
+                    <th> 
+                        <?php echo date("d", strtotime('+3 day'));?><br>
+                        <?php echo $Date3;?>
+                    </th>
+                    <th>
+                        <?php echo date("d", strtotime('+4 day'));?><br>
+                        <?php echo $Date4;?>
+                    </th>
+                    <th>
+                        <?php echo date("d", strtotime('+5 day'));?><br>
+                        <?php echo $Date5;?>
+                    </th>
+                    <th>
+                        <?php echo date("d", strtotime('+6 day'));?><br>
+                        <?php echo $Date6;?>
+                    </th>
+                    <th>
+                        <?php echo date("d", strtotime('+7 day'));?><br>
+                        <?php echo $Date7;?>
+                    </th>
+                    <th colspan="2">
+                        hour
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id='tableRow'>
+                    <th colspan="2" id="">
+                        <?php 
+                            $hour="10:00";
+                            echo $hour;
+                        ?>
+                    </th>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $today; ?>">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                                <?php 
+                                if($Date=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+
+                                    $result = $Hairsalon->getTimeHourReserve($today,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo "</button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                                ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $tmr;?> ">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                        <?php 
+                            if($Date1=="Tue"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+
+                                $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus2day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                            if($Date2=="Tue"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+                                $result = $Hairsalon->getTimeHourReserve($plus2day,$hour);
+                            
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus3day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                            if($Date3=="Tue"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+
+                                $result = $Hairsalon->getTimeHourReserve($plus3day,$hour);
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus4day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                            if($Date4=="Tue"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+
+                                $result = $Hairsalon->getTimeHourReserve($plus4day,$hour);
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus5day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                            if($Date5=="Tue"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+                                $result = $Hairsalon->getTimeHourReserve($plus5day,$hour);
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus6day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                            if($Date6=="Tue"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+
+                                $result = $Hairsalon->getTimeHourReserve($plus6day,$hour);
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus7day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                            if($Date7=="Tue"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+
+                                $result = $Hairsalon->getTimeHourReserve($plus7day,$hour);
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <th colspan="2"><?php echo $hour;?></th>
+                </tr>
+                <tr>
+                    <th colspan="2" id="">
+                        <?php 
+                            $hour="11:00";
+                            echo $hour;
+                        ?>
+                    </th>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $today; ?>">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                                <?php 
+                                if($Date=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+
+                                    $result = $Hairsalon->getTimeHourReserve($today,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo "</button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+
+                                    }
+                                }
+                                ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $tmr;?> ">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                        <?php 
+                            if($Date1=="Tue"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+
+                                $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus2day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date2=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus2day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus3day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date3=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus3day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus4day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date4=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus4day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus5day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date5=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus5day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus6day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date6=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus6day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus7day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date7=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus7day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <th colspan="2"><?php echo $hour;?></th>
+                </tr>
+                <tr>
+                    <th colspan="2" id="">
+                        <?php 
+                            $hour="12:00";
+                            echo $hour;
+                        ?>
+                    </th>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $today; ?>">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                                <?php 
+                                if($Date=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+
+                                    $result = $Hairsalon->getTimeHourReserve($today,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo "</button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+
+                                    }
+                                }
+                                ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $tmr;?> ">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                        <?php 
+                            if($Date1=="Tue"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+
+                                $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus2day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date2=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus2day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus3day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date3=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus3day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus4day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date4=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus4day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus5day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date5=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus5day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus6day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date6=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus6day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus7day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date7=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus7day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <th colspan="2"><?php echo $hour;?></th>
+                </tr>
+                <tr>
+                    <th colspan="2" id="">
+                        <?php 
+                            $hour="13:00";
+                            echo $hour;
+                        ?>
+                    </th>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $today; ?>">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                                <?php 
+                                if($Date=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+
+                                    $result = $Hairsalon->getTimeHourReserve($today,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo "</button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+
+                                    }
+                                }
+                                ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $tmr;?> ">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                        <?php 
+                            if($Date1=="Tue"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+
+                                $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus2day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date2=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus2day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus3day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date3=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus3day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus4day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date4=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus4day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus5day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date5=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus5day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus6day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date6=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus6day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus7day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date7=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus7day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <th colspan="2"><?php echo $hour;?></th>
+                </tr>
+                <tr>
+                    <th colspan="2" id="">
+                        <?php 
+                            $hour="14:00";
+                            echo $hour;
+                        ?>
+                    </th>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $today; ?>">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                                <?php 
+                                if($Date=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+
+                                    $result = $Hairsalon->getTimeHourReserve($today,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo "</button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+
+                                    }
+                                }
+                                ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $tmr;?> ">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                        <?php 
+                            if($Date1=="Tue"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+
+                                $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus2day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date2=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus2day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus3day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date3=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus3day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus4day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date4=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus4day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus5day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date5=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus5day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus6day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date6=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus6day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus7day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date7=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus7day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <th colspan="2"><?php echo $hour;?></th>
+                </tr>
+                <tr>
+                    <th colspan="2" id="">
+                        <?php 
+                            $hour="15:00";
+                            echo $hour;
+                        ?>
+                    </th>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $today; ?>">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                                <?php 
+                                if($Date=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+
+                                    $result = $Hairsalon->getTimeHourReserve($today,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo "</button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+
+                                    }
+                                }
+                                ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $tmr;?> ">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                        <?php 
+                            if($Date1=="Tue"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+
+                                $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus2day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date2=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus2day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus3day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date3=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus3day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus4day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date4=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus4day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus5day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date5=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus5day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus6day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date6=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus6day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus7day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date7=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus7day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <th colspan="2"><?php echo $hour;?></th>
+                </tr>
+                <tr>
+                    <th colspan="2" id="">
+                        <?php 
+                            $hour="16:00";
+                            echo $hour;
+                        ?>
+                    </th>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $today; ?>">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                                <?php 
+                                if($Date=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+
+                                    $result = $Hairsalon->getTimeHourReserve($today,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo "</button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+
+                                    }
+                                }
+                                ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $tmr;?> ">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                        <?php 
+                            if($Date1=="Tue"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+
+                                $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus2day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date2=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus2day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus3day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date3=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus3day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus4day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date4=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus4day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus5day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date5=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus5day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus6day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date6=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus6day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus7day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date7=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus7day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <th colspan="2"><?php echo $hour;?></th>
+                </tr>
+                <tr>
+                    <th colspan="2" id="">
+                        <?php 
+                            $hour="17:00";
+                            echo $hour;
+                        ?>
+                    </th>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $today; ?>">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                                <?php 
+                                if($Date=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+
+                                    $result = $Hairsalon->getTimeHourReserve($today,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo "</button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+
+                                    }
+                                }
+                                ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $tmr;?> ">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                        <?php 
+                            if($Date1=="Tue"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+
+                                $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus2day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date2=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus2day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus3day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date3=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus3day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus4day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date4=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus4day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus5day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date5=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus5day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus6day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date6=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus6day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus7day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date7=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus7day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <th colspan="2"><?php echo $hour;?></th>
+                </tr>
+                <tr>
+                    <th colspan="2" id="">
+                        <?php 
+                            $hour="18:00";
+                            echo $hour;
+                        ?>
+                    </th>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $today; ?>">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                                <?php 
+                                if($Date=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+
+                                    $result = $Hairsalon->getTimeHourReserve($today,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo "</button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+
+                                    }
+                                }
+                                ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $tmr;?> ">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                        <?php 
+                            if($Date1=="Tue"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+
+                                $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus2day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date2=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus2day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus3day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date3=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus3day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus4day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date4=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus4day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus5day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date5=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus5day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus6day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date6=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus6day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus7day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date7=="Tue"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus7day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <th colspan="2"><?php echo $hour;?></th>
+                </tr>
+                <tr>
+                    <th colspan="2" id="">
+                        <?php 
+                            $hour="19:00";
+                            echo $hour;
+                        ?>
+                    </th>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $today; ?>">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                                <?php 
+                                if($Date=="Tue" or $Date=="Sun"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+
+                                    $result = $Hairsalon->getTimeHourReserve($today,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo "</button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+
+                                    }
+                                }
+                                ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $tmr;?> ">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                        <?php 
+                            if($Date1=="Tue" or $Date1=="Sun"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+
+                                $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus2day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date2=="Tue" or $Date2=="Sun"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus2day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus3day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date3=="Tue"or $Date3=="Sun"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus3day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus4day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date4=="Tue" or $Date4=="Sun"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus4day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus5day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date5=="Tue" or $Date5=="Sun"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus5day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus6day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date6=="Tue" or $Date6=="Sun"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus6day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus7day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date7=="Tue" or $Date7=="Sun"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus7day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <th colspan="2"><?php echo $hour;?></th>
+                </tr>
+                <tr>
+                    <th colspan="2" id="">
+                        <?php 
+                            $hour="20:00";
+                            echo $hour;
+                        ?>
+                    </th>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $today; ?>">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                                <?php 
+                                if($Date=="Tue" or $Date =="Mon" or $Date =="Wed" or $Date =="Thu" or $Date=="Sun"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($today,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo "</button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+
+                                    }
+                                }
+                                ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                        <input type="hidden" name="select_date" value="<?php echo $tmr;?> ">
+                        <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                        <?php 
+                            if($Date1=="Tue" or $Date1 =="Mon" or $Date1 =="Wed" or $Date1 =="Thu" or $Date1=="Sun"){
+                                echo "<div id='x'>×</div>";
+                            }else{
+
+                                $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
+                                // print_r($result);
+                                $count = count($result);
+                                // echo "count",$count;
+                                // echo "<br>";
+                                if($count =='0'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◎";
+                                    echo " </button>";
+                                }elseif($count=='1'){
+                                    echo "<button type='submit' name='submit_date' class='btn'>";
+                                    echo "◯";
+                                    echo " </button>";
+                                }else{
+                                    echo "<div id='x'>×</div>";
+                                }
+                            }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus2day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date2=="Tue" or $Date2 =="Mon" or $Date2 =="Wed" or $Date2 =="Thu" or $Date2=="Sun"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus2day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus3day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date3=="Tue" or $Date3 =="Mon" or $Date3 =="Wed" or $Date3 =="Thu" or $Date3=="Sun"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus3day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus4day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date4=="Tue" or $Date4 =="Mon" or $Date4 =="Wed" or $Date4 =="Thu" or $Date4=="Sun"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus4day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus5day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date5=="Tue" or $Date5 =="Mon" or $Date5 =="Wed" or $Date5 =="Thu" or $Date5=="Sun"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus5day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus6day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date6=="Tue" or $Date6 =="Mon" or $Date6 =="Wed" or $Date6 =="Thu" or $Date6=="Sun"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus6day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <td id='openCell'>
+                        <form action="hairsalonAction.php" method="post">
+                            <input type="hidden" name="select_date" value="<?php echo $plus7day;?> ">
+                            <input type="hidden" name="hour" value="<?php echo $hour;?>">
+                            <?php 
+                                if($Date7=="Tue" or $Date7 =="Mon" or $Date7 =="Wed" or $Date7 =="Thu" or $Date7=="Sun"){
+                                    echo "<div id='x'>×</div>";
+                                }else{
+                                    $result = $Hairsalon->getTimeHourReserve($plus7day,$hour);
+                                    // print_r($result);
+                                    $count = count($result);
+                                    // echo "count",$count;
+                                    // echo "<br>";
+                                    if($count =='0'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◎";
+                                        echo " </button>";
+                                    }elseif($count=='1'){
+                                        echo "<button type='submit' name='submit_date' class='btn'>";
+                                        echo "◯";
+                                        echo " </button>";
+                                    }else{
+                                        echo "<div id='x'>×</div>";
+                                    }
+                                }
+                            ?> 
+                        </form>
+                    </td>
+                    <th colspan="2"><?php echo $hour;?></th>
+                </tr>
+
+                
+            </tbody>
+        </table>
         <div class="text-center">
             <form action="hairsalonAction.php" method="post">
             <button type="submit" name="reselect4" class="btn btn-secondary m-3"> << Previous page</button>
             </form>
         </div> 
+      </div>
+
 
 
     </div>
-
     <!-- footer -->
     <nav class="nav navbar bg-dark mt-5">
         <a href="dashboard.php" >Home</a>
         <p class="text-light">Copyright@ Yuka Matsumoto</p>
         <a href="contactpage.php">Contact</a>
     </nav>
+
 
 
     <!-- Optional JavaScript -->

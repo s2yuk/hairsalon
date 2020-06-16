@@ -101,7 +101,6 @@
                             echo "-----";
                         }else{
                             echo $selected_service['service_name'];
-                            
                         }
                     ?>
                     </div>
@@ -141,11 +140,18 @@
                         ?>
                     </div>
                 </div>
-                <form action="hairsalonAction.php" method="post"> 
-                        <!-- hairsalonAction.php -->
-                        <input type="hidden" name="total" value="<?php echo $total ;?>" required>
-                        <button type="submit" name="reserve_by_admin2" class="btn btn-dark btn-block mt-5 w-75 mx-auto">submit</button>
-                </form>
+                
+                <?php if(empty($_SESSION['service_id']) AND (empty($_SESSION['coupon_id']))):?>
+                   <div class="alert alert-warning w-50 mx-auto">
+                        <a href="reserve_by_admin.php" class="btn w-100">select menu</a>
+                   </div>
+                <?php else:?>
+                    <form action="hairsalonAction.php" method="post"> 
+                            <!-- hairsalonAction.php -->
+                            <input type="hidden" name="total" value="<?php echo $total ;?>" required>
+                            <button type="submit" name="reserve_by_admin2" class="btn btn-dark btn-block mt-5 w-75 mx-auto">submit</button>
+                    </form>
+                <?php endif; ?>
               </div>
               <!-- /card-body -->
           </div>

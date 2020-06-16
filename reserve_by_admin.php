@@ -34,10 +34,13 @@
                   <form action="hairsalonAction.php" method="post">
                 <div class="row">
                     <div class="col-lg-3">
-                        date
+                        date     
                     </div>
-                    <div class="col-lg-9">
+                    <div class="col-lg-5">
                         <input type="date" name="date" id="" required>
+                    </div>
+                    <div class="col-lg-4">
+                        <a href="booking4.php" target="_blank"><i class="far fa-calendar-alt"></i>check the calender</a>
                     </div>
                 </div>
                 <div class="row mt-2">

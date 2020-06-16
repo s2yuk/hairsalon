@@ -49,6 +49,11 @@ $staffList=$Hairsalon->displayStaff();
   </div>
   <div class="container bg-light text-monospace text-center">        
      <br>
+     <div class="text-left">
+          <form action="hairsalonAction.php" method="post">
+            <button type="submit" name="reselect3" class="btn btn-secondary m-2"> << Reselect</button>
+          </form>
+      </div> 
       <div class="alert alert-dark">
           <h5 class="text-monospace p-3">Step 3</h4>
           <p class="text-monospace"> select stylist</p>
