@@ -8,6 +8,7 @@ PHPにて作成しました。
 
 
 ＝＝＝＝機能＝＝＝＝
+
 お客様向け：　サロン情報、メニュー、スタッフ、ヘアカタログSNS、問い合わせフォーム、WEB予約、口コミ掲示板、
            ログインしてマイページにて予約確認、キャンセル、メッセージの送受信。
            
@@ -18,6 +19,7 @@ email : admin@kredo
 password : admin
 
 ＝＝＝＝環境＝＝＝＝
+
 言語：　PHP
 データベース：　PhpMyAdmin
 
@@ -26,6 +28,7 @@ password : admin
 
 
 
+====English version====
 
 this is my portfolio with PHP.
 It's my first web site which is using database(phpmyadmin).
