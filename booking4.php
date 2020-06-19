@@ -56,14 +56,10 @@ $Date7 = date("D", strtotime('+7 day'));
       #openCell :hover{
         background-color: #efdad2;
       }
-    .table td, .table th {
+      .table th {
         padding: 0;
         vertical-align: inherit;
-    }
-    .table{
-        border:1px solid black;
-    }
-  
+      }
   
     </style>
     <!-- google font -->
@@ -93,7 +89,7 @@ $Date7 = date("D", strtotime('+7 day'));
         <div class="">
              <h3 class="text-monospace mx-auto"><?php echo date("F/Y")?></h3> 
         </div>
-        <table border="1" class="table">
+        <table class="table table-bordered" id="table">
             <thead>
                 <tr>
                     <th colspan="2">hour</th>

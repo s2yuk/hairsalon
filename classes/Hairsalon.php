@@ -68,7 +68,7 @@ function getOneUser($loginid){
 
 // testimonial.php
 function review($nickname,$date,$rating,$comment,$photoName,$loginid){
-    $target_dir ='upload/';
+    $target_dir ='upload/user/testimonial/';
     $target_file= $target_dir.basename($photoName);
     
     $sql="INSERT INTO review(nickname,date,rating,comment,photo,login_id) VALUES('$nickname','$date','$rating','$comment','$photoName','$loginid')";
@@ -237,6 +237,16 @@ function myMessage($email){
         return FALSE;
     }
 }
+function deleteMessage($contactID){
+    $sql="DELETE FROM contact WHERE contact_id = '$contactID'";
+    $result=$this->conn->query($sql);
+
+    if($result ==FALSE){
+        die('can not delet message'.$this->conn->connect_error);
+    }else{
+        header('location:mypage.php');
+    }
+}
 // msg_detail.php  for reply
 function msg_reply($c_id,$text,$file,$user_id){
     $target_dir ='upload/user/msg/';
@@ -381,7 +391,7 @@ function editStaff($s_name,$position,$s_gender,$staffPhoto,$s_bio,$staffID){
 
     $result = $this->conn->query($sql);
 
-    if($result = TRUE){
+    if($result == TRUE){
         move_uploaded_file($_FILES['s_photo']['tmp_name'],$target_file);
         header('location:addStaff.php');
        
@@ -719,7 +729,7 @@ function todaysCount($today){
 
 // display latest reservation
 function displayLatestReservation(){
-    $sql ="SELECT * FROM reservation ORDER BY reserve_id DESC";
+    $sql ="SELECT * FROM reservation ORDER BY reserve_id DESC LIMIT 10";
     $result = $this->conn->query($sql);
 
     if($result->num_rows>0){

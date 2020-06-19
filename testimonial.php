@@ -68,9 +68,9 @@ $reviewList = $Hairsalon->displayReviewList()
                                         <p>
                                             <?php 
                                             // echo $row['rating'];
-                                            for($x=0; $x< $row['rating']; $x++){
-                                                echo "★";
-                                            }
+                                                for($x= 0; $x< $row['rating']; $x++){
+                                                    echo "★";
+                                                }
                                             ?>
                                         </p>
                                     </div> 
@@ -85,7 +85,7 @@ $reviewList = $Hairsalon->displayReviewList()
                                 <?php 
                                     if(!empty($row['photo'])){
                                         $photo = $row['photo'];
-                                        echo "<img src='upload/$photo' alt='reviewPhoto' class='img-thumbnail w-50'>";
+                                        echo "<img src='upload/user/testimonial/$photo' alt='reviewPhoto' class='img-thumbnail w-50'>";
                                     }
                                 
                                 ?>

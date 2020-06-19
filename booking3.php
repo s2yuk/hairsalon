@@ -77,9 +77,10 @@ $staffList=$Hairsalon->displayStaff();
                           echo "<img src='asset/smile.jpg' alt='image printing' class='w-100'>";
                       }
               
-                      echo " <p class='text-monospace'>";
+                      echo " <b class='text-monospace'>";
                           echo $row['staff_name'];
-                      echo "</p>";
+                      echo "</b>";
+                      
                       
                     
                       echo "<div class='text-center'>";

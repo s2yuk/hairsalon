@@ -123,7 +123,7 @@ $staffList=$Hairsalon->displayStaff();
     </div>
 
    <!-- footer -->
-   <nav class="nav navbar bg-dark" id="footer">
+   <nav class="nav navbar bg-dark fixed-bottom" id="footer">
       <a href="dashboard.php" >Home</a>
       <p class="text-light">Copyright@ Yuka Matsumoto</p>
       <a href="contactpage.php">Contact</a>      

@@ -42,7 +42,8 @@ $selected_service=$Hairsalon->getSelectServiceID($selected_sID);
   </head>
   <body>
       <div class="container">
-        <div class="card">
+        <a href="mypage.php" class="btn btn-outline-dark">back</a>
+        <div class="card mt-2">
           <div class="card-header">
             <div class="row">
               <div class="col-lg-6">

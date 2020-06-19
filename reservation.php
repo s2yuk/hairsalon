@@ -20,13 +20,19 @@
       h3{
         font-family: 'Oleo Script', cursive;
       }
+      #main{
+        min-height: 630px;
+      }
+      #table{
+        border: 2px solid black;
+      }
     </style>
   </head>
   <body>
       
 
-    <div class="jumbotron mb-0">
-      <div class="row">
+    <div class="container mb-0" id="main">
+      <div class="row mt-5">
         <div class="col-lg-9">
           <h3 class="display-4">All reservation</h3>
         </div>
@@ -36,7 +42,7 @@
       </div>
 
 
-    <div class=" bg-light border border-dark mb-3">
+      <div id="table">
         <table class="table table-hover">
           <thead>
             <tr>
@@ -80,12 +86,12 @@
               }
             ?>
         </table>
-        </div>
+      </div>
 
 
     </div>
     <!-- footer -->
-    <nav class="nav navbar bg-dark">
+    <nav class="nav navbar bg-dark" id="footer">
       <a href="dashboard.php" >Home</a>
       <p class="text-light">Copyright@ Yuka Matsumoto</p>
       <a href="contactpage.php">Contact</a>      

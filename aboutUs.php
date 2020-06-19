@@ -57,7 +57,7 @@ include 'userMenu.php';
             <div class="media-body">
                 <h5 class="mt-0">We have customers of all ages</h5>
                 <p>
-                STATES omotesando is visited by various customers of all ages, young and old. We offer tailor-made hairstyles tailored to each customer. Please do not hesitate to contact us with any concerns, consultations, etc.
+                Smile is visited by various customers of all ages, young and old. We offer tailor-made hairstyles tailored to each customer. Please do not hesitate to contact us with any concerns, consultations, etc.
                 </p>
             </div>
         </div>
@@ -76,7 +76,7 @@ include 'userMenu.php';
             <img class="d-flex align-self-start mr-3" src="asset/comit3.jpg" alt="Generic placeholder image">
             <div class="media-body">
                 <h5 class="mt-0">We recommend you to make a reservation by nomination</h5>
-                <p>STATES omotesando has stylists with strengths and specialties. If you find a stylist you are interested in after looking at the hairstyle and stylist page, please do not hesitate to nominate! </p><br>
+                <p>Smile has stylists with strengths and specialties. If you find a stylist you are interested in after looking at the hairstyle and stylist page, please do not hesitate to nominate! </p><br>
                 <p>* Some stylists will be charged a nomination fee, so please check in advance.</p>
             </div>
         </div>
@@ -109,7 +109,7 @@ include 'userMenu.php';
             <img class="d-flex align-self-start mr-3" src="asset/comit7.jpg" alt="Generic placeholder image">
             <div class="media-body">
                 <h5 class="mt-0">If you are visiting for the first time, we hope you can make a reservation with enough time</h5>
-                <p>STATES omotesando values counseling. We will take care of the customer's request and perform the treatment according to the hair quality and condition, so it may take a little time for the first visit to the counseling. We hope that you can make a reservation with a little extra time for your first visit.</p>
+                <p>Smile values counseling. We will take care of the customer's request and perform the treatment according to the hair quality and condition, so it may take a little time for the first visit to the counseling. We hope that you can make a reservation with a little extra time for your first visit.</p>
             </div>
         </div>
         <div class="media mt-3">
@@ -117,7 +117,7 @@ include 'userMenu.php';
             <div class="media-body">
                 <h5 class="mt-0">Aiming for a salon that you can associate with for a long time</h5>
                 <p>
-                Customers who choose STATES omotesando from many beauty salons. I want to come again, I want to go all the way, and it was good to come to STATES and meet STATES. Aiming for such a salon, the staff will work together to improve endless skills, hospitality to customers, and work hard to create a cozy shop! Thank you for reading. Thank you for STATES omotesando!
+                Customers who choose Smile from many beauty salons. I want to come again, I want to go all the way, and it was good to come to Smile and meet Smile. Aiming for such a salon, the staff will work together to improve endless skills, hospitality to customers, and work hard to create a cozy shop! Thank you for reading. Thank you for Smile!
                 </p>
                 <br>
                 <br>

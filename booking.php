@@ -65,7 +65,7 @@ $addCouponList =$Hairsalon->displayCouponMenu();
                 </div>
                 <div class="col-lg-5">
                   <h4><?php echo $coupon['coupon_name'] ?></h4>
-                  <p class=" display-5 text-black-50">* except: Yamaguchi & Ogawa</p>
+                  <p class=" display-5 text-black-50">* except: producer & manager</p>
                 </div>
                 <div class="col-lg-3">
                   <?php echo "¥".$coupon['coupon_price'] ?>
