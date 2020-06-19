@@ -55,6 +55,13 @@
                     <div class="col-lg-7">
                       <b> <?php echo $row['contact_name']?> </b> 
                     </div>
+                    <div class="col-lg-2 text-right">
+                      <?php
+                        $contactID = $row['contact_id'];
+                        echo "<a href='deleteMessage.php?contact_id=$contactID' class='btn btn-outline-danger btn-sm'><i class='fa fa-trash'></i>delete </a>";
+                      ?>
+                      
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-3 text-right">

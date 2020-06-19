@@ -15,25 +15,24 @@ $results = $Hairsalon->searchUser($keyword);
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
+      #main{
+        min-height: 630px;
+      }
       #userlist{
         border: 2px solid black;
-      }
-      #footer{
-        margin-top: 280px;
       }
       h5{
         font-family: 'Oleo Script', cursive;
       }
-     
     </style>
   
   </head>
   <body>    
-    <div class="container mb-5  ">
+    <div class="container mb-5" id="main">
       <div class="row mt-5">
         <div class="col-lg-7">
           <h5 class="display-4">User List</h5>
-          <p>There are <?php echo count($userList)?> members now.</p>
+          <p>There are  <b><?php echo count($userList)?></b> members now.</p>
         </div>
         <div class="col-lg-5">
           <form action="" method="post" class="form-inline">

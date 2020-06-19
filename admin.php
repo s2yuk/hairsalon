@@ -58,7 +58,7 @@ $msg_list = $Hairsalon->displayContact();
 
   
   
-    <div class="jumbotron bg-light m-0">      
+    <div class="jumbotron m-0">      
         <div class="row bg-light border border-dark" id="todaystable">
           <div class="col-lg-8">
             <h3 class="display-4 mt-3">Today's reservation:  <?php echo $numToday; ?></h3>  
@@ -109,7 +109,7 @@ $msg_list = $Hairsalon->displayContact();
           </table>
         </div>
         <br>
-        <div class="row border border-dark" id="latestTable">
+        <div class="row bg-light border border-dark" id="latestTable">
           <h3 class="p-3">Latest reservation:</h3>
           <!--repeat table -->
           <table class="table table-hover" >
@@ -199,7 +199,7 @@ $msg_list = $Hairsalon->displayContact();
             </div>
           </div>
           <div class="col-lg-7">
-            <div class="border border-dark" id="msg_list">
+            <div class="bg-light border border-dark" id="msg_list">
               <h3 class="ml-3 p-2"> New Message received</h3>
               <table class="table table-hover">
                 <thead>

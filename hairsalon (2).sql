@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jun 14, 2020 at 05:41 AM
+-- Generation Time: Jun 19, 2020 at 02:30 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.3.8
 
@@ -38,14 +38,14 @@ CREATE TABLE `catalog` (
 --
 
 INSERT INTO `catalog` (`catalog_id`, `catalog_photo`, `catalog_comment`, `photo_stylist`) VALUES
-(3, 'cabinet.jpg', 'cabinet photo', 'takuto'),
-(4, 'comit2.jpg', '2 people ', 'Anna'),
-(5, 'comit4.jpg', 'update from admin.php', 'yuuuukkaaaaa'),
-(7, 'hairsalon2.jpg', 'inside our salon', 'Yuya Yamaguchi'),
-(8, 'hairsalon3.jpg', 'this is private room..', 'Yuya Yamaguchi'),
-(9, 'short6.jpg', 'short hair style :)', 'Yasuaki Ogawa'),
-(10, 'long2.jpg', 'how is it?', 'Yasuaki Ogawa'),
-(11, 'm3.jpg', 'airy hair style', 'Eri Hiramoto');
+(12, 'catalog1.jpg', 'Welcome to our hair salon!', 'Smith'),
+(13, 'catalog2.jpg', 'It is nice to see you :)', 'Smith'),
+(14, 'catalog3.jpg', 'We are always waiting for you.', 'Catherine '),
+(15, 'catalog4.jpg', 'We can deliver the trend style.', 'Tom'),
+(16, 'catalog5.jpg', 'Set your hair for beautiful moment...', 'Catherine '),
+(17, 'catalog6.jpg', 'natural styling', 'Tom'),
+(18, 'catalog7.jpg', 'casual style!', 'Jimmy'),
+(19, 'catalog8.jpg', 'Summer is comming soon.', 'Smith');
 
 -- --------------------------------------------------------
 
@@ -66,34 +66,24 @@ CREATE TABLE `catalog_comment` (
 --
 
 INSERT INTO `catalog_comment` (`comment_id`, `comment`, `user`, `catalog_id`, `user_id`) VALUES
-(1, '$comment', '$comment_user', 3, 0),
-(2, '$comment', '$comment_user', 3, 3),
-(3, 'asdasda', 'yuka', 5, 1),
-(4, 'shiro', 'yuka', 5, 1),
-(5, 'hey', 'yuka', 7, 1),
-(6, 'beautiful', 'yuka', 8, 1),
-(8, 'cool salon', 'yuka', 7, 1),
-(9, 'happy', 'yuka', 4, 1),
-(10, 'Interesting !', 'yuka', 3, 1),
-(11, 'test success ', 'yuka', 7, 1),
-(12, 'ha;feruh panoerhapomimhkjdfhsluhlifudcngfyudcfyugr', 'yuka', 7, 1),
-(13, 'cool', 'user', 8, 4),
-(14, 'Recommend !', 'admin', 9, 2),
-(15, 'thank you!', 'admin', 5, 2),
-(16, 'thank you!', 'admin', 5, 2),
-(17, 'sample', 'admin', 3, 2),
-(18, 'like!', 'Takuto', 11, 5),
-(19, 'hey', 'Takuto', 10, 5),
-(24, 'sample', 'Takuto', 10, 5),
-(25, 'sample', 'Takuto', 10, 5),
-(26, 'cool', 'Takuto', 5, 5),
-(27, 'cute!', 'Takuto', 9, 5),
-(28, 'thank you!', 'admin', 10, 2),
-(29, 'thank you!', 'admin', 11, 2),
-(30, 'thank you!', 'admin', 9, 2),
-(31, 'cool', 'admin', 11, 2),
-(32, 'cool', 'admin', 9, 2),
-(33, 'thank you!', 'admin', 8, 2);
+(36, 'cool !!', 'test', 18, 3),
+(37, 'like :)', 'test', 17, 3),
+(38, 'awesome!', 'test', 16, 3),
+(39, 'Nice.', 'test', 19, 3),
+(40, 'Interesting !', 'test', 15, 3),
+(41, 'Beautiful photo', 'test', 14, 3),
+(42, 'good :)', 'test', 13, 3),
+(43, 'Hi !', 'test', 12, 3),
+(44, 'cool', 'user', 19, 4),
+(45, 'hey nice photo!', 'user', 18, 4),
+(46, 'Beautiful ', 'user', 17, 4),
+(47, 'Stunning !', 'user', 16, 4),
+(48, 'wow', 'user', 15, 4),
+(49, 'like.', 'user', 14, 4),
+(50, 'Hello !', 'user', 13, 4),
+(51, 'Hello !', 'user', 12, 4),
+(52, 'thank you!', 'admin', 18, 2),
+(53, 'thank you!', 'admin', 19, 2);
 
 -- --------------------------------------------------------
 
@@ -118,10 +108,10 @@ CREATE TABLE `client` (
 INSERT INTO `client` (`c_id`, `fname`, `lname`, `c_gender`, `telephone`, `bio`, `login_id`) VALUES
 (1, 'yuka', 'matsumoto', 'female', '08012345678', NULL, 1),
 (2, 'admin', 'admin1', 'male', '09012345678', NULL, 2),
-(3, 'test', 'test1', 'male', '1234567890', NULL, 3),
+(3, 'test', 'test1', 'male', '1234567890', 'test to add bio', 3),
 (4, 'user', 'user1', 'male', '04812345678', NULL, 4),
-(5, 'Takuto', 'Imari', 'male', '09022223333', 'test bio', 5),
-(6, 'test', 'test', 'male', '18181818181', NULL, 6);
+(6, 'test', 'test', 'male', '18181818181', NULL, 6),
+(7, 'new', 'client1', 'femal', '09011111111', NULL, 7);
 
 -- --------------------------------------------------------
 
@@ -156,7 +146,10 @@ INSERT INTO `contact` (`contact_id`, `contact_name`, `contact_email`, `gender`, 
 (7, 'user', 'user@kredo', 'male', 'hair', 'no_choice', 'photo upload test', 'IMG_2631.JPG', 4, '2020-06-06 11:56:43'),
 (8, 'yuka matsumoto', 'yuka@kredo', '', '', 'no_choice', '', '', 1, '2020-06-06 11:56:43'),
 (9, 'yuka matsumoto', 'yuka@kredo', '', '', 'no_choice', 'photo upload test', 'IMG_2635.JPG', 1, '2020-06-06 11:56:43'),
-(10, 'Takuto Imari', 'takuto@kredo', 'male', 'hair', 'Manager', 'Hello message test', '', 5, '2020-06-06 11:58:36');
+(11, 'yuka matsumoto', 'yuka@kredo', '', '', 'no_choice', 'test message', 'スクリーンショット 2020-06-08 17.52.50.png', 1, '2020-06-19 07:19:43'),
+(13, 'test test1', 'test@kredo', 'female', 'cut', 'Smith', 'I want to have trend hair style...', '', 3, '2020-06-19 13:23:00'),
+(14, 'yuka matsumoto', 'yuka@kredo', 'female', 'color', 'Jimmy', 'I want have new color!!\r\nis it available?', 'catalog4.jpg', 1, '2020-06-19 14:14:03'),
+(15, 'new client1', 'new@kredo', 'female', 'perm', 'no_choice', 'i want to try perm....', '', 7, '2020-06-19 14:22:50');
 
 -- --------------------------------------------------------
 
@@ -202,10 +195,9 @@ CREATE TABLE `info` (
 --
 
 INSERT INTO `info` (`info_id`, `news`, `date`) VALUES
-(1, 'ftyouygiuhpi;jhkhi;@', '2020-02-05'),
-(2, 'kseokijrgoirj', '2020-02-12'),
 (3, 'Happy Valentine’s day! ', '2020-02-13'),
-(4, 'Ready for summer', '2020-05-24');
+(4, 'Ready for summer', '2020-05-24'),
+(5, 'new trend color available :)', '2020-06-19');
 
 -- --------------------------------------------------------
 
@@ -229,8 +221,8 @@ INSERT INTO `login` (`login_id`, `email`, `password`, `status`) VALUES
 (2, 'admin@kredo', 'admin', 'A'),
 (3, 'test@kredo', 'test', 'U'),
 (4, 'user@kredo', 'user', 'U'),
-(5, 'takuto@kredo', 'takuto', 'U'),
-(6, 'test@test', 'test', 'U');
+(6, 'test@test', 'test', 'U'),
+(7, 'new@kredo', 'new', 'U');
 
 -- --------------------------------------------------------
 
@@ -254,7 +246,6 @@ CREATE TABLE `msg_reply` (
 INSERT INTO `msg_reply` (`r_id`, `c_id`, `text`, `file`, `user_id`, `send_time`) VALUES
 (3, 8, 'reply test, no photo', '', 1, '2020-06-06 12:08:34'),
 (7, 6, 'Reply test\r\nLorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum labore quaerat nihil voluptatem, optio ipsum placeat inventore error totam atque odio quis saepe nesciunt maiores reiciendis adipisci.', '', 1, '2020-06-06 12:08:34'),
-(8, 8, 'user reply c_id =8', '', 1, '2020-06-06 12:08:34'),
 (9, 7, 'admin reply test', '', 2, '2020-06-06 12:08:34'),
 (11, 8, 'like this style', 'IMG_2635.JPG', 1, '2020-06-06 12:08:34'),
 (13, 7, 'image photo test', 'IMG_2635.JPG', 1, '2020-06-06 12:08:34'),
@@ -264,10 +255,13 @@ INSERT INTO `msg_reply` (`r_id`, `c_id`, `text`, `file`, `user_id`, `send_time`)
 (18, 6, 'user reply test .', '', 3, '2020-06-06 12:08:34'),
 (22, 3, 'reply test ', '', 3, '2020-06-06 12:08:34'),
 (29, 1, 'admin reply ', '', 2, '2020-06-06 12:08:34'),
-(36, 1, 'tete', 'IMG_2637.JPG', 2, '2020-06-06 12:08:34'),
 (46, 9, 'photo test', 'IMG_2636.JPG', 1, '2020-06-06 12:08:34'),
 (47, 1, 'user reply', '', 1, '2020-06-06 12:08:34'),
-(48, 10, 'reply test', '', 5, '2020-06-06 12:09:03');
+(48, 10, 'reply test', '', 5, '2020-06-06 12:09:03'),
+(49, 14, 'hello ms.\r\nyes maam, we are ready to service :)', '', 2, '2020-06-19 14:17:19'),
+(50, 15, 'please advice me!', '', 7, '2020-06-19 14:23:12'),
+(51, 15, 'hi , i want to show some photos', 'catalog1.jpg', 2, '2020-06-19 14:24:03'),
+(52, 15, 'how about this?', 'catalog2.jpg', 2, '2020-06-19 14:24:35');
 
 -- --------------------------------------------------------
 
@@ -293,24 +287,14 @@ CREATE TABLE `reservation` (
 --
 
 INSERT INTO `reservation` (`reserve_id`, `reserve_date`, `reserve_hour`, `fname`, `lname`, `c_id`, `order_menu`, `add_menu`, `nomination`, `total_price`) VALUES
-(19, '2020-06-01', '10:00', 'yuka', 'matsumoto', 1, '1', '8', '', '11900'),
 (20, '2020-06-04', '16:00', 'yuka', 'matsumoto', 1, '1', '7', '', '9700'),
-(24, '2020-06-03', '10:00', 'test', 'test1', 3, '2', '', 'Yasuaki Ogawa', '9900'),
-(27, '2020-06-08', '10:00', 'yuka', 'matsumoto', 1, '3', '6', 'KOUSUKE', '19250'),
-(29, '2020-06-13', '10:00', 'yuka', 'matsumoto', 1, '2', '', 'You Ichijo', '9900'),
-(34, '2020-06-07', '10:00', 'new', 'new', 0, '3', '', 'Eri Hiramoto', '11550'),
-(36, '2020-06-08', '11:00', 'neww', 'neww', 0, '8', '', 'You Ichijo', '11550'),
-(37, '2020-06-08', '12:00', 'test', 'test', 0, '', '', '', '6600'),
-(39, '2020-06-09', '11:00', 'Takuto', 'Imari', 5, '7', '', 'Eri Hiramoto', '10450'),
-(40, '2020-06-10', '10:00', 'test', 'test', 6, '1', '', '', '7500'),
-(41, '2020-06-11', '19:00', 'admin', 'admin1', 2, '', '3', 'KOUSUKE', '7700'),
-(42, '2020-06-13', '14:00', 'yuka', 'matsumoto', 1, '1', '', 'Hiramoto', '7500'),
 (43, '2020-06-12', '10:00', 'test', 'testt', 0, '1', '', '', '7500'),
-(44, '2020-06-12', '10:00', 'www', 'www', 0, '', '', '', '6600'),
-(45, '2020-06-15', '10:00', 'eee', 'eee', 0, '1', '', '', '7500'),
-(46, '2020-06-14', '10:00', 'test', 'test', 0, '6', '', 'Yuya ', '10450'),
-(47, '2020-06-12', '11:00', 'admin', 'admin1', 2, '5', '', 'KOUSUKE', '4400'),
-(48, '2020-06-18', '18:00', 'admin', 'admin1', 2, '1', '', 'Hiramoto', '7500');
+(53, '2020-06-18', '14:00', 'yuka', 'test', 0, '1', '7', '', '9700'),
+(61, '2020-06-20', '10:00', 'new', 'client', 0, '1', '', 'Smith', '7500'),
+(62, '2020-06-24', '11:00', 'admin', 'admin1', 2, '1', '', 'Jimmy', '7500'),
+(63, '2020-06-20', '10:00', 'admin', 'admin1', 2, '1', '16', 'Tom', '14100'),
+(65, '2020-06-19', '10:00', 'yuka', 'test', 0, '', '1', '', '6600'),
+(66, '2020-06-19', '12:00', 'test', 'user', 0, '', '3', 'Smith', '7700');
 
 -- --------------------------------------------------------
 
@@ -335,11 +319,12 @@ CREATE TABLE `review` (
 INSERT INTO `review` (`review_id`, `nickname`, `date`, `rating`, `comment`, `photo`, `login_id`) VALUES
 (2, 'test test', '2020-02-03', '5', 'I recommend this salon :)                    ', '', 3),
 (9, 'Yuka', '2020-02-01', '5', 'Look my hair color! This is what i wanted.. ;)', 'yuka.jpg', 3),
-(12, 'anonymous', '2020-02-05', '4', 'I  will repeat here :)\r\n ', 'comit3.jpg', 4),
-(13, 'TENGA', '2020-02-16', '5', '                            NICE!', '', 4),
 (14, 'anonymous', '2020-02-21', '5', '                            Contentment !!!', '', 5),
 (15, 'yuka', '2020-05-21', '4', '                            good hair salon.', '', 1),
-(16, 'yyy', '2020-06-06', '4', '                            good!!', '', 1);
+(16, 'yyy', '2020-06-06', '4', '                            good!!', '', 1),
+(17, 'Yuka', '2020-06-09', '3', 'good service!', '', 2),
+(18, 'anonymous', '2020-06-19', '5', 'Satisfied !!!', 'catalog1.jpg', 2),
+(19, 'anonymous', '2020-06-19', '4', 'nice salon.', 'catalog8.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -396,12 +381,12 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`staff_id`, `staff_name`, `position`, `staff_gender`, `staff_photo`, `staff_bio`) VALUES
-(27, 'Yuya ', 'producer', 'Male', 'staff1.jpg', 'our producer'),
-(28, 'Yasu', 'producer', 'Male', 'staff2.jpg', 'Manager'),
-(29, 'KOUSUKE', 'stylist', 'Male', 'staff3.jpg', 'TOP Stylist'),
-(30, 'Hiramoto', 'stylist', 'Female', 'staff4.jpg', '6th years'),
-(31, 'You', 'stylist', 'Male', 'staff5.jpg', '6th years'),
-(32, 'mitsuki', 'assistant', 'Female', 'staff6.jpg', 'trainee');
+(34, 'Smith', 'producer', 'Male', 'Staff1.jpg', 'owner'),
+(35, 'Catherine ', 'manager', 'Female', 'Staff2.jpg', 'export of women’s beauty  '),
+(36, 'Tom', 'stylist', 'Male', 'Staff3.jpg', 'TOP Stylist'),
+(37, 'Jimmy', 'stylist', 'Male', 'Staff4.jpg', 'like japanese culture'),
+(38, 'Jan', 'stylist', 'Male', 'Staff5.jpg', 'new stylist'),
+(39, 'Emily ', 'assistant', 'Female', 'Staff6.jpg', 'hair assistant ');
 
 --
 -- Indexes for dumped tables
@@ -487,61 +472,61 @@ ALTER TABLE `staff`
 -- AUTO_INCREMENT for table `catalog`
 --
 ALTER TABLE `catalog`
-  MODIFY `catalog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `catalog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `catalog_comment`
 --
 ALTER TABLE `catalog_comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `coupon`
 --
 ALTER TABLE `coupon`
-  MODIFY `coupon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `coupon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `info`
 --
 ALTER TABLE `info`
-  MODIFY `info_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `info_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `msg_reply`
 --
 ALTER TABLE `msg_reply`
-  MODIFY `r_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `r_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 
 --
 -- AUTO_INCREMENT for table `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reserve_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `reserve_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `service`
@@ -553,7 +538,7 @@ ALTER TABLE `service`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

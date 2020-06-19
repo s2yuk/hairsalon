@@ -9,6 +9,7 @@
     $email = $login_email['email'];
   }
 
+  $staffList =$Hairsalon->displayStaff();
 
 ?>
 
@@ -96,22 +97,23 @@
               </div>
               <br>
               <div class="col-lg-6">
-                <input type="checkbox" name="service" value="hair">Hair  
-                <input type="checkbox" name="service" value="nail">Nail  
-                <input type="checkbox" name="service" value="Eyelash">Eyelash  
+                <input type="checkbox" name="service" value="cut">Cut  
+                <input type="checkbox" name="service" value="color">Color  
+                <input type="checkbox" name="service" value="perm">Perm
               </div>         
             </div>
               <br>    
             <div>
                     <label for="">Which stylist do you prefere?</label>
                     <select name="stylist" id="" class="form-control">
-                        <option value="no_choice">Chose stylist</option>
-                        <option value="Manager">Manager</option>
-                        <option value="t-stylist1">Top stylist1</option>
-                        <option value="t-stylist"2>Top stylist2</option>
-                        <option value="stylist">Stylist1</option>
-                        <option value="stylist">Stylist1</option>
-                        <option value="assistant">assistant</option>
+                      <option value="no_choice">Chose stylist</option>
+                      <?php 
+                          foreach($staffList as $row){
+                          $staffList =$row['staffname'];
+                          echo "<option value='".$row['staff_name']."'> ".$row['staff_name']."</option>";
+                          }
+                      ?>
+                        
                     </select>
             </div>  
              <br>
