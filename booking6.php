@@ -15,13 +15,16 @@ include 'userMenu.php';
   
     <style>
       body{
-        margin-top:100px;
-        height: 500px;
+        margin-top:150px;
+        /* height: 500px; */
         background-image: url(asset/state.jpeg);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size : cover;
 
+      }
+      #booking{
+        background-color: rgba(255, 255, 255, 0.8);
       }
     
       #thankyou{
@@ -29,7 +32,7 @@ include 'userMenu.php';
         margin-top:300px;
         padding:20px; 
       }
-      div p{
+      div h3{
         font-family: 'Oleo Script', cursive;
       }
 
@@ -46,9 +49,9 @@ include 'userMenu.php';
 
     <div class="container">
 
-        <div class="container bg-light mx-auto w-50 mt-5"> 
-            <h1 id="thankyou">Thank you</h1>
-            <p>We receive your reservation. See you soon!</p>
+        <div class="container text-center rounded mx-auto w-50 mt-5" id="booking"> 
+            <h1 class="display-4"id="thankyou">Thank you</h1>
+            <h3>We receive your reservation. See you soon!</h3>
 
         </div>
 

@@ -24,9 +24,10 @@ $hairCatalogList = $Hairsalon->displayCatalog();
   </head>
   <body>
       
-    <div class="row m-3">
+    <div class="row mt-3">
         <div class="col-lg-4">
-            <div class="bg-light border border-dark">
+          <div class="container">
+          <div class="bg-light border border-dark">
             <form action="hairsalonAction.php" method="post" enctype="multipart/form-data">
 
               <div class="card">
@@ -35,29 +36,29 @@ $hairCatalogList = $Hairsalon->displayCatalog();
                 </div>
                 <div class="card-body">
                     <div class="row">
-                      <div class="col-lg-3 text-right">
-                         <label for="">photo :</label>
+                      <div class="col-lg-3 text-center">
+                         <label for="">photo:</label>
                       </div>
-                      <div class="col-lg-9">
+                      <div class="col-lg-9 text-center">
                          <input type="file" name="catalog_photo" id="">
                       </div>
                     </div>
                     <br>
                     <div class="row">
-                      <div class="col-lg-3 text-right">
-                        <label for="">photo comment :</label>
+                      <div class="col-lg-3 text-center">
+                        <label for="">photo comment:</label>
                       </div>
                       <div class="col-lg-9">
-                       <textarea name="catalog_comment" id="" cols="30" rows="10"></textarea>
+                       <textarea name="catalog_comment" id="" cols="30" rows="10" class="form-control"></textarea>
                       </div>
                     </div>
                     <br>
                     <div class="row">
-                      <div class="col-lg-3 text-right">
-                        <label for="">stylist :</label>
+                      <div class="col-lg-3 text-center">
+                        <label for="">stylist:</label>
                       </div>
                       <div class="col-lg-9">
-                        <select name="photo_stylist" id="">
+                        <select name="photo_stylist" id=""class="form-control">
                           <?php 
                             foreach($staffList as $row){
                               $staffList =$row['staffname'];
@@ -74,10 +75,13 @@ $hairCatalogList = $Hairsalon->displayCatalog();
                     
             </form>
           </div> 
+
+          </div>
         </div>
         <!-- edit catalog -->
         <div class="col-lg-8"> 
-            <table class="table table-hover">
+          <div class="container">
+          <table class="table table-hover">
                 <thead>
                     <tr>
                       <th>#catalog id</th>
@@ -114,8 +118,7 @@ $hairCatalogList = $Hairsalon->displayCatalog();
                     ?>
                 </tbody>
             </table>        
-
-        
+          </div>
         </div>
     </div>
     <!-- footer -->

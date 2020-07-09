@@ -39,9 +39,9 @@ $msg_list = $Hairsalon->displayContact();
         max-height : 400px;
         overflow: scroll;
       }
-      #addnews{
+      /* #addnews{
         height: 328px;
-      }
+      } */
       #msg_list{
         height : 328px;
         overflow: scroll;
@@ -177,18 +177,18 @@ $msg_list = $Hairsalon->displayContact();
                   </div>
                   <div class="card-body"> 
                     <div class="row">
-                      <div class="col-lg-3 text-right">
+                      <div class="col-lg-3 text-center">
                         <label for=""> news <br> content : </label>
                       </div>
                       <div class="col-lg-9">
-                        <textarea name="news" id="" cols="43" rows="5"></textarea>
+                        <textarea name="news" id="" cols="43" rows="5" class="form-control"></textarea>
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-lg-3 text-right">
+                      <div class="col-lg-3 text-center">
                         <label for=""> date : </label>
                       </div>
-                      <div class="col-lg-9">
+                      <div class="col-lg-9 text-center">
                         <input type="date" name="date">
                       </div>
                     </div>

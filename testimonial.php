@@ -17,7 +17,7 @@ $reviewList = $Hairsalon->displayReviewList()
 
     <style>        
         body{
-          margin-top:100px;
+          margin-top:150px;
         
           background-image: url(asset/logo1.jpg);
           background-repeat: no-repeat;
@@ -34,12 +34,12 @@ $reviewList = $Hairsalon->displayReviewList()
 
 </head>
   <body>
-        <div class="bg-white w-50 mx-auto rounded text-center">
-            <h5 class="display-4">Testimonials</h5>
+        <div class="container bg-white w-75 mx-auto mt-3 rounded text-center">
+            <h5 class="display-4 p-3">Testimonials</h5>
             <p class="text-monospace"><?php echo count($reviewList);?> of customers would refer freinds and familiy to us</p>
         </div>
         
-        <div class="container mb-5 ">
+        <div class="container mb-5">
             <div class="row">
                 <div class="col-lg-8">
                         <?php foreach($reviewList as $row):?>

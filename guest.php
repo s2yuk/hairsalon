@@ -25,16 +25,15 @@
                 <h3>Sorry guest</h3>
             </div>
             <div class="card-body">
-                <p>
+                <div>
                     If you would like to continue, please log in :)
                     <a href ='login.php' role='button' class='btn btn-outline-dark ml-2'> >> Login </a>
-                    <br>
-                    or just looking 
-                    
-                    <a href ='hairCatalog.php' role='button' class='btn btn-dark ml-2'>  >> Back to catalog</a>
+                </div>
+                <div class="mt-2">
+                    or just looking          
+                    <a href ='hairCatalog.php' role='button' class='btn btn-dark ml-2'>  >> Back to catalog</a> 
                     <a href ='booking4.php' role='button' class='btn btn-dark ml-2'>  >> Back to Booking</a>
-
-                </p>
+                </div>
             </div>
         </div>
     </div>

@@ -1,7 +1,10 @@
 <?php
 include 'adminMenu.php';
 $client_id=$_GET['id'];
+
 $user=$Hairsalon->getUserforEdit($client_id);
+$memoList = $Hairsalon->getMemo($client_id);
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -16,49 +19,113 @@ $user=$Hairsalon->getUserforEdit($client_id);
       h3{
         font-family: 'Oleo Script', cursive;
       }
+      
     </style>
   </head>
   <body>
-      <div class="container mt-5">
-          <div class="w-75 mx-auto">
+      <div class="m-5">
+          <div class="">
             <a href="userList.php" class="btn btn-outline-dark">User List</a>
           </div>
-          <div class="card w-75 mx-auto mt-2">
-            <div class="card-header">
-                <h3 class="">Add bio</h3>
+
+          <div class="row mt-2">
+            <div class="col-lg-4">
+              <div class="card">
+              <div class="card-header">
+                  <h3 class="">Add bio</h3>
+              </div>
+              <div class="card-body">
+                <h4 class="card-title"><?php echo $user['fname']." ".$user['lname'];?></h4>
+                    <div class="row">
+                        <div class="col-lg-4">Gender :</div>
+                        <div class="col-lg-8"><?php echo $user['c_gender'];?></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">TEL :</div>
+                        <div class="col-lg-8"><?php echo $user['telephone'];?></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">Email :</div>
+                        <div class="col-lg-8">
+                          
+                          <?php echo $user['email'];?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">Bio :</div>
+                        <div class="col-lg-8"> 
+                          <form action="hairsalonAction.php" method="post">
+                              <div class="input-group">
+                                  <input type="hidden" name="c_id" value="<?php echo $user['c_id'];?>">
+                                  <input type="text" name="bio" placeholder="<?php echo $user['bio'];?>" required>
+                                  <div class="input-group-append">
+                                      <button type="submit" name="editUserBio" class="btn btn-dark">submit</button>
+                                  </div>
+                              </div>
+                          </form>
+                        </div>
+                    </div>
+              </div>
             </div>
-            <img class="card-img-top" src="holder.js/100px180/" alt="">
-            <div class="card-body">
-              <h4 class="card-title"><?php echo $user['fname']." ".$user['lname'];?></h4>
-                  <div class="row">
-                      <div class="col-lg-2 text-right">Gender :</div>
-                      <div class="col-lg-9"><?php echo $user['c_gender'];?></div>
-                  </div>
-                  <div class="row">
-                      <div class="col-lg-2 text-right">TEL :</div>
-                      <div class="col-lg-9"><?php echo $user['telephone'];?></div>
-                  </div>
-                  <div class="row">
-                      <div class="col-lg-2 text-right">Email :</div>
-                      <div class="col-lg-9"><?php echo $user['email'];?></div>
-                  </div>
-                  <div class="row">
-                      <div class="col-lg-2 text-right">Bio :</div>
-                      <div class="col-lg-9"> 
-                        <form action="hairsalonAction.php" method="post">
-                            <div class="input-group">
-                                <input type="hidden" name="c_id" value="<?php echo $user['c_id'];?>">
-                                <input type="text" name="bio" placeholder="<?php echo $user['bio'];?>" required class="form-control">
-                                <div class="input-group-append">
-                                    <button type="submit" name="editUserBio" class="btn btn-dark">submit</button>
-                                </div>
-                            </div>
-                        </form>
-                      </div>
-                  </div>
+            <!-- /card -->
             </div>
+            <!-- col -->
+            <div class="col-lg-8">
+                <div class="card mt-3 mt-lg-0">
+                <form action="hairsalonAction.php" method="post" enctype="multipart/form-data">
+                  <input type="hidden" name="c_id" value="<?php echo $client_id;?>">
+                  <div class="row m-2">
+                    <div class="col-2">
+                        Date :
+                    </div>
+                    <div class="col-9">
+                      <input type="date" name="date" id="" required>
+                    </div>
+                  </div>
+                  <div class="row m-2">
+                    <div class="col-2">
+                        Photo :
+                    </div>
+                    <div class="col-9">
+                        <input type="file" name="photo" id="">
+                    </div>
+                  </div>
+                  <div class="row m-2">
+                    <div class="col-2">
+                        Memo :
+                    </div>
+                    <div class="col-9">
+                        <textarea name="memo" id="" cols="30" rows="10" class="form-control" required></textarea>
+                    </div>
+                  </div>
+                  <div class="text-right m-2">
+                    <button type="submit" name="add_memo" class="btn btn-secondary p-2 mr-5">submit</button>
+                  </div>
+                </form>
+
+              </div>
+              
+              <?php foreach($memoList as $memo):?>
+                <div class="card mt-2">
+                  <div class="card-body">
+                    <p class="card-text text-right"><?php echo $memo['date'];?></p>
+                    <h4 class="card-title"><?php echo $memo['memo'];?></h4>
+                    <?php $photo =  $memo['photo'];?>
+                    <img class="w-75" src="upload/admin/c_photo/<?php echo $photo;?>" ><br>
+                    <div class="text-right">
+                      
+                      <a href="deleteMemo.php?id=<?php echo $memo['memo_id'];?>&c_id=<?php echo $client_id;?>" class="text-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+              </div>
+                  </div>
+                </div>
+              <?php endforeach;?>
+    
+            </div>
+            <!-- col -->
           </div>
+          <!-- /row -->
       </div>
+      <!-- container -->
 
       
     <!-- Optional JavaScript -->

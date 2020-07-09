@@ -35,15 +35,15 @@ $newsList=$Hairsalon->displayNews($news,$date);
       }
     
       #div2{
-        height:380px;
+        min-height: 200px;
+        /* height:380px; */
       }
-   
       #news{
+        height:250px;
         overflow: scroll;
       } 
       h2{
         font-family: 'Oleo Script', cursive;
-
       }
       
 
@@ -57,17 +57,15 @@ $newsList=$Hairsalon->displayNews($news,$date);
     <header class="text-center">
       <br>
       <p class="display-3 text-light" id="welcome">Welcome</p>
-    
     </header>
 
 
-    <div class="jumbotron bg-light" id="div2">
-
+    <div class="container bg-light mt-3 mb-3">
       <div class="row">      
-        <div class="col-lg-8 bg-light border" >
+        <div class="col-lg-8 bg-light border" id="div2">
           <h2 class="mt-2">News:</h2>
           <hr>
-          <div id="news" style="height:250px;">
+          <div id="news">
             <?php foreach($newsList as $row) {
               // $info_id = $row['info_id'];
                 echo "<h4>◆ ".$row['news']."</h4>";
@@ -78,11 +76,11 @@ $newsList=$Hairsalon->displayNews($news,$date);
             ?>
           </div>
         </div>
-        <div class="col-lg-4 border text-monospace">
+        <div class="col-lg-4 border text-monospace" id="div2">
           <table>
               <tr>
-              <h2 class="mt-2">Our Business hours:</h2>
-              <br>
+                <h2 class="mt-2">Business hours:</h2>
+                <br>
               </tr>
               <tr>
                   <td>Mon, Wed, Thu:</td>
@@ -101,17 +99,15 @@ $newsList=$Hairsalon->displayNews($news,$date);
                   <td>Close</td>
               </tr>
           </table>
-            <br>
-            <br>
-          <h4>TEL: 03-1234-5678</h4>
+          <div class="mt-4">
+            <h4>TEL: 03-1234-5678</h4>
+          </div>
         </div>
       </div>
     </div>  
-
-   
     <!-- footer -->
-    <nav class="nav navbar bg-dark">
-        <a href="dashboard.php" >Home</a>
+    <nav class="nav navbar bg-dark mt-1">
+        <a href="dashboard.php">Home</a>
         <p class="text-light">Copyright@ Yuka Matsumoto</p>
         <a href="contactpage.php">Contact</a>
     </nav>

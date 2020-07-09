@@ -24,11 +24,11 @@ $reply_list = $Hairsalon-> displayReply($msgID);
   <body>
       <div class="container">
         <div class="w-75 mt-3 mb-3 mx-auto">
-             <a href="msg_list.php" class="btn btn-outline-dark text-right">Back to list</a>
+             <a href="msg_list.php" class="btn btn-outline-dark">Back to list</a>
             <div class="card mt-2">
               <div class="card-header">
                 <div class="row">
-                  <div class="col-lg-3 text-right">
+                  <div class="col-lg-3">
                     contact_id : 
                   </div>
                   <div class="col-lg-5">
@@ -40,15 +40,23 @@ $reply_list = $Hairsalon-> displayReply($msgID);
                   </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 text-right">
+                    <div class="col-lg-3">
                       Name: 
                     </div>
                     <div class="col-lg-7">
                       <b> <?php echo $row['contact_name']?> </b> 
                     </div>
+                    <div class="col-lg-2 text-right">
+                      <?php
+                        if($row['c_id'] == $loginid){
+                          $contactID = $row['contact_id'];
+                          echo "<a href='deleteMessage.php?contact_id=$contactID' class='btn btn-outline-danger btn-sm'><i class='fa fa-trash'></i>delete </a>";
+                        }
+                     ?>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 text-right">
+                    <div class="col-lg-3">
                       Email:
                     </div>
                     <div class="col-lg-7">
@@ -57,40 +65,40 @@ $reply_list = $Hairsalon-> displayReply($msgID);
                 </div>
               </div>
               <div class="card-body">
-                  <div class="row">
-                      <div class="col-lg-3 text-right">
+                  <div class="row mt-2">
+                      <div class="col-lg-3">
                         Gender :
                       </div>
                       <div class="col-lg-7">
                         <?php echo $row['gender']?>
                       </div>
                   </div>
-                  <div class="row">
-                      <div class="col-lg-3 text-right">
+                  <div class="row mt-2">
+                      <div class="col-lg-3">
                         service :
                       </div>
                       <div class="col-lg-7">
                         <?php echo $row['service']?>
                       </div>
                   </div>
-                  <div class="row">
-                      <div class="col-lg-3 text-right">
+                  <div class="row mt-2">
+                      <div class="col-lg-3">
                         stylist :
                       </div>
                       <div class="col-lg-7">
                         <?php echo $row['stylist']?>
                       </div>
                   </div>
-                  <div class="row">
-                      <div class="col-lg-3 text-right">
+                  <div class="row mt-2">
+                      <div class="col-lg-3">
                         Comment :
                       </div>
                       <div class="col-lg-7">
                         <?php echo $row['comment']?>
                       </div>
                   </div>
-                  <div class="row">
-                      <div class="col-lg-3 text-right">
+                  <div class="row mt-3">
+                      <div class="col-lg-3">
                         Image photo :
                       </div>
                       <div class="col-lg-7">
@@ -119,7 +127,7 @@ $reply_list = $Hairsalon-> displayReply($msgID);
                     <div class="card-body">
                   <?php endif ;?>
                       <div class="row">
-                        <div class="col-lg-3 text-right">
+                        <div class="col-lg-3">
                         <b><?php echo $reply['fname'];?> :</b>
                         </div>
                         <div class="col-lg-6">
@@ -133,8 +141,11 @@ $reply_list = $Hairsalon-> displayReply($msgID);
                               <br>
                       
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-3 text-right">
                             <?php echo $reply['send_time'];?>
+                            <?php if($loginid == $reply['user_id']) :?>
+                              <a href="deleteReplyAdmin.php?r_id=<?php echo $reply['r_id']?>&c_id=<?php echo $row['contact_id'];?>"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+                            <?php endif;?>
                         </div>
                       </div>
                   </div>
@@ -148,8 +159,8 @@ $reply_list = $Hairsalon-> displayReply($msgID);
                   <div class="col-lg-7">
                     <form action="" method="post" enctype="multipart/form-data">
                       <input type="hidden" name="c_id" value="<?php echo $row['contact_id'];?>">
-                      <textarea name="text" id="" cols="70" rows="5" required></textarea>
-                      <input type="file" name="file" id="">
+                      <textarea name="text" id="" cols="70" rows="5" required class="form-control"></textarea>
+                      <input type="file" name="file" id="" class="mt-2"> 
                       <br>
                       <button type="submit" name="reply" class="btn btn-dark btn-block mt-3"> Submit</button>
                     </form>

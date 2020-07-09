@@ -31,20 +31,17 @@ $reply_list = $Hairsalon-> displayReply($msgID);
     <style>
      
         body{
-          margin-top:100px;        
+          margin-top:150px;        
           background-image: url(asset/logo1.jpg);
           background-repeat: no-repeat;
           background-attachment: fixed;
           background-position: center center;
           background-size :cover ;
         }
-        div p,h3{
+        #title,span{
             font-family: 'Oleo Script', cursive;
             color:white;
             -webkit-text-stroke: 1px black;
-        }
-        h3{
-            letter-spacing: 2px;
         }
         #table{
             max-height: 300px;
@@ -52,6 +49,14 @@ $reply_list = $Hairsalon-> displayReply($msgID);
         }
         #footer{
             margin-top: 180px;
+        }
+        #title{
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+        span{
+            font-size: 40px;
+            padding: 5px;
+            
         }
 
     </style>
@@ -62,10 +67,11 @@ $reply_list = $Hairsalon-> displayReply($msgID);
   </head>
   <body>
       <div class="container">
-        <p class="display-4">My page</p>
+        <div class="display-4 w-50 mx-auto rounded text-center" id="title">My page</div>
         <br>
         <div class="">
-            <h3>Resavertion</h3>
+            
+            <span class="rounded">Resavertion</span>
             <div class="bg-light " id="table">
                 <table class="table table-hover">
                     <?php if ($myReserveList > 0 ):?>
@@ -109,7 +115,7 @@ $reply_list = $Hairsalon-> displayReply($msgID);
                                 <td>
                                     <?php echo $row['total_price'];?>
                                 </td>
-                                <td> <a href="editMyReserve.php?reserve_id=<?php echo $reserveID;?>" class="btn btn-dark">edit</a> </td>
+                                <td> <a href="editMyReserve.php?reserve_id=<?php echo $reserveID;?>" class="btn btn-dark">check</a> </td>
                             </tbody>
                         <?php endforeach ;?>
                     <?php else :?>
@@ -120,8 +126,8 @@ $reply_list = $Hairsalon-> displayReply($msgID);
                 </table>
             </div>
                 
-          
-            <h3>Message</h3>
+            <span class="rounded">Message</span>
+            
             <div class="bg-light" id="table">
             <table class="table table-hover">                
                 <div class="div">

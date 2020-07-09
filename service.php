@@ -14,6 +14,9 @@ include 'userMenu.php';
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   
     <style>
+        body{
+            margin-top: 150px;
+        }
         h5{
         font-family: 'Oleo Script', cursive;
       }
@@ -23,8 +26,7 @@ include 'userMenu.php';
 </head>
   <body>
 
-    <div class="container mt-5 w-75 mx-auto">
-        <br>
+    <div class="container mt-3 w-75 mx-auto">
         <h5 class="display-4 text-center mt-3"> OUR SERVICE</h5>
         
         <div class="bg-light p-5">

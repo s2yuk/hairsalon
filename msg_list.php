@@ -28,8 +28,15 @@ $msg_list = $Hairsalon->displayContact();
   </head>
   <body>
       <div class="container mt-5">
-          <p class="display-4">Message</p>
-        
+          <div class="row mx-auto">
+            <div class="col-lg-9">
+              <p class="display-4">Message</p>
+            </div>
+            <div class="col-lg-3">
+              <a href="new_message.php" class="btn btn-outline-dark"><i class="far fa-envelope"></i><br>New</a>
+            </div>
+          </div>
+          
           <div class="w-75 mx-auto" id="list">
           <table class="table table-hover">
                 <thead>

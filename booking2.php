@@ -33,13 +33,16 @@ $Selected_coupon =$Hairsalon->getSelectCouponID($selected_cID);
   
     <style>
       body{
-        margin-top:100px;
+        margin-top:150px;
         height: 600px;
         background-image: url(asset/state.jpeg);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size : cover;
 
+      }
+      #booking{
+        background-color: rgba(255, 255, 255, 0.8);
       }
       div h5{
         font-family: 'Oleo Script', cursive;
@@ -52,22 +55,20 @@ $Selected_coupon =$Hairsalon->getSelectCouponID($selected_cID);
   
   </head>
   <body>
-      <div class="container bg-light text-monospace text-center">        
-        <h5 class="display-4  p-3">Booking</h5>
+      <div class="container text-monospace text-center w-50 rounded" id="booking">        
+        <h5 class="display-4 p-3">Booking</h5>
       </div>
 
-      <div class="container bg-light text-monospace text-center mb-5">        
+      <div class="container bg-light text-monospace text-center mb-5 rounded">        
         <br>
         <div class="alert alert-dark">
             <h5 class="text-monospace p-3">Step 2</h4>
             <?php if(!empty($_SESSION['coupon_id'])):?>
               <p class="text-monospace"> additional menu</p>
             <?php else:?>
-              <div class="text-center">
-                    <form action="hairsalonAction.php" method="post">
-                      <button type="submit" name="reselect" class="btn btn-secondary"> << back</button>
-                    </form>
-              </div> 
+              <form action="hairsalonAction.php" method="post">
+                <button type="submit" name="reselect" class="btn btn-secondary"> << back</button>
+              </form>
             <?php endif;?>
         </div>
           

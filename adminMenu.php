@@ -13,52 +13,64 @@ $currentUser = $Hairsalon->getOneUser($loginid);
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- font awesome icon -->
-    <script src="https://kit.fontawesome.com/eb83b1af77.js" crossorigin="anonymous"></script>
-    <!-- google font -->
-    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-   <style>
-        body{
-            height:150px;
+        
+    <!-- font awesome icon -->
+    <script src="https://kit.fontawesome.com/eb83b1af77.js" crossorigin="anonymous"></script>
+
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+
+    <style>
+        .navbar{
+            /* height:150px; */
         }
        #logo{
-           height: 61px;
+           height: 55px;
        }
    </style>
  </head>
   <body>
-        <nav class="navbar navbar-expand fix-top bg-dark text-light p-2">
-        <a href="dashboard.php" target="_blank" class="text-dark mr-5"><img src="asset/smile.jpg" alt="logo" id="logo"></a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
 
-            <div class="text-left">
-            <ul class="nav nav-bar">
-                <li class="nav-item">
-                    <a href="admin.php" role="button" class="btn btn-outline-light mr-1">admin top</a>
-                </li>
-                <li class="nav-item">
-                    <a href="addCatalog.php" role="button" class="btn btn-outline-light mr-1">add Catalog</a>
-                </li>
-                <li class="nav-item">
-                    <a href="addService.php" role="button" class="btn btn-outline-light mr-1">add Service</a>
-                </li>
-                <li class="nav-item">
-                    <a href="addStaff.php" role="button" class="btn btn-outline-light mr-1">add staff</a>
-                </li>
-                <li class="nav-item">
-                    <a href="userList.php" role="button" class="btn btn-outline-light mr-1">User List</a>
-                </li> 
-                <li class="nav-item">
-                    <a href="reservation.php" role="button" class="btn btn-outline-light mr-1">Reservation</a>
-                </li>
-                <li class="nav-item">
-                    <a href="msg_list.php" role="button" class="btn btn-outline-light mr-1">Message</a>
-                </li>
-            </ul>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#contentId" aria-expanded="false"
+                    aria-controls="contentId" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="contentId">
+                <ul class="nav navbar navbar-nav mr-auto mt-lg-0">
+                    <li class="nav-item mr-lg-2 active">
+                        <a href="dashboard.php" target="_blank" class="mr-5">
+                            <img src="asset/smile.jpg" alt="logo" id="logo">
+                        </a>
+                    </li>
+                    <li class="nav-item mr-lg-2 active">
+                        <a href="admin.php" class="nav-link active">Admin Top</a>
+                    </li>
+                    <li class="nav-item mr-lg-2 active">
+                        <a href="addCatalog.php" class="nav-link active">Catalog</a>
+                    </li>
+                    <li class="nav-item mr-lg-2 active">
+                        <a href="addService.php" class="nav-link active">Service</a>
+                    </li>
+                    <li class="nav-item mr-lg-2 active">
+                        <a href="addStaff.php" class="nav-link active">Staff</a>
+                    </li>
+                    <li class="nav-item mr-lg-2 active">
+                        <a href="userList.php" class="nav-link active">Customer List</a>
+                    </li> 
+                    <li class="nav-item mr-lg-2 active">
+                        <a href="reservation.php" class="nav-link active">Reservation</a>
+                    </li>
+                    <li class="nav-item mr-lg-2 active">
+                        <a href="msg_list.php" class="nav-link active">Message</a>
+                    </li>
+                </ul>
             </div>
 
-            <div class="ml-auto">
+            <div class="ml-auto collapse navbar-collapse float-right text-white" id="contentId">
                 <ul class="nav nav-bar">
                     <li class="nav-item">
                         <?php

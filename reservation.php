@@ -91,7 +91,7 @@
 
     </div>
     <!-- footer -->
-    <nav class="nav navbar bg-dark" id="footer">
+    <nav class="nav navbar bg-dark mt-5" id="footer">
       <a href="dashboard.php" >Home</a>
       <p class="text-light">Copyright@ Yuka Matsumoto</p>
       <a href="contactpage.php">Contact</a>      

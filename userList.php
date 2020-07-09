@@ -31,7 +31,7 @@ $results = $Hairsalon->searchUser($keyword);
     <div class="container mb-5" id="main">
       <div class="row mt-5">
         <div class="col-lg-7">
-          <h5 class="display-4">User List</h5>
+          <h5 class="display-4">Customer List</h5>
           <p>There are  <b><?php echo count($userList)?></b> members now.</p>
         </div>
         <div class="col-lg-5">
@@ -67,7 +67,7 @@ $results = $Hairsalon->searchUser($keyword);
                     echo "<td>".$result['telephone']."</td>";
                     echo "<td>".$result['email']."</td>";
                     echo "<td>".$result['bio']."</td>";
-                    echo "<td><a href='editUser.php?id=$client_id' class='btn btn-outline-dark btn-sm'>edit user</a></td>";
+                    echo "<td><a href='editUser.php?id=$client_id' class='btn btn-secondary btn-sm'>Detail</a></td>";
                     echo "</tbody>";
               }
             }else{
@@ -81,7 +81,7 @@ $results = $Hairsalon->searchUser($keyword);
                     echo "<td>".$row['telephone']."</td>";
                     echo "<td>".$row['email']."</td>";
                     echo "<td>".$row['bio']."</td>";
-                    echo "<td><a href='editUser.php?id=$client_id' class='btn btn-outline-dark btn-sm'>edit user</a></td>";
+                    echo "<td><a href='editUser.php?id=$client_id' class='btn btn-secondary btn-sm'>Detail</a></td>";
                     echo "</tbody>";
                   }
             }

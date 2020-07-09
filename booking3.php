@@ -20,13 +20,16 @@ $staffList=$Hairsalon->displayStaff();
   
     <style>
       body{
-        margin-top:100px;
+        margin-top:150px;
         /* height: 600px;
         overflow: scroll; */
         background-image: url(asset/state.jpeg);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size : cover;
+      }
+      #booking{
+        background-color: rgba(255, 255, 255, 0.8);
       }
       div h5{
         font-family: 'Oleo Script', cursive;
@@ -44,11 +47,10 @@ $staffList=$Hairsalon->displayStaff();
   </head>
   <body>
       
-  <div class="container bg-light text-monospace text-center">        
+  <div class="container text-monospace text-center w-50 rounded" id="booking">        
       <h5 class="display-4 p-3">Booking</h5>
   </div>
-  <div class="container bg-light text-monospace text-center">        
-     <br>
+  <div class="container bg-light text-monospace text-center rounded">        
      <div class="text-left">
           <form action="hairsalonAction.php" method="post">
             <button type="submit" name="reselect3" class="btn btn-secondary m-2"> << Reselect</button>
@@ -68,7 +70,7 @@ $staffList=$Hairsalon->displayStaff();
               foreach($staffList as $row){
                 echo "<div class='col-lg-2'>";
                   
-                      echo "<p class='text-uppercase'>".$row['position']."</p>";
+                      echo "<span class='text-uppercase'>".$row['position']."</span><br>";
                       
                       if(!empty($row['staff_photo'])){
                           $sphoto = $row['staff_photo'];
@@ -76,17 +78,17 @@ $staffList=$Hairsalon->displayStaff();
                       }else{
                           echo "<img src='asset/smile.jpg' alt='image printing' class='w-100'>";
                       }
-              
-                      echo " <b class='text-monospace'>";
+                      echo "<br>";
+                      echo " <h4 class='text-monospace'>";
                           echo $row['staff_name'];
-                      echo "</b>";
+                      echo "</h4>";
                       
                       
                     
                       echo "<div class='text-center'>";
                           echo "<form action='hairsalonAction.php' method='post'>"; 
                               echo "<input type='hidden' name='selectStylist' value='".$row['staff_id']."' >";
-                              echo "<button type='submit' name='addBooking3' class='btn btn-outline-dark btn-sm'>SELECT</button>";
+                              echo "<button type='submit' name='addBooking3' class='btn btn-outline-dark btn-sm mb-5'>SELECT</button>";
                           echo "</form>";
                       echo " </div>";
 

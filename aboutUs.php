@@ -17,7 +17,7 @@ include 'userMenu.php';
     <style>
         
       body{
-        margin-top:100px;
+        margin-top:150px;
         height: 700px;
         background-image: url(asset/logo1.jpg);
         background-repeat: no-repeat;

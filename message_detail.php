@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
         body{
-            margin-top: 100px;
+            margin-top: 150px;
         }
     </style>
 
@@ -34,11 +34,11 @@
   <body>
   <div class="container">
         <div class="w-75 mt-3 mb-3 mx-auto">
-             <a href="mypage.php" class="btn btn-outline-dark text-right">Back to myPage</a>
+             <a href="mypage.php" class="btn btn-outline-dark">Back to myPage</a>
             <div class="card mt-2">
               <div class="card-header">
                 <div class="row">
-                  <div class="col-lg-3 text-right">
+                  <div class="col-lg-3">
                     contact_id : 
                   </div>
                   <div class="col-lg-5">
@@ -49,7 +49,7 @@
                   </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 text-right">
+                    <div class="col-lg-3">
                       Name: 
                     </div>
                     <div class="col-lg-7">
@@ -60,11 +60,10 @@
                         $contactID = $row['contact_id'];
                         echo "<a href='deleteMessage.php?contact_id=$contactID' class='btn btn-outline-danger btn-sm'><i class='fa fa-trash'></i>delete </a>";
                       ?>
-                      
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-3 text-right">
+                    <div class="col-lg-3">
                       Email:
                     </div>
                     <div class="col-lg-7">
@@ -73,32 +72,32 @@
                 </div>
               </div>
               <div class="card-body">
-                  <div class="row">
-                      <div class="col-lg-3 text-right">
+                  <div class="row mt-2">
+                      <div class="col-lg-3">
                         Gender :
                       </div>
                       <div class="col-lg-7">
                         <?php echo $row['gender']?>
                       </div>
                   </div>
-                  <div class="row">
-                      <div class="col-lg-3 text-right">
+                  <div class="row mt-2">
+                      <div class="col-lg-3">
                         service :
                       </div>
                       <div class="col-lg-7">
                         <?php echo $row['service']?>
                       </div>
                   </div>
-                  <div class="row">
-                      <div class="col-lg-3 text-right">
+                  <div class="row mt-2">
+                      <div class="col-lg-3">
                         stylist :
                       </div>
                       <div class="col-lg-7">
                         <?php echo $row['stylist']?>
                       </div>
                   </div>
-                  <div class="row">
-                      <div class="col-lg-3 text-right">
+                  <div class="row mt-2">
+                      <div class="col-lg-3">
                         Comment :
                       </div>
                       <div class="col-lg-7">
@@ -106,7 +105,7 @@
                       </div>
                   </div>
                   <div class="row">
-                      <div class="col-lg-3 text-right">
+                      <div class="col-lg-3">
                         Image photo :
                       </div>
                       <div class="col-lg-7">
@@ -137,7 +136,7 @@
                           <!-- my reply -->
                     <?php endif ;?>
                             <div class="row">
-                                <div class="col-lg-3 text-right">
+                                <div class="col-lg-3">
                                   <b><?php echo $reply['fname'];?> :</b>
                                 </div>
                                 <div class="col-lg-6">
@@ -152,7 +151,10 @@
                                 </div>
                                 <div class="col-lg-3">
                             <?php echo $reply['send_time'];?>
-                        </div>
+                            <?php if($loginid == $reply['user_id']) :?>
+                              <a href="deleteReply.php?r_id=<?php echo $reply['r_id']?>&c_id=<?php echo $row['contact_id'];?>"><i class="fa fa-trash text-danger" aria-hidden="true"></i></a>
+                            <?php endif;?>
+                            </div>
                             </div>
                         </div>
                         
@@ -163,12 +165,13 @@
             <div class="card mt-2">
               <div class="card-body">
                 <div class="row">
-                  <div class="col-lg-3"></div>
+                  <div class="col-lg-3">
+                  </div>
                   <div class="col-lg-7">
                     <form action="" method="post" enctype="multipart/form-data">
                       <input type="hidden" name="c_id" value="<?php echo $row['contact_id'];?>">
-                      <textarea name="text" id="" cols="70" rows="5" required></textarea>
-                      <input type="file" name="file" id="">
+                      <textarea name="text" id="" cols="70" rows="5" required class="form-control"></textarea>
+                      <input type="file" name="file" id="" class="mt-2"> 
                       <br>
                       <button type="submit" name="reply" class="btn btn-dark btn-block mt-3"> Submit</button>
                     </form>

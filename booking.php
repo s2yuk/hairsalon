@@ -21,13 +21,16 @@ $addCouponList =$Hairsalon->displayCouponMenu();
   
     <style>
       body{
-        margin-top:100px;
+        margin-top:150px;
         height: 600px;
         background-image: url(asset/state.jpeg);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size : cover;
 
+      }
+      #booking{
+        background-color: rgba(255, 255, 255, 0.8);
       }
       div h5{
         font-family: 'Oleo Script', cursive;
@@ -40,10 +43,10 @@ $addCouponList =$Hairsalon->displayCouponMenu();
 </head>
   <body>
 
-    <div class="container bg-light text-monospace text-center">        
+    <div class="container text-monospace text-center w-50 rounded" id="booking">        
       <h5 class="display-4 p-3">Booking</h5>
     </div>
-    <div class="container bg-light text-monospace text-center mb-5">        
+    <div class="container bg-light text-monospace text-center mb-5 rounded">        
       <br>
       <div class="alert alert-dark">
           <h5 class="text-monospace p-3">Step 1</h4>
@@ -61,9 +64,9 @@ $addCouponList =$Hairsalon->displayCouponMenu();
             <div class="card-body">
               <div class="row">
                 <div class="col-lg-2">
-                <img src="asset/coupon1.png" alt="" class="img-thumbnail">
+                  <img src="asset/coupon1.png" alt="" class="img-thumbnail">
                 </div>
-                <div class="col-lg-5">
+                <div class="col-lg-5 mt-3 mt-lg-0">
                   <h4><?php echo $coupon['coupon_name'] ?></h4>
                   <p class=" display-5 text-black-50">* except: producer & manager</p>
                 </div>

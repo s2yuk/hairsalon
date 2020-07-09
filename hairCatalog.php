@@ -24,7 +24,7 @@ $currentUser = $Hairsalon->getOneUser($loginid);
     <style>        
         
         body{
-          margin-top:100px;  
+          margin-top:150px;  
         }
         #hairCatalog{
             width:250px;

@@ -23,6 +23,10 @@
         div p, div h3{
           font-family: 'Oleo Script', cursive;
         }
+        #title{
+          background-color: rgba(255, 255, 255, 0.5);
+
+        }
       </style>
        <!-- google font -->
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
@@ -32,7 +36,7 @@
   <body>
 
     <div class="container text-monospace">
-        <div class="bg-light w-50 mx-auto">
+        <div class="w-50 mx-auto rounded" id="title">
           <p class="display-4 text-center">Welcome New Guest!</p>
         </div>
 
@@ -74,7 +78,9 @@
                 </form>
             </div>
         </div>
-
+        <div class="text-center mt-2">
+          <a href="login.php" class="btn btn-outline-dark">Login</a>
+        </div>
     </div>
      <!-- footer -->
     <nav class="nav navbar bg-dark mt-5">

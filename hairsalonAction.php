@@ -68,7 +68,14 @@ elseif(isset($_POST['reply'])){
 
     $Hairsalon->msg_reply($c_id,$text,$file,$user_id);
 }
+elseif(isset($_POST['new_msg'])){
+    $email = $_POST['email'];
+    $iphoto = $_FILES['iphoto']['name'];
+    $comment = $_POST['comment'];
+    $c_id = $_POST['c_id'];
 
+    $Hairsalon->new_msg($email,$comment,$iphoto,$c_id);
+}
 
 
 
@@ -387,11 +394,20 @@ elseif(isset($_POST['search'])){
     $Hairsalon->searchUser($keyword);
 }
 
+// edit User.php
 elseif(isset($_POST['editUserBio'])){
     $c_id =$_POST['c_id'];
     $user_bio = $_POST['bio'];
 
     $Hairsalon->addUserBio($c_id,$user_bio);
+}
+elseif(isset($_POST['add_memo'])){
+    $c_id = $_POST['c_id'];
+    $photo = $_FILES['photo']['name'];
+    $memo = $_POST['memo'];
+    $date=$_POST['date'];
+
+    $Hairsalon->addMemo($c_id,$photo,$memo,$date);
 }
 
 

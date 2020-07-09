@@ -33,14 +33,16 @@
   
     <style>
       body{
-        margin-top:100px;
+        margin-top:150px;
         /* height: 600px;
         overflow: scroll; */
         background-image: url(asset/state.jpeg);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size : cover;
-
+      }
+      #booking{
+        background-color: rgba(255, 255, 255, 0.8);
       }
       div h4{
         font-family: 'Oleo Script', cursive;
@@ -54,10 +56,10 @@
 </head>
   <body>
 
-    <div class="container bg-light text-monospace text-center">
+    <div class="container text-monospace text-center w-50 rounded" id="booking">
         <h4 class="display-4 p-3">Booking</h4>
     </div>
-    <div class="container bg-light">
+    <div class="container bg-light rounded">
        <br>
         <div class="alert alert-dark text-center text-monospace mt-3">
             <h5 class="p-3">Confirmation</h5>

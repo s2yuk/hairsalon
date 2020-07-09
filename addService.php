@@ -52,48 +52,40 @@
     </div>
 
     <div class="col-lg-8">
-  
-        <table class="table mt-3 w-75">
-           <thead>
-            <tr>
-                <th>service id</th>
-                <th>service name</th>
-                <th>service price</th>
-                <th>option</th>
+        <div class="container">
+            <table class="table table-hover">
+            <thead>
+                    <tr>
+                        <th>service id</th>
+                        <th>service name</th>
+                        <th>service price</th>
+                        <th>option</th>
+                    </tr>
+            </thead>
+                <tbody>
+                    <?php 
+                        foreach($addMenuList as $row){
+                            $serviceID=$row['service_id'];
 
-            
-            </tr>
-           </thead>
-            <tbody>
-            <?php 
-                foreach($addMenuList as $row){
-                    $serviceID=$row['service_id'];
-
-                    echo "<tr>";
-                    echo "<td>".$row['service_id']."</td>";
-                    echo "<td>".$row['service_name']."</td>";
-                    echo "<td>".$row['price']."</td>";
-                    echo "<th><a href='editService.php?service_id=$serviceID' role='button' class='btn btn-outline-dark'>edit</a></th>";
-
-                    
-                    echo "</tr>";
-                    
-                }    
-                
-                
-                ?>
-        
-            </tbody>
-        </table>
-   
+                            echo "<tr>";
+                                echo "<td>".$row['service_id']."</td>";
+                                echo "<td>".$row['service_name']."</td>";
+                                echo "<td>".$row['price']."</td>";
+                                echo "<th><a href='editService.php?service_id=$serviceID' role='button' class='btn btn-outline-dark'>edit</a></th>";                    
+                            echo "</tr>";
+                        }    
+                    ?>
+                </tbody>
+            </table>
+        </div>
+        <!-- /container -->
     </div>
-
-
-      
 </div>
+<br>
+<hr>
+<br>
 <div class="row mt-5">
     <div class="col-lg-4">
-
         <div class="container">
             <div class="card">
                 <div class="card-header">
@@ -119,38 +111,41 @@
     </div>
 
     <div class="col-lg-8">
-  
-        <table class="table mt-3 w-75">
-           <thead>
-            <tr>
-                <th>Coupon id</th>
-                <th>Coupon name</th>
-                <th>Coupon price</th>
-                <th>option</th>
+        <div class="container">
+            <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Coupon id</th>
+                    <th>Coupon name</th>
+                    <th>Coupon price</th>
+                    <th>option</th>
 
+                
+                </tr>
+            </thead>
+                <tbody>
+                <?php 
+                    foreach($addCouponList as $row){
+                        $couponID=$row['coupon_id'];
+
+                        echo "<tr>";
+                        echo "<td>".$row['coupon_id']."</td>";
+                        echo "<td>".$row['coupon_name']."</td>";
+                        echo "<td>".$row['coupon_price']."</td>";
+                        echo "<th><a href='editCoupon.php?coupon_id=$couponID' role='button' class='btn btn-outline-dark'>edit</a></th>";
+
+                        
+                        echo "</tr>";
+                        
+                    }    
+                    ?>
             
-            </tr>
-           </thead>
-            <tbody>
-            <?php 
-                foreach($addCouponList as $row){
-                    $couponID=$row['coupon_id'];
-
-                    echo "<tr>";
-                    echo "<td>".$row['coupon_id']."</td>";
-                    echo "<td>".$row['coupon_name']."</td>";
-                    echo "<td>".$row['coupon_price']."</td>";
-                    echo "<th><a href='editCoupon.php?coupon_id=$couponID' role='button' class='btn btn-outline-dark'>edit</a></th>";
-
-                    
-                    echo "</tr>";
-                    
-                }    
-                ?>
-        
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
+        <!-- /container -->
     </div>
+    <!-- /col -->
 </div>
 <!-- footer -->
 <nav class="nav navbar bg-dark mt-5">

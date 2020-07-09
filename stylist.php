@@ -18,7 +18,7 @@ $staffList=$Hairsalon->displayStaff();
     <style>
     
     body{
-        margin-top:100px;
+        margin-top:150px;
     }
     div h5{
         font-family: 'Oleo Script', cursive;
@@ -29,7 +29,7 @@ $staffList=$Hairsalon->displayStaff();
         height: 213px;
     }
     #footer{
-        margin-top: 100px;
+        /* margin-top: 100px; */
     }
     </style>
     <!-- google font -->
@@ -48,16 +48,16 @@ $staffList=$Hairsalon->displayStaff();
         </div>
         <div class="row mt-2">
             <?php foreach($staffList as $staff):?>
-                <div class="col-lg-2 text-center mt-2">
-                    <?php echo $staff['position'];?>
-                    <img src="upload/admin/<?php echo $staff['staff_photo'];?>" alt="" class="w-100" id="staff_img">
+                <div class="col-lg-2 text-center mt-2 mb-2">
+                    <?php echo $staff['position'];?><br>
+                    <img src="upload/admin/<?php echo $staff['staff_photo'];?>" alt="" class="" id="staff_img">
                     <h4><?php echo $staff['staff_name'];?></h4>
                     <?php 
                         // echo $staff['staff_id'];
                         $modalID = $staff['staff_id'];
                     ?>                  
                     <!-- Button trigger modal -->    
-                    <button type="button" name="<?php echo $modalID;?>" class="btn btn-outline-dark mt-3" data-toggle="modal" data-target="#modalID_<?php echo $modalID;?>">More info</button>
+                    <button type="button" name="<?php echo $modalID;?>" class="btn btn-outline-dark mt-2" data-toggle="modal" data-target="#modalID_<?php echo $modalID;?>">More info</button>
                 
                     <!-- Modal -->
                     <div class="modal fade" id="modalID_<?php echo $modalID;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -101,26 +101,8 @@ $staffList=$Hairsalon->displayStaff();
                 </div>
             <?php endforeach;?>
         </div>
-        <div class="row">
-            <?php foreach($staffList as $staff):?>
-                <div class="col-lg-2">
-                </div>
-            <?php endforeach;?>
-        </div>
-        <div class="row mt-2">
-            <?php foreach($staffList as $staff):?>
-                <div class="col-lg-2 text-center">
-                </div>
-            <?php endforeach;?>
-        </div>
-        <div class="row mt-2">
-            <?php foreach($staffList as $staff):?>
-                <div class="col-lg-2 text-center">
-                    
-                </div>
-            <?php endforeach;?>
-        </div>
     </div>
+    <br><br><br><br>
 
    <!-- footer -->
    <nav class="nav navbar bg-dark fixed-bottom" id="footer">

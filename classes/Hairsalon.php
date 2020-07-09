@@ -171,6 +171,31 @@ function contact($name,$email,$gender,$service,$stylist,$comment,$iphoto,$c_id){
         header('location:contact_send.php');
     }
 }
+function new_msg($email,$comment,$iphoto,$c_id){
+    
+    $sql1="SELECT client.fname, client.lname FROM login INNER JOIN client ON login.login_id=client.login_id WHERE email='$email';";
+    $result1 = $this->conn->query($sql1);
+
+    if($result1->num_rows==1){
+        $rows=$result1->fetch_assoc();
+        $username=$rows['fname']; 
+
+        $target_dir='upload/user/msg/';
+        $target_file=$target_dir.basename($iphoto);
+        
+        $sql2= "INSERT INTO contact(contact_name,contact_email,comment,iphoto,c_id) VALUES('$username','$email','$comment','$iphoto','$c_id')";
+        $result2 = $this->conn->query($sql2);
+
+        if($result2 == FALSE){
+            die('cant insert contact'.$this->conn->error);
+        }else{
+            move_uploaded_file($_FILES['iphoto']['tmp_name'], $target_file);
+            header('location:msg_list.php');
+        }
+    }else{
+        die('cant get name'.$this->conn->error);
+    }
+}
 // for admin
 function displayContact(){
     $sql ="SELECT * FROM contact ORDER BY send_time DESC";
@@ -244,7 +269,20 @@ function deleteMessage($contactID){
     if($result ==FALSE){
         die('can not delet message'.$this->conn->connect_error);
     }else{
-        header('location:mypage.php');
+        $loginid=$_SESSION['loginid'];
+        $sql2 ="SELECT * FROM login WHERE login_id ='$loginid'";
+        $result2 = $this->conn->query($sql2);
+
+        if($result2->num_rows==1) {
+            $row=$result2->fetch_assoc();
+
+            if($row['status']=='A'){
+                header('location:msg_list.php');
+            }else{
+                header('location:mypage.php');
+            }
+            
+        }
     }
 }
 // msg_detail.php  for reply
@@ -275,8 +313,6 @@ function msg_reply($c_id,$text,$file,$user_id){
         }
     }
 }
-
-
 // disply reply
 function displayReply($msgID){
     // $sql = "SELECT * FROM msg_reply WHERE c_id=$msgID";
@@ -292,6 +328,28 @@ function displayReply($msgID){
         return FALSE;
     }
 }
+function deleteReplyByUser($replyID,$contactID){
+    $sql ="DELETE FROM msg_reply WHERE r_id='$replyID'";
+    $result =$this->conn->query($sql);
+
+    if($result==FALSE){
+        die('delete memo failed'.$this->conn->connect_error);
+    }else{
+        header("location:message_detail.php?contact_id=$contactID");
+    }
+}
+function deleteReplyByAdmin($replyID,$contactID){
+    $sql ="DELETE FROM msg_reply WHERE r_id='$replyID'";
+    $result =$this->conn->query($sql);
+
+    if($result==FALSE){
+        die('delete memo failed'.$this->conn->connect_error);
+    }else{
+        header("location:msg_detail.php?contact_id=$contactID");
+    }
+}
+
+
 function countReply($c_id){
     $sql = "SELECT COUNT(*) FROM msg_reply WHERE c_id='$c_id";
     $result = $this->conn->query($sql);
@@ -321,7 +379,7 @@ function addNews($news,$date){
 }
 
 function displayNews($news,$date){
-    $sql="SELECT * FROM info ORDER BY info_id DESC";
+    $sql="SELECT * FROM info ORDER BY info_id DESC LIMIT 2" ;
     $result= $this->conn->query($sql);
 
     if($result->num_rows>0){
@@ -580,7 +638,7 @@ function uploadCatalog($c_photo, $c_comment,$photo_stylist){
     
     $result = $this->conn->query($sql);
 
-    if($result = TRUE){
+    if($result == TRUE){
         move_uploaded_file($_FILES['catalog_photo']['tmp_name'],$target_file);
        header ('location:addCatalog.php');
     }else{
@@ -764,8 +822,20 @@ function deleteReserve($reserveID){
     if($result == FALSE){
         die('deleteing reservation failed'.$this->conn->connect_error);
     }else{
-        header('location:reservation.php');
+        $loginid=$_SESSION['loginid'];
+        $sql2 ="SELECT * FROM login WHERE login_id ='$loginid'";
+        $result2 = $this->conn->query($sql2);
 
+        if($result2->num_rows==1) {
+            $row=$result2->fetch_assoc();
+
+            if($row['status']=='A'){
+                header('location:reservation.php');
+            }else{
+                header('location:mypage.php');
+            }
+            
+        }
     }
 }
 
@@ -853,6 +923,45 @@ function addUserBio($c_id,$user_bio){
         header("location:editUser.php?id=$c_id");
     }
 
+}
+function addMemo($c_id,$photo,$memo,$date){
+    $target_dir ='upload/admin/c_photo/';
+    $target_file= $target_dir.basename($photo);
+
+    $sql="INSERT INTO `client_memo`(`c_id`, `photo` , `memo`, date) VALUES ('$c_id','$photo','$memo','$date')";
+    $result=$this->conn->query($sql);
+
+    if($result ==FALSE){
+        echo "Insert client_memo is failed";
+    }else{
+        move_uploaded_file($_FILES['photo']['tmp_name'], $target_file);
+        header("location:editUser.php?id=$c_id");
+    }
+}
+function getMemo($client_id){
+    $sql = "SELECT * FROM client_memo WHERE c_id='$client_id' ORDER BY date DESC";
+    $result = $this->conn->query($sql);
+
+    if($result->num_rows>0){
+        while($rows=$result->fetch_assoc()){
+            $row[]=$rows;
+        }
+        return $row;
+    }else{
+        // echo 'no result';
+        return FALSE;
+    }
+}
+function deleteMemo($memoID,$c_id){
+ 
+    $sql ="DELETE FROM client_memo WHERE memo_id=$memoID";
+    $result =$this->conn->query($sql);
+
+    if($result==FALSE){
+        die('delete memo failed'.$this->conn->connect_error);
+    }else{
+        header("location:editUser.php?id=$c_id");
+    }
 }
 
 ########################

@@ -2,10 +2,10 @@
 -- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Jun 19, 2020 at 02:30 PM
--- Server version: 5.7.26
--- PHP Version: 7.3.8
+-- ホスト: localhost:8889
+-- 生成日時: 2020 年 7 月 09 日 06:49
+-- サーバのバージョン： 5.7.26
+-- PHP のバージョン: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hairsalon`
+-- データベース: `hairsalon`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog`
+-- テーブルの構造 `catalog`
 --
 
 CREATE TABLE `catalog` (
@@ -34,7 +34,7 @@ CREATE TABLE `catalog` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `catalog`
+-- テーブルのデータのダンプ `catalog`
 --
 
 INSERT INTO `catalog` (`catalog_id`, `catalog_photo`, `catalog_comment`, `photo_stylist`) VALUES
@@ -50,7 +50,7 @@ INSERT INTO `catalog` (`catalog_id`, `catalog_photo`, `catalog_comment`, `photo_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `catalog_comment`
+-- テーブルの構造 `catalog_comment`
 --
 
 CREATE TABLE `catalog_comment` (
@@ -62,7 +62,7 @@ CREATE TABLE `catalog_comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `catalog_comment`
+-- テーブルのデータのダンプ `catalog_comment`
 --
 
 INSERT INTO `catalog_comment` (`comment_id`, `comment`, `user`, `catalog_id`, `user_id`) VALUES
@@ -83,12 +83,13 @@ INSERT INTO `catalog_comment` (`comment_id`, `comment`, `user`, `catalog_id`, `u
 (50, 'Hello !', 'user', 13, 4),
 (51, 'Hello !', 'user', 12, 4),
 (52, 'thank you!', 'admin', 18, 2),
-(53, 'thank you!', 'admin', 19, 2);
+(53, 'thank you!', 'admin', 19, 2),
+(54, 'cool', 'yuka', 18, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `client`
+-- テーブルの構造 `client`
 --
 
 CREATE TABLE `client` (
@@ -102,30 +103,53 @@ CREATE TABLE `client` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `client`
+-- テーブルのデータのダンプ `client`
 --
 
 INSERT INTO `client` (`c_id`, `fname`, `lname`, `c_gender`, `telephone`, `bio`, `login_id`) VALUES
-(1, 'yuka', 'matsumoto', 'female', '08012345678', NULL, 1),
+(1, 'yuka', 'matsumoto', 'female', '08012345678', 'like medium bob, pink hair color', 1),
 (2, 'admin', 'admin1', 'male', '09012345678', NULL, 2),
 (3, 'test', 'test1', 'male', '1234567890', 'test to add bio', 3),
-(4, 'user', 'user1', 'male', '04812345678', NULL, 4),
+(4, 'user', 'user1', 'male', '04812345678', 'short cut', 4),
 (6, 'test', 'test', 'male', '18181818181', NULL, 6),
 (7, 'new', 'client1', 'femal', '09011111111', NULL, 7);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `contact`
+-- テーブルの構造 `client_memo`
+--
+
+CREATE TABLE `client_memo` (
+  `memo_id` int(11) NOT NULL,
+  `c_id` int(11) NOT NULL,
+  `photo` varchar(300) NOT NULL,
+  `memo` varchar(300) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- テーブルのデータのダンプ `client_memo`
+--
+
+INSERT INTO `client_memo` (`memo_id`, `c_id`, `photo`, `memo`, `date`) VALUES
+(2, 3, 'yuka.jpg', 'colored brown pink.', '2020-07-06'),
+(6, 7, 'yuka.jpg', 'test', '2020-07-06'),
+(10, 1, 'yuka.jpg', 'Cut bob length and colored pink brown by Smith.', '2020-07-08');
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `contact`
 --
 
 CREATE TABLE `contact` (
   `contact_id` int(11) NOT NULL,
   `contact_name` varchar(30) NOT NULL,
   `contact_email` varchar(100) NOT NULL,
-  `gender` varchar(20) NOT NULL,
-  `service` varchar(100) NOT NULL,
-  `stylist` varchar(100) NOT NULL,
+  `gender` varchar(20) DEFAULT NULL,
+  `service` varchar(100) DEFAULT NULL,
+  `stylist` varchar(100) DEFAULT NULL,
   `comment` varchar(300) NOT NULL,
   `iphoto` varchar(300) NOT NULL,
   `c_id` int(11) DEFAULT NULL,
@@ -133,20 +157,11 @@ CREATE TABLE `contact` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `contact`
+-- テーブルのデータのダンプ `contact`
 --
 
 INSERT INTO `contact` (`contact_id`, `contact_name`, `contact_email`, `gender`, `service`, `stylist`, `comment`, `iphoto`, `c_id`, `send_time`) VALUES
-(1, 'yuka', 'yuka@kredo', '', '', 'Manager', 'test message', '', 1, '2020-06-01 11:56:43'),
-(2, 'yuka', 'yuka@kredo', '', 'hair', 'no_choice', 'photo test', '', 1, '2020-06-02 11:56:43'),
-(3, 'test', 'test@kredo', 'male', 'hair', 'Manager', 'photo test2', '', 3, '2020-06-06 11:56:43'),
-(4, 'a', 'admin@kredo', 'male', 'nail', 'no_choice', 'test', '', 2, '2020-06-06 11:56:43'),
-(5, 'u', 'user@kredo', 'male', 'hair', 'Manager', 'photo', 'IMG_2637.JPG', 4, '2020-06-06 11:56:43'),
 (6, 'test', 'test@kredo', 'female', 'hair', 'no_choice', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum labore quaerat nihil voluptatem, optio ipsum placeat inventore error totam atque odio quis saepe nesciunt maiores reiciendis adipisci. Quod, officiis nihil?', '', 3, '2020-06-06 11:56:43'),
-(7, 'user', 'user@kredo', 'male', 'hair', 'no_choice', 'photo upload test', 'IMG_2631.JPG', 4, '2020-06-06 11:56:43'),
-(8, 'yuka matsumoto', 'yuka@kredo', '', '', 'no_choice', '', '', 1, '2020-06-06 11:56:43'),
-(9, 'yuka matsumoto', 'yuka@kredo', '', '', 'no_choice', 'photo upload test', 'IMG_2635.JPG', 1, '2020-06-06 11:56:43'),
-(11, 'yuka matsumoto', 'yuka@kredo', '', '', 'no_choice', 'test message', 'スクリーンショット 2020-06-08 17.52.50.png', 1, '2020-06-19 07:19:43'),
 (13, 'test test1', 'test@kredo', 'female', 'cut', 'Smith', 'I want to have trend hair style...', '', 3, '2020-06-19 13:23:00'),
 (14, 'yuka matsumoto', 'yuka@kredo', 'female', 'color', 'Jimmy', 'I want have new color!!\r\nis it available?', 'catalog4.jpg', 1, '2020-06-19 14:14:03'),
 (15, 'new client1', 'new@kredo', 'female', 'perm', 'no_choice', 'i want to try perm....', '', 7, '2020-06-19 14:22:50');
@@ -154,7 +169,7 @@ INSERT INTO `contact` (`contact_id`, `contact_name`, `contact_email`, `gender`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `coupon`
+-- テーブルの構造 `coupon`
 --
 
 CREATE TABLE `coupon` (
@@ -164,7 +179,7 @@ CREATE TABLE `coupon` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `coupon`
+-- テーブルのデータのダンプ `coupon`
 --
 
 INSERT INTO `coupon` (`coupon_id`, `coupon_name`, `coupon_price`) VALUES
@@ -181,7 +196,7 @@ INSERT INTO `coupon` (`coupon_id`, `coupon_name`, `coupon_price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `info`
+-- テーブルの構造 `info`
 --
 
 CREATE TABLE `info` (
@@ -191,7 +206,7 @@ CREATE TABLE `info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `info`
+-- テーブルのデータのダンプ `info`
 --
 
 INSERT INTO `info` (`info_id`, `news`, `date`) VALUES
@@ -202,7 +217,7 @@ INSERT INTO `info` (`info_id`, `news`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `login`
+-- テーブルの構造 `login`
 --
 
 CREATE TABLE `login` (
@@ -213,7 +228,7 @@ CREATE TABLE `login` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `login`
+-- テーブルのデータのダンプ `login`
 --
 
 INSERT INTO `login` (`login_id`, `email`, `password`, `status`) VALUES
@@ -227,7 +242,7 @@ INSERT INTO `login` (`login_id`, `email`, `password`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `msg_reply`
+-- テーブルの構造 `msg_reply`
 --
 
 CREATE TABLE `msg_reply` (
@@ -240,7 +255,7 @@ CREATE TABLE `msg_reply` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `msg_reply`
+-- テーブルのデータのダンプ `msg_reply`
 --
 
 INSERT INTO `msg_reply` (`r_id`, `c_id`, `text`, `file`, `user_id`, `send_time`) VALUES
@@ -250,7 +265,6 @@ INSERT INTO `msg_reply` (`r_id`, `c_id`, `text`, `file`, `user_id`, `send_time`)
 (11, 8, 'like this style', 'IMG_2635.JPG', 1, '2020-06-06 12:08:34'),
 (13, 7, 'image photo test', 'IMG_2635.JPG', 1, '2020-06-06 12:08:34'),
 (15, 5, 'photo upload', 'IMG_2635.JPG', 1, '2020-06-06 12:08:34'),
-(16, 9, 'reply photo upload test', 'IMG_2632.JPG', 1, '2020-06-06 12:08:34'),
 (17, 8, 'admin reply photo test', 'IMG_2636.JPG', 2, '2020-06-06 12:08:34'),
 (18, 6, 'user reply test .', '', 3, '2020-06-06 12:08:34'),
 (22, 3, 'reply test ', '', 3, '2020-06-06 12:08:34'),
@@ -266,7 +280,7 @@ INSERT INTO `msg_reply` (`r_id`, `c_id`, `text`, `file`, `user_id`, `send_time`)
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reservation`
+-- テーブルの構造 `reservation`
 --
 
 CREATE TABLE `reservation` (
@@ -283,23 +297,25 @@ CREATE TABLE `reservation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `reservation`
+-- テーブルのデータのダンプ `reservation`
 --
 
 INSERT INTO `reservation` (`reserve_id`, `reserve_date`, `reserve_hour`, `fname`, `lname`, `c_id`, `order_menu`, `add_menu`, `nomination`, `total_price`) VALUES
-(20, '2020-06-04', '16:00', 'yuka', 'matsumoto', 1, '1', '7', '', '9700'),
-(43, '2020-06-12', '10:00', 'test', 'testt', 0, '1', '', '', '7500'),
 (53, '2020-06-18', '14:00', 'yuka', 'test', 0, '1', '7', '', '9700'),
 (61, '2020-06-20', '10:00', 'new', 'client', 0, '1', '', 'Smith', '7500'),
 (62, '2020-06-24', '11:00', 'admin', 'admin1', 2, '1', '', 'Jimmy', '7500'),
 (63, '2020-06-20', '10:00', 'admin', 'admin1', 2, '1', '16', 'Tom', '14100'),
 (65, '2020-06-19', '10:00', 'yuka', 'test', 0, '', '1', '', '6600'),
-(66, '2020-06-19', '12:00', 'test', 'user', 0, '', '3', 'Smith', '7700');
+(66, '2020-06-19', '12:00', 'test', 'user', 0, '', '3', 'Smith', '7700'),
+(70, '2020-07-10', '10:00', 'yuka', 'matsumoto', 1, '1', '', 'Tom', '7500'),
+(71, '2020-07-08', '10:00', 'Katey', 'Pery', 0, '1', '', 'Smith', '7500'),
+(72, '2020-07-08', '13:00', 'Joe', 'Dan', 0, '6', '', 'Smith', '8250'),
+(73, '2020-07-08', '17:00', 'Damian', 'Besonette', 0, '', '3', 'Smith', '7700');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `review`
+-- テーブルの構造 `review`
 --
 
 CREATE TABLE `review` (
@@ -313,7 +329,7 @@ CREATE TABLE `review` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `review`
+-- テーブルのデータのダンプ `review`
 --
 
 INSERT INTO `review` (`review_id`, `nickname`, `date`, `rating`, `comment`, `photo`, `login_id`) VALUES
@@ -329,7 +345,7 @@ INSERT INTO `review` (`review_id`, `nickname`, `date`, `rating`, `comment`, `pho
 -- --------------------------------------------------------
 
 --
--- Table structure for table `service`
+-- テーブルの構造 `service`
 --
 
 CREATE TABLE `service` (
@@ -339,7 +355,7 @@ CREATE TABLE `service` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `service`
+-- テーブルのデータのダンプ `service`
 --
 
 INSERT INTO `service` (`service_id`, `service_name`, `price`) VALUES
@@ -364,7 +380,7 @@ INSERT INTO `service` (`service_id`, `service_name`, `price`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `staff`
+-- テーブルの構造 `staff`
 --
 
 CREATE TABLE `staff` (
@@ -377,7 +393,7 @@ CREATE TABLE `staff` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `staff`
+-- テーブルのデータのダンプ `staff`
 --
 
 INSERT INTO `staff` (`staff_id`, `staff_name`, `position`, `staff_gender`, `staff_photo`, `staff_bio`) VALUES
@@ -389,156 +405,168 @@ INSERT INTO `staff` (`staff_id`, `staff_name`, `position`, `staff_gender`, `staf
 (39, 'Emily ', 'assistant', 'Female', 'Staff6.jpg', 'hair assistant ');
 
 --
--- Indexes for dumped tables
+-- ダンプしたテーブルのインデックス
 --
 
 --
--- Indexes for table `catalog`
+-- テーブルのインデックス `catalog`
 --
 ALTER TABLE `catalog`
   ADD PRIMARY KEY (`catalog_id`);
 
 --
--- Indexes for table `catalog_comment`
+-- テーブルのインデックス `catalog_comment`
 --
 ALTER TABLE `catalog_comment`
   ADD PRIMARY KEY (`comment_id`);
 
 --
--- Indexes for table `client`
+-- テーブルのインデックス `client`
 --
 ALTER TABLE `client`
   ADD PRIMARY KEY (`c_id`);
 
 --
--- Indexes for table `contact`
+-- テーブルのインデックス `client_memo`
+--
+ALTER TABLE `client_memo`
+  ADD PRIMARY KEY (`memo_id`);
+
+--
+-- テーブルのインデックス `contact`
 --
 ALTER TABLE `contact`
   ADD PRIMARY KEY (`contact_id`);
 
 --
--- Indexes for table `coupon`
+-- テーブルのインデックス `coupon`
 --
 ALTER TABLE `coupon`
   ADD PRIMARY KEY (`coupon_id`);
 
 --
--- Indexes for table `info`
+-- テーブルのインデックス `info`
 --
 ALTER TABLE `info`
   ADD PRIMARY KEY (`info_id`);
 
 --
--- Indexes for table `login`
+-- テーブルのインデックス `login`
 --
 ALTER TABLE `login`
   ADD PRIMARY KEY (`login_id`);
 
 --
--- Indexes for table `msg_reply`
+-- テーブルのインデックス `msg_reply`
 --
 ALTER TABLE `msg_reply`
   ADD PRIMARY KEY (`r_id`);
 
 --
--- Indexes for table `reservation`
+-- テーブルのインデックス `reservation`
 --
 ALTER TABLE `reservation`
   ADD PRIMARY KEY (`reserve_id`);
 
 --
--- Indexes for table `review`
+-- テーブルのインデックス `review`
 --
 ALTER TABLE `review`
   ADD PRIMARY KEY (`review_id`);
 
 --
--- Indexes for table `service`
+-- テーブルのインデックス `service`
 --
 ALTER TABLE `service`
   ADD PRIMARY KEY (`service_id`);
 
 --
--- Indexes for table `staff`
+-- テーブルのインデックス `staff`
 --
 ALTER TABLE `staff`
   ADD PRIMARY KEY (`staff_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- ダンプしたテーブルのAUTO_INCREMENT
 --
 
 --
--- AUTO_INCREMENT for table `catalog`
+-- テーブルのAUTO_INCREMENT `catalog`
 --
 ALTER TABLE `catalog`
-  MODIFY `catalog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `catalog_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `catalog_comment`
+-- テーブルのAUTO_INCREMENT `catalog_comment`
 --
 ALTER TABLE `catalog_comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
--- AUTO_INCREMENT for table `client`
+-- テーブルのAUTO_INCREMENT `client`
 --
 ALTER TABLE `client`
   MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `contact`
+-- テーブルのAUTO_INCREMENT `client_memo`
 --
-ALTER TABLE `contact`
-  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+ALTER TABLE `client_memo`
+  MODIFY `memo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `coupon`
+-- テーブルのAUTO_INCREMENT `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- テーブルのAUTO_INCREMENT `coupon`
 --
 ALTER TABLE `coupon`
   MODIFY `coupon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `info`
+-- テーブルのAUTO_INCREMENT `info`
 --
 ALTER TABLE `info`
   MODIFY `info_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `login`
+-- テーブルのAUTO_INCREMENT `login`
 --
 ALTER TABLE `login`
   MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `msg_reply`
+-- テーブルのAUTO_INCREMENT `msg_reply`
 --
 ALTER TABLE `msg_reply`
-  MODIFY `r_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `r_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
--- AUTO_INCREMENT for table `reservation`
+-- テーブルのAUTO_INCREMENT `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reserve_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
+  MODIFY `reserve_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
--- AUTO_INCREMENT for table `review`
+-- テーブルのAUTO_INCREMENT `review`
 --
 ALTER TABLE `review`
   MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `service`
+-- テーブルのAUTO_INCREMENT `service`
 --
 ALTER TABLE `service`
-  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `service_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `staff`
+-- テーブルのAUTO_INCREMENT `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

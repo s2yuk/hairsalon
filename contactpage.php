@@ -81,7 +81,7 @@
                   <input type="email" name="email" required placeholder="Email" class="form-control">
                 <?php endif;?>
                 <br>
-            <div class=row>
+            <div class="row mt-2">
               <div class="col-lg-6">
                 <label for="">Chose your gender</label>
               </div>
@@ -91,7 +91,7 @@
               </div>     
             </div>
 
-            <div class="row">
+            <div class="row mt-3">
               <div class="col-lg-6">
                 <label for="service">Which service do you want?</label>
               </div>
@@ -102,28 +102,27 @@
                 <input type="checkbox" name="service" value="perm">Perm
               </div>         
             </div>
-              <br>    
-            <div>
-                    <label for="">Which stylist do you prefere?</label>
-                    <select name="stylist" id="" class="form-control">
-                      <option value="no_choice">Chose stylist</option>
-                      <?php 
-                          foreach($staffList as $row){
-                          $staffList =$row['staffname'];
-                          echo "<option value='".$row['staff_name']."'> ".$row['staff_name']."</option>";
-                          }
-                      ?>
-                        
-                    </select>
+            <div class="mt-3">
+              <label for="">Which stylist do you prefere?</label>
+              <select name="stylist" id="" class="form-control">
+                <option value="no_choice">Chose stylist</option>
+                <?php 
+                    foreach($staffList as $row){
+                    $staffList =$row['staffname'];
+                    echo "<option value='".$row['staff_name']."'> ".$row['staff_name']."</option>";
+                    }
+                ?>
+              </select>
             </div>  
-             <br>
-            <textarea name="comment" id="comment" cols="30" rows="10" class="form-control" placeholder="Write here" required></textarea>
-              <br>
-            <div class="text-center">
+            <div class="mt-3">
+              <label for="">Comment :</label><br>
+              <textarea name="comment" id="comment" cols="30" rows="10" class="form-control" placeholder="Please write here" required></textarea>
+            </div>
+            <div class="text-center mt-3 bg-white border">
                 <label for="">If you have any referance image photo, please let me know.</label>
                 <input type="file" name="photo">
-                <button type="submit" name="sent" class="btn btn-block btn-outline-dark mt-5 w-75 mx-auto">sent</button>
             </div>
+              <button type="submit" name="sent" class="btn btn-block btn-secondary mt-5 w-75 mx-auto">sent</button>
               <br>
               <br>
         </form>

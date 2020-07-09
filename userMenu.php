@@ -19,63 +19,60 @@ $currentUser = $Hairsalon->getOneUser($loginid);
     
     <!-- google font -->
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
+
     <!-- font awesome icon -->
     <script src="https://kit.fontawesome.com/eb83b1af77.js" crossorigin="anonymous"></script>
-
     
     <style>
-        body{
-            height:150px;
+        #menu{
+            height:80px;
         }
         #logo{
-            height:61px;
+            height:55px;
         }
     </style>
-
-
 </head>
   <body>
-
-
-  <div class="container">  
-    <nav class="navbar navbar-expand fixed-top bg-light">
-
-        <a href="dashboard.php" class="text-dark mr-5"><img src="asset/smile.jpg" alt="logo" id="logo"></a>
-                
-        <div class="text-left">
-           <ul class="nav nav-bar">
-                <li class="nav-item">
-                    <a href="aboutUs.php" role="button" class="btn btn-outline-dark mr-1">About us</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top"　id="menu">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav nav navbar mr-auto mt-lg-0">
+                <li class="nav-item active">
+                    <a href="dashboard.php" class="nav-link mr-lg-5 mr-sm-0"><img src="asset/smile.jpg" alt="logo" id="logo"></a>
                 </li>
-                <li class="nav-item">
-                    <a href="hairCatalog.php" role="button" class="btn btn-outline-dark mr-1">Catalog</a>
+                <li class="nav-item mr-lg-2 active">
+                    <a href="aboutUs.php" class="nav-link">About us</a>
                 </li>
-                <li class="nav-item">
-                    <a href="service.php" role="button" class="btn btn-outline-dark mr-1">Service</a>
+                <li class="nav-item mr-lg-2 active">
+                    <a href="hairCatalog.php" class="nav-link">Catalog</a>
                 </li>
-                <li class="nav-item">
-                    <a href="stylist.php" role="button" class="btn btn-outline-dark mr-1">Stylist</a>
+                <li class="nav-item mr-lg-2 active">
+                    <a href="service.php" class="nav-link">Service</a>
                 </li>
-                <li class="nav-item">
-                    <a href="booking.php" role="button" class="btn btn-outline-dark mr-1">Booking</a>
+                <li class="nav-item mr-lg-2 active">
+                    <a href="stylist.php" class="nav-link">Stylist</a>
                 </li>
-                <li class="nav-item">
-                    <a href="testimonial.php" role="button" class="btn btn-outline-dark mr-1">testimonial</a>
+                <li class="nav-item mr-lg-2 active">
+                    <a href="booking.php" class="nav-link">Booking</a>
                 </li>
-                <li class="nav-item">
-                    <a href="contactpage.php" role="button" class="btn btn-outline-dark mr-1">Contact/access</a>
+                <li class="nav-item mr-lg-2 active">
+                    <a href="testimonial.php" class="nav-link">testimonial</a>
+                </li>
+                <li class="nav-item mr-lg-2 active">
+                    <a href="contactpage.php" class="nav-link">Contact/access</a>
                 </li>
                 <?php  if(!empty($_SESSION['loginid'])){
                        
-                    echo "<li class='nav-item'>";
-                    echo "<a href='mypage.php' role='button' class='btn btn-outline-dark'>My page</a>";
+                    echo "<li class='nav-item mr-lg-2 active'>";
+                    echo "<a href='mypage.php' class='nav-link'>My page</a>";
                     echo"</li>";
                     } ;
                 ?>
             </ul>
         </div>
-
-        <div class="ml-auto">
+        <div class="ml-auto　collapse navbar-collapse　float-right">
             <ul class="nav nav-bar">
                 <li class="nav-item">
                     <?php
@@ -93,8 +90,9 @@ $currentUser = $Hairsalon->getOneUser($loginid);
         </div>
     
     </nav>
-</div>
       
+    
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
