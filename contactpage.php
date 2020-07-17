@@ -10,7 +10,7 @@
   }
 
   $staffList =$Hairsalon->displayStaff();
-
+  $API = "AIzaSyBYlbmce5R_z5XBBTXA5vlnC7tC6sAdeBI";
 ?>
 
 <!doctype html>
@@ -26,7 +26,8 @@
     <!-- google map -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYlbmce5R_z5XBBTXA5vlnC7tC6sAdeBI&callback=initMap&libraries=&v=weekly"
+    
+      src="https://maps.googleapis.com/maps/api/js?key=<?php echo $API?>&callback=initMap&libraries=&v=weekly"
       defer
     ></script>
     <style type="text/css">
