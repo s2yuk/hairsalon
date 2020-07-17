@@ -113,34 +113,29 @@ $currentUser = $Hairsalon->getOneUser($loginid);
                                 echo "</p>";
                                 echo "</form>";
                             }
-
-                           
-                            echo "<br>";
-
-
-                            echo "<div class='row'>";
-                            echo "<form action='hairsalonAction.php' method='post'>";
                             ?>
+                            <br>
+                            <div class='row'>
+                            <form action='hairsalonAction.php' method='post'>
                                 <input type="hidden" name="fname" value="<?php echo $currentUser['fname'] ?>">
                                 <input type="hidden" name="catalog_id" value="<?php echo $row['catalog_id'] ?>">
                                 <div class="input-group">
-                                    <input type="text" name="content" class="form-control" placeholder="add a comment" aria-label="" aria-describedby="basic-addon1" required>
+                                    <input type="text" name="content" class="form-control" placeholder="コメント" aria-label="" aria-describedby="basic-addon1" required>
                                     <div class="input-group-append">
-                                        <button type="submit" name='send' class="btn btn-outline-dark">Post</button>
+                                        <button type="submit" name='send' class="btn btn-primary">Post</button>
                                     </div>
                                 </div>
 
+                            </form>    
+                            </div>
+                                
                            <?php
-                            echo "</form>";
-                            
-                            echo "</div>";
-                        
                     echo "</div>";
                 echo "</div>";
                 
             echo "</div>";
             echo "<div class='modal-footer'>";
-                echo "<button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>";
+                echo "<button type='button' class='btn btn-outline-secondary' data-dismiss='modal'>Close</button>";
             echo "</div>";
             echo "</div>";
         echo "</div>";
@@ -151,7 +146,7 @@ $currentUser = $Hairsalon->getOneUser($loginid);
 
 
 
-<br><br>
+    <br><br>
    <!-- footer -->
     <nav class="nav navbar bg-dark mt-5">
         <a href="dashboard.php" >Home</a>

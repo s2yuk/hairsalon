@@ -23,9 +23,13 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    
-    <style>
-        
+    <!-- google map -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYlbmce5R_z5XBBTXA5vlnC7tC6sAdeBI&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <style type="text/css">
       body{
         margin-top:150px;
         height: 700px;
@@ -41,8 +45,31 @@
       #loginMsg{
         font-size: 10px;
       }
-
+      #map{
+        height: 100%;
+      }
+     
       </style>
+      <!-- google map -->
+      <script>
+      (function(exports) {
+        "use strict";
+
+        function initMap() {
+          exports.map = new google.maps.Map(document.getElementById("map"), {
+            center: {
+              // apple store omotesando
+              lat: 35.6657806,
+              lng: 139.7104613
+            },
+            zoom: 15
+          });
+        }
+
+        exports.initMap = initMap;
+      })((this.window = this.window || {}));
+    </script>
+    
       <!-- google font -->
       <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
 
@@ -50,10 +77,12 @@
 
 </head>
   <body>
-    <div class="container w-50 bg-light mt-3 text-monospace">
-        <h5 class="text-center display-4 p-3">Contact us</h5>
-      
-        <p class="text-center">TEL: 03-1234-5678</p>
+    <div class="container w-50 bg-light mt-3 text-monospace rounded">
+      <div class="text-center">
+        <h5 class="display-4 p-3">Contact us</h5>
+        <p>問い合わせフォーム</p>
+        <p>TEL: 03-1234-5678</p>
+      </div>
         
         <br>
         <form action="hairsalonAction.php" method="post" enctype="multipart/form-data">
@@ -63,7 +92,7 @@
                   <input type="hidden" name="c_id" value="<?php echo $currentUser['loginid'];?>">
                 <?php else :?>
                   <p id="loginMsg">
-                    if you have an account please login.
+                    if you have an account please login. アカウントをお持ちの方はこちら
                     <a href="login.php" class='badge badge-secondary ml-2 p-1'> >> Login <<</a>
                   </p>
                 <?php endif;?>
@@ -83,29 +112,31 @@
                 <br>
             <div class="row mt-2">
               <div class="col-lg-6">
-                <label for="">Chose your gender</label>
+                <label for="">Chose your gender　性別:</label>
               </div>
               <div class="col-lg-6">
-                <input type="radio" name="gender" value="male">Male    
-                <input type="radio" name="gender" value="female">female
+                <input type="radio" name="gender" value="male">Male  男性 <br>
+                <input type="radio" name="gender" value="female">female　女性
               </div>     
             </div>
 
             <div class="row mt-3">
               <div class="col-lg-6">
-                <label for="service">Which service do you want?</label>
+                <label for="service">Which service do you want ? :<br>
+                 ご希望のサービスを選択してください(複数可)</label>
               </div>
               <br>
               <div class="col-lg-6">
-                <input type="checkbox" name="service" value="cut">Cut  
-                <input type="checkbox" name="service" value="color">Color  
-                <input type="checkbox" name="service" value="perm">Perm
+                <input type="checkbox" name="service" value="cut">Cut  カット　<br>
+                <input type="checkbox" name="service" value="color">Color  カラー <br>
+                <input type="checkbox" name="service" value="perm">Perm　パーマ <br>
               </div>         
             </div>
             <div class="mt-3">
-              <label for="">Which stylist do you prefere?</label>
+              <label for="">Which stylist do you prefere?  <br>
+            ご希望のスタイリストをお選びください : </label>
               <select name="stylist" id="" class="form-control">
-                <option value="no_choice">Chose stylist</option>
+                <option value="no_choice">選択してください</option>
                 <?php 
                     foreach($staffList as $row){
                     $staffList =$row['staffname'];
@@ -116,13 +147,14 @@
             </div>  
             <div class="mt-3">
               <label for="">Comment :</label><br>
-              <textarea name="comment" id="comment" cols="30" rows="10" class="form-control" placeholder="Please write here" required></textarea>
+              <textarea name="comment" id="comment" cols="30" rows="10" class="form-control" placeholder="お問い合わせ内容はこちらにご記入ください。" required></textarea>
             </div>
-            <div class="text-center mt-3 bg-white border">
-                <label for="">If you have any referance image photo, please let me know.</label>
-                <input type="file" name="photo">
+            <div class="text-center mt-3 bg-white border rounded">
+                <label for="">If you have any referance image photo, please let me know. <br>
+              参考画像がありましたら添付にてお知らせくださいませ。</label><br>
+                <input type="file" name="photo" class="m-3">
             </div>
-              <button type="submit" name="sent" class="btn btn-block btn-secondary mt-5 w-75 mx-auto">sent</button>
+              <button type="submit" name="sent" class="btn btn-block btn-secondary mt-5 w-75 mx-auto">Submit</button>
               <br>
               <br>
         </form>
@@ -133,13 +165,14 @@
     <br>
       <h5 class="display-4">Access</h5>
       <br>
-        <p>Address:
-          1-2-3 Omotesando, Shibuya-city, Tokyo</a>
+        <p>Address: <br>
+         1-2-3 Omotesando, Shibuya-city, Tokyo
+        </p><br>
+        <p>
+          5 mins by walk from nearlest subway station:  Omotesando (Exit A2)　<br>
+          A2出口より徒歩５分
         </p>
-      <br>
-      <p>
-          5 mins by walk from nearlest subway station:  Omotesando (Exit A2)
-      </p>
+        <div id="map" style="height: 200px;"></div>
       <br>
     </div>
   

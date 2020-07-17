@@ -41,14 +41,14 @@ $row =$Hairsalon->getForEditService($serviceID);
                 <input type="number" name="service_price" placeholder="<?php echo $row['price']?>" required>
                 <br>
 
-                <button type="submit" name="editService" class="btn btn-dark btn-block mt-3"> Edit </button>
+                <button type="submit" name="editService" class="btn btn-secondary btn-block mt-3"> Update 更新 </button>
 
 
               </form>
           </div>
           <div class="text-right">
                   <?php
-                  echo "<a href='deleteService.php?service_id=$serviceID' role='button' class='btn btn-outline-danger mr-4'>delete </a>";
+                  echo "<a href='deleteService.php?service_id=$serviceID' role='button' class='btn btn-outline-danger mr-4'><i class='far fa-trash-alt'></i> delete </a>";
                   ?>
               </div>
 

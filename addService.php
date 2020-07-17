@@ -41,7 +41,7 @@
                     <label for="">Enter Price (Number only)</label> 
                     <input type="number" name="menuPrice" id="" placeholder="ex)6000" class="form-control">
                     <br>
-                    <button type="submit" name="menuInput" class="btn btn-dark float-right">menu input</button>
+                    <button type="submit" name="menuInput" class="btn btn-secondary float-right">Menu input　メニューに追加</button>
                 
                 </form>
                 </div>
@@ -71,7 +71,7 @@
                                 echo "<td>".$row['service_id']."</td>";
                                 echo "<td>".$row['service_name']."</td>";
                                 echo "<td>".$row['price']."</td>";
-                                echo "<th><a href='editService.php?service_id=$serviceID' role='button' class='btn btn-outline-dark'>edit</a></th>";                    
+                                echo "<th><a href='editService.php?service_id=$serviceID' role='button' class='btn btn-outline-dark'><i class='fas fa-edit'></i> edit</a></th>";                    
                             echo "</tr>";
                         }    
                     ?>
@@ -100,7 +100,7 @@
                     <label for="">Enter Price (Number only)</label> 
                     <input type="number" name="couponPrice" id="" placeholder="ex)16000" class="form-control">
                     <br>
-                    <button type="submit" name="couponInput" class="btn btn-dark">coupon input</button>
+                    <button type="submit" name="couponInput" class="btn btn-secondary float-right">Coupon input　クーポンに追加</button>
                 
                 </form>
                 </div>
@@ -132,7 +132,7 @@
                         echo "<td>".$row['coupon_id']."</td>";
                         echo "<td>".$row['coupon_name']."</td>";
                         echo "<td>".$row['coupon_price']."</td>";
-                        echo "<th><a href='editCoupon.php?coupon_id=$couponID' role='button' class='btn btn-outline-dark'>edit</a></th>";
+                        echo "<th><a href='editCoupon.php?coupon_id=$couponID' role='button' class='btn btn-outline-dark'><i class='fas fa-edit'> edit</a></th>";
 
                         
                         echo "</tr>";

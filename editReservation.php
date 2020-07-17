@@ -44,11 +44,12 @@
                 </div>
                 <div class="col-lg-6 text-right">
                     <?php
-                    echo "<a href='deleteReserve.php?reserve_id=$reserveID' role='button'  class='btn btn-outline-danger'>delete </a>";
+                    echo "<a href='deleteReserve.php?reserve_id=$reserveID' role='button'  class='btn btn-outline-danger'><i class='far fa-trash-alt'></i> delete </a>";
                     ?>
                 </div>
                 </div>
             </div>
+            
 
             <div class="card-body">
             <div class="row">
@@ -206,7 +207,7 @@
                 </div>
             </div>
                     
-            <button type="submit" name="editReserve" class="btn btn-dark mt-3 btn-block w-50 mx-auto">Edit</button>
+            <button type="submit" name="editReserve" class="btn btn-secondary mt-3 btn-block w-50 mx-auto">Update 更新</button>
    
             </div>
             <!-- /card-body -->

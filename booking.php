@@ -36,6 +36,9 @@ $addCouponList =$Hairsalon->displayCouponMenu();
         font-family: 'Oleo Script', cursive;
 
       }
+      .img-thumbnail{
+        width: 150px;
+      }
     </style>
     <!-- google font -->
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
@@ -45,13 +48,16 @@ $addCouponList =$Hairsalon->displayCouponMenu();
 
     <div class="container text-monospace text-center w-50 rounded" id="booking">        
       <h5 class="display-4 p-3">Booking</h5>
+      <p>ご予約</p>
     </div>
     <div class="container bg-light text-monospace text-center mb-5 rounded">        
       <br>
       <div class="alert alert-dark">
           <h5 class="text-monospace p-3">Step 1</h4>
           <p class="text-monospace"> select menu</p>
-          if you want only one menu >> <a href="booking2.php" class="btn btn-dark">Regular menu</a>
+          <div class="">
+            skip <i class="fas fa-angle-double-right"></i> <a href="booking2.php" class="btn btn-dark">Regular menu</a>
+          </div>
       </div>    
         <div class="w-75 mx-auto">
 

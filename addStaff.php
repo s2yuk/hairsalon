@@ -27,7 +27,7 @@ $staffList=$Hairsalon->displayStaff();
     <div class="container">
         <div class="card w-50 mt-5 mx-auto">
             <div class="card-header">
-                <h3>add staff </h3>
+                <h3>Add staff </h3>
             </div>
             <div class="card-body">
                 <form action="hairsalonAction.php" method="post" enctype="multipart/form-data">
@@ -102,7 +102,7 @@ $staffList=$Hairsalon->displayStaff();
                     echo "</th>";
 
                     echo "<th>".$row['staff_bio']."</th>";
-                    echo "<th><a href='editStaff.php?staff_id=$staffID' role='button' class='btn btn-outline-dark'>edit</a></th>";
+                    echo "<th><a href='editStaff.php?staff_id=$staffID' role='button' class='btn btn-outline-dark'><i class='fas fa-edit'></i> edit</a></th>";
                 echo "</tr>";
 
               }

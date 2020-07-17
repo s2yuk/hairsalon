@@ -71,15 +71,16 @@ $reply_list = $Hairsalon-> displayReply($msgID);
         <br>
         <div class="">
             
-            <span class="rounded">Resavertion</span>
+            <span class="rounded"><i class="fas fa-history"></i>    Resavertion</span>
             <div class="bg-light " id="table">
                 <table class="table table-hover">
                     <?php if ($myReserveList > 0 ):?>
                         <thead>
                             <th>Date</th>
                             <th>Time</th>
-                            <th colspan="2">Menu</th>
-                            <th>Nomination</th>
+                            <th>Coupon</th>
+                            <th>Menu</th>
+                            <th>Stylist</th>
                             <th>Price</th>
                             <th>Option</th>
                         </thead>
@@ -121,12 +122,13 @@ $reply_list = $Hairsalon-> displayReply($msgID);
                     <?php else :?>
                             <div class="card-body">
                                 <h3>No reservation yet</h3>
+                                まだ予約がありません
                             </div>
                     <?php endif;?>
                 </table>
             </div>
                 
-            <span class="rounded">Message</span>
+            <span class="rounded"><i class="far fa-envelope"></i> Message</span>
             
             <div class="bg-light" id="table">
             <table class="table table-hover">                
@@ -156,6 +158,7 @@ $reply_list = $Hairsalon-> displayReply($msgID);
                     <?php else :?>
                         <div class="card-body">
                             <h3>No message yet</h3>
+                            まだメッセージがありません
                         </div>
                     <?php endif ;?>
                 </div>

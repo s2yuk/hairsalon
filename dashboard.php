@@ -66,14 +66,17 @@ $newsList=$Hairsalon->displayNews($news,$date);
           <h2 class="mt-2">News:</h2>
           <hr>
           <div id="news">
-            <?php foreach($newsList as $row) {
-              // $info_id = $row['info_id'];
-                echo "<h4>◆ ".$row['news']."</h4>";
+            <ul>
+              
+              <?php foreach($newsList as $row) {
+                // $info_id = $row['info_id'];
+                echo "<li>".nl2br($row['news'])."</li>";
                 echo "<br>";
                 echo "<p class='text-right'>---".$row['date']." update</p>";
                 echo "<br>";
-            }
-            ?>
+              }
+              ?>
+              </ul>
           </div>
         </div>
         <div class="col-lg-4 border text-monospace" id="div2">
@@ -99,8 +102,8 @@ $newsList=$Hairsalon->displayNews($news,$date);
                   <td>Close</td>
               </tr>
           </table>
-          <div class="mt-4">
-            <h4>TEL: 03-1234-5678</h4>
+          <div class="mt-4" >
+            <h2>Tel: 03-1234-5678</h2>
           </div>
         </div>
       </div>

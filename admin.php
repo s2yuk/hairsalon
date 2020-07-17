@@ -36,7 +36,7 @@ $msg_list = $Hairsalon->displayContact();
         overflow: scroll;
       }
       #latestTable{
-        max-height : 400px;
+        max-height : 200px;
         overflow: scroll;
       }
       /* #addnews{
@@ -61,10 +61,10 @@ $msg_list = $Hairsalon->displayContact();
     <div class="jumbotron m-0">      
         <div class="row bg-light border border-dark" id="todaystable">
           <div class="col-lg-8">
-            <h3 class="display-4 mt-3">Today's reservation:  <?php echo $numToday; ?></h3>  
+            <h3 class="display-4 mt-3">Today's reservation　本日のご予約:  <?php echo $numToday; ?></h3>  
           </div>
           <div class="col-lg-4 text-right">
-            <a href="reservation.php" role="button" class="btn btn-dark mt-4 mr-5 p-3">go to  All reservation</a>
+            <a href="reservation.php" role="button" class="btn btn-dark mt-4 mr-5 p-3">All reservation</a>
           </div>
           
           <table class="table table-hover">
@@ -110,7 +110,7 @@ $msg_list = $Hairsalon->displayContact();
         </div>
         <br>
         <div class="row bg-light border border-dark" id="latestTable">
-          <h3 class="p-3">Latest reservation:</h3>
+          <h3 class="p-3">Latest reservation 最新予約:</h3>
           <!--repeat table -->
           <table class="table table-hover" >
             <thead class="bg-dark text-light">
@@ -173,12 +173,12 @@ $msg_list = $Hairsalon->displayContact();
               <form action="" method="post">  
                 <div class="card">
                   <div class="card-header">
-                      <h3 class="">add  News:</h3>
+                      <h3 class="">News お知らせ:</h3>
                   </div>
                   <div class="card-body"> 
                     <div class="row">
                       <div class="col-lg-3 text-center">
-                        <label for=""> news <br> content : </label>
+                        <label for=""> new <br> content : </label>
                       </div>
                       <div class="col-lg-9">
                         <textarea name="news" id="" cols="43" rows="5" class="form-control"></textarea>
@@ -200,7 +200,7 @@ $msg_list = $Hairsalon->displayContact();
           </div>
           <div class="col-lg-7">
             <div class="bg-light border border-dark" id="msg_list">
-              <h3 class="ml-3 p-2"> New Message received</h3>
+              <h3 class="ml-3 p-2"> New Message received 新着メッセージ :</h3>
               <table class="table table-hover">
                 <thead>
                   <th>contact_id</th>

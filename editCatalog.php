@@ -32,8 +32,19 @@ $row2 = $Hairsalon->getCatalogID($catalogID);
 
               <div class="card text-monospace">
                 <div class="card-header">
-                    <h3>Edit catalog:</h3>
+                  <div class="row">
+                    <div class="col-lg-9">
+                      <h3>Edit catalog:</h3>
+                    </div>
+                    <div class="col-lg-3 text-right">
+                      <?php
+                        echo "<a href='deleteCatalog.php?catalog_id=$catalogID' role='button' class='btn btn-outline-danger m-2'><i class='far fa-trash-alt'></i> Delete</a>";
+                      ?>
+                   </div>
+                 </div>
                 </div>
+                <!-- /card-header -->
+
                 <div class="card-body">
                     <div class="row ">
                         <div class="col-lg-3 text-right">
@@ -50,10 +61,9 @@ $row2 = $Hairsalon->getCatalogID($catalogID);
                     </div>
                     <div class="row">
                       <div class="col-lg-3 text-right">
-                         <label for="">photo :</label>
+                         <label for="">new photo :</label>
                       </div>
                       <div class="col-lg-9">
-                      
                          <input type="file" name="catalog_photo" id="">
                       </div>
                     </div>
@@ -63,13 +73,13 @@ $row2 = $Hairsalon->getCatalogID($catalogID);
                         <label for="">photo comment :</label>
                       </div>
                       <div class="col-lg-9">
-                       <textarea name="catalog_comment" id="" cols="30" rows="10" placeholder="<?php echo $row2['catalog_comment']?>"></textarea>
+                       <textarea name="catalog_comment" id="" cols="30" rows="10" placeholder="<?php echo $row2['catalog_comment']?>" class="form-control"></textarea>
                       </div>
                     </div>
                     <br>
                     <div class="row">
                       <div class="col-lg-3 text-right">
-                        <label for="">stylist :</label>
+                        <label for="">Style by :</label>
                       </div>
                       <div class="col-lg-9">
                         <select name="photo_stylist" id="">
@@ -83,17 +93,10 @@ $row2 = $Hairsalon->getCatalogID($catalogID);
                       </div>
                     </div>
                     <div class="text-center">
-                      <button type="submit" name="editCatalog" class="btn btn-dark w-50 mt-5">Edit</button>
+                      <button type="submit" name="editCatalog" class="btn btn-secondary w-50 mt-5">Update　更新</button>
                     </div>
                 </div>
               </div>
-              <div class="text-right">
-                  <?php
-                  echo "<a href='deleteCatalog.php?catalog_id=$catalogID' role='button' class='btn btn-outline-danger m-2'>delete</a>";
-                  ?>
-              </div>
-             
-                    
             </form>
           </div> 
 

@@ -46,7 +46,9 @@ $Selected_coupon =$Hairsalon->getSelectCouponID($selected_cID);
       }
       div h5{
         font-family: 'Oleo Script', cursive;
-
+      }
+      #image_smile{
+        width: 150px;
       }
     </style>
     <!-- google font -->
@@ -66,14 +68,13 @@ $Selected_coupon =$Hairsalon->getSelectCouponID($selected_cID);
             <?php if(!empty($_SESSION['coupon_id'])):?>
               <p class="text-monospace"> additional menu</p>
             <?php else:?>
+              <p>select menu</p>
               <form action="hairsalonAction.php" method="post">
-                <button type="submit" name="reselect" class="btn btn-secondary"> << back</button>
+                <button type="submit" name="reselect" class="btn btn-secondary"> <i class="fas fa-angle-double-left"></i> back</button>
               </form>
             <?php endif;?>
         </div>
           
-
-
         <div class="w-75 mx-auto">
           <?php if(!empty($_SESSION['coupon_id'])):?>
           <!-- display chosen menu -->
@@ -82,7 +83,7 @@ $Selected_coupon =$Hairsalon->getSelectCouponID($selected_cID);
               <div class="row">
                 
                 <div class="col-lg-5">
-                    You are chosing : <br>
+                    You are chosing 選択中　:<br>
                    
                   <?php 
                   if($_SESSION['service_id']){
@@ -112,11 +113,11 @@ $Selected_coupon =$Hairsalon->getSelectCouponID($selected_cID);
 
                 <div class="col-lg-2">
                   <form action="hairsalonAction.php" method="post">
-                    <button type="submit" name="reselect" class="btn btn-secondary"> << Reselect</button>
+                    <button type="submit" name="reselect" class="btn btn-secondary"> <i class="fas fa-angle-double-left"></i> Reselect</button>
                   </form>
                 </div>  
                 <div class="col-lg-2">
-                    <a href='booking3.php' role='button' class='btn btn-outline-dark'> >> Continue</a>
+                    <a href='booking3.php' role='button' class='btn btn-outline-dark'> <i class="fas fa-angle-double-right"></i> Continue</a>
                 </div>
 
                
@@ -141,7 +142,7 @@ $Selected_coupon =$Hairsalon->getSelectCouponID($selected_cID);
               <div class="card-body">
                 <div class="row">
                   <div class="col-lg-2">
-                  <img src="asset/smile.jpg" alt="" class="w-100">
+                  <img src="asset/smile.jpg" alt="" id="image_smile">
                   </div>
                   <div class="col-lg-4">
                     <?php echo $menu['service_name'] ?>

@@ -164,7 +164,10 @@
         </div> 
         <div class="alert alert-dark w-50 mx-auto m-3 text-center">
             <p>Please make sure your entery. <br>
-            Can we proceed with the reservation?</p>
+            Can we proceed with the reservation? <br>
+            上記の内容でよろしいでしょうか？
+            </p>
+
             <div class="row">  
             <div class="col-lg-12">
                 
@@ -182,14 +185,14 @@
                     <input type="hidden" name="nomination" value="<?php echo $selected_stylist['staff_name']?>">
 
 
-                    <button type="submit" name="reserve" class='btn btn-dark btn-block text-monospace'>R E S E R V E</button>
+                    <button type="submit" name="reserve" class='btn btn-dark btn-block text-monospace'>R E S E R V E </button>
                 </form>
                 <br>
 
             </div>
             <div class="col-lg-12">
                 <form action="hairsalonAction.php" method="post">
-                <button type="submit" name="reselect5" class="btn btn-secondary m-2"> << Reselect</button>
+                <button type="submit" name="reselect5" class="btn btn-secondary m-2"> <i class="fas fa-angle-double-left"></i> Reselect</button>
                 </form>
             </div> 
             

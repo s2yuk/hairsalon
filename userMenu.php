@@ -58,10 +58,10 @@ $currentUser = $Hairsalon->getOneUser($loginid);
                     <a href="booking.php" class="nav-link">Booking</a>
                 </li>
                 <li class="nav-item mr-lg-2 active">
-                    <a href="testimonial.php" class="nav-link">testimonial</a>
+                    <a href="testimonial.php" class="nav-link">Testimonial</a>
                 </li>
                 <li class="nav-item mr-lg-2 active">
-                    <a href="contactpage.php" class="nav-link">Contact/access</a>
+                    <a href="contactpage.php" class="nav-link">Contact/Access</a>
                 </li>
                 <?php  if(!empty($_SESSION['loginid'])){
                        
@@ -77,7 +77,7 @@ $currentUser = $Hairsalon->getOneUser($loginid);
                 <li class="nav-item">
                     <?php
                         if(!empty($_SESSION['loginid'])){
-                            echo "Hello ".$currentUser['fname'] ;
+                            echo "Hello ".$currentUser['fname']."!";
                             echo "<a href='logout.php' role='button' class='btn btn-outline-dark ml-2'>Logout</a>";
                         }else{
                             echo "Welcome Guest";

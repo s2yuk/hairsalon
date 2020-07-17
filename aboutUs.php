@@ -26,7 +26,7 @@ include 'userMenu.php';
         background-size :cover ;
 
       }
-      header h2, h1{
+      div h2{
         font-family: 'Oleo Script', cursive;
         -webkit-text-stroke: 1px black;
       }
@@ -37,20 +37,27 @@ include 'userMenu.php';
 </head>
   <body>
 
-    <header class="text-center">
-        <h2 class="display-4 text-light ml-5"> About us</h2>
-    </header>
+    <div class="container text-center">
+        <div class="">
+            <div class="">
+                <h2 class="display-4 text-light ml-5"> About us</h2>
+            </div>
+            <div class="float-right text-right ">
+                <a href="aboutUsJp.php" class="btn btn-secondary">日本語</a>
+            </div>
+        </div>
+    </div>
 
-    <div class="container bg-white">
-        <h4 class="text-monospace text-center">OUR VALUE CUSTOMER</h4>
-        <p>An important customer who has a relationship and can meet. Instead of visiting the store only once, I face customers every day with the aim of creating a salon where I want to go after one or three years. It is our mission and our greatest pleasure to be our customers' "lifelong beauty partner" through hairstyle and hair design.</p>
+    <div class="container bg-white rounded">
+        <h4 class="text-monospace text-center p-3">OUR VALUE CUSTOMER</h4>
+        <p>An important customer who has a relationship and can meet. Instead of visiting the store only once, I face customers every day with the aim of creating a salon where I want to go after one or three years. It is our mission and our greatest pleasure to be our customers' "lifelong beauty partner" through hairstyle and hair design.</p><br>
     </div>
     <div class="text-center">
         <h1 class="text-light ml-5">Our commitment</h1>
 
     </div>
 
-    <div class="container bg-white mt-3 mb-5">
+    <div class="container bg-white mt-3 mb-5 rounded">
         <br>
         <div class="media mt-3">
             <img class="d-flex align-self-start mr-3" src="asset/comit1.jpg" alt="Generic placeholder image">
@@ -123,7 +130,7 @@ include 'userMenu.php';
                 <br>
             </div>
         </div>
-    
+    <br>
     </div>
 </div>
 

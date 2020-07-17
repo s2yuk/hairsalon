@@ -28,7 +28,7 @@ $row =$Hairsalon->getForEditCoupon($couponID);
   <div class="container mt-5">
       <div class="card mt-5 w-50 mx-auto">
           <div class="card-header">
-              <h3>Edit service</h3>
+              <h3>Edit Coupon</h3>
           </div>
           <div class="card-body">
               <form action="hairsalonAction.php" method="post">
@@ -41,14 +41,14 @@ $row =$Hairsalon->getForEditCoupon($couponID);
                 <input type="number" name="coupon_price" placeholder="<?php echo $row['coupon_price']?>" required>
                 <br>
 
-                <button type="submit" name="editCoupon" class="btn btn-dark btn-block mt-4"> Edit </button>
+                <button type="submit" name="editCoupon" class="btn btn-secondary btn-block mt-4">Update 更新</button>
 
 
               </form>
           </div>
           <div class="text-right">
                   <?php
-                  echo "<a href='deleteCoupon.php?coupon_id=$couponID' role='button'  class='btn btn-outline-danger mb-2 mr-4'>delete </a>";
+                  echo "<a href='deleteCoupon.php?coupon_id=$couponID' role='button'  class='btn btn-outline-danger mb-2 mr-4'><i class='far fa-trash-alt'></i> delete </a>";
                   ?>
               </div>
 

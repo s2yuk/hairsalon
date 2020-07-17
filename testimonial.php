@@ -36,6 +36,7 @@ $reviewList = $Hairsalon->displayReviewList()
   <body>
         <div class="container bg-white w-75 mx-auto mt-3 rounded text-center">
             <h5 class="display-4 p-3">Testimonials</h5>
+            <p>レビュー</p>
             <p class="text-monospace"><?php echo count($reviewList);?> of customers would refer freinds and familiy to us</p>
         </div>
         
@@ -79,7 +80,7 @@ $reviewList = $Hairsalon->displayReviewList()
                                     </div> 
                                 </div>
                                             
-                                <p class="lead"><?php echo $row['comment']?></p>
+                                <p class="lead"><?php echo nl2br($row['comment']);?></p>
 
                                 <br>
                                 <?php 
@@ -106,16 +107,16 @@ $reviewList = $Hairsalon->displayReviewList()
                     <div class="container mt-3 p-3 bg-light rounded">
                         <form action="hairsalonAction.php" method="post" enctype="multipart/form-data">
                     
-                        <label for="">NickName</label>
-                        <input type="text" name="nickname" id="" class="form-control" required> <br>
+                        <label for="">NickName :</label>
+                        <input type="text" name="nickname" id="" class="form-control" required placeholder="投稿ネーム"> <br>
 
-                        <label for="">Date</label>
+                        <label for="">Date 来店日:</label>
                         <input type="date" name="date" id="">
                         <br>
             
-                        <label for="">Rating</label>
+                        <label for="">Rating 評価:</label>
                         <select name="rating" id="" required class="form-control">
-                            <option value="">-</option>
+                            <option value="">選択してください</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -123,10 +124,10 @@ $reviewList = $Hairsalon->displayReviewList()
                             <option value="5">5</option>
                         </select>
                         <br>
-                        <label for="">Comments</label>
-                            <textarea name="comment" id="" cols="30" rows="10"></textarea>
+                        <label for="">Comments :</label>
+                            <textarea name="comment" id="" cols="30" rows="10" placeholder="コメント欄"></textarea>
 
-                        <label for="">Photo</label>
+                        <label for="">Photo :</label>
                         <input type="file" name="photo" id="" class="form-control">
                         
                         <button type="submit" name="review" class=" btn btn-dark form-control mt-3">Review</button>

@@ -94,7 +94,7 @@ $reply_list = $Hairsalon-> displayReply($msgID);
                         Comment :
                       </div>
                       <div class="col-lg-7">
-                        <?php echo $row['comment']?>
+                        <?php echo nl2br($row['comment'])?>
                       </div>
                   </div>
                   <div class="row mt-3">
@@ -131,7 +131,7 @@ $reply_list = $Hairsalon-> displayReply($msgID);
                         <b><?php echo $reply['fname'];?> :</b>
                         </div>
                         <div class="col-lg-6">
-                              <?php echo $reply['text'];?>
+                              <?php echo nl2br($reply['text']);?>
                               <br>
                               <?php if(!empty($reply['file'])){
                                 $file = $reply['file'];

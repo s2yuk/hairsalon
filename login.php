@@ -35,17 +35,35 @@
       <div class="container mt-5">
       
         <div class="card w-50 mx-auto">
-          <div class="card-header">
-            <p class="display-4"> Please login</p>
+          <div class="card-header row">
+            <div class="left col-lg-8">
+              <p class="display-4">Login</p>
+            </div>
+            <div class="right col-lg-4">
+              <div class="row mt-2">
+                <form action="hairsalonAction.php" method="post">
+                  <input type="hidden" name="email" id="" value="guest@user">
+                  <input type="hidden" name="password" value="guest">
+                  <button type="submit" name="login" class="btn btn-outline-secondary btn-sm">ゲストとしてログイン</button>
+                </form>
+              </div>
+              <div class="row mt-2">
+                <form action="hairsalonAction.php" method="post">
+                  <input type="hidden" name="email" id="" value="admin@kredo">
+                  <input type="hidden" name="password" value="admin">
+                  <button type="submit" name="login" class="btn btn-outline-secondary btn-sm">管理者としてログイン</button>
+                </form>
+              </div>
+            </div>
           </div>
           <div class="card-body text-monospace">
             <form action="hairsalonAction.php" method="post">
             
               <label for="">Enter email :</label>
-              <input type="email" name="email" id="" class="form-control">
+              <input type="email" name="email" id="" class="form-control" placeholder="メールアドレス">
             <br>
               <label for="">Enter password :</label>
-              <input type="password" name="password" id="" class="form-control">
+              <input type="password" name="password" id="" class="form-control" placeholder="パスワード">
             <br>
               <button type="submit" name="login" class="btn btn-secondary   form-control">Login</button>
               

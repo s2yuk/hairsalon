@@ -16,7 +16,8 @@
     <style>
         
         body{
-          margin-top:150px;
+          /* this page only margin-top 200px */
+          margin-top:200px;
           /* height: 700px; */
           background-image: url(asset/logo1.jpg);
           background-repeat: no-repeat;
@@ -30,6 +31,9 @@
             padding:20px; 
             border: 10px solid #f4e6e1;
         }
+        #con1{
+          background-color: rgba(255, 255, 255, 0.5 );
+        }
     
       </style>
       <!-- google font -->
@@ -39,10 +43,10 @@
 
 </head>
   <body>
-    <div class="container w-50 bg-light mt-3 p-5 text-monospace">
-        <h1 class="text-center p-3">Contact us</h1>
+    <div class="container w-75 mt-5 p-5 rounded" id="con1">
+        <!-- <h1 class="text-center p-3">Contact us</h1> -->
 
-        <div class="container mx-auto w-50 mb-5" id="thankyou"> 
+        <div class="container mx-auto w-50 mb-5 rounded" id="thankyou"> 
             <h1 >Thank you</h1>
             <p>We receive your message and reply soon!</p>
         </div>

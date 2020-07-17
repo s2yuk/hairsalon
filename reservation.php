@@ -46,12 +46,13 @@
         <table class="table table-hover">
           <thead>
             <tr>
-              <th>reservation id</th>
+              <th>Number</th>
               <th colspan="2">appoint time</th>
               <th>customer id</th>
               <th>First Name</th>
               <th>Last Name</th>
-              <th colspan="2">Menu</th>
+              <th>Coupon</th>
+              <th>Menu</th>
               <th>Price</th>
               <th>Nomination</th>
               <th>Option</th>
@@ -81,7 +82,7 @@
                   echo "</td>";
                   echo "<td>¥".$row['total_price']."</td>";
                   echo "<td>".$row['nomination']."</td>";
-                  echo "<td><a href='editReservation.php?reserve_id=$reserveID' role='button' class='btn btn-outline-dark'>edit</a></td>";
+                  echo "<td><a href='editReservation.php?reserve_id=$reserveID' role='button' class='btn btn-outline-dark'><i class='fas fa-edit'></i> edit</a></td>";
                 echo "</tbody>";
               }
             ?>

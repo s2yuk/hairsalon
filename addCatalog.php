@@ -32,7 +32,7 @@ $hairCatalogList = $Hairsalon->displayCatalog();
 
               <div class="card">
                 <div class="card-header">
-                    <h3 class="">add catalog:</h3>
+                    <h3 class="">Catalog:</h3>
                 </div>
                 <div class="card-body">
                     <div class="row">
@@ -69,7 +69,7 @@ $hairCatalogList = $Hairsalon->displayCatalog();
                       </div>
                     </div>
 
-                  <button type="submit" name="upload" class="btn btn-dark mt-3 float-right">upload</button>
+                  <button type="submit" name="upload" class="btn btn-dark mt-3 float-right">Add 追加</button>
                 </div>
               </div>
                     

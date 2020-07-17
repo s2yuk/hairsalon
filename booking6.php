@@ -50,8 +50,9 @@ include 'userMenu.php';
     <div class="container">
 
         <div class="container text-center rounded mx-auto w-50 mt-5" id="booking"> 
-            <h1 class="display-4"id="thankyou">Thank you</h1>
-            <h3>We receive your reservation. See you soon!</h3>
+            <h1 class="display-4"id="thankyou">Thank you !</h1>
+            <h3>We receive your reservation. See you soon.</h3>
+            <p>ご予約ありがとうございます。ご来店お待ちしております。</p>
 
         </div>
 

@@ -27,7 +27,8 @@ include 'userMenu.php';
   <body>
 
     <div class="container mt-3 w-75 mx-auto">
-        <h5 class="display-4 text-center mt-3"> OUR SERVICE</h5>
+        <h5 class="display-4 text-center mt-3"> SERVICE</h5>
+        <p class="text-center">menu</p>
         
         <div class="bg-light p-5">
 
@@ -147,7 +148,7 @@ include 'userMenu.php';
                         </div>
 
                         <hr>
-                    <h3 class="text-monospace text-center">STRAIGHT-perm</h3>    
+                    <h3 class="text-monospace text-center">STRAIGHT-PERM</h3>    
                         <div class="row">
                                 <div class="col-lg-6">
                                     <p>Full straight</p>

@@ -32,10 +32,13 @@ $memoList = $Hairsalon->getMemo($client_id);
             <div class="col-lg-4">
               <div class="card">
               <div class="card-header">
-                  <h3 class="">Add bio</h3>
+                  <h3 class="">Profile</h3>
               </div>
               <div class="card-body">
-                <h4 class="card-title"><?php echo $user['fname']." ".$user['lname'];?></h4>
+                    <div class="text-center">
+                      <h4 class="card-title text-uppercase"><?php echo $user['fname']." ".$user['lname'];?></h4>
+                    </div>
+                    <hr>
                     <div class="row">
                         <div class="col-lg-4">Gender :</div>
                         <div class="col-lg-8"><?php echo $user['c_gender'];?></div>
@@ -55,13 +58,14 @@ $memoList = $Hairsalon->getMemo($client_id);
                         <div class="col-lg-4">Bio :</div>
                         <div class="col-lg-8"> 
                           <form action="hairsalonAction.php" method="post">
-                              <div class="input-group">
+                              
                                   <input type="hidden" name="c_id" value="<?php echo $user['c_id'];?>">
-                                  <input type="text" name="bio" placeholder="<?php echo $user['bio'];?>" required>
-                                  <div class="input-group-append">
+                                  <textarea name="bio" id="" cols="30" rows="10" placeholder="<?php echo $user['bio'];?>" class="form-control" required></textarea>
+                                  <!-- <input type="text" name="bio" placeholder="<?php echo $user['bio'];?>" class="form-control" required> -->
+                                  <div class="float-right">
                                       <button type="submit" name="editUserBio" class="btn btn-dark">submit</button>
                                   </div>
-                              </div>
+                              
                           </form>
                         </div>
                     </div>
