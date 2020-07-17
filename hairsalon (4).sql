@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: localhost:8889
--- 生成日時: 2020 年 7 月 09 日 06:49
+-- 生成日時: 2020 年 7 月 17 日 09:13
 -- サーバのバージョン： 5.7.26
 -- PHP のバージョン: 7.3.8
 
@@ -84,7 +84,8 @@ INSERT INTO `catalog_comment` (`comment_id`, `comment`, `user`, `catalog_id`, `u
 (51, 'Hello !', 'user', 12, 4),
 (52, 'thank you!', 'admin', 18, 2),
 (53, 'thank you!', 'admin', 19, 2),
-(54, 'cool', 'yuka', 18, 1);
+(54, 'cool', 'yuka', 18, 1),
+(55, '素敵ですね！', 'ゲスト', 19, 8);
 
 -- --------------------------------------------------------
 
@@ -112,7 +113,8 @@ INSERT INTO `client` (`c_id`, `fname`, `lname`, `c_gender`, `telephone`, `bio`, 
 (3, 'test', 'test1', 'male', '1234567890', 'test to add bio', 3),
 (4, 'user', 'user1', 'male', '04812345678', 'short cut', 4),
 (6, 'test', 'test', 'male', '18181818181', NULL, 6),
-(7, 'new', 'client1', 'femal', '09011111111', NULL, 7);
+(7, 'new', 'client1', 'femal', '09011111111', NULL, 7),
+(8, 'ゲスト', 'ユーザー', 'male', '117', NULL, 8);
 
 -- --------------------------------------------------------
 
@@ -164,7 +166,8 @@ INSERT INTO `contact` (`contact_id`, `contact_name`, `contact_email`, `gender`, 
 (6, 'test', 'test@kredo', 'female', 'hair', 'no_choice', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum labore quaerat nihil voluptatem, optio ipsum placeat inventore error totam atque odio quis saepe nesciunt maiores reiciendis adipisci. Quod, officiis nihil?', '', 3, '2020-06-06 11:56:43'),
 (13, 'test test1', 'test@kredo', 'female', 'cut', 'Smith', 'I want to have trend hair style...', '', 3, '2020-06-19 13:23:00'),
 (14, 'yuka matsumoto', 'yuka@kredo', 'female', 'color', 'Jimmy', 'I want have new color!!\r\nis it available?', 'catalog4.jpg', 1, '2020-06-19 14:14:03'),
-(15, 'new client1', 'new@kredo', 'female', 'perm', 'no_choice', 'i want to try perm....', '', 7, '2020-06-19 14:22:50');
+(15, 'new client1', 'new@kredo', 'female', 'perm', 'no_choice', 'i want to try perm....', '', 7, '2020-06-19 14:22:50'),
+(16, 'ゲスト ユーザー', 'guest@user', 'female', '', 'Smith', '鎖骨くらいの長さで、写真のようなヘアセットは可能でしょうか？', 'catalog5.jpg', 8, '2020-07-16 16:08:05');
 
 -- --------------------------------------------------------
 
@@ -212,7 +215,8 @@ CREATE TABLE `info` (
 INSERT INTO `info` (`info_id`, `news`, `date`) VALUES
 (3, 'Happy Valentine’s day! ', '2020-02-13'),
 (4, 'Ready for summer', '2020-05-24'),
-(5, 'new trend color available :)', '2020-06-19');
+(5, 'new trend color available :)', '2020-06-19'),
+(6, '夏は髪がダメージを受けやすい季節。\r\nいつもよりトリートメントケアを行いましょう！\r\n当店では様々なケアメニューをご用意しております。状態に合わせてご提案させていただきますので、ぜひご相談ください。', '2020-07-17');
 
 -- --------------------------------------------------------
 
@@ -237,7 +241,8 @@ INSERT INTO `login` (`login_id`, `email`, `password`, `status`) VALUES
 (3, 'test@kredo', 'test', 'U'),
 (4, 'user@kredo', 'user', 'U'),
 (6, 'test@test', 'test', 'U'),
-(7, 'new@kredo', 'new', 'U');
+(7, 'new@kredo', 'new', 'U'),
+(8, 'guest@user', 'guest', 'U');
 
 -- --------------------------------------------------------
 
@@ -275,7 +280,9 @@ INSERT INTO `msg_reply` (`r_id`, `c_id`, `text`, `file`, `user_id`, `send_time`)
 (49, 14, 'hello ms.\r\nyes maam, we are ready to service :)', '', 2, '2020-06-19 14:17:19'),
 (50, 15, 'please advice me!', '', 7, '2020-06-19 14:23:12'),
 (51, 15, 'hi , i want to show some photos', 'catalog1.jpg', 2, '2020-06-19 14:24:03'),
-(52, 15, 'how about this?', 'catalog2.jpg', 2, '2020-06-19 14:24:35');
+(52, 15, 'how about this?', 'catalog2.jpg', 2, '2020-06-19 14:24:35'),
+(53, 16, 'ゲストさん　こんにちは。\r\nお問い合わせいただきありがとうございます。\r\n写真のように、下の方で結わえば大丈夫かと思われます。\r\nボリュームが足りない場合は三つ編みではなく、コテでボリュームを出して似たようにセットさせていただきますので、ご安心ください。', '', 2, '2020-07-16 16:22:52'),
+(54, 16, 'お返事ありがとうございます。\r\n安心しました！', '', 8, '2020-07-16 16:29:02');
 
 -- --------------------------------------------------------
 
@@ -310,7 +317,9 @@ INSERT INTO `reservation` (`reserve_id`, `reserve_date`, `reserve_hour`, `fname`
 (70, '2020-07-10', '10:00', 'yuka', 'matsumoto', 1, '1', '', 'Tom', '7500'),
 (71, '2020-07-08', '10:00', 'Katey', 'Pery', 0, '1', '', 'Smith', '7500'),
 (72, '2020-07-08', '13:00', 'Joe', 'Dan', 0, '6', '', 'Smith', '8250'),
-(73, '2020-07-08', '17:00', 'Damian', 'Besonette', 0, '', '3', 'Smith', '7700');
+(73, '2020-07-08', '17:00', 'Damian', 'Besonette', 0, '', '3', 'Smith', '7700'),
+(74, '2020-07-18', '10:00', 'ゲスト', 'ユーザー', 8, '1', '', 'Tom', '7500'),
+(75, '2020-07-17', '12:00', 'ゲスト', 'ユーザー', 8, '', '15', 'Jimmy', '3300');
 
 -- --------------------------------------------------------
 
@@ -500,13 +509,13 @@ ALTER TABLE `catalog`
 -- テーブルのAUTO_INCREMENT `catalog_comment`
 --
 ALTER TABLE `catalog_comment`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- テーブルのAUTO_INCREMENT `client`
 --
 ALTER TABLE `client`
-  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- テーブルのAUTO_INCREMENT `client_memo`
@@ -518,7 +527,7 @@ ALTER TABLE `client_memo`
 -- テーブルのAUTO_INCREMENT `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `contact_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- テーブルのAUTO_INCREMENT `coupon`
@@ -530,13 +539,13 @@ ALTER TABLE `coupon`
 -- テーブルのAUTO_INCREMENT `info`
 --
 ALTER TABLE `info`
-  MODIFY `info_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `info_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- テーブルのAUTO_INCREMENT `login`
 --
 ALTER TABLE `login`
-  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- テーブルのAUTO_INCREMENT `msg_reply`
@@ -548,7 +557,7 @@ ALTER TABLE `msg_reply`
 -- テーブルのAUTO_INCREMENT `reservation`
 --
 ALTER TABLE `reservation`
-  MODIFY `reserve_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `reserve_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- テーブルのAUTO_INCREMENT `review`
