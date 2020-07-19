@@ -1,28 +1,40 @@
 # hairsalon "smile"
 
-<img src="https://yukamatsumoto.sakura.ne.jp/mysite/wp-content/uploads/2020/06/1_1.jpg">
+<img src="https://yukamatsumoto.sakura.ne.jp/mysite/wp-content/uploads/2020/06/1_1.jpg"><br>
+<img src="https://yukamatsumoto.sakura.ne.jp/mysite/wp-content/uploads/2020/06/Smile_booking4-1400x700.png"><br>
+<img src="https://yukamatsumoto.sakura.ne.jp/mysite/wp-content/uploads/2020/07/Smile_admin_top-1400x700.png"><br>
 
 
-美容室のWEBアプリケーションです。
-お客様用のホームページとお店側の顧客管理ツールの２軸で作成しています。
 
-サロンとお客様のコミュニケーションツールとして使えるよう、予約、メッセージのやり取り、ヘアカタログSNSなどエンドユーザーの使いやすさを考えて作成しました。
-ポートフォリオのデモサイトのため記載されている情報は実在のものではありません。
+美容室のWEBアプリケーションです。 <br>
+お客様用のホームページとお店側の顧客管理ツールの２軸で作成しています。<br>
+<br>
+<br>
+サロンとお客様のコミュニケーションツールとして使えるよう、予約、メッセージのやり取り、ヘアカタログSNSなどエンドユーザーの使いやすさを考えて作成しました。 <br>
+
+ポートフォリオのデモサイトのため記載されている情報は実在のものではありません。<br>
+
 
 ## URL 
-<a href="http://yukamatsumoto.sakura.ne.jp/hairsalon/index.php">デモサイト</a>
-ログインページに簡単ログインボタンを設置していますので、ぜひお試しください。
-・ゲストとしてログイン -> お客様ページ
-・管理者としてログイン ->　お店側ページ
+<a href="http://yukamatsumoto.sakura.ne.jp/hairsalon/index.php">デモサイト</a> <br>
+http://yukamatsumoto.sakura.ne.jp/hairsalon/index.php
+
+ログインページに簡単ログインボタンを設置していますので、ぜひお試しください。<br>
+<ul>
+           <li>ゲストとしてログイン -> お客様ページ </li>
+           <li>管理者としてログイン ->　お店側ページ</li>
+</ul>
 
 
 ## 使用技術
-・HTML/CSS 
-・Bootstrap
-・PHP
-・Google map API
-・git / gitHub
-・MySQL(phpMyAdmin)
+<ul>
+           <li>HTML/CSS </li>
+           <li>Bootstrap</li>
+           <li>PHP</li>
+           <li>Google map API</li>
+           <li>git / gitHub</li>
+           <li>MySQL(phpMyAdmin)</li>
+</ul>
 
 ## 機能
 ＜共通＞
