@@ -4,11 +4,10 @@ session_start();
 
 class Connection{
 
-    private $servername="localhost";
-    private $username ="root";
-    private $password ="root";
-    private $db_name ="hairsalon";
- 
+    private $servername="mysql1027.db.sakura.ne.jp";
+    private $username ="yukamatsumoto";
+    private $password ="kredo1912";
+    private $db_name ="yukamatsumoto_hairsalon";
 
     public $conn;
 

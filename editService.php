@@ -26,9 +26,12 @@ $row =$Hairsalon->getForEditService($serviceID);
       
 
   <div class="container mt-5">
+    <div class="text-center">
+      <a href="#service" class="btn btn-outline-dark p-3">MENU</a><a href="#coupon" class="btn btn-outline-dark p-3">Coupon</a>
+    </div>
       <div class="card mt-5 w-50 mx-auto">
           <div class="card-header">
-              <h3>Edit service</h3>
+              <h3>Edit menu</h3>
           </div>
           <div class="card-body">
               <form action="hairsalonAction.php" method="post">

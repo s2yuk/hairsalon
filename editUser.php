@@ -60,7 +60,7 @@ $memoList = $Hairsalon->getMemo($client_id);
                           <form action="hairsalonAction.php" method="post">
                               
                                   <input type="hidden" name="c_id" value="<?php echo $user['c_id'];?>">
-                                  <textarea name="bio" id="" cols="30" rows="10" placeholder="<?php echo $user['bio'];?>" class="form-control" required></textarea>
+                                  <textarea name="bio" id="" cols="30" rows="10" placeholder="<?php echo nl2br($user['bio']);?>" class="form-control" required></textarea>
                                   <!-- <input type="text" name="bio" placeholder="<?php echo $user['bio'];?>" class="form-control" required> -->
                                   <div class="float-right">
                                       <button type="submit" name="editUserBio" class="btn btn-dark">submit</button>
@@ -113,13 +113,16 @@ $memoList = $Hairsalon->getMemo($client_id);
                 <div class="card mt-2">
                   <div class="card-body">
                     <p class="card-text text-right"><?php echo $memo['date'];?></p>
-                    <h4 class="card-title"><?php echo $memo['memo'];?></h4>
-                    <?php $photo =  $memo['photo'];?>
-                    <img class="w-75" src="upload/admin/c_photo/<?php echo $photo;?>" ><br>
+                    <h5 class="card-title"><?php echo nl2br($memo['memo']);?></h5>
+
+                    <?php if($memo['photo'] != ""):?>
+                      <?php $photo =  $memo['photo'];?>
+                      <img class="w-75" src="upload/admin/c_photo/<?php echo $photo;?>"><br>
+                    <?php endif;?>
+
                     <div class="text-right">
-                      
                       <a href="deleteMemo.php?id=<?php echo $memo['memo_id'];?>&c_id=<?php echo $client_id;?>" class="text-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
-              </div>
+                    </div>
                   </div>
                 </div>
               <?php endforeach;?>
