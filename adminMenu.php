@@ -9,6 +9,7 @@ $currentUser = $Hairsalon->getOneUser($loginid);
 <!doctype html>
 <html lang="en">
   <head>
+    <link rel="icon" href="asset/favicon.ico" />
     <title>Smile admin</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">

@@ -1,0 +1,93 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+/* ul{
+  margin: 0;
+} */
+body{
+  background-color: #F8F9FA;
+}
+.mainVisual{
+  text-align: center;
+  margin-top: 80px;
+  height: 600px;
+  background-image: url(../state.jpeg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size : cover;
+}
+#welcome{
+  color:white;
+  font-size: 60px;
+  font-family: 'Oleo Script', cursive;
+  margin-top:440px;
+  margin-bottom: 0px;
+  -webkit-text-stroke: 1px black;
+}
+.fa-angle-double-down{
+  color: white;
+  -webkit-text-stroke: 1px black;
+}
+.top-wrapper{
+  display:flex;
+  width: 1160px;
+  margin: 20px auto;
+}
+.box{
+  flex:auto;
+  padding: 10px 20px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+h2{
+  font-family: 'Oleo Script', cursive;
+}
+.tel{
+  margin-top: 20px;
+  text-align: center;
+}
+/* ----------------------- */
+footer{
+  background-color: rgb(66, 65, 65);
+  color:white;
+  margin-bottom: 0;
+  height:60px;
+  line-height: 60px;
+  text-align: center;
+}
+footer ul{
+  width: 100%;
+
+  list-style: none;
+  display:flex;
+}
+footer li{
+  flex: auto;
+}
+footer a{
+  padding: 0 15px;
+  display: block;
+  transition: all 0.5s;
+  color: white;
+}
+footer a:hover{
+  background-color: rgba(100,100,100, 0.8);
+
+}
+@media(max-width:1160px){
+  .top-wrapper{
+    flex-direction: column;
+    width:100%;
+  }
+  .box{
+    width:100%;
+    flex-wrap: wrap;
+  }
+  table{
+    margin: 0 auto;
+  }
+}
+@media(max-width:670px){
+}

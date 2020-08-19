@@ -16,12 +16,12 @@
 
 
 ## URL 
-<a href="http://yukamatsumoto.sakura.ne.jp/hairsalon/index.php">デモサイト</a> <br>
+<a href="http://yukamatsumoto.sakura.ne.jp/hairsalon/index.php">デモサイト</a><br>
 http://yukamatsumoto.sakura.ne.jp/hairsalon/index.php
 
 ログインページに簡単ログインボタンを設置していますので、ぜひお試しください。<br>
 <ul>
-           <li>ゲストとしてログイン -> お客様ページ </li>
+           <li>ゲストとしてログイン ->　お客様ページ </li>
            <li>管理者としてログイン ->　お店側ページ</li>
 </ul>
 

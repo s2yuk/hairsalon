@@ -26,13 +26,13 @@
             </div>
             <div class="card-body">
                 <div>
-                    If you would like to continue, please log in :)
+                    If you would like to continue, please log in :)　続けるにはログインしてください。
                     <a href ='login.php' role='button' class='btn btn-outline-dark ml-2'> >> Login </a>
                 </div>
                 <div class="mt-2">
-                    or just looking          
-                    <a href ='hairCatalog.php' role='button' class='btn btn-dark ml-2'>  >> Back to catalog</a> 
-                    <a href ='booking4.php' role='button' class='btn btn-dark ml-2'>  >> Back to Booking</a>
+                    or just looking  ログインせずに観覧
+                    <a href ='hairCatalog.php' role='button' class='btn btn-dark ml-2'>  >> Back to catalog　カタログに戻る</a> 
+                    <a href ='booking4.php' role='button' class='btn btn-dark ml-2'>  >> Back to Booking　予約に戻る</a>
                 </div>
             </div>
         </div>

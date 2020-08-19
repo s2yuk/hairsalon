@@ -9,6 +9,7 @@ $currentUser = $Hairsalon->getOneUser($loginid);
 <!doctype html>
 <html lang="en">
   <head>
+    <link rel="icon" href="asset/favicon.ico" />
     <title>Smile</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -33,8 +34,9 @@ $currentUser = $Hairsalon->getOneUser($loginid);
     </style>
 </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top"　id="menu">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="menu">
+        <button 
+            class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarToggler">
@@ -72,19 +74,18 @@ $currentUser = $Hairsalon->getOneUser($loginid);
                 ?>
             </ul>
         </div>
-        <div class="ml-auto　collapse navbar-collapse　float-right">
+        <div class="ml-auto collapse navbar-collapse float-right">
             <ul class="nav nav-bar">
                 <li class="nav-item">
                     <?php
                         if(!empty($_SESSION['loginid'])){
-                            echo "Hello ".$currentUser['fname']."!";
+                            echo "Hello ".$currentUser['fname']."さん!";
                             echo "<a href='logout.php' role='button' class='btn btn-outline-dark ml-2'>Logout</a>";
                         }else{
                             echo "Welcome Guest";
                             echo "<a href='login.php' role='button' class='btn btn-outline-dark ml-2'>Login </a>";
                         }
-
-                    ?>             
+                    ?>          
                 </li>
             </ul>
         </div>

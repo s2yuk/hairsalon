@@ -1,0 +1,100 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+a{
+  text-decoration: none;
+}
+.container{
+  /* max-width: 1170px; */
+  width: 100%;
+  padding: 0 15px;
+  margin:0 auto;
+}
+header{
+  height:80px;
+  width:100%;
+  background-color: #f2f2f2;
+  position: fixed;
+  top:0;
+  z-index: 10;
+}
+.menu-icon{
+  display: none;
+  font-size: 25px;
+  margin-right:20px ;
+  float: left;
+  line-height: 80px;
+}
+#logo{
+  width:180px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+.header-left{
+  float: left;
+
+}
+.header-center ul{
+  list-style: none;
+}
+.header-center li{
+  float: left;
+}
+.header-center a, .header-right a{
+  line-height: 80px;
+  padding: 0 15px;
+  display: block;
+  color: black;
+  transition: all 0.5s;
+}
+.header-center a:hover{
+  color: white;
+  background-color: rgba(102, 102, 102, 0.5);
+}
+.header-right{
+  text-align: center;
+  float: right;
+  /* margin-right: -30px; */
+  background-color: rgba(255, 255, 255, 1);
+}
+#greet{
+  border: 1px solid #f2f2f2;
+  line-height: 38px;
+
+}
+.header-right a:hover{
+  text-decoration: none;
+  color: white;
+  /* border-radius: 20%; */
+  background-color: rgba(102, 102, 102, 0.5);
+
+}
+@media(max-width:1160px){
+  #logo{
+    margin-left:-5px;
+  }
+  #greet{
+    padding: 0 4px;
+    font-size: 0.9rem;
+  }
+  .header-center{
+    font-size: 0.9rem;
+    margin-left: 0px;
+  }
+  .header-center a{
+    padding: 0 10px;
+  }
+}
+/* タブレット向け */
+@media(max-width: 1000px) {
+  .header-center{
+    display:none;
+  }
+  .menu-icon{
+    display:block;
+  }
+}
+/* モバイル向けレイアウト */
+@media(max-width: 670px) {
+}

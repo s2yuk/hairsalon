@@ -26,7 +26,7 @@ include 'userMenu.php';
         background-size :cover ;
 
       }
-      div h2{
+      div h2,h1{
         font-family: 'Oleo Script', cursive;
         -webkit-text-stroke: 1px black;
       }
