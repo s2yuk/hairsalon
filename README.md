@@ -31,6 +31,7 @@ http://yukamatsumoto.sakura.ne.jp/hairsalon/index.php
            <li>HTML/CSS </li>
            <li>Bootstrap</li>
            <li>PHP</li>
+           <li>JavaScript</li>
            <li>Google map API</li>
            <li>git / gitHub</li>
            <li>MySQL(phpMyAdmin)</li>
