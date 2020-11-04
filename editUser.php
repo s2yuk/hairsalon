@@ -19,7 +19,6 @@ $memoList = $Hairsalon->getMemo($client_id);
       h3{
         font-family: 'Oleo Script', cursive;
       }
-      
     </style>
   </head>
   <body>

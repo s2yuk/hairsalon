@@ -1,5 +1,5 @@
 <?php
-include 'userMenu.php';
+include 'navbar.php';
 // echo $_SESSION['loginid'];
 $loginid=$_SESSION['loginid'];
 // $currentUser = $Hairsalon->getOneUser($loginid);
@@ -16,12 +16,11 @@ $myMsgList = $Hairsalon->myMessage($email);
 // echo $myMsgList;
 
 $reply_list = $Hairsalon-> displayReply($msgID);
-
 ?>
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
+    <title>My page</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,7 +28,12 @@ $reply_list = $Hairsalon-> displayReply($msgID);
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <style>
-     
+        /* navbar with bootstrap */
+        .menu-container, .header-center ul{
+            position: fixed;
+            top: 0;
+        }
+        /* ---------------------------------- */   
         body{
           margin-top:150px;        
           background-image: url(asset/logo1.jpg);
@@ -38,40 +42,83 @@ $reply_list = $Hairsalon-> displayReply($msgID);
           background-position: center center;
           background-size :cover ;
         }
-        #title,span{
+        #title{
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        #title,#subtitle{
             font-family: 'Oleo Script', cursive;
-            color:white;
-            -webkit-text-stroke: 1px black;
+        }
+        #reserve-wrapper{
+            width:75%;
+            margin:0 auto;
         }
         #table{
             max-height: 300px;
             overflow: scroll;
         }
-        #footer{
-            margin-top: 180px;
+        .subtitle{
+            display: flex;
+            height: 40px;
         }
-        #title{
-            background-color: rgba(255, 255, 255, 0.5);
+        #subtitle{
+            font-size: 35px;
+            color:white;
+            -webkit-text-stroke: 1px black;
         }
-        span{
-            font-size: 40px;
-            padding: 5px;
-            
+        .subtitle p{
+            line-height: 40px;
+            margin-left: 10px;
+            margin-bottom: 0;
         }
+        .subtitle-jp{
+            color: black;
+        }
+        /* --------------------------------- */
+        footer{
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        @media(max-width:1000px){
+            .header-center ul{
+            position: fixed;
+            top: 80px;
+            left:50px;
+            margin-left:0px;
+            }
+            #reserve-wrapper{
+                width:90%;
+            }
+            .subitle{
+                height: 30px;
+            }
+            #subtitle{
+                font-size: 28px;
+            }
+            .subtitle p{
+                line-height: 30px;
+            }
 
+        }
+        @media(max-width:670px){
+            #reserve-wrapper{
+                width:100%;
+                padding: 15px;
+                font-size: 0.8rem;
+            }
+        }
     </style>
-    <!-- google font -->
-    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
-
-
   </head>
   <body>
-      <div class="container">
-        <div class="display-4 w-50 mx-auto rounded text-center" id="title">My page</div>
-        <br>
-        <div class="">
-            
-            <span class="rounded"><i class="fas fa-history"></i>    Resavertion</span>
+        <div class="w-75 mx-auto rounded text-center" id="title">
+            <h5 class="display-4 p-3">My page</h5>
+            <p>マイページ</p>
+        </div>
+        <div class="mt-5" id="reserve-wrapper">
+            <div class="subtitle">
+                <p class="rounded" id="subtitle"><i class="fas fa-history"></i>  Resavertion</p>
+                <span class="subtitle-jp"><p>予約確認</p></span>
+            </div>
             <div class="bg-light " id="table">
                 <table class="table table-hover">
                     <?php if ($myReserveList > 0 ):?>
@@ -116,20 +163,21 @@ $reply_list = $Hairsalon-> displayReply($msgID);
                                 <td>
                                     <?php echo $row['total_price'];?>
                                 </td>
-                                <td> <a href="editMyReserve.php?reserve_id=<?php echo $reserveID;?>" class="btn btn-dark">check</a> </td>
+                                <td> <a href="editMyReserve.php?reserve_id=<?php echo $reserveID;?>" class="btn btn-secondary">check</a> </td>
                             </tbody>
                         <?php endforeach ;?>
                     <?php else :?>
                             <div class="card-body">
                                 <h3>No reservation yet</h3>
-                                まだ予約がありません
+                                <p>まだ予約がありません</p> 
                             </div>
                     <?php endif;?>
                 </table>
             </div>
-                
-            <span class="rounded"><i class="far fa-envelope"></i> Message</span>
-            
+            <div class="subtitle mt-5">
+                <h3 class="rounded" id="subtitle"><i class="far fa-envelope"></i> Message</h3>
+                <span class="subtitle-jp"><p>メッセージ</p></span>
+            </div>
             <div class="bg-light" id="table">
             <table class="table table-hover">                
                 <div class="div">
@@ -158,28 +206,32 @@ $reply_list = $Hairsalon-> displayReply($msgID);
                     <?php else :?>
                         <div class="card-body">
                             <h3>No message yet</h3>
-                            まだメッセージがありません
+                            <p>まだメッセージがありません</p> 
                         </div>
                     <?php endif ;?>
                 </div>
               </table>
-            </div>
-            
-
-            
+            </div>            
         </div>
-      </div>
-         <!-- footer -->
-    <nav class="nav navbar  bg-dark" id="footer">
-        <a href="dashboard.php" >Home</a>
-        <p class="text-light">Copyright@ Yuka Matsumoto</p>
-        <a href="contactpage.php">Contact</a>
-    </nav>
+    <!-- footer -->
+    <footer class="">
+        <ul>
+        <li>
+            <a href="dashboard.php">Home</a>
+        </li>
+        <li>
+            <p>Copyright@ Yuka Matsumoto</p>
+        </li>
+        <li>
+            <a href="contactpage.php">Contact</a>
+        </li>
+        </ul>
+    </footer>
       
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -19,7 +19,6 @@ class Connection{
             die('error connection to database'.$this->conn->connect_error);
         }else{
             return $this->conn;
-            
         }
 
     }

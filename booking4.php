@@ -1,5 +1,5 @@
 <?php 
-include 'userMenu.php';
+include 'navbar.php';
 
 $date = new DateTime();
 $today = $date->format('Y-m-d');
@@ -19,8 +19,6 @@ $Date4 = date("D", strtotime('+4 day'));
 $Date5 = date("D", strtotime('+5 day'));
 $Date6 = date("D", strtotime('+6 day'));
 $Date7 = date("D", strtotime('+7 day'));
-
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -34,6 +32,13 @@ $Date7 = date("D", strtotime('+7 day'));
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
  
     <style>
+    /* navbar with bootstrap */
+      .menu-container, .header-center ul{
+        position: fixed;
+        top: 0;
+      }
+  
+      /* ---------------------------------- */
       body{
         margin-top:150px;
         height: 600px;
@@ -45,7 +50,7 @@ $Date7 = date("D", strtotime('+7 day'));
       #booking{
         background-color: rgba(255, 255, 255, 0.8);
       }
-      div h5{
+      #booking h5{
         font-family: 'Oleo Script', cursive;
       }
       #x{
@@ -63,18 +68,35 @@ $Date7 = date("D", strtotime('+7 day'));
         padding: 0;
         vertical-align: inherit;
       }
+      /*  */
+      footer{
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+      @media(max-width:1000px){
+        .header-center ul{
+          position: fixed;
+          top: 80px;
+          left:50px;
+          margin-left:0px;
+        }
+        /* ------------------- */
+        th{
+            font-size:0.8rem;
+        }
+      }
+      @media(max-width:670px){
+        th{
+            font-size:0.6rem;
+        }
+      }
   
     </style>
-    <!-- google font -->
-    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
-    
-
 </head>
   <body>
-      
-
-    <div class="container text-monospace text-center w-50 rounded" id="booking">
-      <h5 class="display-4 p-3"> Booking</h5>
+    <div class="container text-center w-50 mx-auto rounded" id="booking">
+      <h5 class="display-4">Booking</h5>
     </div>
     
     <div class="container bg-light text-monospace text-center rounded">
@@ -88,9 +110,11 @@ $Date7 = date("D", strtotime('+7 day'));
           <p> select date & time</p>
       </div>
       
-      <div class="container">
-        <div class="">
-             <h3 class="text-monospace mx-auto"><?php echo date("F/Y")?></h3> 
+      <div class="">
+        <div class="text-center">
+            <h3 class="text-monospace">
+                 <?php echo date("F/Y")?>
+            </h3> 
         </div>
         <table class="table table-bordered" id="table">
             <thead>
@@ -149,12 +173,10 @@ $Date7 = date("D", strtotime('+7 day'));
                                 if($Date=="Tue"){
                                     echo "<div id='x'>×</div>";
                                 }else{
-
                                     $result = $Hairsalon->getTimeHourReserve($today,$hour);
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
@@ -178,12 +200,10 @@ $Date7 = date("D", strtotime('+7 day'));
                             if($Date1=="Tue"){
                                 echo "<div id='x'>×</div>";
                             }else{
-
                                 $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
                                 // print_r($result);
                                 $count = count($result);
                                 // echo "count",$count;
-                                // echo "<br>";
                                 if($count =='0'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◎";
@@ -208,11 +228,9 @@ $Date7 = date("D", strtotime('+7 day'));
                                 echo "<div id='x'>×</div>";
                             }else{
                                 $result = $Hairsalon->getTimeHourReserve($plus2day,$hour);
-                            
                                 // print_r($result);
                                 $count = count($result);
                                 // echo "count",$count;
-                                // echo "<br>";
                                 if($count =='0'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◎";
@@ -236,12 +254,10 @@ $Date7 = date("D", strtotime('+7 day'));
                             if($Date3=="Tue"){
                                 echo "<div id='x'>×</div>";
                             }else{
-
                                 $result = $Hairsalon->getTimeHourReserve($plus3day,$hour);
                                 // print_r($result);
                                 $count = count($result);
                                 // echo "count",$count;
-                                // echo "<br>";
                                 if($count =='0'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◎";
@@ -265,12 +281,10 @@ $Date7 = date("D", strtotime('+7 day'));
                             if($Date4=="Tue"){
                                 echo "<div id='x'>×</div>";
                             }else{
-
                                 $result = $Hairsalon->getTimeHourReserve($plus4day,$hour);
                                 // print_r($result);
                                 $count = count($result);
                                 // echo "count",$count;
-                                // echo "<br>";
                                 if($count =='0'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◎";
@@ -298,7 +312,6 @@ $Date7 = date("D", strtotime('+7 day'));
                                 // print_r($result);
                                 $count = count($result);
                                 // echo "count",$count;
-                                // echo "<br>";
                                 if($count =='0'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◎";
@@ -322,16 +335,14 @@ $Date7 = date("D", strtotime('+7 day'));
                             if($Date6=="Tue"){
                                 echo "<div id='x'>×</div>";
                             }else{
-
                                 $result = $Hairsalon->getTimeHourReserve($plus6day,$hour);
                                 // print_r($result);
                                 $count = count($result);
                                 // echo "count",$count;
-                                // echo "<br>";
                                 if($count =='0'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◎";
-                                    echo " </button>";
+                                    echo "</button>";
                                 }elseif($count=='1'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◯";
@@ -351,12 +362,10 @@ $Date7 = date("D", strtotime('+7 day'));
                             if($Date7=="Tue"){
                                 echo "<div id='x'>×</div>";
                             }else{
-
                                 $result = $Hairsalon->getTimeHourReserve($plus7day,$hour);
                                 // print_r($result);
                                 $count = count($result);
                                 // echo "count",$count;
-                                // echo "<br>";
                                 if($count =='0'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◎";
@@ -389,12 +398,10 @@ $Date7 = date("D", strtotime('+7 day'));
                                 if($Date=="Tue"){
                                     echo "<div id='x'>×</div>";
                                 }else{
-
                                     $result = $Hairsalon->getTimeHourReserve($today,$hour);
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
@@ -402,7 +409,7 @@ $Date7 = date("D", strtotime('+7 day'));
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
 
@@ -419,12 +426,10 @@ $Date7 = date("D", strtotime('+7 day'));
                             if($Date1=="Tue"){
                                 echo "<div id='x'>×</div>";
                             }else{
-
                                 $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
                                 // print_r($result);
                                 $count = count($result);
                                 // echo "count",$count;
-                                // echo "<br>";
                                 if($count =='0'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◎";
@@ -432,7 +437,7 @@ $Date7 = date("D", strtotime('+7 day'));
                                 }elseif($count=='1'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◯";
-                                    echo " </button>";
+                                    echo "</button>";
                                 }else{
                                     echo "<div id='x'>×</div>";
                                 }
@@ -452,7 +457,6 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
@@ -460,7 +464,7 @@ $Date7 = date("D", strtotime('+7 day'));
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -480,15 +484,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -508,15 +511,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -536,15 +538,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -564,15 +565,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -592,15 +592,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -625,12 +624,10 @@ $Date7 = date("D", strtotime('+7 day'));
                                 if($Date=="Tue"){
                                     echo "<div id='x'>×</div>";
                                 }else{
-
                                     $result = $Hairsalon->getTimeHourReserve($today,$hour);
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
@@ -638,7 +635,7 @@ $Date7 = date("D", strtotime('+7 day'));
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
 
@@ -655,20 +652,18 @@ $Date7 = date("D", strtotime('+7 day'));
                             if($Date1=="Tue"){
                                 echo "<div id='x'>×</div>";
                             }else{
-
                                 $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
                                 // print_r($result);
                                 $count = count($result);
                                 // echo "count",$count;
-                                // echo "<br>";
                                 if($count =='0'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◎";
-                                    echo " </button>";
+                                    echo "</button>";
                                 }elseif($count=='1'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◯";
-                                    echo " </button>";
+                                    echo "</button>";
                                 }else{
                                     echo "<div id='x'>×</div>";
                                 }
@@ -688,15 +683,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -716,15 +710,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -744,15 +737,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -772,15 +764,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -800,15 +791,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -828,15 +818,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -861,12 +850,10 @@ $Date7 = date("D", strtotime('+7 day'));
                                 if($Date=="Tue"){
                                     echo "<div id='x'>×</div>";
                                 }else{
-
                                     $result = $Hairsalon->getTimeHourReserve($today,$hour);
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
@@ -874,10 +861,9 @@ $Date7 = date("D", strtotime('+7 day'));
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
-
                                     }
                                 }
                                 ?> 
@@ -891,20 +877,18 @@ $Date7 = date("D", strtotime('+7 day'));
                             if($Date1=="Tue"){
                                 echo "<div id='x'>×</div>";
                             }else{
-
                                 $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
                                 // print_r($result);
                                 $count = count($result);
                                 // echo "count",$count;
-                                // echo "<br>";
                                 if($count =='0'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◎";
-                                    echo " </button>";
+                                    echo "</button>";
                                 }elseif($count=='1'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◯";
-                                    echo " </button>";
+                                    echo "</button>";
                                 }else{
                                     echo "<div id='x'>×</div>";
                                 }
@@ -924,15 +908,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -952,15 +935,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -980,15 +962,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1008,15 +989,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1036,15 +1016,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1064,15 +1043,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1102,7 +1080,6 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
@@ -1110,7 +1087,7 @@ $Date7 = date("D", strtotime('+7 day'));
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
 
@@ -1132,15 +1109,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                 // print_r($result);
                                 $count = count($result);
                                 // echo "count",$count;
-                                // echo "<br>";
                                 if($count =='0'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◎";
-                                    echo " </button>";
+                                    echo "</button>";
                                 }elseif($count=='1'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◯";
-                                    echo " </button>";
+                                    echo "</button>";
                                 }else{
                                     echo "<div id='x'>×</div>";
                                 }
@@ -1160,15 +1136,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1188,15 +1163,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1216,15 +1190,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1244,15 +1217,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1272,15 +1244,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1300,15 +1271,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1338,7 +1308,6 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
@@ -1346,7 +1315,7 @@ $Date7 = date("D", strtotime('+7 day'));
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
 
@@ -1368,15 +1337,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                 // print_r($result);
                                 $count = count($result);
                                 // echo "count",$count;
-                                // echo "<br>";
                                 if($count =='0'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◎";
-                                    echo " </button>";
+                                    echo "</button>";
                                 }elseif($count=='1'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◯";
-                                    echo " </button>";
+                                    echo "</button>";
                                 }else{
                                     echo "<div id='x'>×</div>";
                                 }
@@ -1396,15 +1364,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1424,15 +1391,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1452,15 +1418,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1480,15 +1445,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1508,15 +1472,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1536,15 +1499,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1574,7 +1536,6 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
@@ -1582,7 +1543,7 @@ $Date7 = date("D", strtotime('+7 day'));
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
 
@@ -1599,20 +1560,18 @@ $Date7 = date("D", strtotime('+7 day'));
                             if($Date1=="Tue"){
                                 echo "<div id='x'>×</div>";
                             }else{
-
                                 $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
                                 // print_r($result);
                                 $count = count($result);
                                 // echo "count",$count;
-                                // echo "<br>";
                                 if($count =='0'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◎";
-                                    echo " </button>";
+                                    echo "</button>";
                                 }elseif($count=='1'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◯";
-                                    echo " </button>";
+                                    echo "</button>";
                                 }else{
                                     echo "<div id='x'>×</div>";
                                 }
@@ -1632,15 +1591,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1660,15 +1618,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1688,15 +1645,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1716,15 +1672,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1744,15 +1699,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1772,15 +1726,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1810,7 +1763,6 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
@@ -1818,7 +1770,7 @@ $Date7 = date("D", strtotime('+7 day'));
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
 
@@ -1835,20 +1787,18 @@ $Date7 = date("D", strtotime('+7 day'));
                             if($Date1=="Tue"){
                                 echo "<div id='x'>×</div>";
                             }else{
-
                                 $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
                                 // print_r($result);
                                 $count = count($result);
                                 // echo "count",$count;
-                                // echo "<br>";
                                 if($count =='0'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◎";
-                                    echo " </button>";
+                                    echo "</button>";
                                 }elseif($count=='1'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◯";
-                                    echo " </button>";
+                                    echo "</button>";
                                 }else{
                                     echo "<div id='x'>×</div>";
                                 }
@@ -1868,15 +1818,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1896,15 +1845,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1924,15 +1872,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1952,15 +1899,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -1980,15 +1926,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -2008,15 +1953,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -2041,12 +1985,10 @@ $Date7 = date("D", strtotime('+7 day'));
                                 if($Date=="Tue"){
                                     echo "<div id='x'>×</div>";
                                 }else{
-
                                     $result = $Hairsalon->getTimeHourReserve($today,$hour);
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
@@ -2054,10 +1996,9 @@ $Date7 = date("D", strtotime('+7 day'));
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
-
                                     }
                                 }
                                 ?> 
@@ -2071,20 +2012,18 @@ $Date7 = date("D", strtotime('+7 day'));
                             if($Date1=="Tue"){
                                 echo "<div id='x'>×</div>";
                             }else{
-
                                 $result = $Hairsalon->getTimeHourReserve($tmr,$hour);
                                 // print_r($result);
                                 $count = count($result);
                                 // echo "count",$count;
-                                // echo "<br>";
                                 if($count =='0'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◎";
-                                    echo " </button>";
+                                    echo "</button>";
                                 }elseif($count=='1'){
                                     echo "<button type='submit' name='submit_date' class='btn'>";
                                     echo "◯";
-                                    echo " </button>";
+                                    echo "</button>";
                                 }else{
                                     echo "<div id='x'>×</div>";
                                 }
@@ -2104,15 +2043,14 @@ $Date7 = date("D", strtotime('+7 day'));
                                     // print_r($result);
                                     $count = count($result);
                                     // echo "count",$count;
-                                    // echo "<br>";
                                     if($count =='0'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◎";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }elseif($count=='1'){
                                         echo "<button type='submit' name='submit_date' class='btn'>";
                                         echo "◯";
-                                        echo " </button>";
+                                        echo "</button>";
                                     }else{
                                         echo "<div id='x'>×</div>";
                                     }
@@ -2739,27 +2677,30 @@ $Date7 = date("D", strtotime('+7 day'));
         </table>
         <div class="text-center">
             <form action="hairsalonAction.php" method="post">
-            <button type="submit" name="reselect4" class="btn btn-secondary m-3"> << Previous page</button>
+                <button type="submit" name="reselect4" class="btn btn-secondary m-3"> << Previous page</button>
             </form>
         </div> 
       </div>
-
-
-
     </div>
     <!-- footer -->
-    <nav class="nav navbar bg-dark mt-5">
-        <a href="dashboard.php" >Home</a>
-        <p class="text-light">Copyright@ Yuka Matsumoto</p>
-        <a href="contactpage.php">Contact</a>
-    </nav>
-
-
+    <footer class="">
+      <ul>
+        <li>
+          <a href="dashboard.php">Home</a>
+        </li>
+        <li>
+          <p>Copyright@ Yuka Matsumoto</p>
+        </li>
+        <li>
+          <a href="contactpage.php">Contact</a>
+        </li>
+      </ul>
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -13,8 +13,6 @@ if(isset($_POST['register'])){
     $password = $_POST['password'];
 
     $Hairsalon ->registerUser($email,$password,$fname,$lname,$gender,$telephone);
-
-
 }
 
 // login.php
@@ -47,11 +45,11 @@ elseif(isset($_POST['delete_testimonial'])){
 
 
 // contactpage.php
-elseif(isset($_POST['sent'])){
+elseif(isset($_POST['sent']) && is_array($_POST['service'])){
     $name = $_POST['name'];
     $email = $_POST['email'];
     $gender = $_POST['gender'];
-    $service =$_POST['service'];
+    $service =implode(" / ",$_POST['service']);
     $stylist = $_POST['stylist'];
     $comment = $_POST['comment'];
     $iphoto = $_FILES['photo']['name'];
@@ -387,11 +385,17 @@ elseif(isset($_POST['editReserve2'])){
     
 }
 
-// search for user
+// userList.php
+// search by fname 
 elseif(isset($_POST['search'])){
     $keyword = $_POST['keyword'];
 
     $Hairsalon->searchUser($keyword);
+}
+// search by phonenumber
+elseif(isset($_POST['search_by_number'])){
+    $number = $_POST['number'];
+    $Hairsalon->searchPhoneNumber($number);
 }
 
 // edit User.php

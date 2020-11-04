@@ -5,12 +5,55 @@
 a{
   text-decoration: none;
 }
-.container{
-  /* max-width: 1170px; */
-  width: 100%;
-  padding: 0 15px;
-  margin:0 auto;
+/* instead of bootstrap --------------------------------*/
+.text-center{
+  text-align: center;
 }
+.text-right{
+  text-align: right;
+}
+.float-right{
+  float:right
+}
+.text-light{
+  color: white;
+}
+.mx-auto{
+  margin: 0 auto;
+}
+.mt-0{
+  margin-top: 0;
+}
+.mt-3{
+  margin-top: 30px;
+}
+.mt-5{
+  margin-top: 50px;
+}
+.mr-3{
+  margin-right: 30px;
+}
+.p-3{
+  padding: 15px;
+}
+.display-4{
+  font-size: 46px;
+}
+.rounded{
+  border-radius: 8px;
+}
+.bg-white{
+  background-color: white;
+}
+
+/* .btn a:hover{
+  background-color: gray;
+} */
+.btn-secondary{
+  background-color: grey;
+  color: white;
+}
+/* --------------------------------------------------- */
 header{
   height:80px;
   width:100%;
@@ -19,82 +62,176 @@ header{
   top:0;
   z-index: 10;
 }
+.menu-container{
+  width: 100%;
+  padding: 0 15px;
+  margin:0 auto;
+}
 .menu-icon{
   display: none;
   font-size: 25px;
   margin-right:20px ;
   float: left;
   line-height: 80px;
+  cursor:pointer;
+}
+.header__inner{
+  display: flex;
+  justify-content: space-between;
+}
+.header-left{
+  width: 200px;
 }
 #logo{
   width:180px;
-  margin-top: 20px;
-  margin-right: 20px;
+  margin: 17px 0;
+  z-index: 9;
 }
-.header-left{
-  float: left;
-
+.header-center{
+  width: 880px;
+  position: relative;
 }
 .header-center ul{
+  padding-left:0;
   list-style: none;
+  display: flex;
 }
 .header-center li{
-  float: left;
+  flex: auto;
+  width: 110px;
 }
-.header-center a, .header-right a{
+.header-center a, 
+.header-right a{
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 18px;
   line-height: 80px;
-  padding: 0 15px;
+  padding: 0 5px;
   display: block;
   color: black;
   transition: all 0.5s;
+  text-align: center;
 }
 .header-center a:hover{
   color: white;
   background-color: rgba(102, 102, 102, 0.5);
 }
 .header-right{
+  /* position: fixed;
+  right:20px; */
   text-align: center;
-  float: right;
-  /* margin-right: -30px; */
   background-color: rgba(255, 255, 255, 1);
+  width: 165px;
+  height: 80px;
+}
+.font-small{
+  font-size: 14px;
 }
 #greet{
   border: 1px solid #f2f2f2;
   line-height: 38px;
-
 }
 .header-right a:hover{
   text-decoration: none;
   color: white;
   /* border-radius: 20%; */
   background-color: rgba(102, 102, 102, 0.5);
-
 }
-@media(max-width:1160px){
+/* -----responsive ------------------------------- */
+/* small laptop size */
+@media(max-width:1280px){
   #logo{
-    margin-left:-5px;
+    /* margin-left:-5px; */
+    width: 160px;
   }
   #greet{
     padding: 0 4px;
     font-size: 0.9rem;
   }
-  .header-center{
-    font-size: 0.9rem;
-    margin-left: 0px;
+  .header-center li{
+    width: 90px;
   }
   .header-center a{
-    padding: 0 10px;
+    font-size: 16px;
   }
 }
 /* タブレット向け */
-@media(max-width: 1000px) {
+@media(max-width: 1020px) {
   .header-center{
     display:none;
+    height: 320px;
+    width: 200px;
+    background-color: rgba(255, 255, 255,0.9);
+    margin: 0 -20px;
+    position: absolute;
+    top:80px;
+    left: 0;
+    z-index: 8;
+  }
+  .header-center ul{
+    flex-direction: column;
+  }
+  .header-center a{
+    line-height: 30px;
+    padding: 5px 10px;
+    width: 120px;
   }
   .menu-icon{
     display:block;
   }
 }
-/* モバイル向けレイアウト */
-@media(max-width: 670px) {
+/* -------------  footer  --------------------- */
+footer{
+  background-color: #333B3F;
+  color:white;
+  margin-top:100px;
+  margin-bottom: 0px;
+  height:60px;
+  line-height: 60px;
+  text-align: center;
+}
+footer ul{
+  height: 60px;
+  width: 100%;
+  list-style: none;
+  display:flex;
+  margin-bottom: 0px;
+  padding-left:0px;
+}
+footer li{
+  flex: auto;
+}
+footer a{
+  padding: 0 15px;
+  display: block;
+  transition: all 0.5s;
+  color: white;
+}
+footer a:hover{
+  background-color: rgba(100,100,100, 0.8);
+}
+footer p{
+  margin: 0;
+}
+
+@media(max-width:670px){
+  #logo{
+    width:140px;
+    margin-left:-15px;
+  }
+  .header-right{
+    right:0px;
+    width: 130px;
+  }
+  #greet{
+    padding: 0;
+    font-size: 0.7rem;
+  }
+  footer{
+    font-size: smaller;
+  }
+}
+@media(max-width:350px){
+  footer p{
+    line-height: 30px;
+  }
 }

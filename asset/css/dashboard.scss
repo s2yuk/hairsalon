@@ -1,0 +1,149 @@
+@import 'modules/mixin';
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+body{
+  background-color: #F8F9FA;
+}
+.mainVisual{
+  text-align: center;
+  margin-top: 80px;
+  height: 600px;
+  background-image: url(../state.jpeg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size : cover;
+  position: relative;
+}
+// ------welcome---------------------------------
+.welcome-msg{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  margin-bottom: 0px;
+  
+  & .chara{
+    display: inline-block;      
+    color:white;
+    font-size: 60px;
+    font-family: 'Oleo Script', cursive;
+    -webkit-text-stroke: 1px black;
+
+    @include animation(
+      $name: kf-welcome-msg,
+      $duration: 1s,
+
+      $fill-mode:both,
+      $timing-function: cubic-bezier(0.39, 1.57, 0.58, 1),
+    );
+    
+    @for $i from 1 through 7 {
+      &:nth-child(#{$i}){
+        animation-delay : 0.1s * $i ;  
+      }
+    }
+  }
+}
+@keyframes kf-welcome-msg{
+  0%{
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  100%{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+// -----------------------------------------
+.angle{
+  margin: 0;
+  color: white;
+  -webkit-text-stroke: 1px black;
+  font-size: 50px;
+
+  @include animation(
+    $name:kf-arrow-anime,
+    $iteration-count:6,
+    $duration:2s,
+    $timing-function:linear
+  );
+}
+@keyframes kf-arrow-anime{
+  0%,
+  50%,
+  100%{
+    transform: translateY(-10%);
+  }
+  30%{
+    transform: none;
+  }
+}
+// ---------------------------------
+.top-wrapper{
+  display:flex;
+  width: 1160px;
+  margin: 20px auto;
+}
+.box{
+  flex:auto;
+  padding: 10px 20px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+h2{
+  font-family: 'Oleo Script', cursive;
+}
+.tel{
+  margin-top: 20px;
+  text-align: center;
+}
+footer{
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+@media(max-width:1160px){
+  .top-wrapper{
+    flex-direction: column;
+    width:100%;
+  }
+  .box{
+    width:100%;
+    flex-wrap: wrap;
+  }
+  table{
+    margin: 0 auto;
+  }
+}
+
+
+@media(max-width:1000px){
+  .header-center ul{
+    position: fixed;
+    top: 80px;
+    left:50px;
+    margin-left:0px;
+  }
+  .welcome-msg{
+    & .chara{
+      font-size: 50px;
+    }
+    & .angle{
+      font-size: 40px;
+    }
+  }
+}
+@media(max-width:600px){
+  .welcome-msg{
+    & .chara{
+      font-size: 40px;
+    }
+    & .angle{
+      font-size: 25px;
+    }
+  }
+}

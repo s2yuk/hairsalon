@@ -10,23 +10,24 @@ $newsList=$Hairsalon->displayNews($news,$date);
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
     <!-- css -->
     <link rel="stylesheet" href="asset/css/dashboard.css">
-    <!-- jQuery本体 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-   
-    <!-- Font awesome icon -->
-    <script src="https://kit.fontawesome.com/eb83b1af77.js" crossorigin="anonymous"></script>
-
-    <!-- google font -->
-    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="mainVisual" id="mainVisual">
-      <br>
-      <p class="" id="welcome">Welcome</p>
-      <i class="fas fa-angle-double-down fa-3x"></i>
+      <div class="welcome-msg">
+        <span class="chara">w</span>
+        <span class="chara">e</span>
+        <span class="chara">l</span>
+        <span class="chara">c</span>
+        <span class="chara">o</span>
+        <span class="chara">m</span>
+        <span class="chara">e</span>
+
+        <div class="angle">
+          <i class="fas fa-angle-double-down"></i>
+        </div>
+      </div>
     </div>
 
     <div class="top-wrapper">    
@@ -35,13 +36,14 @@ $newsList=$Hairsalon->displayNews($news,$date);
           <hr>
           <div id="news">
             <ul>          
-              <?php foreach($newsList as $row) {
-                // $info_id = $row['info_id'];
-                echo "<li>".nl2br($row['news'])."</li>";
-                echo "<br>";
-                echo "<p class='text-right'>---".$row['date']." update</p>";
-                echo "<br>";
-              }
+              <?php 
+                foreach($newsList as $row) {
+                  // $info_id = $row['info_id'];
+                  echo "<li>".nl2br($row['news'])."</li>";
+                  echo "<br>";
+                  echo "<p class='text-right'>---".$row['date']." update</p>";
+                  echo "<br>";
+                }
               ?>
               </ul>
           </div>
@@ -82,20 +84,12 @@ $newsList=$Hairsalon->displayNews($news,$date);
           <a href="dashboard.php">Home</a>
         </li>
         <li>
-          <p class="center">Copyright@ Yuka Matsumoto</p>
+          <p>Copyright@ Yuka Matsumoto</p>
         </li>
         <li>
           <a href="contactpage.php">Contact</a>
         </li>
       </ul>
     </footer>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
-    <!-- js -->
-    <script type="text/javascript" src="asset/js/script.js"></script>
- 
   </body>
 </html>

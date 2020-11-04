@@ -1,7 +1,6 @@
 <?php
-
-include 'userMenu.php';
-
+// include 'userMenu.php';
+include 'navbar.php';
 ?>
 <!doctype html>
 <html lang="en">
@@ -15,45 +14,91 @@ include 'userMenu.php';
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
    
     <style>
-        
+      /* navbar with bootstrap */
+      .menu-container, .header-center ul{
+        position: fixed;
+        top: 0;
+      }
+    
+      /* ---------------------------------- */
       body{
         margin-top:150px;
-        height: 700px;
         background-image: url(asset/logo1.jpg);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center center;
         background-size :cover ;
-
       }
-      div h2, h1{
+      .title{
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+      #title{
         font-family: 'Oleo Script', cursive;
-        -webkit-text-stroke: 1px black;
+      }
+      h5{
+        font-size: 18px;
+        padding: 10px;
+      }
+      .title-p{
+        padding: 0 15px;
+      }
+      .media{
+        display: flex;
+      }
+      .media p {
+        color: gray;
+        padding: 0 10px;
+      }
+      .d-flex{
+          margin-left: 30px;
+      } /*  */
+      footer{
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+      @media(max-width:1000px){
+        .header-center ul{
+          position: fixed;
+          top: 80px;
+          left:50px;
+          margin-left:0px;
+        }
+        /* ------------------- */
+      }
+      @media(max-width:670px){
+        .media{
+          flex-direction: column;
+          text-align: left;
+          margin-top: 80px;
+        }
+        .media img{
+          width: 100%;
+        }
+        .media p {
+          font-size: 12px;
+        }
+        .d-flex{
+          margin-left: 0px;
+        }
       }
     </style>
-    <!-- google font -->
-    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
-    
 </head>
   <body>
-
-    <div class="container ">
-        <div class="">
-            <div class="text-center">
-                <h2 class="display-4 text-light ml-5"> About us</h2>
-            </div>
-            <div class="float-right text-right ">
-                <a href="aboutUs.php" class="btn btn-secondary">English</a>
-            </div>
-        </div>
+    <div class="container mx-auto title text-center">
+      <h1 class="display-4 p-3" id="title">About us</h1>
+      <!-- <div class="float-right text-right">
+        <a href="aboutUs.php" class="btn btn-secondary">English</a>
+      </div> -->
     </div>
 
-    <div class="container bg-white rounded">
-        <h4 class="text-monospace text-center p-3">ご来店いただくお客様へ</h4>
-        <p>ご縁があり出会えた大切なお客様。1回きりのご来店ではなく、１年後も３年後も通いたくなる、そんなサロンを目指して、日々お客様と向き合っています。ヘアスタイル、ヘアデザインを通して、お客様の「生涯の美のパートナー」となることが我々Smileスタッフにとっての使命であり、最高の喜びです。</p><br>
+    <div class="container bg-white rounded text-center">
+        <h3 class="text-monospace text-center p-3">ご来店のお客様へ</h3>
+        <p class="title-p">ご縁があり出会えた大切なお客様。1回きりのご来店ではなく、１年後も３年後も通いたくなる、そんなサロンを目指して、日々お客様と向き合っています。ヘアスタイル、ヘアデザインを通して、お客様の「生涯の美のパートナー」となることが我々Smileスタッフにとっての使命であり、最高の喜びです。</p><br>
     </div>
-    <div class="text-center">
-        <h1 class="text-light ml-5">お約束</h1>
+
+    <div class="container title text-center mt-5 p-3">
+      <h2>お約束</h2>
     </div>
 
     <div class="container bg-white mt-3 mb-5 rounded">
@@ -61,7 +106,7 @@ include 'userMenu.php';
         <div class="media mt-3">
             <img class="d-flex align-self-start mr-3" src="asset/comit1.jpg" alt="Generic placeholder image">
             <div class="media-body">
-                <h5 class="mt-0">幅広い年齢層のお客様にご来店頂いております</h5>
+                <h5 class="">幅広い年齢層のお客様にご来店頂いております</h5>
                 <p>
                 老若男女、様々なお客様にご来店頂いております。お客様おひとりおひとりに合わせたオーダーメイドのヘアスタイルを提供致します。お悩み、ご相談など、どうぞ遠慮なく申しつけください。</p>
             </div>
@@ -133,18 +178,26 @@ include 'userMenu.php';
 
 
    <!-- footer -->
-   <nav class="nav navbar  bg-dark mt-5">
-        <a href="dashboard.php" >Home</a>
-        <p class="text-light">Copyright@ Yuka Matsumoto</p>
-        <a href="contactpage.php">Contact</a>
-    </nav>
+   <footer class="">
+      <ul>
+        <li>
+          <a href="dashboard.php">Home</a>
+        </li>
+        <li>
+          <p>Copyright@ Yuka Matsumoto</p>
+        </li>
+        <li>
+          <a href="contactpage.php">Contact</a>
+        </li>
+      </ul>
+    </footer>
     
 
       
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>

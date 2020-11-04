@@ -158,6 +158,24 @@ function deleteCatalogComment($comment_id){
 
 
 function contact($name,$email,$gender,$service,$stylist,$comment,$iphoto,$c_id){
+    // ----------for mail ---------------------------------
+    mb_language("ja");
+    mb_internal_encoding("UTF-8");
+    // 送信先
+    $to = 'yuka.mtmt0328@gmail.com'; 
+    // 件名
+    $subject = "Message from Smile Contact Form";
+    // 送信者アドレス
+    $headers = "FROM: ".$email."\r\n";  
+    // 本文
+    $comment = str_replace("\n.", "\n..", $comment);
+    $message = 
+        "CLIENT ID : $c_id\r\n NAME : $name\r\n E-mail : $email\r\n GENDER : $gender\r\n SERVICE : $service\r\n STYLIST : $stylist\r\n COMMENT : $comment\r\n IMAGE : $iphoto\r\n";
+
+    mb_send_mail($to, $subject, $message, $headers);
+
+
+    //-----------for database--------------------------------
     $target_dir ='upload/user/msg/';
     $target_file= $target_dir.basename($iphoto);
 
@@ -888,7 +906,7 @@ function displayUserList(){
     }
 }
 function searchUser($keyword){
-    $sql = "SELECT * FROM client INNER JOIN login ON client.c_id=login.login_id WHERE client.fname='$keyword'";
+    $sql = "SELECT * FROM client INNER JOIN login ON client.c_id=login.login_id WHERE client.fname='%$keyword%'";
     $result = $this->conn->query($sql);
 
     if($result->num_rows>0){
@@ -898,6 +916,19 @@ function searchUser($keyword){
         return $row;
     }else{
         // echo 'no result';
+        return FALSE;
+    }
+}
+function searchPhoneNumber($number){
+    $sql = "SELECT * FROM client INNER JOIN login ON client.c_id=login.login_id WHERE client.telephone='$number'";
+    $result = $this->conn->query($sql);
+
+    if($result->num_rows >0){
+        while($rows = $result->fetch_assoc()){
+            $row[]=$rows;
+        }
+        return $row;
+    }else{
         return FALSE;
     }
 }

@@ -1,5 +1,5 @@
 <?php
-  include 'userMenu.php';
+  include 'navbar.php';
   $loginid=$_SESSION['loginid'];
   $currentUser = $Hairsalon->getOneUser($loginid);
 
@@ -23,39 +23,61 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <!-- google map -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script
-    
       src="https://maps.googleapis.com/maps/api/js?key=<?php echo $API?>&callback=initMap&libraries=&v=weekly"
-      defer
-    ></script>
-    <style type="text/css">
+      defer></script>
+
+    <!-- css -->
+    <style>
+      /* navbar with bootstrap */
+      .menu-container, .header-center ul{
+        position: fixed;
+        top: 0;
+        font-weight: 200;
+      }
+      /* ---------------------------------- */   
       body{
         margin-top:150px;
-        height: 700px;
         background-image: url(asset/logo1.jpg);
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center center;
         background-size :cover ;
       }
-      div h5{
+      #title{
         font-family: 'Oleo Script', cursive;
       }
       #loginMsg{
         font-size: 10px;
       }
       #map{
-        height: 100%;
+        height: 300px;
       }
-     
-      </style>
-      <!-- google map -->
-      <script>
+      .container{
+        width: 75%;
+      }
+      /* --------------------------------- */
+      footer{
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+      @media(max-width:1000px){
+        .header-center ul{
+          position: fixed;
+          top: 80px;
+          left:50px;
+          margin-left:0px;
+        }
+      }
+    </style>
+    <!-- google map -->
+    <script>
       (function(exports) {
         "use strict";
-
         function initMap() {
           exports.map = new google.maps.Map(document.getElementById("map"), {
             center: {
@@ -66,21 +88,14 @@
             zoom: 15
           });
         }
-
         exports.initMap = initMap;
       })((this.window = this.window || {}));
     </script>
-    
-      <!-- google font -->
-      <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
-
-
-
-</head>
+  </head>
   <body>
-    <div class="container w-50 bg-light mt-3 text-monospace rounded">
+    <div class="container bg-light mt-3 text-monospace rounded p-3">
       <div class="text-center">
-        <h5 class="display-4 p-3">Contact us</h5>
+        <h5 class="display-4 p-3" id="title">Contact us</h5>
         <p>問い合わせフォーム</p>
         <p>TEL: 03-1234-5678</p>
       </div>
@@ -128,9 +143,9 @@
               </div>
               <br>
               <div class="col-lg-6">
-                <input type="checkbox" name="service" value="cut">Cut  カット　<br>
-                <input type="checkbox" name="service" value="color">Color  カラー <br>
-                <input type="checkbox" name="service" value="perm">Perm　パーマ <br>
+                <input type="checkbox" name="service[]" value="cut">Cut  カット　<br>
+                <input type="checkbox" name="service[]" value="color">Color  カラー <br>
+                <input type="checkbox" name="service[]" value="perm">Perm　パーマ <br>
               </div>         
             </div>
             <div class="mt-3">
@@ -162,9 +177,9 @@
 
     </div>
 
-    <div class="container w-50 mt-3 bg-light text-monospace text-center" id="access">
+    <div class="container mt-3 bg-light text-monospace text-center" id="access">
     <br>
-      <h5 class="display-4">Access</h5>
+      <h5 class="display-4" id="title">Access</h5>
       <br>
         <p>Address: <br>
          1-2-3 Omotesando, Shibuya-city, Tokyo
@@ -173,21 +188,26 @@
           5 mins by walk from nearlest subway station:  Omotesando (Exit A2)　<br>
           A2出口より徒歩５分
         </p>
-        <div id="map" style="height: 200px;"></div>
+        <div id="map"></div>
       <br>
     </div>
   
     <!-- footer -->
-    <nav class="nav navbar bg-dark mt-5">
-        <a href="dashboard.php" >Home</a>
-        <p class="text-light">Copyright@ Yuka Matsumoto</p>
-        <a href="contactpage.php">Contact</a>
-    </nav>
+    <footer class="">
+      <ul>
+        <li>
+            <a href="dashboard.php">Home</a>
+        </li>
+        <li>
+            <p>Copyright@ Yuka Matsumoto</p>
+        </li>
+        <li>
+            <a href="contactpage.php">Contact</a>
+        </li>
+      </ul>
+    </footer>
       
     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>

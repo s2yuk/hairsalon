@@ -1,11 +1,10 @@
 <?php
-include 'userMenu.php';
+// include 'userMenu.php';
+include 'navbar.php';
 
 // display menu list
 $addMenuList =$Hairsalon->displayServiceMenu();
 $addCouponList =$Hairsalon->displayCouponMenu();
-
-
 ?>
 
 <!doctype html>
@@ -20,6 +19,12 @@ $addCouponList =$Hairsalon->displayCouponMenu();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   
     <style>
+      /* navbar with bootstrap */
+      .menu-container, .header-center ul{
+            position: fixed;
+            top: 0;
+        }
+      /* ---------------------------------- */
       body{
         margin-top:150px;
         height: 600px;
@@ -34,20 +39,33 @@ $addCouponList =$Hairsalon->displayCouponMenu();
       }
       div h5{
         font-family: 'Oleo Script', cursive;
-
       }
       .img-thumbnail{
         width: 150px;
       }
+       /*  */
+      footer{
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+      @media(max-width:1000px){
+        .header-center ul{
+          position: fixed;
+          top: 80px;
+          left:50px;
+          margin-left:0px;
+        }
+        /* ------------------- */
+        h4, p{
+          font: 0.8rem;
+        }
+      }
     </style>
-    <!-- google font -->
-    <link href="https://fonts.googleapis.com/css?family=Oleo+Script&display=swap" rel="stylesheet">
-    
 </head>
   <body>
-
     <div class="container text-monospace text-center w-50 rounded" id="booking">        
-      <h5 class="display-4 p-3">Booking</h5>
+      <h5 class="display-4">Booking</h5>
       <p>ご予約</p>
     </div>
     <div class="container bg-light text-monospace text-center mb-5 rounded">        
@@ -59,27 +77,25 @@ $addCouponList =$Hairsalon->displayCouponMenu();
             skip <i class="fas fa-angle-double-right"></i> <a href="booking2.php" class="btn btn-dark">Regular menu</a>
           </div>
       </div>    
-        <div class="w-75 mx-auto">
-
+      <div class="mt-5 mx-auto">
         <h3>Coupon</h3>
         <?php 
         // print_r($addCouponList);
-        foreach ($addCouponList as $coupon) :?>
-          
+        foreach ($addCouponList as $coupon) :?> 
           <div class="card">
             <div class="card-body">
               <div class="row">
-                <div class="col-lg-2">
+                <div class="col-lg-2 col-md-2" id="icon-div">
                   <img src="asset/coupon1.png" alt="" class="img-thumbnail">
                 </div>
-                <div class="col-lg-5 mt-3 mt-lg-0">
+                <div class="col-lg-6 col-md-6  mt-3 mt-lg-0" id="coupon-div">
                   <h4><?php echo $coupon['coupon_name'] ?></h4>
                   <p class=" display-5 text-black-50">* except: producer & manager</p>
                 </div>
-                <div class="col-lg-3">
-                  <?php echo "¥".$coupon['coupon_price'] ?>
+                <div class="col-lg-2 col-md-2" id="price-div">
+                  <p><?php echo "¥".$coupon['coupon_price'] ?></p>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-2 col-md-2 " id="select-div">
                   <form action="hairsalonAction.php" method="post">
                     <input type="hidden" name="coupon" value="<?php echo $coupon['coupon_id'];?>">
                     <input type="hidden" name="coupon_name" value="<?php echo $coupon['coupon_name'];?>">
@@ -92,36 +108,29 @@ $addCouponList =$Hairsalon->displayCouponMenu();
             </div>
           </div>
         <?php endforeach; ?>
-
-        <br><br>
+        <br>
+        <br>
         <!-- container -->
         </div>
-
     </div>
-    
-    
-  
-
-
-
-
-
-      
-
-
-
-
-
-      <!-- footer -->
-      <nav class="nav navbar bg-dark mt-5">
-        <a href="dashboard.php" >Home</a>
-        <p class="text-light">Copyright@ Yuka Matsumoto</p>
-        <a href="contactpage.php">Contact</a>
-      </nav>
+    <!-- footer -->
+    <footer class="">
+      <ul>
+        <li>
+          <a href="dashboard.php">Home</a>
+        </li>
+        <li>
+          <p>Copyright@ Yuka Matsumoto</p>
+        </li>
+        <li>
+          <a href="contactpage.php">Contact</a>
+        </li>
+      </ul>
+    </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>

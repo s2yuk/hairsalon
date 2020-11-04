@@ -1,13 +1,13 @@
 <?php
-include 'adminMenu.php';
-$userList = $Hairsalon->displayUserList();
-$results = $Hairsalon->searchUser($keyword);
-
+  include 'adminMenu.php';
+  $userList = $Hairsalon->displayUserList();
+  $results = $Hairsalon->searchUser($keyword);
+  // $results_number = $Hairsalon->searchPhoneNumber($number);
 ?>
 <!doctype html>
 <html lang="en">
   <head>
-    <title></title>
+    <title>Customer list</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -35,10 +35,18 @@ $results = $Hairsalon->searchUser($keyword);
           <p>There are  <b><?php echo count($userList)?></b> members now.</p>
         </div>
         <div class="col-lg-5">
-          <form action="" method="post" class="form-inline">
-            <input type="text" name="keyword" id="" placeholder="Enter first name" class="form-control">
-            <button type="submit" name="search" class="btn btn-outline-dark ml-1">Search</button>
-          </form>
+          <div id="search_by_fname">
+            <form action="" method="post" class="form-inline">
+              <input type="text" name="keyword" id="" placeholder="Enter first name" class="form-control">
+              <button type="submit" name="search" class="btn btn-outline-primary ml-1">Search</button>
+            </form>
+          </div>
+          <!-- <div id="search_by_number" class="mt-2">
+            <form action="" method="post" class="form-inline">
+              <input type="number" name="number" id="" placeholder="Enter phone number" class="form-control">
+              <button type="submit" name="search_by_number" class="btn btn-outline-success ml-1">Search</button>
+            </form>
+          </div> -->
         </div>
       </div>
       
@@ -55,7 +63,6 @@ $results = $Hairsalon->searchUser($keyword);
             <th>Option</th>
           </thead>
           <?php
-            
             if($results > 0){
               foreach($results as $result){
                 $client_id=$result['c_id'];
@@ -82,9 +89,26 @@ $results = $Hairsalon->searchUser($keyword);
                     echo "<td>".$row['email']."</td>";
                     echo "<td>".$row['bio']."</td>";
                     echo "<td><a href='editUser.php?id=$client_id' class='btn btn-secondary btn-sm'>Detail</a></td>";
-                    echo "</tbody>";
-                  }
+                  echo "</tbody>";
+              }
             }
+            // if($results_number > 0){
+            //   foreach($results_number as $resultNum){
+            //     $client_id=$resultNum['c_id'];
+            //     echo"<tbody>";
+            //         echo "<td>".$resultNum['c_id']."</td>";
+            //         echo "<td>".$resultNum['fname']."</td>";
+            //         echo "<td>".$resultNum['lname']."</td>";
+            //         echo "<td>".$resultNum['c_gender']."</td>";
+            //         echo "<td>".$resultNum['telephone']."</td>";
+            //         echo "<td>".$resultNum['email']."</td>";
+            //         echo "<td>".$resultNum['bio']."</td>";
+            //         echo "<td><a href='editUser.php?id=$client_id' class='btn btn-secondary btn-sm'>Detail</a></td>";
+            //         echo "</tbody>";
+            //   }
+            // }else{
+            //   echo "no serult by number";
+            // }
           ?>
         </table>
         <br>
