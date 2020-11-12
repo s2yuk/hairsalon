@@ -36,7 +36,7 @@ $staffList=$Hairsalon->displayStaff();
             height: 213px;
         }
         footer{
-            position: fixed;
+            position: relative;
             bottom: 0;
             width: 100%;
         }

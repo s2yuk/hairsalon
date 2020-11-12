@@ -79,11 +79,12 @@ $Selected_coupon =$Hairsalon->getSelectCouponID($selected_cID);
         <div class="alert alert-dark">
             <h5 class="text-monospace p-3">Step 2</h4>
             <?php if(!empty($_SESSION['coupon_id'])):?>
-              <p class="text-monospace"> additional menu</p>
+              <p class="text-monospace"> additional menu</p>  追加メニュー
+              <br>
             <?php else:?>
               <p>select menu</p>
               <form action="hairsalonAction.php" method="post">
-                <button type="submit" name="reselect" class="btn btn-secondary"> <i class="fas fa-angle-double-left"></i> back</button>
+                <button type="submit" name="reselect" class="btn btn-secondary"> <i class="fas fa-angle-double-left"></i> back　戻る</button>
               </form>
             <?php endif;?>
         </div>
@@ -119,12 +120,12 @@ $Selected_coupon =$Hairsalon->getSelectCouponID($selected_cID);
                   <div class="row">
                     <div class="col-lg-6">
                       <form action="hairsalonAction.php" method="post">
-                        <button type="submit" name="reselect" class="btn btn-secondary" id="reselect-btn"> <i class="fas fa-angle-double-left"></i> Reselect</button>
+                        <button type="submit" name="reselect" class="btn btn-secondary" id="reselect-btn"> <i class="fas fa-angle-double-left"></i> Reselect　再選択</button>
                       </form>
                     </div>
                     <div class="col-lg-6">
                           <a href='booking3.php' role='button' class='btn btn-outline-dark' id="continue-btn">  
-                            <i class="fas fa-angle-double-right"></i> Continue</a>
+                            <i class="fas fa-angle-double-right"></i> Continue　続ける</a>
                     </div>
                   </div>
                 </div>  
@@ -134,6 +135,7 @@ $Selected_coupon =$Hairsalon->getSelectCouponID($selected_cID);
           <?php endif;?>
           <br>
           <h4>Regular menu</h4>
+          レギュラーメニュー
           <!-- 0 -->
           <?php foreach ($addMenuList as $menu) :?>
             

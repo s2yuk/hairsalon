@@ -72,13 +72,18 @@ $addCouponList =$Hairsalon->displayCouponMenu();
       <br>
       <div class="alert alert-dark">
           <h5 class="text-monospace p-3">Step 1</h4>
-          <p class="text-monospace"> select menu</p>
+          <p class="text-monospace"> select Coupon menu</p>
+          <p>クーポンから選ぶ</p>
           <div class="">
-            skip <i class="fas fa-angle-double-right"></i> <a href="booking2.php" class="btn btn-dark">Regular menu</a>
+            skip <i class="fas fa-angle-double-right"></i> <a href="booking2.php" class="btn btn-dark">Regular menu
+            <br>
+            レギュラーメニューから選ぶ
+            </a>
           </div>
       </div>    
       <div class="mt-5 mx-auto">
         <h3>Coupon</h3>
+       クーポン 
         <?php 
         // print_r($addCouponList);
         foreach ($addCouponList as $coupon) :?> 

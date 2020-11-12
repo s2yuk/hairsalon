@@ -102,12 +102,13 @@ $Date7 = date("D", strtotime('+7 day'));
     <div class="container bg-light text-monospace text-center rounded">
         <div class="text-left">
             <form action="hairsalonAction.php" method="post">
-            <button type="submit" name="reselect4" class="btn btn-secondary m-2"> << Reselect</button>
+            <button type="submit" name="reselect4" class="btn btn-secondary m-2"> << Reselect　再選択</button>
             </form>
         </div> 
       <div class="alert alert-dark">
           <h5 class="p-3">Step 4</h5>
           <p> select date & time</p>
+          日時選択
       </div>
       
       <div class="">

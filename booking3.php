@@ -65,12 +65,13 @@ $staffList=$Hairsalon->displayStaff();
   <div class="container bg-light text-monospace text-center rounded">        
      <div class="text-left">
           <form action="hairsalonAction.php" method="post">
-            <button type="submit" name="reselect3" class="btn btn-secondary m-2"> <i class="fas fa-angle-double-left"></i> Reselect</button>
+            <button type="submit" name="reselect3" class="btn btn-secondary m-2"> <i class="fas fa-angle-double-left"></i> Reselect　再選択</button>
           </form>
       </div> 
       <div class="alert alert-dark">
           <h5 class="text-monospace p-3">Step 3</h4>
           <p class="text-monospace"> select stylist</p>
+          スタイリスト選択
       </div>
       <div class="container" id="select-wrapper">
           <div class="row">
@@ -106,9 +107,10 @@ $staffList=$Hairsalon->displayStaff();
             <div class="mt-4">
               <p>* Assistant can be selected for shampoo or Treatment only　<br>
               アシスタントはシャンプーとトリートメントのみご指名いただけます。</p>
-
             </div>
-            
+            <div class="mt-2">
+              <a href="booking4.php" class="btn btn-outline-secondary mt-2 p-3">指名しない<i class="fa fa-angle-double-right"></i></a>
+            </div>
             
       </div>
             <br>

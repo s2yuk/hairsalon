@@ -210,14 +210,14 @@
                     <input type="hidden" name="nomination" value="<?php echo $selected_stylist['staff_name']?>">
 
 
-                    <button type="submit" name="reserve" class='btn btn-dark btn-block text-monospace'>R E S E R V E </button>
+                    <button type="submit" name="reserve" class='btn btn-dark btn-block text-monospace'>R E S E R V E <br>予約する</button>
                 </form>
                 <br>
 
             </div>
             <div class="col-lg-12">
                 <form action="hairsalonAction.php" method="post">
-                <button type="submit" name="reselect5" class="btn btn-secondary m-2"> <i class="fas fa-angle-double-left"></i> Reselect</button>
+                <button type="submit" name="reselect5" class="btn btn-secondary m-2"> <i class="fas fa-angle-double-left"></i> Reselect　再選択</button>
                 </form>
             </div> 
             
