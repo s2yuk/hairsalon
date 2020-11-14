@@ -6,26 +6,32 @@ class Hairsalon extends Connection{
 
 // register 
 function registerUser($email,$password,$fname,$lname,$gender,$telephone){
-    $sql1 = "INSERT INTO login(email,password) VALUES('$email','$password')";
-    $result1 = $this->conn->query($sql1);
+    $sql = "SELECT * FROM login WHERE email = '$email'";
+    $result = $this->conn->query($sql);
 
-    if($result1 ==TRUE){
-        $loginid = $this->conn->insert_id;
-        $sql2 = "INSERT INTO client(fname,lname,c_gender,telephone,login_id) VALUES('$fname','$lname','$gender','$telephone','$loginid')";
-
-        $result2= $this->conn->query($sql2);
-
-            if($result2==FALSE){
-                echo "insert into client failed";
-            }else{
-                header('location:login.php');
-            }
-
+    if($result->num_rows == NULL){
+        $sql1 = "INSERT INTO login(email,password) VALUES('$email','$password')";
+        $result1 = $this->conn->query($sql1);
+    
+        if($result1 ==TRUE){
+            $loginid = $this->conn->insert_id;
+            $sql2 = "INSERT INTO client(fname,lname,c_gender,telephone,login_id) VALUES('$fname','$lname','$gender','$telephone','$loginid')";
+    
+            $result2= $this->conn->query($sql2);
+    
+                if($result2==FALSE){
+                    echo "insert into client failed";
+                }else{
+                    header('location:login.php');
+                }
+    
+        }else{
+            echo "insert into login table is failed";
+    
+        }
     }else{
-        echo "insert into login table is failed";
-
+        die('You have already our account. Did you forget your password ?');
     }
-
 }
 
 // login
@@ -190,7 +196,6 @@ function contact($name,$email,$gender,$service,$stylist,$comment,$iphoto,$c_id){
     }
 }
 function new_msg($email,$comment,$iphoto,$c_id){
-    
     $sql1="SELECT client.fname, client.lname FROM login INNER JOIN client ON login.login_id=client.login_id WHERE email='$email';";
     $result1 = $this->conn->query($sql1);
 
@@ -266,7 +271,6 @@ function getEmail($loginid){
         return $result->fetch_assoc();
     }
 }
-
 function myMessage($email){
     $sql="SELECT * FROM contact WHERE contact_email='$email' ORDER BY contact_id DESC";
     $result = $this->conn->query($sql);
@@ -376,6 +380,45 @@ function countReply($c_id){
         return $result->fetch_assoc();
     }else{
         echo "no reply";
+    }
+}
+// edit profile
+function editProfile($email, $password, $loginid, $fname, $lname, $c_gender, $telephone){
+    $sql1 ="UPDATE login SET email = '$email', password = '$password' WHERE login_id ='$loginid'";
+    $result1 = $this->conn->query($sql1);
+
+    if($result1 == TRUE){
+        $sql2 = "UPDATE client SET fname='$fname', lname='$lname', c_gender='$c_gender', telephone='$telephone' WHERE login_id ='$loginid'";
+        $result2 = $this->conn->query($sql2);
+        
+        if($result2 == TRUE){
+            echo "<script>alert('Success! プロフィールを変更しました。'); location.href ='profile.php';</script>";
+            // header('location:profile.php');
+        }else{
+            die('error to update client data');
+        }
+    }else{
+        die('error to update login data');
+    }
+}
+// deleteProfile
+function deleteProfile($loginid){
+
+    $sql1 = "DELETE FROM login WHERE login_id = $loginid";
+    $result1 = $this->conn->query($sql1);
+    
+    if($result1 == TRUE){
+        // $sql2 = "DELETE FROM client WHERE login_id = $loginid";
+        // $result2 = $this->conn->query($sql2);
+
+        // if($result2 == TRUE){
+        // }else{
+        //     die('error to delete client data');
+        // }
+        session_destroy();
+        header('location:dashboard.php');
+    }else{
+        die('error to delete login data');
     }
 }
 

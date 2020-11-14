@@ -76,6 +76,18 @@ elseif(isset($_POST['new_msg'])){
 }
 
 
+//edit profile
+elseif(isset($_POST['editProfile'])){
+    $fname = $_POST['fname'];
+    $lname = $_POST['lname'];
+    $c_gender = $_POST['gender'];
+    $telephone = $_POST['telephone'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $loginid = $_SESSION['loginid'];
+
+    $Hairsalon->editProfile($email, $password, $loginid, $fname, $lname, $c_gender, $telephone);
+}
 
 
 

@@ -23,54 +23,48 @@ $memoList = $Hairsalon->getMemo($client_id);
   </head>
   <body>
       <div class="m-5">
-          <div class="">
+          <div class="back-btn">
             <a href="userList.php" class="btn btn-outline-dark">User List</a>
           </div>
-
           <div class="row mt-2">
             <div class="col-lg-4">
               <div class="card">
-              <div class="card-header">
-                  <h3 class="">Profile</h3>
+                <div class="card-header">
+                    <h3 class="">Profile</h3>
+                </div>
+                <div class="card-body">
+                      <div class="text-center">
+                        <h4 class="card-title text-uppercase"><?php echo $user['fname']." ".$user['lname'];?></h4>
+                      </div>
+                      <hr>
+                      <div class="row">
+                          <div class="col-lg-4">Gender :</div>
+                          <div class="col-lg-8"><?php echo $user['c_gender'];?></div>
+                      </div>
+                      <div class="row">
+                          <div class="col-lg-4">TEL :</div>
+                          <div class="col-lg-8"><?php echo $user['telephone'];?></div>
+                      </div>
+                      <div class="row">
+                          <div class="col-lg-4">Email :</div>
+                          <div class="col-lg-8"><?php echo $user['email'];?></div>
+                      </div>
+                      <div class="row">
+                          <div class="col-lg-4">Bio :</div>
+                          <div class="col-lg-8"> 
+                            <form action="hairsalonAction.php" method="post">
+                              <input type="hidden" name="c_id" value="<?php echo $user['c_id'];?>">
+                              <textarea name="bio" id="" cols="30" rows="10" placeholder="<?php echo nl2br($user['bio']);?>" class="form-control" required></textarea>
+                              <!-- <input type="text" name="bio" placeholder="<?php echo $user['bio'];?>" class="form-control" required> -->
+                              <div class="float-right">
+                                  <button type="submit" name="editUserBio" class="btn btn-dark">submit</button>
+                              </div>
+                            </form>
+                          </div>
+                      </div>
+                </div>
               </div>
-              <div class="card-body">
-                    <div class="text-center">
-                      <h4 class="card-title text-uppercase"><?php echo $user['fname']." ".$user['lname'];?></h4>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-lg-4">Gender :</div>
-                        <div class="col-lg-8"><?php echo $user['c_gender'];?></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">TEL :</div>
-                        <div class="col-lg-8"><?php echo $user['telephone'];?></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">Email :</div>
-                        <div class="col-lg-8">
-                          
-                          <?php echo $user['email'];?>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">Bio :</div>
-                        <div class="col-lg-8"> 
-                          <form action="hairsalonAction.php" method="post">
-                              
-                                  <input type="hidden" name="c_id" value="<?php echo $user['c_id'];?>">
-                                  <textarea name="bio" id="" cols="30" rows="10" placeholder="<?php echo nl2br($user['bio']);?>" class="form-control" required></textarea>
-                                  <!-- <input type="text" name="bio" placeholder="<?php echo $user['bio'];?>" class="form-control" required> -->
-                                  <div class="float-right">
-                                      <button type="submit" name="editUserBio" class="btn btn-dark">submit</button>
-                                  </div>
-                              
-                          </form>
-                        </div>
-                    </div>
-              </div>
-            </div>
-            <!-- /card -->
+              <!-- /card -->
             </div>
             <!-- col -->
             <div class="col-lg-8">

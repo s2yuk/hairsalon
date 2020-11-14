@@ -1,6 +1,5 @@
 <?php
   include 'hairsalonAction.php';
-
   // echo $_SESSION['loginid'];
   $loginid=$_SESSION['loginid'];
   $currentUser = $Hairsalon->getOneUser($loginid);
@@ -81,7 +80,6 @@
       </div>
     </header>
   <!-- js -->
-
   <script type="text/javascript" src="asset/js/script.js"></script>
   </body>
 </html>

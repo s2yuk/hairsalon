@@ -45,7 +45,7 @@ $reply_list = $Hairsalon-> displayReply($msgID);
         #title{
             background-color: rgba(255, 255, 255, 0.8);
         }
-        #title,#subtitle{
+        #title,.subtitle{
             font-family: 'Oleo Script', cursive;
         }
         #reserve-wrapper{
@@ -57,10 +57,7 @@ $reply_list = $Hairsalon-> displayReply($msgID);
             overflow: scroll;
         }
         .subtitle{
-            display: flex;
             height: 40px;
-        }
-        #subtitle{
             font-size: 35px;
             color:white;
             -webkit-text-stroke: 1px black;
@@ -72,6 +69,11 @@ $reply_list = $Hairsalon-> displayReply($msgID);
         }
         .subtitle-jp{
             color: black;
+            font-size: 18px;
+        }
+        .icon{
+             color:white;
+            -webkit-text-stroke: 1px black;
         }
         /* --------------------------------- */
         footer{
@@ -91,8 +93,6 @@ $reply_list = $Hairsalon-> displayReply($msgID);
             }
             .subitle{
                 height: 30px;
-            }
-            #subtitle{
                 font-size: 28px;
             }
             .subtitle p{
@@ -116,8 +116,9 @@ $reply_list = $Hairsalon-> displayReply($msgID);
         </div>
         <div class="mt-5" id="reserve-wrapper">
             <div class="subtitle">
-                <p class="rounded" id="subtitle"><i class="fas fa-history"></i>  Resavertion</p>
-                <span class="subtitle-jp"><p>予約確認</p></span>
+                <p class="subtitle"><i class="fas fa-history"></i>  Resavertion
+                <span class="subtitle-jp">予約確認</span></p>
+                
             </div>
             <div class="bg-light " id="table">
                 <table class="table table-hover">
@@ -175,43 +176,54 @@ $reply_list = $Hairsalon-> displayReply($msgID);
                 </table>
             </div>
             <div class="subtitle mt-5">
-                <h3 class="rounded" id="subtitle"><i class="far fa-envelope"></i> Message</h3>
-                <span class="subtitle-jp"><p>メッセージ</p></span>
+                <p class="subtitle"><i class="far fa-envelope"></i> Message <span class="subtitle-jp">メッセージ</span>
+                
+                <a href="contactpage.php" class="btn btn-outline-dark icon float-right"><i class="fas fa-edit"></i>New</a>
+            </p>
+
+                   
             </div>
             <div class="bg-light" id="table">
-            <table class="table table-hover">                
-                <div class="div">
-                    <?php if($myMsgList > 0):?>
-                        <thead>
-                            <th>contact_id</th>
-                            <th>name</th>
-                            <th>message</th>    
-                            <!-- <th></th> -->
-                            <th></th>
-                        </thead>
-                        <?php foreach($myMsgList as $msg) :?>
-                            <tbody>
-                                <td><?php echo $msg['contact_id'];?></td>
-                                <td><?php echo $msg['contact_name'];?></td>
-                                <td><?php echo $msg['comment']; ?></td>
-                                <!-- <td>
-                                    <?php //  $c_id = $msg['contact_id'];
-                                       // $countReply = $Hairsalon->countReply($c_id); 
-                                        // echo $countReply;
-                                    ?>
-                                </td> -->
-                                <td><a href="message_detail.php?contact_id=<?php echo $msg['contact_id'];?>" class="btn btn-dark">Read</a></td>
-                            </tbody>
-                        <?php endforeach ;?>
-                    <?php else :?>
-                        <div class="card-body">
-                            <h3>No message yet</h3>
-                            <p>まだメッセージがありません</p> 
-                        </div>
-                    <?php endif ;?>
-                </div>
-              </table>
-            </div>            
+                <table class="table table-hover">                
+                    <div class="div">
+                        <?php if($myMsgList > 0):?>
+                            <thead>
+                                <th>contact_id</th>
+                                <th>name</th>
+                                <th>message</th>    
+                                <!-- <th></th> -->
+                                <th></th>
+                            </thead>
+                            <?php foreach($myMsgList as $msg) :?>
+                                <tbody>
+                                    <td><?php echo $msg['contact_id'];?></td>
+                                    <td><?php echo $msg['contact_name'];?></td>
+                                    <td><?php echo $msg['comment']; ?></td>
+                                    <!-- <td>
+                                        <?php //  $c_id = $msg['contact_id'];
+                                        // $countReply = $Hairsalon->countReply($c_id); 
+                                            // echo $countReply;
+                                        ?>
+                                    </td> -->
+                                    <td><a href="message_detail.php?contact_id=<?php echo $msg['contact_id'];?>" class="btn btn-dark">Read</a></td>
+                                </tbody>
+                            <?php endforeach ;?>
+                        <?php else :?>
+                            <div class="card-body">
+                                <h3>No message yet</h3>
+                                <p>まだメッセージがありません</p> 
+                            </div>
+                        <?php endif ;?>
+                    </div>
+                </table>
+            </div>  
+            <div class="subtitle mt-5">
+                <p class="rounded" id="subtitle"><i class="fas fa-user-cog"></i> Setting
+                <span class="subtitle-jp">設定</span></p>
+            </div>
+            <div class="link bg-light p-3">
+                <a href="profile.php" class="btn btn-outline-dark">profileプロフィール</a>
+            </div>
         </div>
     <!-- footer -->
     <footer class="">

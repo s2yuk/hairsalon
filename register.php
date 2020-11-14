@@ -47,31 +47,31 @@
             <div class="card-body">
                 <form action="hairsalonAction.php" method="post">
                     <label for="">First name :</label>
-                    <input type="tel" name="fname" id="" class="form-control" placeholder="名前"><br>
+                    <input type="text" name="fname" id="" class="form-control" placeholder="名前" required><br>
                     
                     <label for="">Last name :</label>
-                    <input type="text" name="lname" id="" class="form-control" placeholder="苗字"> <br>
+                    <input type="text" name="lname" id="" class="form-control" placeholder="苗字" required> <br>
 
 
                     <label for="">Gender :</label>
                     <select name="gender" id="" class="form-control">
                         <option value="none">性別を選んでください</option>
-                        <option value=male>Male</option>
+                        <option value="male">Male</option>
                         <option value="femal">Female</option>
                     </select><br>
                
 
                     <label for="">Telephone number 電話番号（数字のみ）:</label>
-                    <input type="number" name="telephone" id="" class="form-control"　placeholder=""><br>
+                    <input type="number" name="telephone" id="" class="form-control" placeholder="" required><br>
                     
             
 
                     <label for="">Email : </label>
-                    <input type="email" name="email" id="" class="form-control" placeholder="メールアドレス name@test"><br>
+                    <input type="email" name="email" id="" class="form-control" placeholder="メールアドレス name@test" required><br>
                
 
                     <label for="">Password :</label>
-                    <input type="password" name="password" id="" class="form-control" placeholder="パスワード"><br>
+                    <input type="password" name="password" id="" class="form-control" placeholder="パスワード" required><br>
               
                     <div class="text-center mb-3">
                       <button type="submit" name="register" class="form-control btn btn-dark w-75 mt-3">Register</button>                
